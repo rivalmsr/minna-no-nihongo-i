@@ -18,7 +18,16 @@ minna-no-nihongo-i/
 │   ├── lesson-07.md       <- 第7課: alat/bahasa で, memberi/menerima に, もう
 │   ├── lesson-08.md       <- 第8課: kata sifat な & い (deskriptif, negatif, + benda)
 │   ├── lesson-09.md       <- 第9課: が (suka/pandai/paham/punya), あります/います, から (karena)
-│   └── lesson-10.md       <- 第10課: keberadaan に + あります/います, kata posisi
+│   ├── lesson-10.md       <- 第10課: keberadaan に + あります/います, kata posisi
+│   ├── lesson-11.md       <- 第11課: satuan hitung (〜つ/まい/にん/かい), durasi, かかります
+│   ├── lesson-12.md       <- 第12課: bentuk lampau, perbandingan より/どちら/いちばん
+│   ├── lesson-13.md       <- 第13課: 語彙/動詞 — 〜に行きます, 〜ています, を (meninggalkan)
+│   ├── lesson-14.md       <- 第14課: bentuk 〜て — てください, ましょうか, ています
+│   ├── lesson-15.md       <- 第15課: てもいいです, てはいけません, ています (keadaan/kebiasaan)
+│   ├── lesson-16.md       <- 第16課: 〜て/〜てから (urutan aksi), は〜が, gabung sifat (で/くて)
+│   ├── lesson-17.md       <- 第17課: bentuk ない — ないでください, なければなりません, なくてもいいです
+│   ├── lesson-18.md       <- 第18課: bentuk kamus (辞書形) — ことができます, しゅみ, まえに
+│   └── lesson-19.md       <- 第19課: bentuk た — たことがあります, たり〜たり, なります
 ├── reference/
 │   ├── particles.md       <- ringkasan partikel
 │   ├── vocabulary.md      <- kosakata terkumpul (per lesson)
@@ -44,6 +53,15 @@ minna-no-nihongo-i/
 | [第8課 (Lesson 8)](lessons/lesson-08.md) | Kata sifat | な-adj, い-adj, negatif, どう/どんな | 練習A ✅ |
 | [第9課 (Lesson 9)](lessons/lesson-09.md) | Suka, bisa, punya & sebab | が, すき/じょうず/わかります, あります/います, から | 練習A ✅ |
 | [第10課 (Lesson 10)](lessons/lesson-10.md) | Keberadaan & posisi | に (tempat), あります/います, うえ/した/となり/あいだ | 練習A ✅ |
+| [第11課 (Lesson 11)](lessons/lesson-11.md) | Satuan hitung | 〜つ/いくつ, 〜まい, 〜にん, 〜かい, どのくらい, かかります | 練習A ✅ |
+| [第12課 (Lesson 12)](lessons/lesson-12.md) | Lampau & perbandingan | でした/くなかった, より, どちら〜のほうが, いちばん | 練習A ✅ |
+| [第13課 (Lesson 13)](lessons/lesson-13.md) | 語彙 — kata kerja | 〜に行きます, 〜ています, 食事/食べます, を (meninggalkan) | 語彙/動詞 ✅ · 形容詞 ⬜ |
+| [第14課 (Lesson 14)](lessons/lesson-14.md) | Bentuk 〜て | konjugasi て, 〜てください, 〜ましょうか, 〜ています | 練習A ✅ |
+| [第15課 (Lesson 15)](lessons/lesson-15.md) | Izin, larangan & keadaan | 〜てもいいです, 〜てはいけません, 〜ています (しって/すんで) | 言葉 ✅ · 練習A ✅ |
+| [第16課 (Lesson 16)](lessons/lesson-16.md) | Urutan aksi & gabung sifat | 〜て/〜てから, は〜が, な で・い くて, 他動詞/自動詞 | 言葉 ✅ · 練習A ✅ |
+| [第17課 (Lesson 17)](lessons/lesson-17.md) | Bentuk ない | 〜ないでください, 〜なければなりません, 〜なくてもいいです, を→は | 練習A ✅ |
+| [第18課 (Lesson 18)](lessons/lesson-18.md) | Bentuk kamus (辞書形) | 〜ことができます, N が できます, しゅみ, 〜まえに | 練習A ✅ |
+| [第19課 (Lesson 19)](lessons/lesson-19.md) | Bentuk た | 〜たことがあります, 〜たり〜たりします, 〜なります | 言葉 ✅ · 練習A ✅ |
 
 ## Latihan adaptif (`/quiz`)
 
