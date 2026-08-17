@@ -14,14 +14,42 @@ berikutnya makin terfokus ke materi yang lemah.
 1. **Source of truth tata bahasa = file `lessons/lesson-0X.md`.** Soal hanya boleh
    menguji pola yang benar-benar diajarkan di lesson dalam cakupan. Jangan pakai
    tata bahasa di luar lesson yang tersedia (lihat folder `lessons/`).
-2. **Kosakata = pool N5** di `reference/n5-vocabulary.md` + kosakata di
-   `reference/vocabulary.md`. Boleh pakai kata N5 apa pun, meski tak ada di lesson.
+2. **Kosakata = pool N5** di `reference/n5-vocabulary.md` (SATU-SATUNYA sumber
+   kosakata saat quiz). Boleh pakai kata N5 apa pun, meski tak ada di lesson.
+   **Jangan** baca `reference/vocabulary.md` saat quiz — itu hanya referensi
+   penulisan lesson (file terbesar, boros token).
 3. **Tulisan:** hiragana + kanji umum N5. **Setiap kanji diberi bacaan hiragana**
    dalam kurung, mis. `学校（がっこう）`, `友達（ともだち）と 行きます（いきます）`.
 4. **Tag konsisten:** pakai tag dari `reference/quiz-taxonomy.md`. Jangan bikin
    tag baru saat menilai.
 5. **Jangan mengarang skor.** Perbarui angka di `progress/evaluation.md` dari
    angka lama + hasil sesi ini (hitung eksplisit).
+
+## Hemat token (WAJIB)
+
+Knowledge base ini kecil, jadi jangan boros baca. Kontrak baca per sesi:
+
+- **Baca wajib (kecil):** `progress/evaluation.md` + `reference/quiz-taxonomy.md`.
+  `quiz-taxonomy.md` = **indeks pola/tag** — jadikan sumber utama saat memilih pola
+  & tag; sering kali ini + anchor lesson sudah cukup tanpa buka detail lesson.
+- **Lesson in-scope → baca ANCHOR saja**, bukan file utuh: `Read` dengan `limit ~20`
+  (header `# 第X課` + `**Topik:**` + blok `> Ringkasan cepat:` yang merangkum semua
+  pola). ~1 KB vs ~6 KB per lesson.
+- **Detail pola dibaca LAZILY:** hanya kalau sebuah soal butuh contoh kalimat persis
+  → `Grep` penanda (`**Rumus:**` / `→` / nama pola) lalu `Read` rentang kecil section
+  `## Pola` itu. Jangan pernah `Read` seluruh lesson.
+- **`reference/particles.md` → TIDAK dibaca default.** Hanya saat soal bergantung
+  disambiguasi partikel halus (で↔に, は↔が, dst.) → `Grep` section partikel itu saja.
+- **`reference/n5-vocabulary.md` → baca terarah.** Untuk sesi kecil/terfokus, `Grep`
+  kategori yang dipakai (mis. "Kata kerja", "Tempat"). Baca penuh hanya bila perlu
+  variasi kosakata luas.
+- **Larangan:** jangan `Read` utuh `reference/vocabulary.md`, `reference/particles.md`,
+  atau file lesson penuh kecuali benar-benar perlu contoh spesifik.
+
+**Konvensi anchor (lesson lama & materi baru):** tiap `lessons/lesson-XX.md` diawali
+`# 第X課 …`, baris `**Topik:**`, lalu blok `> Ringkasan cepat:` yang menyebut SEMUA
+pola bab itu; tiap pola pakai `**Rumus:**` + contoh bertanda `→`. Selama konvensi ini
+dipatuhi, baca-anchor selalu valid → lesson baru otomatis hemat.
 
 ## Parsing argumen
 
@@ -43,7 +71,8 @@ Untuk `/quiz` polos, hitung daftar lesson yang perlu dibaca — **hemat, jangan 
    lesson asalnya lewat `reference/quiz-taxonomy.md`. Ini "lesson lemah".
 2. Tambahkan **bab terbaru** (nomor lesson tertinggi yang ada di `lessons/`).
 3. Cakupan = gabungan (lesson lemah + bab terbaru). Batasi maksimal **~3 lesson**
-   (prioritas: akurasi terendah dulu). **Baca hanya file lesson itu**, bukan yang lain.
+   (prioritas: akurasi terendah dulu). Muat **hanya anchor** lesson itu (lihat
+   "Hemat token"), bukan lesson lain.
 4. Jika belum ada data (sesi pertama / evaluation.md kosong) → cakupan = **bab terbaru saja**.
 Alokasi 10 soal: mayoritas ke lesson lemah (materi berstatus 🔴/🟡), sisanya ke bab terbaru.
 
@@ -59,7 +88,9 @@ yang tersedia.
 ### 2. Tentukan cakupan & campuran soal
 - Tentukan cakupan: pakai argumen bila ada; kalau `/quiz` polos, hitung lewat
   "Menentukan cakupan default" di atas (hemat — jangan baca semua lesson).
-- Baca **hanya** file lesson dalam cakupan + `reference/particles.md` + `reference/n5-vocabulary.md`.
+- Muat materi sesuai kontrak **"Hemat token (WAJIB)"** di atas: baca **anchor**
+  (`Read limit ~20`) tiap lesson in-scope; detail pola / partikel / kosakata dibaca
+  **on-demand via `Grep`** saat sebuah soal memerlukannya. Jangan baca file utuh.
 - Campuran default per sesi (sesuaikan proporsional dgn N): mayoritas **文法1**,
   sisanya **文法2**, **語彙**, dan (bila cakupan luas) **読解**.
 - **Bobot adaptif:** untuk tiap tag berstatus 🔴 LEMAH atau 🟡, perbanyak soalnya.
