@@ -106,8 +106,9 @@ Susun soal bervariasi; jangan mengulang kalimat yang sama.
 ### 4. Sajikan & kumpulkan jawaban — MODE UJIAN (default)
 User menjawab **semua soal dulu**, koreksi & analisis baru muncul **di akhir**.
 - **Semua soal dibuat pilihan ganda** (2–4 opsi) supaya bisa diklik.
-- Tampilan tiap soal: tulis di chat pakai heading **`###`** (soal) + pilihan sebagai
-  poin **tebal** — besar & jelas (lihat "Format tampilan"). Lalu kumpulkan pilihan
+- Tampilan tiap soal: tulis di chat pakai format di **"Format tampilan (kanji besar)"**
+  di bawah — kalimat Jepang jadi heading **`#`** (H1) untuk penekanan & jarak (ukuran
+  kanji sendiri datang dari font terminal, bukan markdown). Lalu kumpulkan pilihan
   lewat tool **AskUserQuestion**, **berkelompok maksimal 4 soal per panel**
   (AskUserQuestion menampung 1–4 pertanyaan sekaligus). Untuk N>4, pakai beberapa
   panel berturut-turut.
@@ -149,6 +150,41 @@ Ringкас ke user:
 - **Rekomendasi**: materi mana yang perlu diulang + saran `/quiz review` atau
   `/quiz lesson X`.
 - Konfirmasi file `progress/` sudah diperbarui.
+
+## Format tampilan (kanji besar)
+
+**Ukuran glyph kanji ditentukan oleh font terminal, BUKAN markdown.** Di terminal
+(WezTerm dll.) semua sel karakter seukuran — heading `#` TIDAK memperbesar teks, ia
+hanya menambah warna/tebal/jarak. User sudah membesarkan kanji lewat WezTerm (font
+fallback CJK `Hiragino Sans` di-`scale` 1.4× di `~/.wezterm.lua`), jadi semua teks
+Jepang otomatis besar tanpa trik markdown.
+
+Tetap pakai `#` (H1) untuk tiap kalimat soal — bukan untuk memperbesar, tapi untuk
+**penekanan + baris sendiri + jarak** biar soal gampang dibaca. Format tiap soal: 
+
+```
+---
+
+# 🇯🇵 わたしは スポーツ（　）すきです。
+
+**Soal 1 · 文法1 · partikel**
+
+- **1.** を
+- **2.** が
+- **3.** で
+- **4.** に
+```
+
+Aturan:
+- **Baris kalimat Jepang pakai `#` (H1)** — untuk penekanan & jarak, bukan ukuran
+  (ukuran datang dari font WezTerm). Boleh, tapi jangan andalkan H1 untuk memperbesar.
+- Kanji tetap berfurigana, mis. `# 学校（がっこう）へ 行きます（いきます）。`
+- Nomor soal + tag ditulis kecil (baris **tebal** biasa), bukan di dalam H1.
+- Opsi sebagai daftar **tebal** bernomor, gampang dibaca sekaligus.
+- Beri garis `---` antar soal biar tiap kanji besar punya ruang sendiri.
+- **AskUserQuestion tetap dipakai untuk mengklik jawaban** (panelnya font kecil &
+  fixed — tak bisa dibesarkan), tapi versi BESAR di chat itu yang dibaca user.
+  Di panel, `question` boleh diringkas; kanji besarnya sudah ada di chat.
 
 ## Template tipe soal (JLPT N5)
 
