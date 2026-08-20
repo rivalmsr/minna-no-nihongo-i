@@ -7,7 +7,7 @@ Diperbarui otomatis oleh skill `/quiz` setiap selesai sesi. Melacak akurasi
 **Ambang status:** akurasi <60% 🔴 LEMAH · 60–79% 🟡 · ≥80% 🟢
 (butuh minimal **3 attempt** sebelum status dihitung; di bawah itu = ⚪ belum cukup data)
 
-_Terakhir diperbarui: 2026-08-19 · total sesi: 4_
+_Terakhir diperbarui: 2026-08-20 · total sesi: 6_
 
 ---
 
@@ -19,52 +19,55 @@ _Terakhir diperbarui: 2026-08-19 · total sesi: 4_
 | L9-が-paham | 1 | 1 | 100% | ⚪ |
 | L9-が-pandai | 1 | 1 | 100% | ⚪ |
 | L9-punya | 1 | 1 | 100% | ⚪ |
-| L10-あります | 3 | 3 | 100% | 🟢 |
+| L10-あります | 4 | 4 | 100% | 🟢 |
 | L10-います | 2 | 2 | 100% | ⚪ |
-| L10-に-keberadaan | 5 | 7 | 71% | 🟡 |
-| L10-posisi | 2 | 3 | 67% | 🟡 |
+| L10-に-keberadaan | 10 | 13 | 77% | 🟡 |
+| L10-posisi | 6 | 7 | 86% | 🟢 |
 | L13-に-tujuan | 1 | 1 | 100% | ⚪ |
 | L18-ことができます | 1 | 1 | 100% | ⚪ |
 | L18-まえに | 1 | 1 | 100% | ⚪ |
 | L18-辞書形-konjugasi | 1 | 1 | 100% | ⚪ |
-| L19-たことがあります | 2 | 2 | 100% | ⚪ |
-| L19-なります | 1 | 3 | 33% | 🔴 LEMAH |
-| L19-たり | 1 | 2 | 50% | ⚪ |
-| L19-に-vs-を-のぼる | 1 | 1 | 100% | ⚪ |
+| L19-たことがあります | 3 | 3 | 100% | 🟢 |
+| L19-なります | 6 | 9 | 67% | 🟡 |
+| L19-たり | 4 | 5 | 80% | 🟢 |
+| L19-に-vs-を-のぼる | 2 | 2 | 100% | ⚪ |
 
 ## Per partikel
 | Partikel | Benar | Total | Akurasi | Status |
 |----------|-------|-------|---------|--------|
 | から | 2 | 2 | 100% | ⚪ |
-| に | 6 | 10 | 60% | 🟡 |
-| で | 2 | 2 | 100% | ⚪ |
+| に | 12 | 17 | 71% | 🟡 |
+| で | 5 | 5 | 100% | 🟢 |
+| を | 1 | 1 | 100% | ⚪ |
+| の | 1 | 1 | 100% | ⚪ |
 | が | 6 | 6 | 100% | 🟢 |
 
 ## Per lesson
 | Lesson | Benar | Total | Akurasi | Status |
 |--------|-------|-------|---------|--------|
 | Lesson 9 | 6 | 6 | 100% | 🟢 |
-| Lesson 10 | 12 | 15 | 80% | 🟢 |
+| Lesson 10 | 22 | 26 | 85% | 🟢 |
 | Lesson 13 | 1 | 1 | 100% | ⚪ |
 | Lesson 18 | 3 | 3 | 100% | 🟢 |
-| Lesson 19 | 5 | 8 | 63% | 🟡 |
+| Lesson 19 | 15 | 19 | 79% | 🟡 |
 
 ---
 
 ## Weak areas (prioritas soal berikutnya)
-1. 🔴 **L19-なります** — 33% (1/3). Titik kegagalan jelas: **い-adjektiva** (`さむい
-   → さむく なります`) tertukar jadi `さむいに`. Kuatkan aturan: **N/な-adj + に**,
-   tapi **い-adj → buang い + く**.
-2. 🟡 **に (partikel)** — 60% (6/10). Naik pesat dari 40%! Sisa keplesetnya: **に
-   (keberadaan) vs で (aktivitas)** — masih sesekali tertukar.
-3. 🟡 **Lesson 19** — 63% (5/8). Ditarik turun oleh なります + たり (rendaku).
-4. 🟡 **L10-posisi** — 67% (2/3). Sesi ini benar; masih pantau.
-5. 🟡 **L10-に-keberadaan** — 71% (5/7). Q3 salah pilih で.
+_Tidak ada 🔴. Sisa 🟡 makin sedikit — に↔で & posisi & たり sudah membaik ke 🟢/aman._
+1. 🟡 **L19-なります** — 67% (6/9). **Titik gagal spesifik: い-adjektiva** (`暑い →
+   暑く なります`). な-adj/N (→ に) sudah konsisten benar; yang meleset selalu **い-adj**
+   yang salah pakai に. Kuatkan HANYA kasus い-adj → く.
+2. 🟡 **に (partikel)** — 71% (12/17). Naik dari 62%. Sisa error ikut dari `なります`
+   い-adj (salah に) — bukan lagi dari に↔で keberadaan (sesi ini 4/4 benar).
+3. 🟡 **L10-に-keberadaan** — 77% (10/13). Membaik pesat; に↔で sudah dikuasai.
+4. 🟡 **Lesson 19** — 79% (15/19). Ditahan hanya oleh なります い-adj.
 
 **Sinyal yang perlu diperhatikan:**
-- `L19-なります` 1/3: **い-adj → く** (`さむく なります`), **N/な-adj → に**
-  (`大学生に なります`). Jangan `〜いに`, jangan が.
-- `L19-たり` 1/2: **rendaku** bentuk た/たり — verba akhiran ん/ぐ/ぶ/む → **だ/だり**
-  (`読む → 読んだり`, bukan 読んたり).
-- `に vs で`: **に** = tempat **keberadaan** (あります/います); **で** = tempat
-  **aktivitas**. Q3 (`こうえんに 子供が います`) salah pilih で.
+- `L19-なります` (PRIORITAS TUNGGAL): **い-adj → buang い + く** (`暑く なります`,
+  `寒く なります`, `安く なります`); **な-adj/N → に** (`上手に`, `二十歳に`). Pola
+  error yang konsisten: user pakai **に untuk semua** → salah di い-adj. Perbanyak
+  soal い-adj + なります.
+- `に vs で`: **SUDAH MEMBAIK** (sesi 2026-08-20 review: 4/4). に = keberadaan
+  (あります/います), で = aktivitas. Pantau sesekali saja.
+- `L19-たり`: rendaku sudah benar (`読む→読んだり`, `遊ぶ→遊んだり`). Naik ke 🟢.

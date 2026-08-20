@@ -55,14 +55,15 @@ dipatuhi, baca-anchor selalu valid → lesson baru otomatis hemat.
 
 `/quiz [lesson X | lesson X-Y] [review] [N]`
 
-- **Setiap sesi = 10 soal** (default tetap). Ini berlaku untuk semua sesi kecuali
-  user secara eksplisit menyebут angka `N` lain.
-- Tanpa argumen → **sesi ADAPTIF PINTAR (hemat token)**: 10 soal. Cakupan dihitung
+- **Setiap sesi = 12 soal** (default tetap). Ini berlaku untuk semua sesi kecuali
+  user secara eksplisit menyebут angka `N` lain. 12 soal = **3 panel penuh
+  AskUserQuestion (4+4+4)**, jadi terbagi rata tanpa panel sisa.
+- Tanpa argumen → **sesi ADAPTIF PINTAR (hemat token)**: 12 soal. Cakupan dihitung
   otomatis dari `progress/evaluation.md` (lihat "Menentukan cakupan default" di bawah)
   — **jangan** baca semua lesson.
-- `lesson X` atau `lesson X-Y` → batasi cakupan lesson (mis. `lesson 9-10`), tetap 10 soal.
+- `lesson X` atau `lesson X-Y` → batasi cakupan lesson (mis. `lesson 9-10`), tetap 12 soal.
 - `review` → hanya ambil soal dari **weak areas**; baca hanya lesson yang memuat weak
-  areas itu, tetap 10 soal.
+  areas itu, tetap 12 soal.
 - Angka `N` → override jumlah soal hanya untuk sesi itu (mis. `/quiz lesson 8 5` = 5 soal).
 
 ### Menentukan cakupan default (mode adaptif pintar)
@@ -74,7 +75,7 @@ Untuk `/quiz` polos, hitung daftar lesson yang perlu dibaca — **hemat, jangan 
    (prioritas: akurasi terendah dulu). Muat **hanya anchor** lesson itu (lihat
    "Hemat token"), bukan lesson lain.
 4. Jika belum ada data (sesi pertama / evaluation.md kosong) → cakupan = **bab terbaru saja**.
-Alokasi 10 soal: mayoritas ke lesson lemah (materi berstatus 🔴/🟡), sisanya ke bab terbaru.
+Alokasi 12 soal: mayoritas ke lesson lemah (materi berstatus 🔴/🟡), sisanya ke bab terbaru.
 
 Jika cakupan menyebут lesson yang file-nya belum ada, beri tahu user lesson mana
 yang tersedia.
