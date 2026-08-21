@@ -9,6 +9,7 @@ dengan contoh kalimat dalam Bahasa Jepang.
 ```
 minna-no-nihongo-i/
 ├── README.md              <- file ini (indeks)
+├── CLAUDE.md              <- hub konteks project (ide, aturan /quiz, konvensi)
 ├── lessons/               <- catatan per pelajaran (課 / ka)
 │   ├── lesson-02.md       <- 第2課: kata tunjuk & partikel の
 │   ├── lesson-03.md       <- 第3課: kata tunjuk tempat, asal & harga
@@ -31,13 +32,19 @@ minna-no-nihongo-i/
 ├── reference/
 │   ├── particles.md       <- ringkasan partikel
 │   ├── vocabulary.md      <- kosakata terkumpul (per lesson)
-│   ├── n5-vocabulary.md   <- pool kosakata JLPT N5 (sumber soal /quiz)
-│   └── quiz-taxonomy.md   <- daftar tag pola & partikel untuk /quiz
-├── progress/              <- data latihan (diperbarui otomatis oleh /quiz)
-│   ├── evaluation.md      <- tracker kelemahan per pola/partikel/lesson
-│   └── history.md         <- riwayat sesi latihan
-└── .claude/skills/quiz/   <- skill /quiz (latihan adaptif)
-    └── SKILL.md
+│   ├── n5-vocabulary.md   <- pool kosakata JLPT N5 (sumber soal /quiz & /jlpt)
+│   ├── n5-synonyms.md     <- pool sinonim/parafrase N5 (sumber soal sinonim /jlpt)
+│   ├── anki-verbs.md      <- pool kata kerja (AUTO-GENERATED dari deck Anki; jangan edit tangan)
+│   └── quiz-taxonomy.md   <- tag pola & partikel (/quiz) + tag subtipe JLPT (/jlpt)
+├── progress/              <- data latihan (diperbarui otomatis oleh /quiz & /jlpt)
+│   ├── evaluation.md      <- tracker kelemahan /quiz (per pola/partikel/lesson)
+│   ├── jlpt-evaluation.md <- tracker mock /jlpt (per subtipe ujian JLPT)
+│   └── history.md         <- riwayat sesi latihan (dibagi /quiz & /jlpt, entri berlabel)
+├── scripts/
+│   └── sync-anki-verbs.sh <- regen anki-verbs.md dari learn-anki/ (folder deck Anki; gitignored)
+└── .claude/skills/
+    ├── quiz/SKILL.md      <- skill /quiz (latihan harian adaptif)
+    └── jlpt/SKILL.md      <- skill /jlpt (mock ujian tertulis N5, 2 sesi)
 ```
 
 ## Daftar Pelajaran
@@ -72,13 +79,36 @@ pada materi itu** di sesi berikutnya.
 
 | Perintah | Aksi |
 |----------|------|
-| `/quiz` | Sesi adaptif hemat, 10 soal (baca materi lemah + bab terbaru saja) |
+| `/quiz` | Sesi adaptif hemat, 12 soal (baca materi lemah + bab terbaru saja) |
 | `/quiz lesson 9-10` | Batasi cakupan ke Lesson 9–10 |
 | `/quiz review` | Fokus hanya ke weak areas |
 | `/quiz lesson 8 5` | 5 soal, hanya Lesson 8 |
 
 Hasil & analisis (akurasi per pola/partikel/lesson) tersimpan di folder
 `progress/` — bisa dibaca rapi di Obsidian.
+
+## Mock ujian tertulis (`/jlpt`)
+
+Skill `/jlpt` mensimulasikan **ujian tertulis JLPT N5 penuh** dengan **2 sesi** seperti
+ujian asli — `聴解` (listening) di luar cakupan karena butuh audio:
+
+- **Sesi 1 · 文字・語彙** — baca kanji (cara baca), tulis kanji (penulisan), kosakata
+  dalam konteks, sinonim/言い換え類義.
+- **Sesi 2 · 文法・読解** — tata bahasa, susun kalimat (★), bacaan pendek, bacaan
+  informasi (info-search).
+
+Hasil dilacak **terpisah per subtipe** di `progress/jlpt-evaluation.md` (tracker
+grammar `/quiz` tak terganggu).
+
+| Perintah | Aksi |
+|----------|------|
+| `/jlpt` | Mock penuh 2 sesi, 16 soal (8 文字・語彙 + 8 文法・読解) |
+| `/jlpt moji` | Hanya Sesi 1 文字・語彙 (12 soal) |
+| `/jlpt bunpou` | Hanya Sesi 2 文法・読解 (12 soal) |
+| `/jlpt review` | Fokus ke subtipe yang lemah |
+
+> `/quiz` = latihan **harian adaptif** grammar · `/jlpt` = **simulasi ujian** meniru
+> struktur JLPT. Keduanya pakai referensi & konvensi yang sama.
 
 ## Cara pakai sebagai Claude Project
 

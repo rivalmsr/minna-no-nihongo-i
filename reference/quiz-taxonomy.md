@@ -102,3 +102,26 @@ minimal satu **tag pola** + tag **partikel** yang relevan + **lesson** asalnya.
 
 Untuk partikel multi-fungsi (で, に, から), tandai **juga** tag pola-nya supaya
 kelihatan konteks mana yang lemah (mis. `で` bisa transport/tempat/alat/bahasa).
+
+## Tag subtipe JLPT (dipakai `/jlpt`, BUKAN `/quiz`)
+
+Skill `/jlpt` (mock ujian tertulis N5) menandai tiap soal dengan **subtipe** ujian,
+dilacak terpisah di `progress/jlpt-evaluation.md`. Skill `/quiz` utama **tidak**
+memakai tag ini. Soal grammar (`DK-bunpou`) & susun kalimat (`DK-narabekae`) tetap
+mengambil tata bahasa dari `lessons/` dan **boleh** di-cross-tag dengan tag pola/
+partikel di atas.
+
+| Tag | Sesi | Subtipe |
+|-----|------|---------|
+| `MG-yomi` | 1 文字・語彙 | Baca kanji: pilih **cara baca** (hiragana) kata kanji yang digarisbawahi |
+| `MG-hyouki` | 1 文字・語彙 | Penulisan kanji: kata ditulis hiragana → pilih **kanji** benar |
+| `MG-bunmyaku` | 1 文字・語彙 | Kosakata dalam konteks: isi rumpang dengan kata paling tepat |
+| `MG-ruigi` | 1 文字・語彙 | Sinonim / 言い換え類義: pilih kata/kalimat **arti terdekat** |
+| `DK-bunpou` | 2 文法・読解 | Tata bahasa: pilih partikel/pola tepat (cross-tag pola in-scope) |
+| `DK-narabekae` | 2 文法・読解 | Susun kalimat: potongan 1–4 + posisi **★** |
+| `DK-dokkai` | 2 文法・読解 | Bacaan pendek (~60–80 kata) + pertanyaan pemahaman |
+| `DK-joho` | 2 文法・読解 | Bacaan informasi (brosur/pengumuman) → cari info spesifik |
+
+Sumber konten: kanji & kosakata dari `reference/n5-vocabulary.md`; pasangan sinonim
+dari `reference/n5-synonyms.md`; tata bahasa dari `lessons/`. (`聴解` listening di luar
+cakupan — butuh audio.)

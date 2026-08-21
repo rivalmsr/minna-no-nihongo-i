@@ -66,6 +66,22 @@ Daftar pelajaran lengkap (judul + topik + status) ada di tabel `README.md`.
 Detail lengkap (parsing argumen, cakupan adaptif, template soal, langkah eksekusi) ada
 di `.claude/skills/quiz/SKILL.md`.
 
+## /jlpt — variant mock ujian tertulis N5 (skill terpisah)
+
+`/quiz` utama = latihan **harian adaptif** grammar; **jangan diubah** untuk kebutuhan
+JLPT. Untuk simulasi ujian ada skill terpisah **`/jlpt`** (`.claude/skills/jlpt/SKILL.md`):
+
+- **Meniru struktur ujian tertulis N5, 2 sesi:** Sesi 1 **文字・語彙** (baca kanji, tulis
+  kanji, kosakata konteks, sinonim) + Sesi 2 **文法・読解** (grammar, susun kalimat,
+  bacaan pendek, info-search). `聴解` (listening) di luar cakupan (butuh audio).
+- **Reuse penuh** konvensi /quiz (furigana wajib, kanji besar H1, mode ujian, panel
+  AskUserQuestion, hemat token, source of truth lesson). Kosakata/kanji dari
+  `n5-vocabulary.md`; sinonim dari `n5-synonyms.md`.
+- **Tracker terpisah** `progress/jlpt-evaluation.md` (per subtipe JLPT). `/jlpt` **boleh
+  membaca** `evaluation.md` untuk membiaskan soal grammar ke pola lemah, tapi **hanya
+  menulis** `jlpt-evaluation.md` + baris berlabel `JLPT` di `history.md`. **Jangan sentuh**
+  `evaluation.md`. Tag subtipe (`MG-*`, `DK-*`) ada di `reference/quiz-taxonomy.md`.
+
 ## Konvensi menulis catatan lesson
 
 - Struktur tiap `lessons/lesson-0X.md`: judul `# 第X課 — 練習A`, blok **Topik**,
