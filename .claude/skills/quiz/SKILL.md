@@ -18,6 +18,13 @@ berikutnya makin terfokus ke materi yang lemah.
    kosakata saat quiz). Boleh pakai kata N5 apa pun, meski tak ada di lesson.
    **Jangan** baca `reference/vocabulary.md` saat quiz — itu hanya referensi
    penulisan lesson (file terbesar, boros token).
+2b. **Kata kerja = pool `reference/anki-verbs.md`** (dari deck Anki user). Ini
+   sumber verb utama untuk soal konjugasi/pemakaian. **Fokus ACTIVE RECALL:** user
+   cepat hafal arti tapi cepat lupa **cara memakai** kata kerja — jadi soal verb
+   harus memaksa **produksi bentuk & pemakaian** (て/ない/辞書/た, atau dipakai dalam
+   pola in-scope), **bukan** sekadar tanya arti. Verb dikelompokkan grup I/II/III
+   (penentu konjugasi). Selalu sisipkan ≥2 soal verb-recall tiap sesi bila cakupan
+   memuat lesson berpola kata kerja.
 3. **Tulisan:** hiragana + kanji umum N5. **Setiap kanji diberi bacaan hiragana**
    dalam kurung, mis. `学校（がっこう）`, `友達（ともだち）と 行きます（いきます）`.
 4. **Tag konsisten:** pakai tag dari `reference/quiz-taxonomy.md`. Jangan bikin
@@ -43,6 +50,14 @@ Knowledge base ini kecil, jadi jangan boros baca. Kontrak baca per sesi:
 - **`reference/n5-vocabulary.md` → baca terarah.** Untuk sesi kecil/terfokus, `Grep`
   kategori yang dipakai (mis. "Kata kerja", "Tempat"). Baca penuh hanya bila perlu
   variasi kosakata luas.
+- **`reference/anki-verbs.md` → baca ANCHOR + grup terkait.** Baris `> Ringkasan cepat:`
+  + tabel **音便 grup I** + aturan konjugasi sudah cukup untuk kebanyakan soal verb.
+  Butuh verb spesifik cakupan tertentu → `Grep` bab (mis. `L14`, `L17`) atau grup
+  (`GRUP I`). Jangan baca deck Anki mentah di `learn-anki/` saat quiz.
+- **`anki-verbs.md` = AUTO-GENERATED** dari upstream `learn-anki/Minna no Nihongo I/`
+  (folder Anki yang user update terus). **Jangan edit tangan.** Kalau user bilang sudah
+  memperbarui Anki / deck (atau verb terasa ketinggalan), jalankan dulu
+  `bash scripts/sync-anki-verbs.sh` untuk re-sync sebelum menyusun soal.
 - **Larangan:** jangan `Read` utuh `reference/vocabulary.md`, `reference/particles.md`,
   atau file lesson penuh kecuali benar-benar perlu contoh spesifik.
 
@@ -53,7 +68,7 @@ dipatuhi, baca-anchor selalu valid → lesson baru otomatis hemat.
 
 ## Parsing argumen
 
-`/quiz [lesson X | lesson X-Y] [review] [N]`
+`/quiz [lesson X | lesson X-Y] [review] [verbs] [N]`
 
 - **Setiap sesi = 12 soal** (default tetap). Ini berlaku untuk semua sesi kecuali
   user secara eksplisit menyebут angka `N` lain. 12 soal = **3 panel penuh
@@ -64,6 +79,9 @@ dipatuhi, baca-anchor selalu valid → lesson baru otomatis hemat.
 - `lesson X` atau `lesson X-Y` → batasi cakupan lesson (mis. `lesson 9-10`), tetap 12 soal.
 - `review` → hanya ambil soal dari **weak areas**; baca hanya lesson yang memuat weak
   areas itu, tetap 12 soal.
+- `verbs` → **sesi ACTIVE RECALL kata kerja**: ~semua soal dari `reference/anki-verbs.md`
+  (boleh gabung `lesson X` untuk membatasi bab). Fokus produksi bentuk & pemakaian
+  (lihat "Template soal active recall verb" di bawah), bukan arti. Tetap 12 soal.
 - Angka `N` → override jumlah soal hanya untuk sesi itu (mis. `/quiz lesson 8 5` = 5 soal).
 
 ### Menentukan cakupan default (mode adaptif pintar)
@@ -212,6 +230,21 @@ Di mode interaktif **semua tipe dijadikan pilihan ganda** (opsi diklik via AskUs
 
 **読解 — bacaan pendek (hanya saat cakupan luas).** Paragraf 2–3 kalimat memakai
 pola in-scope + 1–2 pertanyaan pemahaman. Semua kanji berfurigana.
+
+**動詞 active recall — produksi bentuk & pemakaian kata kerja** (pool `anki-verbs.md`).
+Tujuannya membiasakan *memakai* verb, bukan menanyakan arti. Semua jadi pilihan ganda.
+Variasi soal:
+```
+1. Konjugasi bentuk: 「およぎます」を てけい（て形）に すると？
+   1. およいで   2. およんで   3. およって   4. およぎて   → (jwb 1; 音便 ぎ→いで)
+2. Pemakaian dalam pola: 「くすりを のみます」＋「〜なければ なりません」
+   → 「くすりを（　）なければ なりません。」  1. のま  2. のみ  3. のむ  4. のんで  → (jwb 1)
+3. Pasangan 他/自 & mirip: 「じゅぎょうが 9時（じ）に（　）。」
+   1. はじめます   2. はじまります   → (jwb 2; 自動詞 が)
+```
+Tag pakai taxonomy konjugasi (`L14-te-konjugasi`, `L17-ない-konjugasi`,
+`L18-辞書形-konjugasi`, `L19-た-konjugasi`) + pola pemakaiannya. Prioritaskan verb
+GRUP I (音便) karena paling sering keliru.
 
 ## Catatan gaya
 - Nada ramah, dorong belajar. Penjelasan singkat & jelas, dalam Bahasa Indonesia.
