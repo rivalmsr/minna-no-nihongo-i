@@ -11,35 +11,41 @@ memeringkat **weak types** untuk memandu `/jlpt review`.
 **Ambang status:** akurasi <60% 🔴 LEMAH · 60–79% 🟡 · ≥80% 🟢
 (butuh minimal **3 attempt** sebelum status dihitung; di bawah itu = ⚪ belum cukup data)
 
-_Terakhir diperbarui: 2026-08-21 · total sesi: 1_
+_Terakhir diperbarui: 2026-08-22 · total sesi: 2_
 
 ---
 
 ## Sesi 1 — 文字・語彙 (Moji-Goi)
 | Subtipe | Tag | Benar | Total | Akurasi | Status |
 |---------|-----|-------|-------|---------|--------|
-| Baca kanji (cara baca) | `MG-yomi` | 2 | 2 | 100% | ⚪ |
-| Tulis kanji (penulisan) | `MG-hyouki` | 2 | 2 | 100% | ⚪ |
-| Kosakata dalam konteks | `MG-bunmyaku` | 2 | 2 | 100% | ⚪ |
-| Sinonim / 言い換え類義 | `MG-ruigi` | 2 | 2 | 100% | ⚪ |
+| Baca kanji (cara baca) | `MG-yomi` | 4 | 4 | 100% | 🟢 |
+| Tulis kanji (penulisan) | `MG-hyouki` | 4 | 4 | 100% | 🟢 |
+| Kosakata dalam konteks | `MG-bunmyaku` | 4 | 4 | 100% | 🟢 |
+| Sinonim / 言い換え類義 | `MG-ruigi` | 4 | 4 | 100% | 🟢 |
 
 ## Sesi 2 — 文法・読解 (Bunpou-Dokkai)
 | Subtipe | Tag | Benar | Total | Akurasi | Status |
 |---------|-----|-------|-------|---------|--------|
-| Tata bahasa (grammar) | `DK-bunpou` | 2 | 2 | 100% | ⚪ |
-| Susun kalimat (★) | `DK-narabekae` | 2 | 2 | 100% | ⚪ |
-| Bacaan pendek | `DK-dokkai` | 1 | 2 | 50% | ⚪ |
-| Bacaan informasi (info-search) | `DK-joho` | 1 | 2 | 50% | ⚪ |
+| Tata bahasa (grammar) | `DK-bunpou` | 3 | 5 | 60% | 🟡 |
+| Susun kalimat (★) | `DK-narabekae` | 3 | 3 | 100% | 🟢 |
+| Bacaan pendek | `DK-dokkai` | 3 | 4 | 75% | 🟡 |
+| Bacaan informasi (info-search) | `DK-joho` | 3 | 4 | 75% | 🟡 |
 
 ---
 
 ## Weak types (prioritas soal `/jlpt review`)
-_Semua subtipe masih ⚪ (Total < 3 attempt) — status resmi belum dihitung. Sinyal awal:_
-1. ⚪ **`DK-dokkai` (bacaan pendek)** — 50% (1/2). Salah "menyalin" info dari teks
-   (公園 tertukar 学校). Butuh ≥3 attempt untuk status pasti.
-2. ⚪ **`DK-joho` (info-search)** — 50% (1/2). Salah baca detail angka (5冊 → 10冊).
-   Latih cari kata kunci langsung di teks.
+_Sesi 1 文字・語彙 semua LULUS 🟢 (baca/tulis kanji, kosakata, sinonim). Titik lemah
+kini di Sesi 2, terutama `DK-bunpou`._
+1. 🟡 **`DK-bunpou` (grammar)** — 60% (3/5). **Turun** dari 100% — kedua error sesi
+   2026-08-22 = pola grammar yang memang lemah di `/quiz`: (a) partikel に titik waktu
+   (`6時に おきます`, pilih を) & (b) `〜てから` butuh **て-form** (`見て から`, pilih
+   辞書形 `見る`). ➜ Arahkan ke **`/quiz review`** (辞書形↔て & partikel に).
+2. 🟡 **`DK-dokkai` (bacaan pendek)** — 75% (3/4). Naik dari 50%; sesi ini 2/2 benar.
+   Nyaris 🟢.
+3. 🟡 **`DK-joho` (info-search)** — 75% (3/4). Naik dari 50%; sesi ini 2/2 benar
+   (jam Sabtu & hari libur benar). Nyaris 🟢.
 
-**Catatan sesi 2026-08-21 (mock pertama, 14/16):** Sesi 1 文字・語彙 **8/8** — baca/tulis
-kanji, kosakata, sinonim semua kuat. Sesi 2 grammar & susun kalimat **4/4**; dua error
-keduanya di **bacaan** (读解/情報検索), bukan tata bahasa.
+**Catatan sesi 2026-08-22 (mock kedua, 14/16):** Sesi 1 文字・語彙 **8/8 lagi** → keempat
+subtipe MG naik 🟢. Sesi 2 **6/8**: bacaan (読解 2/2 + 情報 2/2) **membaik**, tapi dua
+error pindah ke **grammar** (`DK-bunpou`) — persis pola lemah `/quiz` (に-waktu & 辞書形↔
+て). Bukti kelemahan grammar `/quiz` terbawa ke mock; latih via `/quiz review`.

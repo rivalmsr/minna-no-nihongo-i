@@ -7,7 +7,7 @@ Diperbarui otomatis oleh skill `/quiz` setiap selesai sesi. Melacak akurasi
 **Ambang status:** akurasi <60% 🔴 LEMAH · 60–79% 🟡 · ≥80% 🟢
 (butuh minimal **3 attempt** sebelum status dihitung; di bawah itu = ⚪ belum cukup data)
 
-_Terakhir diperbarui: 2026-08-21 · total sesi: 7_
+_Terakhir diperbarui: 2026-08-22 · total sesi: 9_
 
 ---
 
@@ -24,23 +24,31 @@ _Terakhir diperbarui: 2026-08-21 · total sesi: 7_
 | L10-に-keberadaan | 12 | 15 | 80% | 🟢 |
 | L10-posisi | 7 | 8 | 88% | 🟢 |
 | L13-に-tujuan | 1 | 1 | 100% | ⚪ |
-| L18-ことができます | 1 | 1 | 100% | ⚪ |
-| L18-まえに | 1 | 1 | 100% | ⚪ |
-| L18-辞書形-konjugasi | 1 | 1 | 100% | ⚪ |
-| L19-たことがあります | 4 | 4 | 100% | 🟢 |
-| L19-なります | 11 | 14 | 79% | 🟡 |
-| L19-たり | 5 | 6 | 83% | 🟢 |
-| L19-に-vs-を-のぼる | 3 | 3 | 100% | 🟢 |
+| L14-te-konjugasi | 1 | 2 | 50% | ⚪ |
+| L14-てください | 0 | 1 | 0% | ⚪ |
+| L16-てから | 1 | 1 | 100% | ⚪ |
+| L17-ない-konjugasi | 6 | 7 | 86% | 🟢 |
+| L17-なければなりません | 3 | 3 | 100% | 🟢 |
+| L17-なくてもいいです | 2 | 3 | 67% | 🟡 |
+| L17-ないでください | 1 | 1 | 100% | ⚪ |
+| L18-ことができます | 5 | 6 | 83% | 🟢 |
+| L18-まえに | 3 | 4 | 75% | 🟡 |
+| L18-辞書形-konjugasi | 5 | 7 | 71% | 🟡 |
+| L19-たことがあります | 5 | 5 | 100% | 🟢 |
+| L19-た-konjugasi | 3 | 3 | 100% | 🟢 |
+| L19-なります | 13 | 16 | 81% | 🟢 |
+| L19-たり | 6 | 7 | 86% | 🟢 |
+| L19-に-vs-を-のぼる | 4 | 4 | 100% | 🟢 |
 
 ## Per partikel
 | Partikel | Benar | Total | Akurasi | Status |
 |----------|-------|-------|---------|--------|
 | から | 2 | 2 | 100% | ⚪ |
-| に | 15 | 20 | 75% | 🟡 |
+| に | 18 | 23 | 78% | 🟡 |
 | で | 6 | 6 | 100% | 🟢 |
 | を | 2 | 2 | 100% | ⚪ |
 | の | 1 | 1 | 100% | ⚪ |
-| が | 6 | 6 | 100% | 🟢 |
+| が | 7 | 7 | 100% | 🟢 |
 
 ## Per lesson
 | Lesson | Benar | Total | Akurasi | Status |
@@ -48,25 +56,36 @@ _Terakhir diperbarui: 2026-08-21 · total sesi: 7_
 | Lesson 9 | 6 | 6 | 100% | 🟢 |
 | Lesson 10 | 26 | 30 | 87% | 🟢 |
 | Lesson 13 | 1 | 1 | 100% | ⚪ |
-| Lesson 18 | 3 | 3 | 100% | 🟢 |
-| Lesson 19 | 23 | 27 | 85% | 🟢 |
+| Lesson 14 | 0 | 1 | 0% | ⚪ |
+| Lesson 16 | 1 | 1 | 100% | ⚪ |
+| Lesson 17 | 7 | 8 | 88% | 🟢 |
+| Lesson 18 | 9 | 11 | 82% | 🟢 |
+| Lesson 19 | 29 | 33 | 88% | 🟢 |
 
 ---
 
 ## Weak areas (prioritas soal berikutnya)
-_Tidak ada 🔴. Semua lesson & pola sudah 🟢 kecuali dua 🟡 yang tinggal selangkah dari hijau._
-1. 🟡 **に (partikel)** — 75% (15/20). Naik dari 71%. Error historis dari `なります`
-   い-adj sudah tak muncul; sisa deficit tinggal ekor data lama. Butuh ~beberapa
-   soal に benar lagi untuk tembus 🟢.
-2. 🟡 **L19-なります** — 79% (11/14). **Nyaris 🟢.** Sesi 2026-08-21: い-adj 3/3
-   BENAR (termasuk `いい→よく`) → titik lemah lama tampaknya sudah teratasi. Cukup
-   1–2 soal benar lagi untuk hijau.
+_Tidak ada 🔴. Sesi review "pemilihan bentuk verb" (2026-08-22, sesi 9): **ない-stem
+DIKUASAI** (semua pola ない benar), sisa titik lemah menyempit ke **辞書形 vs て**
+sebelum `ことができます` / `まえに`._
+1. 🟡 **L18-辞書形-konjugasi** — 71% (5/7). Salah `およぎます→` sebelum ことができます:
+   pilih **て-form** (`およいで`) padahal butuh **辞書形** (`およぐ`). Bentuk lain
+   (くる/みる/かく) benar.
+2. 🟡 **L17-なくてもいいです** — 67% (2/3). Sesi ini 2/2 benar (`たべ`, `はらわ`);
+   deficit tinggal ekor data lama (`おきる` sesi sebelumnya). Nyaris 🟢.
+3. 🟡 **L18-まえに** — 75% (3/4). Sesi ini 2/2 benar (`かく`, `くる`). Nyaris 🟢.
+4. 🟡 **に (partikel)** — 78% (18/23). Tak diuji sesi ini; masih menunggu akumulasi
+   soal に benar untuk tembus 🟢.
 
 **Sinyal yang perlu diperhatikan:**
-- `L19-なります` — **い-adj → く SUDAH DIKUASAI** (sesi 2026-08-21: `寒く`, `高く`,
-  `よく` semua benar). な-adj/N → に juga aman. Tak perlu dibobot berat lagi; cukup
-  1–2 soal konfirmasi untuk naikkan ke 🟢.
-- `に (partikel)` — hanya perlu akumulasi soal benar; tak ada pola error aktif.
-- `に vs で`: **DIKUASAI** — L10-に-keberadaan naik ke 🟢 (80%), sesi ini 2/2 benar.
-- **Sesi 2026-08-21 skor 12/12 (100%)** — semua weak area lama membaik; Lesson 19
-  & L10-に-keberadaan lulus ke 🟢.
+- 🔺 **辞書形 vs て — sisa kebingungan (fokus berikutnya):** error sesi 9 = Q4
+  `ことができます` pilih て-form (`およいで`) alih-alih 辞書形 (`およぐ`), & Q9
+  `てください` pilih ない-form (`またない`) alih-alih て-form (`まって`). Akar: masih
+  goyah membedakan **辞書形 ↔ て** dan kapan pola minta て. Ingat: `ことができます`/
+  `まえに` = **辞書形**; `てください`/`てから` = **て-form**.
+- ✅ **ない-stem DIKUASAI** — sesi 9 semua pola ない benar (`いか`なければ, `たべ`/`はらわ`
+  なくても, `とらないで`, `おき`なければ). `L17-ない-konjugasi` naik 🟢 (86%),
+  `なければなりません` 🟢 (100%). Kekeliruan `おきる` (sesi 8) tak terulang.
+- `L19-なります` (い-adj→く, N/な→に) & `L19-た-konjugasi` (音便 grup I): tetap 🟢.
+- `に (partikel)`: hanya perlu akumulasi soal benar; tak ada pola error aktif.
+- **Sesi 2026-08-22 (sesi 9) skor 10/12 (83%)** — 2 salah = 辞書形↔て, bukan ない-stem.

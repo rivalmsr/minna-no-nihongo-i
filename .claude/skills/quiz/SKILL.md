@@ -134,6 +134,8 @@ User menjawab **semua soal dulu**, koreksi & analisis baru muncul **di akhir**.
   - `header` = tipe + tag pendek (mis. "文法1 · に/で").
   - `question` = kalimat soal (kanji berfurigana).
   - `options` = tiap opsi; `label` = jawaban (mis. `に`), `description` = arti/petunjuk singkat.
+    **Scaffolding fade:** kurangi porsi hint di `description` untuk pola yang sudah 🟢
+    (netral/tanpa bocoran); pola 🔴/🟡/⚪ tetap boleh hint penuh. Jangan cabut mendadak.
   - Taruh opsi benar di posisi acak (jangan selalu pertama).
 - **JANGAN** tampilkan kunci/koreksi sampai **semua** soal terjawab.
 - Simpan hasil tiap soal (tag + jawaban user) untuk dinilai di langkah 5.

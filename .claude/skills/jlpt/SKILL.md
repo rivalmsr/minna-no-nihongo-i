@@ -112,7 +112,9 @@ asli).
   **AskUserQuestion**, **maksimal 4 soal per panel**. Untuk mock penuh 16 soal = 4 panel.
   - `header` = subtipe + tag pendek (mis. "文字語彙 · 読み方" / "文法 · partikel").
   - `question` = ringkasan soal (kanji berfurigana, kecuali kata yang diuji di `MG-yomi`).
-  - `options` = `label` jawaban + `description` petunjuk singkat. Posisi benar acak.
+  - `options` = `label` jawaban + `description`. Posisi benar acak. **Porsi hint di
+    `description` MEMUDAR BERTAHAP mengikuti penguasaan (scaffolding fade)** — lihat
+    "Hint fading (scaffolding)" di Catatan gaya.
 - Untuk soal **bacaan** (`DK-dokkai`, `DK-joho`): tampilkan **teks** sekali (H2/blockquote),
   lalu 2–3 pertanyaan pilihan ganda yang merujуk teks itu.
 - **JANGAN** tampilkan kunci sampai **semua** soal (kedua sesi) terjawab.
@@ -232,6 +234,24 @@ jadwal; pertanyaan cari info spesifik.
 ど・にち 10:00〜16:00 / やすみ: まいしゅう かようび
 Q: どようびは なんじから ですか。  1. 9じ  2. 10じ  3. 16じ  4. やすみ   → (jwb 2)
 ```
+
+## Hint fading (scaffolding) — porsi `description` mengikuti penguasaan
+
+Hint di `description` opsi **membantu belajar**, tapi karena `/jlpt` meniru ujian asli
+(opsi polos), porsinya harus **dipudarkan bertahap** — JANGAN dicabut mendadak (soal
+malah jadi beban) dan JANGAN dibiarkan penuh terus (skor tak jujur; mis. mock 2026-08-22
+`description` "titik waktu" untuk に & "sabtu-minggu" untuk jam membocorkan jawaban).
+Tentukan per **subtipe/pola** dari status tracker (`jlpt-evaluation.md`; boleh baca
+`evaluation.md` untuk pola grammar):
+
+- **🔴 / 🟡 / ⚪ (belum dikuasai)** → hint **penuh** (boleh menunjuk arah jawaban).
+- **Menuju 🟢 / stabil benar beberapa sesi** → hint **dikurangi** jadi arti harfiah
+  netral yang tak menunjuk kunci.
+- **Mantap 🟢** → hint **dihilangkan** (opsi polos gaya ujian asli).
+
+Versi BESAR soal di chat tetap lengkap; yang dipudarkan hanya `description` panel.
+Contoh: 文字・語彙 yang sudah 🟢 → dihilangkan; partikel に & 辞書形↔て yang masih 🟡 →
+tetap penuh.
 
 ## Catatan gaya
 - Nada ramah, dorong belajar. Penjelasan singkat & jelas, Bahasa Indonesia.

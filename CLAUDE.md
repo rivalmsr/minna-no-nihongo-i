@@ -81,6 +81,11 @@ JLPT. Untuk simulasi ujian ada skill terpisah **`/jlpt`** (`.claude/skills/jlpt/
   membaca** `evaluation.md` untuk membiaskan soal grammar ke pola lemah, tapi **hanya
   menulis** `jlpt-evaluation.md` + baris berlabel `JLPT` di `history.md`. **Jangan sentuh**
   `evaluation.md`. Tag subtipe (`MG-*`, `DK-*`) ada di `reference/quiz-taxonomy.md`.
+- **Hint fading (scaffolding):** hint di `description` opsi panel **dipudarkan bertahap**
+  mengikuti penguasaan — bukan dicabut mendadak (soal jadi beban) atau dibiarkan penuh
+  (skor tak jujur). Materi 🔴/🟡/⚪ → hint penuh; menuju 🟢 → hint netral; mantap 🟢 →
+  hint dihilangkan (opsi polos gaya ujian asli). Putuskan per subtipe/pola dari tracker.
+  Detail di `.claude/skills/jlpt/SKILL.md` ("Hint fading").
 
 ## Konvensi menulis catatan lesson
 
