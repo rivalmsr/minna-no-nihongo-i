@@ -41,6 +41,9 @@ minna-no-nihongo-i/
 │   ├── jlpt-evaluation.md <- tracker mock /jlpt (per subtipe ujian JLPT)
 │   ├── anki-weak-items.md <- item lemah dari collection Anki (AUTO-GENERATED; lapses+leech)
 │   └── history.md         <- riwayat sesi latihan (dibagi /quiz & /jlpt, entri berlabel)
+├── docs/
+│   ├── cara-kerja.md          <- flow & logika bisnis KB (diagram) — mulai baca dari sini
+│   └── anki-integration-plan.md <- rencana + status integrasi data Anki
 ├── scripts/
 │   ├── sync-anki-verbs.sh      <- regen anki-verbs.md dari learn-anki/ (folder deck Anki; gitignored)
 │   └── sync-anki-weak-items.sh <- regen anki-weak-items.md dari collection.anki2 (Anki desktop)
