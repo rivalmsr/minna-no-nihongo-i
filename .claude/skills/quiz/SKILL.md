@@ -205,7 +205,10 @@ Aturan:
 - Beri garis `---` antar soal biar tiap kanji besar punya ruang sendiri.
 - **AskUserQuestion tetap dipakai untuk mengklik jawaban** (panelnya font kecil &
   fixed — tak bisa dibesarkan), tapi versi BESAR di chat itu yang dibaca user.
-  Di panel, `question` boleh diringkas; kanji besarnya sudah ada di chat.
+  Di panel, `question` boleh diringkas panjangnya, **TAPI furigana WAJIB tetap ada** —
+  setiap kanji di panel tetap `漢字（かんじ）`. Jangan copot furigana untuk meringkas.
+  Kalau `（　）` dipakai sebagai blank, taruh furigana di luar blank
+  (mis. `大学生（だいがくせい）（　）なります`).
 
 ## Template tipe soal (JLPT N5)
 

@@ -57,7 +57,9 @@ Daftar pelajaran lengkap (judul + topik + status) ada di tabel `README.md`.
   - Default **12 soal** (3 panel AskUserQuestion penuh 4+4+4).
   - Soal tampil **besar & tebal** di chat (kalimat Jepang pakai H1 `#`); klik jawaban
     lewat panel AskUserQuestion.
-  - **Semua kanji wajib berfurigana** — termasuk di tabel hasil & ringkasan.
+  - **Semua kanji wajib berfurigana** — termasuk di tabel hasil, ringkasan, **dan
+    panel AskUserQuestion** (jangan copot furigana untuk meringkas panel; kalau
+    `（　）` dipakai sbg blank, taruh furigana di luar blank: `大学生（だいがくせい）（　）`).
   - Soal susun kalimat (文法2) pakai format nomor 1–4 + posisi ★ gaya JLPT asli.
 - **Hemat token:** baca **anchor** lesson (header + Topik + "Ringkasan cepat", ~20 baris),
   bukan file utuh. Detail pola/partikel/kosakata dibaca on-demand via `Grep`. Jangan
