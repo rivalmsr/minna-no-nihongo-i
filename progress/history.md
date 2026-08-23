@@ -4,6 +4,7 @@ Log ringkas tiap sesi `/quiz` (entri terbaru di atas). Ditambah otomatis oleh sk
 
 | Tanggal | Cakupan | Jml soal | Skor | Catatan |
 |---------|---------|----------|------|---------|
+| 2026-08-23 | JLPT mock (文字語彙+文法読解) | 16 | 15/16 (94%) | Mock ketiga (terbaik). Sesi 2 文法・読解 8/8 SEMPURNA — DK-bunpou membaik (てください/たことがあります/なります+に semua benar), 読解 & 情報 tembus 🟢. Grammar lemah /quiz (辞書形↔て, に) tak lagi terbawa. 1 salah = MG-hyouki kanji mirip (新聞→新間, 聞 vs 間) |
 | 2026-08-23 | Lesson 19 (fokus て↔た) | 12 | 12/12 (100%) | PERFECT! て↔た DIKUASAI: semua 8 た-form benar termasuk のぼった (kemarin salah のぼって), いった (例外), およいだ. た-konjugasi 🟡→🟢 (92%). に tembus 🟢 (81%). 4 bentuk verb pokok (て/ない/辞書/た) semua 🟢. Sisa 🟡 cuma L14-te (ekor data) |
 | 2026-08-23 | Lesson 17–19 (adaptif) | 12 | 11/12 (92%) | 辞書形 DIKUASAI! error lama およぐ (辞書形↔て) kini benar; 辞書形/ことができます/まえに/なくてもいいです semua naik 🟢. 1 salah = て↔た: たことがあります butuh た (のぼった) tapi pilih て (のぼって). Fokus lanjut: て vs た |
 | 2026-08-22 | JLPT mock (文字語彙+文法読解) | 16 | 14/16 (88%) | Mock kedua. Sesi 1 文字・語彙 8/8 lagi (semua MG → 🟢). Sesi 2 6/8: bacaan membaik (読解 2/2, 情報 2/2) tapi 2 salah pindah ke grammar (DK-bunpou 60% 🟡): に-waktu (6時に, pilih を) & てから butuh て-form (見て, pilih 見る). = pola lemah /quiz terbawa |
