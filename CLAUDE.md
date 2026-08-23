@@ -28,8 +28,11 @@ reference/
   vocabulary.md       kosakata terkumpul per lesson (referensi penulisan; besar — hindari saat quiz)
 progress/
   evaluation.md       tracker kelemahan per pola/partikel/lesson (diupdate /quiz)
+  jlpt-evaluation.md  tracker mock /jlpt (per subtipe ujian JLPT)
+  anki-weak-items.md  item lemah dari collection Anki (lapses+leech) — AUTO-GENERATED, sinyal pelengkap evaluation.md
   history.md          riwayat tiap sesi /quiz
-scripts/sync-anki-verbs.sh   regen anki-verbs.md dari learn-anki/ (gitignored)
+scripts/sync-anki-verbs.sh        regen anki-verbs.md dari learn-anki/*.txt (gitignored)
+scripts/sync-anki-weak-items.sh   regen anki-weak-items.md dari collection.anki2 (Anki desktop)
 .claude/skills/quiz/         skill /quiz (detail operasional lengkap)
 ```
 

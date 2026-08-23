@@ -39,9 +39,11 @@ minna-no-nihongo-i/
 ├── progress/              <- data latihan (diperbarui otomatis oleh /quiz & /jlpt)
 │   ├── evaluation.md      <- tracker kelemahan /quiz (per pola/partikel/lesson)
 │   ├── jlpt-evaluation.md <- tracker mock /jlpt (per subtipe ujian JLPT)
+│   ├── anki-weak-items.md <- item lemah dari collection Anki (AUTO-GENERATED; lapses+leech)
 │   └── history.md         <- riwayat sesi latihan (dibagi /quiz & /jlpt, entri berlabel)
 ├── scripts/
-│   └── sync-anki-verbs.sh <- regen anki-verbs.md dari learn-anki/ (folder deck Anki; gitignored)
+│   ├── sync-anki-verbs.sh      <- regen anki-verbs.md dari learn-anki/ (folder deck Anki; gitignored)
+│   └── sync-anki-weak-items.sh <- regen anki-weak-items.md dari collection.anki2 (Anki desktop)
 └── .claude/skills/
     ├── quiz/SKILL.md      <- skill /quiz (latihan harian adaptif)
     └── jlpt/SKILL.md      <- skill /jlpt (mock ujian tertulis N5, 2 sesi)

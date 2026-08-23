@@ -1,136 +1,124 @@
 # Rencana: Integrasi Data Anki ke Knowledge Base
 
-> **Status: RENCANA — belum dieksekusi.** Dokumen forward-looking. Dibuat 2026-08-23.
-> Tujuan: menyatukan sinyal dari deck Anki desktop ke dalam KB Minna no Nihongo I &
-> latihan `/quiz` + `/jlpt`. Eksekusi menyusul, per fase, setelah disetujui.
+> **Status: RENCANA — belum dieksekusi.** Dokumen forward-looking. Dibuat 2026-08-23,
+> direvisi 2026-08-23 setelah verifikasi. Eksekusi menyusul, per fase, setelah disetujui.
 
-## 1. Konteks & temuan
+## 0. Koreksi penting (hasil verifikasi 2026-08-23)
 
-Anki desktop terpasang di laptop ini. Collection bisa dibaca **langsung** dari
-SQLite tanpa membuka Anki:
+Draf awal dokumen ini mengira **pipeline verb rusak & file basi**. Setelah dicek, itu
+**KELIRU**:
 
-```
-~/Library/Application Support/Anki2/User 1/collection.anki2
-```
+- Folder sumber `.txt` **tidak hilang** — user memindahkannya ke
+  `~/rdeveloper/personal/learn-anki/Minna no Nihongo I/` (MNN01–20.txt lengkap). Ini
+  yang di-update user ke depan sebagai bahan Anki per lesson.
+- Path itu **persis** yang di-resolve `scripts/sync-anki-verbs.sh`
+  (`$PROJECT_ROOT/../../learn-anki/...`). **Script jalan normal.**
+- Menjalankan ulang script menghasilkan output **identik** dengan `anki-verbs.md`
+  sekarang (hanya tanggal berubah) → **file tidak basi, 87 verb akurat.**
+- Kekhawatiran "87 vs ~113" = alarm palsu: 113 dari collection kehitung **duplikat**
+  (います, でます muncul 2×/bab) + kartu di luar `.txt` kurasian. Sumber of truth = `.txt`.
 
-Isi collection (per 2026-08-23):
+**Konsekuensi:** "Fase A — perbaiki pipeline rusak" versi lama **DIBATALKAN** (tidak ada
+yang rusak). Yang tersisa & benar-benar bernilai = **sinyal kesulitan** (lihat §2).
 
-| Deck | Total | Baru | Muda | Matang | Catatan |
-|------|-------|------|------|--------|---------|
-| **Minna no Nihongo I** | 896 | 0 | 178 | 718 | ✅ semua dipelajari, ~80% matang |
-| **Japanese Kanji N5** | 107 | 0 | 71 | 36 | 🟡 sedang jalan |
-| Japanese Kanji N4 | 173 | 173 | 0 | 0 | ⚪ belum mulai (di luar cakupan) |
-| Oxford 3000 A1 (Inggris) | 920 | 735 | 82 | 103 | proyek Inggris, di luar cakupan |
+## 1. Konteks & pembagian sumber
 
-- Revlog: 12 Jun → 22 Agu 2026, 8475 review, akurasi harian ~62–82%.
-- Dua deck target (Minna, Kanji N5) pakai notetype **Basic** (`Front` / `Back`).
-  - Minna Front = kana; Back = arti Indonesia. Verb ditandai grup di token akhir Front
-    (`だします I`, `たべます II`, `きます III`).
-  - Kanji N5 Front = kanji; Back = `bacaan | arti` (mis. `先 | せん | dahulu, depan`).
+Ada **dua sumber Anki**, dengan peran berbeda — jangan dicampur:
 
-### Dua sinyal berbeda dari Anki
+| Sumber | Lokasi | Berisi | Peran |
+|--------|--------|--------|-------|
+| **File `.txt` (kurasi user)** | `~/rdeveloper/personal/learn-anki/Minna no Nihongo I/MNN*.txt` | kata, arti, grup verb, bab (dari nama file) | **Source of truth** daftar verb → sudah dipakai `anki-verbs.md` |
+| **Collection Anki** | `~/Library/Application Support/Anki2/User 1/collection.anki2` | `lapses`, `ease`, `ivl`, tag `leech`, revlog | **Sinyal kesulitan empiris** — BELUM dipakai KB sama sekali |
 
-1. **Isi** (kata/kanji + arti) — sudah ada padanannya di `reference/n5-vocabulary.md`
-   & `reference/anki-verbs.md`. Menyalin ulang = duplikat, nilai rendah.
-2. **Sinyal perilaku** (`lapses`, `ease`, `ivl`, `revlog`) — **belum dipakai KB sama
-   sekali.** Inilah nilai uniknya: Anki tahu **item mana yang empiris sering dilupakan**.
-   Contoh lapses tertinggi deck Minna: だします (13×), もらいます (13×), つけます (12×),
-   けします (12×), おいくつ (12×), りょこう (12×).
+Isi collection (per 2026-08-23): deck **Minna** 896 kartu (0 baru, ~80% matang),
+**Kanji N5** 107 kartu (sedang jalan). Deck N4 & Oxford 3000 A1 di luar cakupan.
 
-> **Insight inti:** `progress/evaluation.md` melacak kelemahan per **pola grammar**;
-> Anki melacak kelemahan per **item kosakata/kanji**. Menikahkan keduanya → `/quiz` &
-> `/jlpt` bisa memilih "kendaraan" kosakata/kanji yang benar-benar sulit, **di dalam**
-> pola yang lemah. Selaras dengan filosofi CLAUDE.md ("verb = kendaraan active recall").
+Temuan berguna di collection:
+- **Bab** tersimpan sebagai tag `MNNXX` (skema sama seperti nama file `.txt`).
+- Tag **`leech`** = penanda bawaan Anki untuk kartu yang **berulang kali gagal** —
+  sinyal kesulitan siap-pakai, di samping angka `lapses`.
+- Contoh verb lapses tertinggi: だします (13×), もらいます (13×), つけます (12×),
+  けします (12×). Sinyal ini **tidak ada** di `.txt`, hanya di collection.
 
-### ⚠️ Masalah yang sudah ada (harus diperbaiki)
+> **Insight inti (tetap berlaku):** `progress/evaluation.md` melacak kelemahan per
+> **pola grammar**; Anki melacak kelemahan per **item kosakata/kanji**. Menikahkan
+> keduanya → `/quiz` & `/jlpt` bisa memilih "kendaraan" kosakata/kanji yang benar-benar
+> sulit, **di dalam** pola yang lemah. Selaras dengan filosofi CLAUDE.md.
 
-`reference/anki-verbs.md` mendeklarasikan dirinya AUTO-GENERATED dari
-`learn-anki/Minna no Nihongo I/MNN*.txt` via `scripts/sync-anki-verbs.sh`. **Folder
-`.txt` itu sudah tidak ada di laptop ini** → script sekarang langsung `exit 1`. Deck
-sudah pindah total ke dalam `collection.anki2`. Akibatnya file verb pool berpotensi
-**basi**: file mendeklarasikan 87 verb, collection punya ~113 kartu bertanda grup.
+## 2. Rencana per fase (revisi)
 
-## 2. Rencana per fase
+### ~~Fase A — Perbaiki pipeline~~ — DIBATALKAN
 
-Tiga fase saling menumpuk (A fondasi → B data baru → C mengikat ke latihan).
+Tidak ada yang rusak (lihat §0). Pipeline `.txt → anki-verbs.md` sehat. Cukup jalankan
+`bash scripts/sync-anki-verbs.sh` seperti biasa saat deck `.txt` berubah.
 
-### Fase A — Perbaiki & upgrade pipeline sync (fondasi)
+### Fase A′ (baru) — Perkaya `anki-verbs.md` dengan sinyal kesulitan (opsional)
 
-**Masalah:** sumber `.txt` hilang, `anki-verbs.md` basi & script mati.
+**Ide:** tambah kolom **kesulitan** ke tiap verb, digabung dari collection.
 
-**Rencana:**
-- Tulis ulang `scripts/sync-anki-verbs.sh` (atau skrip Python pendamping) agar baca
-  **langsung dari `collection.anki2`**, bukan `.txt`.
-  - Salin DB ke lokasi sementara dulu (hindari lock kalau Anki terbuka), query read-only.
-  - Filter deck Minna (`did = 1781493801806`), ekstrak Front bertanda grup `I/II/III`.
-  - Kolom `name` deck pakai collation `unicase` yang tidak ada di sqlite3 CLI →
-    **group by `did`**, map nama deck manual (jangan `ORDER BY`/`GROUP BY` kolom nama).
-- Regen `reference/anki-verbs.md` dengan verb terkini + kelompok I/II/III.
-- **Upgrade:** tambah kolom **kesulitan** dari `lapses` (mis. 🔴 lapses ≥ 8, 🟡 4–7,
-  ⚪ 0–3) supaya /quiz tahu verb mana yang perlu porsi lebih.
-- Perbarui header file & komentar script agar menunjuk sumber baru (collection.anki2),
-  bukan folder `.txt` yang sudah tiada.
+- Baca `collection.anki2` (salin ke temp dulu untuk hindari lock; query read-only).
+- Untuk tiap verb `.txt`, cocokkan **ます形** ke Front kartu di deck Minna, ambil
+  `lapses` + apakah bertag `leech`.
+- Tandai: 🔴 = `leech` atau `lapses ≥ 8` · 🟡 = `lapses 4–7` · ⚪ = `lapses 0–3`.
+- Tulis kolom baru di tabel `anki-verbs.md` supaya `/quiz` bisa memberi porsi lebih ke
+  verb yang empiris sering lupa.
 
-**Keputusan desain yang perlu diambil dulu:**
-- **Portabilitas path:** hardcode `~/Library/Application Support/Anki2/User 1/` atau
-  jadikan variabel/argumen? (Path khusus macOS + nama profil "User 1".)
-- **Snapshot vs live:** file turunan tetap (commit-able) — sudah benar; tinggal ganti
-  sumbernya.
+**Catatan implementasi:**
+- Ini membuat `sync-anki-verbs.sh` bergantung pada **dua** sumber (`.txt` + collection).
+  Kalau collection tak ada (mesin lain), harus **gagal anggun** → tetap tulis tabel
+  tanpa kolom kesulitan, jangan error.
+- Cocokkan by **Front string** (mis. `だします I`). Hati-hati verb berpasangan/duplikat.
 
-**Output:** `scripts/sync-anki-verbs.sh` (diperbaiki), `reference/anki-verbs.md`
-(regen + kolom kesulitan).
+**Keputusan yang perlu diambil dulu:** apakah kolom kesulitan cukup berharga untuk
+menambah ketergantungan ke collection? Atau lebih baik dipisah sebagai Fase B?
 
-### Fase B — Laporan item lemah (data baru)
+### Fase B — Laporan item lemah (data baru) — ✅ SELESAI 2026-08-23
 
-**Rencana:**
-- Buat `progress/anki-weak-items.md` — daftar item paling sering dilupakan, dari
-  `lapses` (dan/atau `ease` rendah), untuk deck Minna & Kanji N5.
-  - Query: `SELECT lapses, reps, flds FROM cards JOIN notes … ORDER BY lapses DESC`.
-  - Pisahkan section: **Kosakata/Verb lemah** (Minna) & **Kanji lemah** (N5).
-  - Sertakan furigana untuk semua kanji (konvensi KB — lihat `furigana-everywhere`).
-- Tandai file sebagai **turunan** (regenerasi dari collection), jangan diedit tangan.
-
-**Keputusan desain:**
-- Ambang "lemah": pakai `lapses` absolut, atau relatif (mis. top-15%)? Sertakan juga
-  kartu `queue = -1` (suspended) atau abaikan?
-- Frekuensi refresh: manual via script yang sama seperti Fase A?
-
-**Output:** `progress/anki-weak-items.md`.
+- ✅ `scripts/sync-anki-weak-items.sh` — regen `progress/anki-weak-items.md` dari
+  `collection.anki2` (salin ke temp → query read-only; resolusi deck tahan subdeck
+  `\x1f`; gagal anggun bila collection tak ada).
+- ✅ `progress/anki-weak-items.md` — section **Kosakata/Verb lemah** (Minna) &
+  **Kanji lemah** (N5), + anchor 🔴 ringkas. Kanji berbacaan (furigana). File turunan.
+- **Ambang final:** 🔴 = `leech` atau `lapses ≥ 8` · 🟡 = `lapses 5–7` · ⚪ (`lapses 3–4`)
+  hanya dihitung. Kartu suspended: tidak ada di kedua deck, jadi tak jadi isu.
+- ✅ Terdaftar di `README.md` & `CLAUDE.md` (bukan file yatim).
+- Hasil awal: Minna 🔴19/🟡57 · Kanji N5 🔴7/🟡16.
 
 ### Fase C — Integrasi ke skill /quiz & /jlpt (mengikat)
 
-**Rencana:**
-- Update `.claude/skills/quiz/SKILL.md`: saat memilih "kendaraan" kosakata/verb,
-  **boboti** ke item lemah Anki (`anki-weak-items.md`) — di dalam pola lemah dari
-  `evaluation.md`. Tetap patuh: soal grammar hanya dari `lessons/`.
-- Update `.claude/skills/jlpt/SKILL.md`: subtipe baca/tulis kanji (MG-*) & kosakata
-  boboti ke kanji/kata lemah Anki. Konsisten dgn hint-fading yang sudah ada.
-- Update `CLAUDE.md` bila sumber data baru ini jadi bagian tetap alur quiz.
+- Update `.claude/skills/quiz/SKILL.md` & `jlpt/SKILL.md`: saat memilih kendaraan
+  kosakata/kanji, **boboti** ke item lemah Anki (dari A′/B), **di dalam** pola lemah
+  `evaluation.md`. Soal grammar tetap hanya dari `lessons/`.
+- **Keputusan:** bobotnya jangan menenggelamkan tujuan utama (uji pola). Anki = pemilih
+  *kosakata*, bukan pengganti *pola*. Sediakan anchor ringkas agar hemat token.
 
-**Keputusan desain:**
-- Seberapa besar bobotnya? Jangan sampai item lemah Anki menenggelamkan tujuan utama
-  (uji pola grammar). Anki = pemilih *kosakata*, bukan pengganti *pola*.
-- Hemat token: `anki-weak-items.md` harus punya anchor ringkas (baca ~20 baris),
-  seperti file lain — jangan Read utuh saat quiz.
+## 3. Perawatan konsistensi KB — ad-hoc, BUKAN skill `/lint`
 
-## 3. Risiko & catatan
+Kita menimbang mengadopsi pola "LLM wiki" (Karpathy) dengan operasi **Lint** (cek
+kontradiksi, klaim basi, file yatim, cross-ref rusak). **Keputusan: TIDAK membuat skill
+`/lint` formal.** Alasan:
 
-- **Ketergantungan lingkungan:** pipeline hanya jalan di laptop yang ada Anki desktop-nya.
-  Di mesin lain script harus gagal anggun (pesan jelas), bukan menghasilkan file kosong.
-- **Path & profil macOS-spesifik** (`Application Support`, profil "User 1") — rapuh
-  kalau profil di-rename. Pertimbangkan variabel konfigurasi.
-- **Jangan campur deck di luar cakupan** (Kanji N4, Oxford 3000 A1) ke KB Jepang N5.
-- **File turunan tetap tak boleh diedit tangan** — sama seperti `anki-verbs.md` sekarang.
-- **AnkiConnect (port 8765) tidak aktif** saat ini; kalau nanti mau query real-time
-  (saat Anki terbuka) itu jalur alternatif, tapi baca DB langsung sudah cukup & lebih
-  independen.
+- KB ini **kecil & berbatas** (1 buku, ~18 lesson, 1 target N5, 1 pembaca). Pola LLM-wiki
+  bersinar untuk korpus besar/heterogen yang terus membengkak — bukan kasus ini.
+- KB **sudah menjalankan** inti pola itu secara organik: schema doc (CLAUDE.md), alur
+  ingest (aturan update saat tambah lesson), query (/quiz, /jlpt). Menambah seremoni =
+  over-engineering.
 
-## 4. Urutan eksekusi yang disarankan
+**Gantinya:** cek konsistensi dilakukan **ad-hoc saat perlu** — mis. saat terasa ada
+yang basi, sehabis menambah lesson/sumber, atau saat menyentuh file turunan. Yang
+diperiksa saat itu: file turunan vs sumbernya masih sinkron, cross-ref (`evaluation.md`
+↔ lesson, tag taxonomy ↔ lesson) masih valid, tidak ada halaman yatim. Prosedur ringan,
+bukan infrastruktur.
 
-1. **Fase A** dulu — memperbaiki yang benar-benar rusak, verb pool /quiz akurat lagi.
-2. **Fase B** — menghasilkan sinyal item-lemah baru.
-3. **Fase C** — mengikat A+B ke latihan harian.
+## 4. Urutan eksekusi & status
 
-Eksekusi menunggu persetujuan. Saat mengeksekusi, patuhi konvensi CLAUDE.md
-(furigana wajib, file turunan tak diedit tangan, update README/taxonomy bila perlu,
-laporkan tiap perubahan).
+1. ~~Fase A′ atau B~~ → **Fase B SELESAI** (2026-08-23). A′ (kolom kesulitan di verb
+   pool) diputuskan **tidak** dikerjakan — pilih file terpisah agar pipeline verb yang
+   sehat tidak dikaitkan ke collection.
+2. **Fase C — BELUM.** Berikutnya: wiring `anki-weak-items.md` ke `/quiz` & `/jlpt`
+   (memilih kendaraan kosakata/kanji condong ke item lemah, di dalam pola lemah). Butuh
+   edit `SKILL.md` + anchor-read agar hemat token. Menunggu keputusan.
+
+Eksekusi menunggu persetujuan. Saat mengeksekusi, patuhi konvensi CLAUDE.md (furigana
+wajib, file turunan tak diedit tangan, update README/taxonomy bila perlu, laporkan tiap
+perubahan).
