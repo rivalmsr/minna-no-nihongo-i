@@ -38,6 +38,13 @@ Tag subtipe ada di `reference/quiz-taxonomy.md` (section "Tag subtipe JLPT").
 4. **Kata kerja = `reference/anki-verbs.md`** — bila soal grammar butuh verb dalam pola,
    pakai pool ini (produksi bentuk & pemakaian, bukan tanya arti). AUTO-GENERATED —
    jangan edit tangan; kalau verb terasa ketinggalan jalankan `bash scripts/sync-anki-verbs.sh`.
+4b. **Bias item ke `progress/anki-weak-items.md`** (sinyal EMPIRIS item yang user sering
+   lupa di Anki: `lapses` + `leech`). Saat memilih kanji/kosakata/verb untuk mengisi soal,
+   **prioritaskan yang bertanda 🔴** bila cocok subtipe & cakupan: **`MG-yomi`/`MG-hyouki`
+   → boboti ke KANJI 🔴** (mis. 生・先・時), **`MG-bunmyaku` → KOSAKATA 🔴**, **`DK-bunpou`
+   → VERB 🔴** di dalam pola in-scope. Bias LUNAK & tunduk pada aturan 1–3 (jangan drill
+   item lepas; item tetap muncul di format soal JLPT normal). AUTO-GENERATED dari
+   `collection.anki2`; regen `bash scripts/sync-anki-weak-items.sh`.
 5. **Tulisan:** hiragana + kanji umum N5. **Setiap kanji diberi bacaan hiragana** dalam
    kurung, mis. `学校（がっこう）` — **KECUALI** kata kanji yang justru sedang diuji
    bacaannya di soal `MG-yomi` (di situ furigana-nya jadi jawaban, jangan dibocorkan;
@@ -60,6 +67,9 @@ Kontrak baca per sesi (sama semangatnya dgn `/quiz`):
   "Benda"), bukan baca penuh. Ambil pasangan Kana⇄Kanji dari baris tabel.
 - **`reference/n5-synonyms.md` → baca terarah** (kecil; boleh baca penuh bila perlu).
 - **`reference/anki-verbs.md` → ANCHOR + grup/bab terkait** via `Grep` bila perlu verb.
+- **`progress/anki-weak-items.md` → baca ANCHOR 🔴 saja** (blok `> Ringkasan cepat:`,
+  ~5 baris: daftar verb/kosakata 🔴 + kanji 🔴). Cukup untuk membias pilihan item. Butuh
+  🟡/bab tertentu → `Grep`. Jangan `Read` utuh.
 - **Larangan:** jangan `Read` utuh `reference/vocabulary.md`, `reference/particles.md`,
   atau lesson penuh kecuali benar-benar perlu contoh spesifik.
 
@@ -88,6 +98,8 @@ Bila belum ada data (tracker kosong) → sebar merata ke semua subtipe.
 - Baca section **tag subtipe JLPT** di `reference/quiz-taxonomy.md`.
 - (Opsional) baca `progress/evaluation.md` untuk tahu pola grammar yang lemah → biar
   soal `DK-bunpou` menyasar itu.
+- Baca **anchor 🔴** `progress/anki-weak-items.md` → untuk membias kanji/kosakata/verb
+  ke item yang sering user lupa (lihat prinsip 4b), terutama subtipe `MG-yomi`/`MG-hyouki`.
 
 ### 2. Tentukan cakupan & campuran soal
 - Cakupan tata bahasa = lesson yang tersedia (`lessons/`). Untuk bacaan/grammar, pakai

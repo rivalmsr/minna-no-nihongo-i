@@ -84,13 +84,33 @@ menambah ketergantungan ke collection? Atau lebih baik dipisah sebagai Fase B?
 - ✅ Terdaftar di `README.md` & `CLAUDE.md` (bukan file yatim).
 - Hasil awal: Minna 🔴19/🟡57 · Kanji N5 🔴7/🟡16.
 
-### Fase C — Integrasi ke skill /quiz & /jlpt (mengikat)
+### Fase C — Integrasi ke skill /quiz & /jlpt (mengikat) — ✅ SELESAI 2026-08-23
 
-- Update `.claude/skills/quiz/SKILL.md` & `jlpt/SKILL.md`: saat memilih kendaraan
-  kosakata/kanji, **boboti** ke item lemah Anki (dari A′/B), **di dalam** pola lemah
-  `evaluation.md`. Soal grammar tetap hanya dari `lessons/`.
-- **Keputusan:** bobotnya jangan menenggelamkan tujuan utama (uji pola). Anki = pemilih
-  *kosakata*, bukan pengganti *pola*. Sediakan anchor ringkas agar hemat token.
+**Keputusan desain:** integrasi **langsung** ke skill yang ada (bukan variant/skill baru)
+— aktivitasnya sama, ini cuma sinyal input tambahan; variant = over-engineering. Bias
+dibuat **LUNAK & subordinat** pada pembobotan pola (`evaluation.md`): Anki memilih
+*kosakata/kanji*, bukan mengganti *pola*.
+
+- ✅ `quiz/SKILL.md`: prinsip **2c** (bias kendaraan), bullet hemat-token (baca anchor 🔴),
+  langkah eksekusi 1 (muat anchor) & 2 (bias kendaraan saat mengisi soal).
+- ✅ `jlpt/SKILL.md`: prinsip **4b** (MG-yomi/hyouki→kanji 🔴, MG-bunmyaku→kosakata 🔴,
+  DK-bunpou→verb 🔴), bullet hemat-token, langkah eksekusi 1.
+- ✅ `CLAUDE.md`: bullet "Bias kendaraan ke item lemah Anki" di bagian /quiz.
+- Semua **baca anchor 🔴 saja** (~5 baris) → hemat token; soal grammar tetap dari `lessons/`.
+
+### ⚠️ Cara refresh data (rantai sync — WAJIB paham)
+
+User review harian **di iPhone (AnkiMobile)**. Rantai:
+`iPhone → AnkiWeb (cloud) → Anki desktop → collection.anki2 (yang dibaca script)`.
+
+`collection.anki2` di disk **hanya sesegar sync terakhir Anki DESKTOP**. Sync dari
+iPhone saja **tidak** menyentuh file desktop — harus **buka aplikasi Anki desktop di Mac
+ini** supaya ia menarik data dari AnkiWeb & menulis ke disk. Terbukti 2026-08-23: mtime
+`collection.anki2` tak berubah sampai app desktop dibuka; setelah dibuka & sync, review
+hari itu langsung terbaca.
+
+**Prosedur refresh:** buka Anki desktop → **Sync (Y)** → baru
+`bash scripts/sync-anki-weak-items.sh`. Kalau dilewat, `lapses` ketinggalan review terbaru.
 
 ## 3. Perawatan konsistensi KB — ad-hoc, BUKAN skill `/lint`
 
@@ -115,9 +135,9 @@ bukan infrastruktur.
 1. ~~Fase A′ atau B~~ → **Fase B SELESAI** (2026-08-23). A′ (kolom kesulitan di verb
    pool) diputuskan **tidak** dikerjakan — pilih file terpisah agar pipeline verb yang
    sehat tidak dikaitkan ke collection.
-2. **Fase C — BELUM.** Berikutnya: wiring `anki-weak-items.md` ke `/quiz` & `/jlpt`
-   (memilih kendaraan kosakata/kanji condong ke item lemah, di dalam pola lemah). Butuh
-   edit `SKILL.md` + anchor-read agar hemat token. Menunggu keputusan.
+2. **Fase C SELESAI** (2026-08-23) — integrasi langsung ke `/quiz`, `/jlpt`, `CLAUDE.md`.
+   Semua fase inti beres. Sisa (opsional, kalau nanti mau): refresh berkala
+   `anki-weak-items.md`, atau A′ bila berubah pikiran soal kolom kesulitan.
 
 Eksekusi menunggu persetujuan. Saat mengeksekusi, patuhi konvensi CLAUDE.md (furigana
 wajib, file turunan tak diedit tangan, update README/taxonomy bila perlu, laporkan tiap

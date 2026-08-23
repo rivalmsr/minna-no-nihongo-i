@@ -49,6 +49,15 @@ Daftar pelajaran lengkap (judul + topik + status) ada di tabel `README.md`.
 - **Bobotkan ke weak areas** di `progress/evaluation.md`; sisanya konfirmasi materi
   yang sudah dikuasai. Perbarui evaluasi + history tiap sesi (hitung eksplisit, jangan
   mengarang skor).
+- **Bias kendaraan ke item lemah Anki** (`progress/anki-weak-items.md`, AUTO-GENERATED
+  dari collection Anki: `lapses` + `leech`). `evaluation.md` menentukan **pola** yang
+  diuji; saat memilih **verb/kosakata** pengisi soal, condongkan ke item 🔴 di file itu
+  **bila cocok**. Bias **LUNAK** — Anki = pemilih *kosakata*, bukan pengganti *pola*;
+  jangan bikin drill item lepas. Baca **anchor 🔴** saja (hemat token). Juga dipakai
+  `/jlpt` (subtipe kanji MG-yomi/hyouki → kanji 🔴).
+  **Refresh data:** user review harian di iPhone → wajib **buka Anki desktop & Sync**
+  dulu (biar collection lokal turun dari AnkiWeb), BARU `bash scripts/sync-anki-weak-items.sh`.
+  Sync iPhone saja tak update file desktop. Detail: `docs/anki-integration-plan.md`.
 - **Kata kerja = KENDARAAN active recall, bukan drill lepas.** Verb dari `anki-verbs.md`
   dipakai untuk memaksa **produksi bentuk & pemakaian** (て/ない/辞書/た) **DI DALAM pola
   yang sudah dipelajari & masih lemah**. JANGAN bikin soal konjugasi terisolasi seperti

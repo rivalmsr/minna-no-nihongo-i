@@ -25,6 +25,14 @@ berikutnya makin terfokus ke materi yang lemah.
    pola in-scope), **bukan** sekadar tanya arti. Verb dikelompokkan grup I/II/III
    (penentu konjugasi). Selalu sisipkan ≥2 soal verb-recall tiap sesi bila cakupan
    memuat lesson berpola kata kerja.
+2c. **Bias kendaraan ke item lemah Anki** (`progress/anki-weak-items.md`). File ini =
+   sinyal EMPIRIS item (kosakata/verb/kanji) yang user paling sering lupa di Anki
+   (`lapses` + `leech`), **pelengkap** `evaluation.md` (yang per-pola). Saat sebuah soal
+   butuh sebuah verb/kosakata sebagai "kendaraan", **prioritaskan yang bertanda 🔴** di
+   file itu **bila cocok** dengan pola/cakupan yang sedang diuji. Ini **bias LUNAK &
+   tunduk** di bawah aturan 1 & 2b: Anki = pemilih *kosakata*, **bukan** pengganti
+   *pola*. **Jangan** bikin drill item lepas (mis. "arti 生?"); item lemah tetap muncul
+   di dalam pola in-scope (mis. たform + `だします`🔴, bukan verb acak).
 3. **Tulisan:** hiragana + kanji umum N5. **Setiap kanji diberi bacaan hiragana**
    dalam kurung, mis. `学校（がっこう）`, `友達（ともだち）と 行きます（いきます）`.
 4. **Tag konsisten:** pakai tag dari `reference/quiz-taxonomy.md`. Jangan bikin
@@ -54,6 +62,10 @@ Knowledge base ini kecil, jadi jangan boros baca. Kontrak baca per sesi:
   + tabel **音便 grup I** + aturan konjugasi sudah cukup untuk kebanyakan soal verb.
   Butuh verb spesifik cakupan tertentu → `Grep` bab (mis. `L14`, `L17`) atau grup
   (`GRUP I`). Jangan baca deck Anki mentah di `learn-anki/` saat quiz.
+- **`progress/anki-weak-items.md` → baca ANCHOR 🔴 saja** (blok `> Ringkasan cepat:` di
+  atas, ~5 baris berisi daftar 🔴). Cukup untuk membias kendaraan. Butuh tingkat 🟡 atau
+  bab tertentu → `Grep` (mis. `L14`, `🟡`). Jangan `Read` utuh saat quiz. File ini
+  AUTO-GENERATED dari `collection.anki2`; regen dengan `bash scripts/sync-anki-weak-items.sh`.
 - **`anki-verbs.md` = AUTO-GENERATED** dari upstream `learn-anki/Minna no Nihongo I/`
   (folder Anki yang user update terus). **Jangan edit tangan.** Kalau user bilang sudah
   memperbarui Anki / deck (atau verb terasa ketinggalan), jalankan dulu
@@ -103,6 +115,8 @@ yang tersedia.
 ### 1. Muat state
 - Baca `progress/evaluation.md` (weak areas & akurasi terkini).
 - Baca `reference/quiz-taxonomy.md` (daftar tag valid).
+- Baca **anchor 🔴** `progress/anki-weak-items.md` (item Anki paling sering lupa) —
+  dipakai untuk membias pemilihan kendaraan verb/kosakata di langkah 3.
 
 ### 2. Tentukan cakupan & campuran soal
 - Tentukan cakupan: pakai argumen bila ada; kalau `/quiz` polos, hitung lewat
@@ -116,6 +130,11 @@ yang tersedia.
   Mode `review` → ~semua soal dari tag LEMAH. Sesi biasa → sisipkan ≥40% soal dari
   weak areas bila ada; sisanya sebar merata ke cakupan. Kalau belum ada data
   (sesi pertama), sebar merata ke seluruh pola dalam cakupan.
+- **Bias kendaraan (Anki):** pembobotan di atas menentukan **pola** apa yang diuji;
+  saat memilih **verb/kosakata** untuk mengisi soal itu, condongkan ke item 🔴 di
+  `anki-weak-items.md` **bila** item itu cocok dengan pola & cakupan. Bias lunak, jangan
+  paksakan bila tak nyambung (lihat prinsip 2c). Contoh: butuh verb untuk たform →
+  pilih `だします`🔴 daripada verb acak yang sudah dikuasai.
 
 ### 3. Buat soal (gaya JLPT N5)
 Lihat **Template tipe soal** di bawah. Untuk tiap soal siapkan (internal):
