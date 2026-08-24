@@ -7,7 +7,7 @@ Diperbarui otomatis oleh skill `/quiz` setiap selesai sesi. Melacak akurasi
 **Ambang status:** akurasi <60% 🔴 LEMAH · 60–79% 🟡 · ≥80% 🟢
 (butuh minimal **3 attempt** sebelum status dihitung; di bawah itu = ⚪ belum cukup data)
 
-_Terakhir diperbarui: 2026-08-24 · total sesi: 12_
+_Terakhir diperbarui: 2026-08-24 · total sesi: 13_
 
 ---
 
@@ -24,9 +24,9 @@ _Terakhir diperbarui: 2026-08-24 · total sesi: 12_
 | L10-に-keberadaan | 12 | 15 | 80% | 🟢 |
 | L10-posisi | 7 | 8 | 88% | 🟢 |
 | L13-に-tujuan | 1 | 1 | 100% | ⚪ |
-| L14-te-konjugasi | 7 | 9 | 78% | 🟡 |
-| L14-てください | 1 | 2 | 50% | ⚪ |
-| L14-ています-progresif | 0 | 1 | 0% | ⚪ |
+| L14-te-konjugasi | 19 | 21 | 90% | 🟢 |
+| L14-てください | 4 | 5 | 80% | 🟢 |
+| L14-ています-progresif | 2 | 3 | 67% | 🟡 |
 | L14-ましょうか | 1 | 1 | 100% | ⚪ |
 | L16-てから | 2 | 2 | 100% | ⚪ |
 | L17-ない-konjugasi | 8 | 9 | 89% | 🟢 |
@@ -59,7 +59,7 @@ _Terakhir diperbarui: 2026-08-24 · total sesi: 12_
 | Lesson 9 | 6 | 6 | 100% | 🟢 |
 | Lesson 10 | 26 | 30 | 87% | 🟢 |
 | Lesson 13 | 1 | 1 | 100% | ⚪ |
-| Lesson 14 | 7 | 9 | 78% | 🟡 |
+| Lesson 14 | 19 | 21 | 90% | 🟢 |
 | Lesson 16 | 2 | 2 | 100% | ⚪ |
 | Lesson 17 | 9 | 10 | 90% | 🟢 |
 | Lesson 18 | 14 | 16 | 88% | 🟢 |
@@ -68,24 +68,22 @@ _Terakhir diperbarui: 2026-08-24 · total sesi: 12_
 ---
 
 ## Weak areas (prioritas soal berikutnya)
-_Tidak ada 🔴. Sesi 2026-08-24 (sesi 12, `lesson 14, 19`) skor **10/12 (83%)**. **L14-te
-NAIK 67%→78% 🟡** — tinggal **2%** ke 🟢! ります/います/します 音便 semua benar. 2 error SATU
-AKAR: 音便 **き/ぎ** (`かきます→かいて` bukan `かきて`; `およぎます` た形 `およいだ` bukan `およいで`).
-い-form dikenali, tapi (a) aturan **き→いて** untuk かきます belum otomatis & (b) **て vs た** pada
-ぎ masih goyah._
-1. 🟡 **L14-te-konjugasi** — 78% (7/9). NAIK dari 67%; **hampir 🟢**. Sisa error khusus 音便
-   **き→いて** (かきます→かいて, bukan tempel て langsung ala grup II). Butuh 1–2 soal き/ぎ-verb
-   benar untuk tembus 🟢.
-2. ⚪ **L14-ています-progresif** — 0% (0/1, data tipis). Error `かきて` di sini; sama akar き→いて.
-   Pantau; belum cukup data untuk vonis.
+_Tidak ada 🔴. Sesi 2026-08-24 (sesi 13, `verbs lesson 14`) skor **12/12 (100%)** — PERFECT.
+**音便 き→いて / ぎ→いで TUNTAS:** semua 12 benar & tak tertipu distraktor (ひいて, おいて,
+およいで, いそいで, ぬいで), tetap **び→んで** (よんで, tak over-generalize), grup II tempel
+(つけて), し→して (だして). **L14-te-konjugasi 78%→90% 🟢** & **Lesson 14 → 🟢**. Semua bentuk
+verb pokok (て・ない・辞書・た) kini 🟢. **Praktis tak ada weak area tersisa.**_
+1. 🟡 **L14-ています-progresif** — 67% (2/3). Satu-satunya 🟡 tersisa; data tipis (1 error lama
+   `かきて`, kini 2 benar berturut `ひいて`/`およいで`). Akar き→いて sudah beres; butuh 1 attempt
+   lagi untuk tembus 🟢. Bukan prioritas mendesak.
 
 **Sinyal yang perlu diperhatikan:**
-- ⚠️ **音便 き/ぎ→いて/いだ belum otomatis.** Dua error sesi 12 keduanya di sini: `かきます→かいて`
-  (dipilih `かきて`) & `およぎます`→ た `およいだ` (dipilih て `およいで`). Bandingkan: ります/います/
-  します-音便 sudah mantap (`だして`,`とって`,`けして` semua benar). **Fokus drill: verb akhiran
-  き & ぎ** (かきます, ききます, およぎます, いそぎます) + tegaskan て vs た.
-- ✅ **て ↔ た umumnya DIKUASAI** — `いった`(例外), `きいたり`, `く なります` benar. `L19-た` 🟢
-  (93%), `たことがあります` 🟢 (91%), `たり` 🟢 (92%). Slip hanya pada ぎ-verb (音便 + て/た).
-- ✅ **辞書形 & ない-stem DIKUASAI.** Partikel `に` 🟢 (81%), `へ` benar (たことがあります).
-- **Rekomendasi:** 1 sesi pendek fokus verb き/ぎ (`/quiz verbs lesson 14`) kemungkinan besar
-  menuntaskan L14-te ke 🟢. Setelah itu pertimbangkan bab baru (L20+) atau `/jlpt` mock.
+- ✅ **音便 grup I DIKUASAI PENUH** — き→いて (ひいて/おいて), ぎ→いで (およいで/いそいで/ぬいで),
+  び→んで (よんで), し→して (だして), り/い/ち→って semua stabil. Tidak over-generalize いて/いで.
+- ✅ **4 bentuk verb pokok (て・ない・辞書・た) semua 🟢.** `L19-た` 🟢 (93%), `辞書形` 🟢 (82%),
+  `ない` 🟢 (89%), `て` 🟢 (90%). Konjugasi bukan lagi titik lemah.
+- ✅ **Partikel に 🟢 (81%), へ benar. Pola L18/L19 semua 🟢.**
+- **Rekomendasi (fokus geser dari konjugasi):** materi grammar N5 Minna I sudah terkonsolidasi.
+  Pertimbangkan: (a) **bab baru L20+** bila dicatat (butuh materi dari user), atau (b) **`/jlpt`
+  mock** untuk uji terpadu tertulis (文字語彙 + 文法読解). `/quiz review` sudah kurang perlu —
+  tak ada 🔴 & cuma 1 🟡 tipis.
