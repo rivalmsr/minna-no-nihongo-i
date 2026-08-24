@@ -16,9 +16,9 @@ Tingkat: **🔴** = `leech` atau `lapses ≥ 8` · **🟡** = `lapses 5–7` · 
 >
 > **Verb/kosakata (Minna):** だします I 🩸, もらいます I 🩸, おいくつ 🩸, けします I 🩸, つけます II 🩸, りょこう 🩸, おしえます II 🩸, おります II 🩸, かえします I 🩸, きんがく 🩸, けんがくします III 🩸, じむしょ 🩸, でかけます II 🩸, となり 🩸, なくします I 🩸, きゅうこう 🩸, ついたち 🩸, てちょう 🩸, とります I 🩸
 >
-> **Kanji N5:** 生（せい） 🩸, 先（せん） 🩸, 年（ねん） 🩸, 時（じ） 🩸, 千（せん） 🩸, 会（あう） 🩸, 北（きた） 🩸
+> **Kanji N5:** 生（せい） 🩸, 先（せん） 🩸, 年（ねん） 🩸, 時（じ） 🩸, 千（せん） 🩸, 会（あう） 🩸, 北（きた） 🩸, 東（ひがし） 🩸
 
-Total ditandai — Minna: 🔴19 · 🟡57 · ⚪88  |  Kanji N5: 🔴7 · 🟡17 · ⚪29
+Total ditandai — Minna: 🔴19 · 🟡58 · ⚪87  |  Kanji N5: 🔴8 · 🟡17 · ⚪28
 
 ## Kosakata / Verb lemah — Minna no Nihongo I
 
@@ -58,6 +58,7 @@ Total ditandai — Minna: 🔴19 · 🟡57 · ⚪88  |  Kanji N5: 🔴7 · 🟡1
 | 🟡 | みじかい | pendek | L16 | 7 |
 | 🟡 | あけます II | membuka | L14 | 6 |
 | 🟡 | あれ | itu (jauh dari pembicara dan lawan bicara) | L2 | 6 |
+| 🟡 | うわぎ | baju, jaket | L17 | 6 |
 | 🟡 | おくります I | mengirim | L7 | 6 |
 | 🟡 | おつり | uang kembalian | L14 | 6 |
 | 🟡 | おろします I | mengeluarkan, mengambil | L16 | 6 |
@@ -77,10 +78,10 @@ Total ditandai — Minna: 🔴19 · 🟡57 · ⚪88  |  Kanji N5: 🔴7 · 🟡1
 | 🟡 | ねんがじょう | kartu tahun baru | L7 | 6 |
 | 🟡 | ひくい | rendah | — | 6 |
 | 🟡 | ふつか | tanggal 2, dua hari | — | 6 |
+| 🟡 | むかえます II | menjemput | L13 | 6 |
 | 🟡 | やさい | sayuran | — | 6 |
 | 🟡 | よびます I | memanggil | L14 | 6 |
 | 🟡 | あげます II | memberikan | L7 | 5 |
-| 🟡 | うわぎ | baju, jaket | L17 | 5 |
 | 🟡 | おします I | menekan | L16 | 5 |
 | 🟡 | およぎます I | berenang | L13 | 5 |
 | 🟡 | おんがく | musik | L9 | 5 |
@@ -93,12 +94,12 @@ Total ditandai — Minna: 🔴19 · 🟡57 · ⚪88  |  Kanji N5: 🔴7 · 🟡1
 | 🟡 | せんたくします III | mencuci pakaian | L19 | 5 |
 | 🟡 | そこ | disitu | L3 | 5 |
 | 🟡 | つかれます II | lelah (jika menyatakan keadaan lelah, digunakan bentuk た seperti つかれました) | L13 | 5 |
+| 🟡 | でんき | listrik, lampu | L14 | 5 |
 | 🟡 | とお | 10 buah | — | 5 |
 | 🟡 | とおか | tanggal 10, sepuluh hari | — | 5 |
 | 🟡 | とります I | mengambil | L14 | 5 |
 | 🟡 | ならいます I | belajar | L7 | 5 |
 | 🟡 | ふつう | biasa | — | 5 |
-| 🟡 | むかえます II | menjemput | L13 | 5 |
 | 🟡 | ようじ | urusan | L9 | 5 |
 
 ## Kanji lemah — Japanese Kanji N5
@@ -108,14 +109,14 @@ Total ditandai — Minna: 🔴19 · 🟡57 · ⚪88  |  Kanji N5: 🔴7 · 🟡1
 | 🔴 🩸 | 生 | せい | hidup | 15 |
 | 🔴 🩸 | 先 | せん | dahulu, depan | 13 |
 | 🔴 🩸 | 年 | ねん | tahun | 12 |
-| 🔴 🩸 | 時 | じ | jam | 10 |
-| 🔴 🩸 | 千 | せん | seribu | 9 |
+| 🔴 🩸 | 時 | じ | jam | 11 |
+| 🔴 🩸 | 千 | せん | seribu | 10 |
 | 🔴 🩸 | 会 | あう | bertemu | 8 |
 | 🔴 🩸 | 北 | きた | utara | 8 |
+| 🔴 🩸 | 東 | ひがし | timur | 8 |
 | 🟡 | 万 | まん | sepuluh ribu | 7 |
 | 🟡 | 南 | みなみ | selatan | 7 |
 | 🟡 | 友 | とも | teman | 7 |
-| 🟡 | 東 | ひがし | timur | 7 |
 | 🟡 | 聞 | きく | mendengar | 7 |
 | 🟡 | 午 | ご | siang | 6 |
 | 🟡 | 小 | ちいさい | kecil | 6 |
@@ -127,8 +128,9 @@ Total ditandai — Minna: 🔴19 · 🟡57 · ⚪88  |  Kanji N5: 🔴7 · 🟡1
 | 🟡 | 円 | えん | yen | 5 |
 | 🟡 | 書 | かく | menulis | 5 |
 | 🟡 | 毎 | まい | setiap | 5 |
+| 🟡 | 牛 | うし | sapi | 5 |
 | 🟡 | 立 | たつ | berdiri | 5 |
 | 🟡 | 道 | みち | jalan | 5 |
 
 ---
-_Auto-generated 2026-08-23 oleh `scripts/sync-anki-weak-items.sh` dari `collection.anki2`._
+_Auto-generated 2026-08-24 oleh `scripts/sync-anki-weak-items.sh` dari `collection.anki2`._

@@ -4,6 +4,7 @@ Log ringkas tiap sesi `/quiz` (entri terbaru di atas). Ditambah otomatis oleh sk
 
 | Tanggal | Cakupan | Jml soal | Skor | Catatan |
 |---------|---------|----------|------|---------|
+| 2026-08-24 | Lesson 14, 19 (fokus L14-te) | 12 | 10/12 (83%) | Kunci L14-te ke ambang 🟢 (78%, tinggal 2%!). ります/います/します 音便 semua benar (だして/とって/けして). 2 salah SATU AKAR = 音便 き/ぎ: (6) かきます→かいて pilih かきて (grup I diperlakukan grup II); (8) およぎます た形=およいだ pilih およいで (て vs た). い-form dikenali, tapi き→いて & て↔た pada ぎ masih goyah. Vehicle Anki leech (だします/けします/つけます/とります) dipakai |
 | 2026-08-23 | JLPT mock (文字語彙+文法読解) | 16 | 15/16 (94%) | Mock ketiga (terbaik). Sesi 2 文法・読解 8/8 SEMPURNA — DK-bunpou membaik (てください/たことがあります/なります+に semua benar), 読解 & 情報 tembus 🟢. Grammar lemah /quiz (辞書形↔て, に) tak lagi terbawa. 1 salah = MG-hyouki kanji mirip (新聞→新間, 聞 vs 間) |
 | 2026-08-23 | Lesson 19 (fokus て↔た) | 12 | 12/12 (100%) | PERFECT! て↔た DIKUASAI: semua 8 た-form benar termasuk のぼった (kemarin salah のぼって), いった (例外), およいだ. た-konjugasi 🟡→🟢 (92%). に tembus 🟢 (81%). 4 bentuk verb pokok (て/ない/辞書/た) semua 🟢. Sisa 🟡 cuma L14-te (ekor data) |
 | 2026-08-23 | Lesson 17–19 (adaptif) | 12 | 11/12 (92%) | 辞書形 DIKUASAI! error lama およぐ (辞書形↔て) kini benar; 辞書形/ことができます/まえに/なくてもいいです semua naik 🟢. 1 salah = て↔た: たことがあります butuh た (のぼった) tapi pilih て (のぼって). Fokus lanjut: て vs た |
