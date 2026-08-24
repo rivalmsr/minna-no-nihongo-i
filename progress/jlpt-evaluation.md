@@ -11,44 +11,50 @@ memeringkat **weak types** untuk memandu `/jlpt review`.
 **Ambang status:** akurasi <60% 🔴 LEMAH · 60–79% 🟡 · ≥80% 🟢
 (butuh minimal **3 attempt** sebelum status dihitung; di bawah itu = ⚪ belum cukup data)
 
-_Terakhir diperbarui: 2026-08-23 · total sesi: 3_
+_Terakhir diperbarui: 2026-08-24 · total sesi: 4_
 
 ---
 
 ## Sesi 1 — 文字・語彙 (Moji-Goi)
 | Subtipe | Tag | Benar | Total | Akurasi | Status |
 |---------|-----|-------|-------|---------|--------|
-| Baca kanji (cara baca) | `MG-yomi` | 6 | 6 | 100% | 🟢 |
-| Tulis kanji (penulisan) | `MG-hyouki` | 5 | 6 | 83% | 🟢 |
-| Kosakata dalam konteks | `MG-bunmyaku` | 6 | 6 | 100% | 🟢 |
-| Sinonim / 言い換え類義 | `MG-ruigi` | 6 | 6 | 100% | 🟢 |
+| Baca kanji (cara baca) | `MG-yomi` | 7 | 8 | 88% | 🟢 |
+| Tulis kanji (penulisan) | `MG-hyouki` | 7 | 8 | 88% | 🟢 |
+| Kosakata dalam konteks | `MG-bunmyaku` | 7 | 8 | 88% | 🟢 |
+| Sinonim / 言い換え類義 | `MG-ruigi` | 8 | 8 | 100% | 🟢 |
 
 ## Sesi 2 — 文法・読解 (Bunpou-Dokkai)
 | Subtipe | Tag | Benar | Total | Akurasi | Status |
 |---------|-----|-------|-------|---------|--------|
-| Tata bahasa (grammar) | `DK-bunpou` | 6 | 8 | 75% | 🟡 |
-| Susun kalimat (★) | `DK-narabekae` | 4 | 4 | 100% | 🟢 |
-| Bacaan pendek | `DK-dokkai` | 5 | 6 | 83% | 🟢 |
-| Bacaan informasi (info-search) | `DK-joho` | 5 | 6 | 83% | 🟢 |
+| Tata bahasa (grammar) | `DK-bunpou` | 9 | 11 | 82% | 🟢 |
+| Susun kalimat (★) | `DK-narabekae` | 4 | 5 | 80% | 🟢 |
+| Bacaan pendek | `DK-dokkai` | 7 | 8 | 88% | 🟢 |
+| Bacaan informasi (info-search) | `DK-joho` | 7 | 8 | 88% | 🟢 |
 
 ---
 
 ## Weak types (prioritas soal `/jlpt review`)
-_Sesi 2026-08-23 (mock ketiga, **15/16 = 94%**): Sesi 2 **8/8 SEMPURNA** — `DK-bunpou`
-membaik (semua grammar benar: たことがあります/てください/なります+に), `DK-dokkai` &
-`DK-joho` tembus 🟢. Kelemahan grammar `/quiz` lama (辞書形↔て, に) **tidak lagi terbawa**
-ke mock (sudah 🟢 di /quiz). Satu-satunya error = 1 penulisan kanji mirip._
-1. 🟡 **`DK-bunpou` (grammar)** — 75% (6/8). Naik dari 60%. Sesi ini **3/3 benar**
-   (`こと`, `そうじして`, `に`); defisit tinggal ekor data lama (に-waktu & 辞書形↔て 2 mock
-   lalu). Nyaris 🟢 — sudah bukan kelemahan aktif.
+_Sesi 2026-08-24 (mock keempat, **13/16 = 81%**): **SEMUA 8 subtipe kini 🟢** — `DK-bunpou`
+naik 75%→**82% (🟡→🟢)** lewat 3/3 (たり/てから/なければなりません). Tak ada 🔴/🟡 lagi.
+3 error tersebar & bukan pola grammar: 1 susun kalimat (salah hitung posisi ★), 2 kosakata
+文字語彙 (bacaan jukujikun 時計, pasangan つけます↔けします)._
+1. ⚠️ **`DK-narabekae` (susun kalimat)** — 80% (4/5), subtipe akurasi TERENDAH walau 🟢.
+   Error soal 12: susun 〜まえに (`ねる まえに 本 を よみます`) → salah tunjuk isi ★③
+   (jawab `を`, kunci `本`). **Sebagian karena PENYAJIAN PANEL** — panel klik hanya
+   menaruh potongan dipisah `/` tanpa mengulang rangka slot `[①][②][★③][④]`, jadi user
+   bingung memetakan (bukan murni tak paham pola まえに). Perbaikan format panel dicatat
+   di memory [[quiz-susun-kalimat-format]]. **Bukan kelemahan grammar.**
 
 **Sinyal yang perlu diperhatikan:**
-- ✅ **Sesi 2 (文法・読解) 8/8** — grammar solid: てください pakai て (`そうじして`),
-  たことがあります (`こと`), なります+に (`に`), susun まえに benar. Kelemahan grammar `/quiz`
-  yang dulu terbawa (に-waktu, 辞書形↔て) kini teratasi karena sudah 🟢 di `evaluation.md`.
-- ✅ **読解 & 情報検索 tembus 🟢** (83%) — 2/2 lagi berturut; pemahaman bacaan stabil.
-- 🔺 **Kanji bentuk mirip (MG-hyouki)** — 1 error: `新聞` ditulis `新間`. Akar: **聞**（ぶん,
-  "berita/dengar") vs **間**（ま/あいだ, "sela/antara") bentuknya mirip (門 + 耳 vs 門 + 日).
-  MG-hyouki tetap 🟢 (83%); waspadai pasangan kanji-mirip saat drill penulisan.
-- **Sesi 2026-08-23 (mock ketiga) skor 15/16 (94%)** — 1 salah = penulisan kanji mirip
-  (bukan grammar/bacaan). Mock terbaik sejauh ini.
+- ✅ **`DK-bunpou` tembus 🟢 (82%)** — 3/3 sesi ini: 〜たり (`聞いたり`), 〜てから (`から`),
+  〜なければなりません (stem ない `べんきょうし`). Grammar bukan lagi kelemahan; ekor data
+  🟡 lama (に-waktu, 辞書形↔て) tuntas terkejar.
+- ✅ **Sesi 2 (文法・読解) 7/8** — hanya 1 error susun kalimat; bacaan `DK-dokkai` &
+  `DK-joho` 2/2 lagi (keduanya 88%). Pemahaman bacaan stabil.
+- 🔺 **文字語彙 error = kosakata, bukan tulisan-mirip.** (1) 時計 dibaca `じけい` — lupa
+  bacaan **jukujikun と**(時→と, bukan じ seperti 何時). (2) `つけます`↔`けします` tertukar
+  ("keluar kamar → matikan lampu" = 消します). Pasangan lawan-arti (つける↔けす,
+  あける↔しめる) & bacaan istimewa (時計/今日/明日) layak diwaspadai. MG-hyouki 2/2 —
+  gap 聞 vs 間 mock lalu **beres** (`新聞` benar).
+- **Sesi 2026-08-24 (mock keempat) skor 13/16 (81%)** — turun dari 94% karena 3 error
+  "kecil" (kosakata + hitung ★), tapi **semua subtipe kini 🟢** untuk pertama kalinya.
