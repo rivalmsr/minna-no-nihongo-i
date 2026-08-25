@@ -53,8 +53,11 @@ Daftar pelajaran lengkap (judul + topik + status) ada di tabel `README.md`.
   dari collection Anki: `lapses` + `leech`). `evaluation.md` menentukan **pola** yang
   diuji; saat memilih **verb/kosakata** pengisi soal, condongkan ke item 🔴 di file itu
   **bila cocok**. Bias **LUNAK** — Anki = pemilih *kosakata*, bukan pengganti *pola*;
-  jangan bikin drill item lepas. Baca **anchor 🔴** saja (hemat token). Juga dipakai
-  `/jlpt` (subtipe kanji MG-yomi/hyouki → kanji 🔴).
+  jangan bikin drill item lepas. **Fallback:** kalau tak ada item 🔴 yang cocok dengan
+  pola/cakupan yang diuji, **pakai kosakata lain** (`n5-vocabulary.md` / `anki-verbs.md`)
+  — jangan paksakan item lemah kalau bikin soal janggal. Tujuan tetap yang utama: `/quiz`
+  = uji pemahaman materi + cari titik lemah; `/jlpt` = simulasi mini-JLPT. Baca **anchor
+  🔴** saja (hemat token). Juga dipakai `/jlpt` (subtipe kanji MG-yomi/hyouki → kanji 🔴).
   **Refresh data:** user review harian di iPhone → wajib **buka Anki desktop & Sync**
   dulu (biar collection lokal turun dari AnkiWeb), BARU `bash scripts/sync-anki-weak-items.sh`.
   Sync iPhone saja tak update file desktop. Detail: `docs/anki-integration-plan.md`.

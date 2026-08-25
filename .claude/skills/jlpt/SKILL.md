@@ -43,8 +43,10 @@ Tag subtipe ada di `reference/quiz-taxonomy.md` (section "Tag subtipe JLPT").
    **prioritaskan yang bertanda 🔴** bila cocok subtipe & cakupan: **`MG-yomi`/`MG-hyouki`
    → boboti ke KANJI 🔴** (mis. 生・先・時), **`MG-bunmyaku` → KOSAKATA 🔴**, **`DK-bunpou`
    → VERB 🔴** di dalam pola in-scope. Bias LUNAK & tunduk pada aturan 1–3 (jangan drill
-   item lepas; item tetap muncul di format soal JLPT normal). AUTO-GENERATED dari
-   `collection.anki2`; regen `bash scripts/sync-anki-weak-items.sh`.
+   item lepas; item tetap muncul di format soal JLPT normal). **Fallback:** kalau tak ada
+   item 🔴 yang cocok subtipe/cakupan, **pakai kanji/kosakata lain** dari `n5-vocabulary.md`
+   / `n5-synonyms.md` / `anki-verbs.md` — simulasi JLPT tetap yang utama, Anki hanya bias.
+   AUTO-GENERATED dari `collection.anki2`; regen `bash scripts/sync-anki-weak-items.sh`.
 5. **Tulisan:** hiragana + kanji umum N5. **Setiap kanji diberi bacaan hiragana** dalam
    kurung, mis. `学校（がっこう）` — **KECUALI** kata kanji yang justru sedang diuji
    bacaannya di soal `MG-yomi` (di situ furigana-nya jadi jawaban, jangan dibocorkan;

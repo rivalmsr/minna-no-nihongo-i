@@ -33,6 +33,9 @@ berikutnya makin terfokus ke materi yang lemah.
    tunduk** di bawah aturan 1 & 2b: Anki = pemilih *kosakata*, **bukan** pengganti
    *pola*. **Jangan** bikin drill item lepas (mis. "arti 生?"); item lemah tetap muncul
    di dalam pola in-scope (mis. たform + `だします`🔴, bukan verb acak).
+   **Fallback:** kalau tak ada item 🔴 yang cocok untuk pola/cakupan yang diuji,
+   **pakai kosakata lain** dari `n5-vocabulary.md` / `anki-verbs.md` — jangan paksakan
+   item lemah masuk kalau bikin soal janggal. Pola tetap yang utama; Anki hanya bias.
 3. **Tulisan:** hiragana + kanji umum N5. **Setiap kanji diberi bacaan hiragana**
    dalam kurung, mis. `学校（がっこう）`, `友達（ともだち）と 行きます（いきます）`.
 4. **Tag konsisten:** pakai tag dari `reference/quiz-taxonomy.md`. Jangan bikin
