@@ -38,12 +38,14 @@ tak berlaku — sumbernya `learn-anki/*.txt`, bukan collection.)
 3. Jalankan script terkait via Bash:
    - `bash scripts/sync-anki-verbs.sh`
    - `bash scripts/sync-anki-weak-items.sh`
-4. Tampilkan **ringkasan** yang dicetak script (mis. `Minna: 🔴20 🟡58 ⚪87 | Kanji N5: 🔴9 …`)
-   + hasil `git diff --stat` supaya user tahu file mana yang berubah.
-5. Kalau ada perubahan → **tawarkan commit** dengan pesan gaya repo:
-   `chore(progress): sync Anki weak items` / `chore(reference): sync Anki verbs`
-   (sertakan angka ringkasan di body). Jangan commit tanpa persetujuan user.
-6. Kalau tak ada perubahan → beri tahu "sudah up-to-date, tak ada yang berubah".
+4. Cek `git diff --stat` untuk file output → tentukan ada perubahan atau tidak, lalu
+   **beri notifikasi singkat**:
+   - **Ada data baru** (file berubah) → `✅ Sukses updated` + ringkasan yang dicetak
+     script (mis. `Minna: 🔴20 🟡58 ⚪87 | Kanji N5: 🔴9 …`) + file mana yang berubah.
+     Lalu **tawarkan commit** (pesan gaya repo `chore(progress): sync Anki weak items` /
+     `chore(reference): sync Anki verbs`, angka ringkasan di body). Jangan commit tanpa izin.
+   - **Tak ada data baru** (file tak berubah) → `ℹ️ No data updated` (sudah up-to-date).
+     Tak perlu commit.
 
 ## Catatan
 
