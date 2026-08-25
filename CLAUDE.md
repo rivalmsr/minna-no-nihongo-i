@@ -71,6 +71,8 @@ Daftar pelajaran lengkap (judul + topik + status) ada di tabel `README.md`.
 - **Preferensi tampilan & mode** (semua tersimpan, jangan dilupakan):
   - Mode ujian: **jawab semua soal dulu**, koreksi & analisis muncul **di akhir**.
   - Default **12 soal** (3 panel AskUserQuestion penuh 4+4+4).
+  - **Acak posisi jawaban benar** — sebar merata (1/2/3/4) lintas soal, JANGAN taruh
+    kunci di nomor 1 terus (berlaku `/quiz` & `/jlpt`).
   - Soal tampil **besar & tebal** di chat (kalimat Jepang pakai H1 `#`); klik jawaban
     lewat panel AskUserQuestion.
   - **Semua kanji wajib berfurigana** — termasuk di tabel hasil, ringkasan, **dan

@@ -158,7 +158,9 @@ User menjawab **semua soal dulu**, koreksi & analisis baru muncul **di akhir**.
   - `options` = tiap opsi; `label` = jawaban (mis. `に`), `description` = arti/petunjuk singkat.
     **Scaffolding fade:** kurangi porsi hint di `description` untuk pola yang sudah 🟢
     (netral/tanpa bocoran); pola 🔴/🟡/⚪ tetap boleh hint penuh. Jangan cabut mendadak.
-  - Taruh opsi benar di posisi acak (jangan selalu pertama).
+  - **Taruh opsi benar di posisi acak & sebar merata (1/2/3/4) lintas soal — JANGAN
+    menaruh jawaban benar di nomor 1 terus** (kalau selalu di posisi sama, user menebak
+    dari pola bukan pemahaman).
 - **JANGAN** tampilkan kunci/koreksi sampai **semua** soal terjawab.
 - Simpan hasil tiap soal (tag + jawaban user) untuk dinilai di langkah 5.
 - (Alternatif: kalau user minta feedback langsung per soal, sajikan satu-satu dan

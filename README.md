@@ -116,6 +116,20 @@ grammar `/quiz` tak terganggu).
 > `/quiz` = latihan **harian adaptif** grammar · `/jlpt` = **simulasi ujian** meniru
 > struktur JLPT. Keduanya pakai referensi & konvensi yang sama.
 
+## Refresh data Anki (`/sync-anki`)
+
+Skill `/sync-anki` me-regenerasi file turunan Anki yang jadi bahan `/quiz` & `/jlpt`,
+lalu memberi notifikasi (`✅ Sukses updated` / `ℹ️ No data updated`).
+
+| Perintah | Aksi |
+|----------|------|
+| `/sync-anki` | Refresh **keduanya** — `anki-verbs.md` + `anki-weak-items.md` |
+| `/sync-anki weak` | Hanya `progress/anki-weak-items.md` (item lemah) |
+| `/sync-anki verbs` | Hanya `reference/anki-verbs.md` (pool kata kerja) |
+
+> ⚠️ Untuk weak-items: **buka Anki desktop & Sync dulu** kalau baru review di iPhone —
+> sync iPhone saja tak update `collection.anki2` lokal.
+
 ## Cara pakai sebagai Claude Project
 
 1. Unggah folder ini (atau file `.md` di dalamnya) sebagai *Project knowledge*.

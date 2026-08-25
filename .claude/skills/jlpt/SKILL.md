@@ -126,7 +126,8 @@ asli).
   **AskUserQuestion**, **maksimal 4 soal per panel**. Untuk mock penuh 16 soal = 4 panel.
   - `header` = subtipe + tag pendek (mis. "文字語彙 · 読み方" / "文法 · partikel").
   - `question` = ringkasan soal (kanji berfurigana, kecuali kata yang diuji di `MG-yomi`).
-  - `options` = `label` jawaban + `description`. Posisi benar acak. **Porsi hint di
+  - `options` = `label` jawaban + `description`. **Posisi kunci WAJIB diacak & disebar
+    merata (1/2/3/4) lintas soal — jangan menaruh jawaban benar di nomor 1 terus.** Porsi hint di
     `description` MEMUDAR BERTAHAP mengikuti penguasaan (scaffolding fade)** — lihat
     "Hint fading (scaffolding)" di Catatan gaya.
 - Untuk soal **bacaan** (`DK-dokkai`, `DK-joho`): tampilkan **teks** sekali (H2/blockquote),

@@ -45,6 +45,7 @@ terpisah) menyumbang **sinyal item yang sering kamu lupa** untuk mempertajam pil
 | **Mesin latihan** | `.claude/skills/quiz/`, `.claude/skills/jlpt/` | Logika membuat, menilai, & mengadaptasi soal |
 | **Aturan main** | `CLAUDE.md` | Hub konteks + prinsip yang selalu berlaku |
 | **Jembatan Anki** | `scripts/sync-anki-*.sh` | Tarik data dari deck/collection Anki → file KB |
+| **Pintu refresh Anki** | `.claude/skills/sync-anki/` | Command `/sync-anki` — bungkus kedua script + notif hasil |
 
 ## Alur 1 — Mencatat materi (input / "ingest")
 
@@ -117,6 +118,12 @@ flowchart LR
 Review dari iPhone harus ditarik dulu dengan **membuka app desktop & Sync** sebelum
 `sync-anki-weak-items.sh` dijalankan.
 
+**Satu pintu — `/sync-anki`:** daripada memanggil dua script manual, command `/sync-anki`
+membungkus keduanya: mengingatkan prasyarat Sync desktop, menjalankan script terkait
+(`/sync-anki` = keduanya · `weak` / `verbs` = salah satu), lalu memberi **notifikasi**
+— `✅ Sukses updated` + ringkasan bila ada data baru, atau `ℹ️ No data updated` bila tak
+berubah. Detail: `.claude/skills/sync-anki/SKILL.md`.
+
 ## Logika inti: DUA sinyal kelemahan yang dinikahkan
 
 Ini pembeda utama KB ini. Ada dua jenis "lemah" yang dilacak dari sudut berbeda:
@@ -133,12 +140,72 @@ flowchart TD
 - **`anki-weak-items.md`** menjawab: *kata/kanji apa yang paling sering aku lupa?*
 - **Digabung:** soal menguji **pola lemah**, memakai **item lemah** sebagai "kendaraan".
   Anki = pemilih *kosakata*, **bukan** pengganti *pola* (biasnya lunak & tunduk).
+- **Fallback (penting):** kalau **tak ada item 🔴 yang cocok** dengan pola/cakupan yang
+  sedang diuji, pakai **kosakata lain** dari `n5-vocabulary.md` / `anki-verbs.md` — jangan
+  paksakan item lemah masuk kalau bikin soal janggal. Pola tetap yang utama; Anki hanya bias.
+
+## Engine adaptif — cara skor, status & pembobotan dihitung
+
+Ini "mesin" di balik loop adaptif (Alur 2). Semua angka **dihitung eksplisit**, tak
+dikarang. Berlaku sama untuk `/quiz` (menulis `evaluation.md`) & `/jlpt` (menulis
+`jlpt-evaluation.md`).
+
+### 1. Status kelemahan (ambang)
+Tiap **tag** (pola / partikel / lesson / subtipe JLPT) menyimpan `Benar` & `Total`
+kumulatif lintas sesi. Dari situ:
+
+```
+Akurasi = round(Benar / Total × 100)%
+```
+
+| Akurasi | Status | Arti |
+|---------|:------:|------|
+| < 60% | 🔴 LEMAH | prioritas utama soal berikutnya |
+| 60–79% | 🟡 | menengah, masih diperkuat |
+| ≥ 80% | 🟢 | dikuasai |
+| `Total < 3` | ⚪ | **belum cukup data** — status ditahan sampai ≥3 attempt |
+
+### 2. Update tiap akhir sesi
+Untuk **tiap tag** yang muncul di sesi ini:
+
+```
+Total_baru = Total_lama + jumlah soal bertag itu
+Benar_baru = Benar_lama + jumlah soal benar bertag itu
+Akurasi    = round(Benar_baru / Total_baru × 100)%
+```
+
+Lalu daftar **Weak areas** disusun ulang: tag 🔴 dulu, kemudian 🟡, diurut dari
+**akurasi terendah** (maks ~5). Baris `_(kosong)_` dihapus begitu ada data nyata.
+Satu baris ditambahkan ke `history.md` (entri terbaru di atas).
+
+### 3. Pembobotan & cakupan soal berikutnya
+- **Cakupan default** (`/quiz` polos) = **pelajaran lemah + bab terbaru**, dibatasi
+  **maks ~3 lesson** (prioritas akurasi terendah) demi hemat token — bukan semua lesson.
+- **Bobot adaptif:** ≥**40%** soal diambil dari weak area bila ada; sisanya sebar merata.
+  Mode `review` → hampir semua soal dari tag 🔴/🟡. Sesi pertama (belum ada data) →
+  sebar merata ke seluruh pola in-scope.
+- **Bias kendaraan Anki** → lihat bagian "DUA sinyal" di atas (lunak + fallback).
+
+### 4. Aturan penyajian (menjaga recall tetap jujur)
+- **Mode ujian:** jawab **semua** soal dulu, koreksi & analisis muncul **di akhir**.
+- **Posisi jawaban benar diacak** & disebar merata (1/2/3/4) lintas soal — **jangan**
+  taruh kunci di nomor 1 terus (kalau selalu sama, user menebak dari pola, bukan paham).
+- **Semua kanji berfurigana** — soal, tabel hasil, ringkasan, & panel AskUserQuestion.
+- **Hint fading (`/jlpt`):** bantuan di `description` opsi **dipudarkan bertahap**
+  mengikuti penguasaan subtipe (🔴/🟡/⚪ → hint penuh; menuju 🟢 → netral; mantap 🟢 →
+  tanpa hint) — scaffolding, bukan dicabut mendadak.
+
+### 5. Pemisahan tracker `/quiz` vs `/jlpt`
+- `/quiz` **hanya** menulis `evaluation.md` (+ `history.md`).
+- `/jlpt` **hanya** menulis `jlpt-evaluation.md` (+ `history.md` berlabel `JLPT`); boleh
+  **membaca** `evaluation.md` untuk membiaskan grammar, tapi **tak pernah menulisnya**.
 
 ## Aturan main (governance) yang selalu berlaku
 
 - **Source of truth tata bahasa = `lessons/`.** Soal tak boleh menguji pola di luar yang
   sudah dicatat.
 - **Semua kanji wajib berfurigana** (soal, tabel hasil, ringkasan, panel).
+- **Posisi jawaban benar diacak** (1/2/3/4), jangan nomor 1 terus — `/quiz` & `/jlpt`.
 - **Hemat token:** baca **anchor**, bukan file utuh; detail dibaca on-demand.
 - **File turunan** (`anki-verbs.md`, `anki-weak-items.md`) **AUTO-GENERATED** — jangan
   diedit tangan; regen lewat script.
