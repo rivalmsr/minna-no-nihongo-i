@@ -21,6 +21,16 @@ atau update skor), tambahkan satu blok di paling atas daftar di bawah, format:
 
 ---
 
+### 2026-08-25 — Cerita bacaan hilang saat panel terbuka
+- **Problem:** untuk soal bacaan (dokkai/joho), cerita cuma dicetak di chat lalu panel
+  terpisah di bawah. Saat panel terbuka cerita **tak terlihat**, user harus scroll ke
+  atas untuk membacanya — dan tak sengaja melihat soal/opsi lain yang belum dikerjakan.
+- **Fix:** aturan penyajian bacaan — **cerita disertakan di dalam tiap `question` panel**
+  blok itu (prefix `【文章】`), diulang untuk tiap soal (1 cerita → beberapa soal), dengan
+  **jarak 1 baris kosong** sebelum `問N．` dan **tanpa garis horizontal**. `description`
+  opsi kosong. Panel per-blok (hanya soal blok itu), diletakkan tepat di bawah ceritanya.
+- **File:** `.claude/skills/jlpt/SKILL.md`, memory `jlpt-reading-panel-format`
+
 ### 2026-08-25 — Panel susun kalimat membocorkan jawaban
 - **Problem:** `/jlpt` mock kelima soal 12 (DK-narabekae), panel AskUserQuestion bocor
   dua kali: (a) `question` memuat urutan benar `（ただしい じゅん：ごはんを→たべる→まえに→てを）`,

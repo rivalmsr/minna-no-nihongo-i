@@ -130,8 +130,18 @@ asli).
     merata (1/2/3/4) lintas soal — jangan menaruh jawaban benar di nomor 1 terus.** Porsi hint di
     `description` MEMUDAR BERTAHAP mengikuti penguasaan (scaffolding fade)** — lihat
     "Hint fading (scaffolding)" di Catatan gaya.
-- Untuk soal **bacaan** (`DK-dokkai`, `DK-joho`): tampilkan **teks** sekali (H2/blockquote),
-  lalu 2–3 pertanyaan pilihan ganda yang merujуk teks itu.
+- Untuk soal **bacaan** (`DK-dokkai`, `DK-joho`): tampilkan **teks** sekali di chat
+  (H2/blockquote) + soal-soalnya, lalu **panel per-blok** berisi HANYA soal blok itu,
+  ditaruh tepat di bawah ceritanya. **Aturan panel bacaan (WAJIB):**
+  - **Cerita TETAP disertakan di DALAM tiap `question` panel** blok itu (di-prefix
+    `【文章】`), sebab panel yang terlihat saat menjawab — kalau cerita cuma di chat, ia
+    **hilang** ketika panel terbuka & user terpaksa scroll (bisa tak sengaja melihat soal
+    lain). Satu cerita dipakai beberapa soal → **diulang** di tiap soal blok itu (itu
+    perlu, bukan mubazir).
+  - **Beri JARAK** antara cerita dan pertanyaan: 1 baris kosong (`\n\n`), lalu `問N．…`.
+    **JANGAN pakai garis horizontal** (`─────`) sebagai pemisah.
+  - Cerita di panel boleh **diringkas** (ambil kalimat yang relevan), tapi **furigana
+    tetap** & jangan buang info yang dibutuhkan jawaban. `description` opsi **kosong**.
 - **JANGAN** tampilkan kunci sampai **semua** soal (kedua sesi) terjawab.
 - Simpan tag + jawaban user tiap soal untuk langkah 5.
 
