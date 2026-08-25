@@ -37,6 +37,7 @@ scripts/sync-anki-weak-items.sh   regen anki-weak-items.md dari collection.anki2
 .claude/skills/sync-anki/    skill /sync-anki (refresh anki-verbs.md & anki-weak-items.md)
 docs/cara-kerja.md           peta flow & logika bisnis KB (diagram)
 docs/perbaikan-kb.md         log perbaikan sistem/aturan (problem→fix→tanggal)
+docs/estimasi-token.md       estimasi biaya token /quiz & /jlpt (±30%)
 ```
 
 Daftar pelajaran lengkap (judul + topik + status) ada di tabel `README.md`.
