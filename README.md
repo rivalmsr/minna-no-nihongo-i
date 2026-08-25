@@ -49,7 +49,8 @@ minna-no-nihongo-i/
 │   └── sync-anki-weak-items.sh <- regen anki-weak-items.md dari collection.anki2 (Anki desktop)
 └── .claude/skills/
     ├── quiz/SKILL.md      <- skill /quiz (latihan harian adaptif)
-    └── jlpt/SKILL.md      <- skill /jlpt (mock ujian tertulis N5, 2 sesi)
+    ├── jlpt/SKILL.md      <- skill /jlpt (mock ujian tertulis N5, 2 sesi)
+    └── sync-anki/SKILL.md <- skill /sync-anki (refresh anki-verbs.md & anki-weak-items.md)
 ```
 
 ## Daftar Pelajaran

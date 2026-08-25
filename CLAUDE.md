@@ -34,6 +34,7 @@ progress/
 scripts/sync-anki-verbs.sh        regen anki-verbs.md dari learn-anki/*.txt (gitignored)
 scripts/sync-anki-weak-items.sh   regen anki-weak-items.md dari collection.anki2 (Anki desktop)
 .claude/skills/quiz/         skill /quiz (detail operasional lengkap)
+.claude/skills/sync-anki/    skill /sync-anki (refresh anki-verbs.md & anki-weak-items.md)
 ```
 
 Daftar pelajaran lengkap (judul + topik + status) ada di tabel `README.md`.
