@@ -276,6 +276,12 @@ Tag pakai taxonomy konjugasi (`L14-te-konjugasi`, `L17-ない-konjugasi`,
 GRUP I (音便) karena paling sering keliru.
 
 ## Catatan gaya
+- **Distraktor wajib JELAS SALAH — tepat satu jawaban benar.** Sebelum memakai soal,
+  cek tiap opsi dipasang ke kalimat; kalau >1 opsi menghasilkan kalimat sah & masuk akal,
+  soal **rancu** → tambah cue pembeda atau ganti distraktor. Contoh cacat: 〜ては（　）
+  dgn opsi いけません **dan** なりません (dua-duanya larangan sah); 「家族と（　）を します」
+  dgn りょこう **dan** さんぽ (dua-duanya masuk akal). Item 🔴 Anki boleh jadi kunci, tapi
+  konteks tetap harus mengunci satu jawaban.
 - Nada ramah, dorong belajar. Penjelasan singkat & jelas, dalam Bahasa Indonesia.
 - Angka/tanggal boleh diminta dibaca (mis. `7時` → しちじ) untuk menguji L4.
 - Untuk pola berlawanan yang sering tertukar (で↔に tempat, あります↔います,

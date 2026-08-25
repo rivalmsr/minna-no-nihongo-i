@@ -35,9 +35,16 @@ scripts/sync-anki-verbs.sh        regen anki-verbs.md dari learn-anki/*.txt (git
 scripts/sync-anki-weak-items.sh   regen anki-weak-items.md dari collection.anki2 (Anki desktop)
 .claude/skills/quiz/         skill /quiz (detail operasional lengkap)
 .claude/skills/sync-anki/    skill /sync-anki (refresh anki-verbs.md & anki-weak-items.md)
+docs/cara-kerja.md           peta flow & logika bisnis KB (diagram)
+docs/perbaikan-kb.md         log perbaikan sistem/aturan (problem→fix→tanggal)
 ```
 
 Daftar pelajaran lengkap (judul + topik + status) ada di tabel `README.md`.
+
+> **Log perbaikan (WAJIB):** setiap kali sebuah **aturan / logika / skill diperbaiki**
+> (bukan sekadar tambah materi atau update skor), catat satu entri di
+> `docs/perbaikan-kb.md` — **Problem → Fix → Tanggal** (entri terbaru di atas). Ini jejak
+> "kenapa" tiap keputusan desain, biar tak berulang.
 
 ## /quiz — tujuan & aturan inti (PENTING)
 

@@ -43,6 +43,7 @@ minna-no-nihongo-i/
 │   └── history.md         <- riwayat sesi latihan (dibagi /quiz & /jlpt, entri berlabel)
 ├── docs/
 │   ├── cara-kerja.md          <- flow & logika bisnis KB (diagram) — mulai baca dari sini
+│   ├── perbaikan-kb.md        <- log perbaikan sistem/aturan (problem→fix→tanggal)
 │   └── anki-integration-plan.md <- rencana + status integrasi data Anki
 ├── scripts/
 │   ├── sync-anki-verbs.sh      <- regen anki-verbs.md dari learn-anki/ (folder deck Anki; gitignored)

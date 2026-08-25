@@ -211,6 +211,14 @@ hiragana. **Jangan** beri furigana pada kata yang diuji (itu jawabannya).
 まいあさ コーヒーを （　）。
    1. のみます  2. たべます  3. ききます  4. みます   → (jwb 1)
 ```
+> ⚠️ **WAJIB: kalimat harus punya CUE yang mengunci TEPAT SATU jawaban.** Sebelum
+> memakai soal, cek tiap distraktor dipasang ke rumpang — kalau **lebih dari satu** opsi
+> menghasilkan kalimat yang sah & masuk akal, soal **rancu** → perbaiki (tambah cue
+> pembeda atau ganti distraktor). Distraktor boleh se-kategori & "kelihatan mungkin",
+> tapi harus **jelas tak muat** karena konteks. Contoh cacat: 「なつやすみに 家族と（　）を
+> します」 dgn opsi りょこう/さんぽ → keduanya sah. Perbaiki: 「〜 おきなわ**へ**（　）を します」
+> (cue tempat jauh → hanya りょこう natural). Item 🔴 Anki tetap boleh jadi kunci, tapi
+> **cue tetap wajib**. Berlaku juga semangatnya untuk `DK-bunpou` (satu partikel/pola benar).
 
 **`MG-ruigi` — Sinonim / 言い換え類義.** Pilih kalimat/kata arti terdekat (pool
 `n5-synonyms.md`).
