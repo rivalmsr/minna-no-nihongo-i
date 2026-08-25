@@ -250,6 +250,9 @@ Di mode interaktif **semua tipe dijadikan pilihan ganda** (opsi diklik via AskUs
    1. で   2. はし   3. ごはん   4. を
    (jawaban = kata di posisi ★)
 ```
+> 🚫 **Jangan bocorkan jawaban di panel:** `question` tak boleh memuat urutan kalimat
+> benar, dan `description` opsi tak boleh menyebut posisi/slot potongan ("posisi ★"). User
+> menyusun sendiri; `description` dikosongkan atau arti kata netral. Rangka slot boleh.
 
 **語彙 — kosakata dalam konteks / padanan.**
 ```

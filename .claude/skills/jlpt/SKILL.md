@@ -241,6 +241,14 @@ cross-tag pola/partikel). Boleh pakai verb dari `anki-verbs.md` dalam pola in-sc
 わたしは ＿① ＿② ★③ ＿④ たべます。
    1. で  2. はし  3. ごはん  4. を    → susun: はし で ごはん を → ★③ = ごはん (3)
 ```
+> 🚫 **JANGAN BOCORKAN JAWABAN di panel** (kesalahan mock kelima soal 12): (1) `question`
+> panel **tak boleh** memuat urutan kalimat benar (mis. `（ただしい じゅん：A→B→C→D）`) —
+> user harus menyusun sendiri; (2) `description` opsi **tak boleh** menyebut posisi
+> potongan (mis. "posisi ★③", "slot ①") — itu menunjuk kunci langsung. `description`
+> untuk narabekae **kosongkan** atau paling banter beri **arti kata netral**, tak pernah
+> posisi/urutan. Rangka slot `＿①＿ ＿②＿ ＿★③＿ ＿④＿` boleh (itu kerangka soal, bukan
+> jawaban). Bila potongan pola lemah perlu bantuan, hint cukup **nama pola** (mis.
+> "ingat: まえに butuh 辞書形"), BUKAN urutannya.
 
 **`DK-dokkai` — Bacaan pendek (~60–80 kata).** Tampilkan 1 paragraf pakai pola in-scope,
 lalu 2 pertanyaan pemahaman. Semua kanji berfurigana.

@@ -43,9 +43,11 @@ pasangan lawan-arti ini, bukan kosakata acak._
    di mock ke-4 (matikan lampu) DAN ke-5 (nyalakan lampu) — selalu tertukar arah. Keduanya
    **🔴 leech Anki**. Jangkar: `つける`=ON (nyalakan/pasang), `けす`=OFF (matikan/hapus).
    Waspadai juga pasangan `あける↔しめる`, `はじまる↔おわる`. Ini menyeret `MG-bunmyaku` → 80%.
-2. ℹ️ **`DK-narabekae`** — 83% (5/6), naik dari 80%; soal まえに sesi ini **benar** (format
-   panel dengan rangka slot `①②★③④` + urutan benar di hint membantu — lihat
-   [[quiz-susun-kalimat-format]]). Tetap subtipe kedua-terendah; data masih tipis.
+2. ⚠️ **`DK-narabekae`** — 83% (5/6) **TAK RELIABEL**: soal 12 (まえに) tercatat benar tapi
+   panel **membocorkan jawaban** (urutan kalimat di `question` + posisi "★③" di
+   `description`), jadi bukan bukti paham urutan. Aturan anti-bocor sudah ditambahkan
+   (lihat log 2026-08-25 & [[quiz-susun-kalimat-format]]). Uji ulang tanpa hint di sesi
+   berikutnya untuk skor jujur. Tetap subtipe kedua-terendah; data tipis.
 
 **Sinyal yang perlu diperhatikan:**
 - ✅ **Sesi 2 (文法・読解) 8/8 SEMPURNA** — DK-bunpou 3/3 (で aktivitas, いった たことがあります,

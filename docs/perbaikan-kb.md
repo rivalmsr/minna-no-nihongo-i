@@ -21,6 +21,17 @@ atau update skor), tambahkan satu blok di paling atas daftar di bawah, format:
 
 ---
 
+### 2026-08-25 — Panel susun kalimat membocorkan jawaban
+- **Problem:** `/jlpt` mock kelima soal 12 (DK-narabekae), panel AskUserQuestion bocor
+  dua kali: (a) `question` memuat urutan benar `（ただしい じゅん：ごはんを→たべる→まえに→てを）`,
+  (b) `description` tiap opsi menyebut posisinya (`まえに → "posisi ★③"`). Jawaban jadi
+  terbaca tanpa mikir → skor "benar" palsu & tujuan susun kalimat gagal.
+- **Fix:** aturan eksplisit — panel narabekae **tak boleh** memuat urutan kalimat benar
+  maupun posisi per-potongan; `description` dikosongkan/arti netral; hint pola lemah cukup
+  **nama pola**, bukan urutan. Rangka slot `①②★③④` tetap boleh (kerangka soal).
+- **File:** `.claude/skills/jlpt/SKILL.md`, `.claude/skills/quiz/SKILL.md`, memory
+  `quiz-susun-kalimat-format`
+
 ### 2026-08-25 — MG-bunmyaku & distraktor rancu (satu jawaban benar)
 - **Problem:** beberapa soal pilihan ganda punya **>1 jawaban sah**, jadi rancu:
   (a) `/jlpt` soal 6 「なつやすみに 家族と（　）を します」 → `りょこう` **dan** `さんぽ`
