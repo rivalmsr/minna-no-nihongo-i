@@ -21,6 +21,22 @@ atau update skor), tambahkan satu blok di paling atas daftar di bawah, format:
 
 ---
 
+### 2026-08-26 — Keterangan opsi panel asimetris jadi tell halus
+- **Problem:** `/quiz` sesi sweep L4-8 (soal 6, `おいしくないです`), di panel AskUserQuestion
+  **hanya opsi BENAR** yang diberi `description` (`negatif い-adjektiva`), sedangkan tiga
+  distraktor (bentuk keliru `おいしいじゃありません`/`おいしくです`/`おいしいでした`) diisi `—`. Pola
+  "cuma jawaban benar yang punya keterangan, distraktor kosong" jadi **bocoran halus** —
+  user bisa menebak kunci dari mana keterangan berada, bukan dari pemahaman. Skor jadi
+  kurang jujur. (Berbeda dari soal partikel yang SEMUA opsinya diberi fungsi — itu sah.)
+- **Fix:** aturan simetri `description` panel — **dalam satu soal, keterangan opsi harus
+  konsisten**: entah (a) SEMUA opsi bermakna diberi gloss fungsi/arti netral yang tak
+  menunjuk kunci (gaya soal partikel), atau (b) SEMUA opsi `—` bila distraktornya sekadar
+  bentuk-salah/mengada-ada (nilai bentuk sendiri). **Jangan** hanya opsi benar yang diberi
+  keterangan sementara distraktor `—` (atau sebaliknya). Tetap tunduk pada *hint fading*:
+  porsi gloss dipudarkan untuk pola 🟢 — tapi pemudaran berlaku **merata ke semua opsi**,
+  bukan menyisakan satu opsi bergloss sendirian.
+- **File:** `.claude/skills/quiz/SKILL.md`, memory `quiz-panel-hint-symmetry`
+
 ### 2026-08-25 — Cerita bacaan hilang saat panel terbuka
 - **Problem:** untuk soal bacaan (dokkai/joho), cerita cuma dicetak di chat lalu panel
   terpisah di bawah. Saat panel terbuka cerita **tak terlihat**, user harus scroll ke

@@ -158,6 +158,13 @@ User menjawab **semua soal dulu**, koreksi & analisis baru muncul **di akhir**.
   - `options` = tiap opsi; `label` = jawaban (mis. `に`), `description` = arti/petunjuk singkat.
     **Scaffolding fade:** kurangi porsi hint di `description` untuk pola yang sudah 🟢
     (netral/tanpa bocoran); pola 🔴/🟡/⚪ tetap boleh hint penuh. Jangan cabut mendadak.
+    **Simetri `description` (WAJIB):** dalam **satu soal**, keterangan opsi harus konsisten —
+    entah (a) SEMUA opsi bermakna diberi gloss fungsi/arti **netral yang tak menunjuk kunci**
+    (gaya soal partikel), atau (b) SEMUA opsi `—` bila distraktornya sekadar bentuk-salah/
+    mengada-ada (user menilai bentuknya sendiri). **JANGAN** hanya opsi benar yang diberi
+    keterangan sementara distraktor `—` (atau sebaliknya) — itu jadi **tell halus**, user
+    menebak kunci dari letak keterangan bukan pemahaman. Hint fading berlaku **merata ke
+    semua opsi**, bukan menyisakan satu opsi bergloss sendirian.
   - **Taruh opsi benar di posisi acak & sebar merata (1/2/3/4) lintas soal — JANGAN
     menaruh jawaban benar di nomor 1 terus** (kalau selalu di posisi sama, user menebak
     dari pola bukan pemahaman).

@@ -7,13 +7,21 @@ Diperbarui otomatis oleh skill `/quiz` setiap selesai sesi. Melacak akurasi
 **Ambang status:** akurasi <60% 🔴 LEMAH · 60–79% 🟡 · ≥80% 🟢
 (butuh minimal **3 attempt** sebelum status dihitung; di bawah itu = ⚪ belum cukup data)
 
-_Terakhir diperbarui: 2026-08-25 · total sesi: 14_
+_Terakhir diperbarui: 2026-08-26 · total sesi: 15_
 
 ---
 
 ## Per pola kalimat
 | Tag | Benar | Total | Akurasi | Status |
 |-----|-------|-------|---------|--------|
+| L4-jam | 0 | 1 | 0% | ⚪ |
+| L5-で-transport | 1 | 1 | 100% | ⚪ |
+| L6-を-objek | 1 | 1 | 100% | ⚪ |
+| L7-に-memberi | 0 | 1 | 0% | ⚪ |
+| L7-もう | 1 | 1 | 100% | ⚪ |
+| L8-adj-negatif | 1 | 1 | 100% | ⚪ |
+| L8-adj-benda | 1 | 1 | 100% | ⚪ |
+| L8-どう-どんな | 1 | 1 | 100% | ⚪ |
 | L9-から-sebab | 2 | 2 | 100% | ⚪ |
 | L9-が-suka | 1 | 1 | 100% | ⚪ |
 | L9-が-paham | 1 | 1 | 100% | ⚪ |
@@ -29,10 +37,11 @@ _Terakhir diperbarui: 2026-08-25 · total sesi: 14_
 | L12-より | 1 | 1 | 100% | ⚪ |
 | L12-のほうが | 1 | 1 | 100% | ⚪ |
 | L12-lampau-positif | 1 | 1 | 100% | ⚪ |
-| L13-に-tujuan | 1 | 1 | 100% | ⚪ |
-| L14-te-konjugasi | 20 | 22 | 91% | 🟢 |
+| L13-に-tujuan | 1 | 2 | 50% | ⚪ |
+| L13-を-meninggalkan | 1 | 1 | 100% | ⚪ |
+| L14-te-konjugasi | 22 | 24 | 92% | 🟢 |
 | L14-てください | 4 | 5 | 80% | 🟢 |
-| L14-ています-progresif | 3 | 4 | 75% | 🟡 |
+| L14-ています-progresif | 4 | 5 | 80% | 🟢 |
 | L14-ましょうか | 1 | 1 | 100% | ⚪ |
 | L15-てもいいです | 1 | 1 | 100% | ⚪ |
 | L15-てはいけません | 1 | 1 | 100% | ⚪ |
@@ -56,9 +65,9 @@ _Terakhir diperbarui: 2026-08-25 · total sesi: 14_
 | Partikel | Benar | Total | Akurasi | Status |
 |----------|-------|-------|---------|--------|
 | から | 2 | 2 | 100% | ⚪ |
-| に | 22 | 27 | 81% | 🟢 |
-| で | 6 | 6 | 100% | 🟢 |
-| を | 4 | 4 | 100% | 🟢 |
+| に | 22 | 28 | 79% | 🟡 |
+| で | 7 | 7 | 100% | 🟢 |
+| を | 6 | 6 | 100% | 🟢 |
 | の | 1 | 1 | 100% | ⚪ |
 | が | 7 | 7 | 100% | 🟢 |
 | へ | 1 | 1 | 100% | ⚪ |
@@ -66,12 +75,17 @@ _Terakhir diperbarui: 2026-08-25 · total sesi: 14_
 ## Per lesson
 | Lesson | Benar | Total | Akurasi | Status |
 |--------|-------|-------|---------|--------|
+| Lesson 4 | 0 | 1 | 0% | ⚪ |
+| Lesson 5 | 1 | 1 | 100% | ⚪ |
+| Lesson 6 | 1 | 1 | 100% | ⚪ |
+| Lesson 7 | 1 | 2 | 50% | ⚪ |
+| Lesson 8 | 4 | 4 | 100% | 🟢 |
 | Lesson 9 | 6 | 6 | 100% | 🟢 |
 | Lesson 10 | 26 | 30 | 87% | 🟢 |
 | Lesson 11 | 3 | 3 | 100% | 🟢 |
 | Lesson 12 | 3 | 3 | 100% | 🟢 |
-| Lesson 13 | 1 | 1 | 100% | ⚪ |
-| Lesson 14 | 20 | 22 | 91% | 🟢 |
+| Lesson 13 | 2 | 3 | 67% | 🟡 |
+| Lesson 14 | 22 | 24 | 92% | 🟢 |
 | Lesson 15 | 3 | 3 | 100% | 🟢 |
 | Lesson 16 | 3 | 3 | 100% | 🟢 |
 | Lesson 17 | 10 | 11 | 91% | 🟢 |
@@ -81,25 +95,27 @@ _Terakhir diperbarui: 2026-08-25 · total sesi: 14_
 ---
 
 ## Weak areas (prioritas soal berikutnya)
-_Tidak ada 🔴. Sesi 2026-08-25 (sesi 14, `probe L11/L12/L15 untested`) skor **12/12 (100%)** —
-PERFECT lagi. Sesi ini **membuka wilayah yang belum pernah diuji** & semuanya bersih:
-**L11** (まい / 頻度に / かかります), **L12** (より / のほうが / い-adj lampau かった — tak tertipu
-むずかしいでした), **L15** (てもいいです / **しりません** — jebakan しっていません dilewati). Verb 🔴 Anki
-(とります/でかけます/おります) dipakai sbg kendaraan, semua benar. **Lesson 11/12/15/16 → 🟢**
-(baru punya ≥3 attempt). Catatan mutu soal: **soal 8 (てはいけません) rancu** — distraktor
-「なりません」 juga bentuk larangan sah (〜てはなりません), harusnya diganti opsi yang jelas salah._
-1. 🟡 **L14-ています-progresif** — 75% (3/4). Satu-satunya 🟡 tersisa & data tipis; naik dari 67%
-   (kini `およいで` benar). Akar 音便 sudah beres — butuh **1 attempt lagi** untuk tembus 🟢.
-   Bukan prioritas mendesak.
+_Tidak ada 🔴. Sesi 2026-08-26 (sesi 15, `sweep L4-8/L13 untested`) skor **9/12 (75%)** —
+sengaja **menyapu bab awal yang belum pernah diuji** dan berhasil **memunculkan 2 wilayah
+🟡 pertama** (sebelumnya semua 🟢/⚪). L14-progresif tembus **🟢** (`よんで` 音便 benar → 4/5).
+3 salah semuanya membuka celah baru — lihat prioritas di bawah._
+1. 🟡 **Partikel に (konteks memberi/menerima & tujuan)** — 79% (22/28). Turun dari 🟢 81%.
+   Miss utama: beri-arah `友達と` seharusnya `友達に` (おしえます「kepada」= に, bukan と = "bersama").
+   Akar: **fungsi に "kepada/dari" (L7) belum mantap**. Sisipkan soal あげます/もらいます/かします/
+   おしえます + に. (Penempatan に dasar — keberadaan/waktu — masih kuat.)
+2. 🟡 **Lesson 13 — に-tujuan (ます-stem)** — 67% (2/3). `かばんを かい に 行きます` dijawab `かう`
+   (辞書形). Pola "pergi **untuk** …" pakai **ます-stem + に 行きます**, bukan bentuk kamus.
+   Perlu drill stem: 見（み）に / 買（か）い に / 食事（しょくじ）に 行きます.
+3. ⚪ **L4-jam (baca jam khusus)** — 0/1. `7時` dijawab **ななじ**, kunci **しちじ**. Baca jam
+   ireguler 4時=よじ / 7時=しちじ / 9時=くじ belum otomatis. Data tipis; sisipkan lagi.
 
 **Sinyal yang perlu diperhatikan:**
-- ✅ **Cakupan grammar makin LUAS & bersih** — L11 (satuan hitung), L12 (perbandingan), L15
-  (izin/larangan/keadaan) kini punya data & semuanya 🟢. Sebelumnya nol data.
-- ✅ **Jebakan bentuk khusus dilewati** — い-adj lampau `かった` (bukan いでした), `しりません`
-  (bukan しっていません), 音便 ぐ→いで (bukan んで). Diskriminasi bentuk sudah kuat.
-- ✅ **音便 grup I & 4 bentuk verb pokok (て・ない・辞書・た) semua 🟢.** Konjugasi bukan titik lemah.
-- ✅ **Partikel に 🟢 (81%), を 🟢, で 🟢, が 🟢.**
-- **Rekomendasi:** grammar N5 Minna I **hampir seluruhnya tersentuh & 🟢**. Sisa masih ⚪ tipis:
-  L4–L8, L13, sebagian subpola L11/L12. Pertimbangkan: (a) **`/quiz lesson 4-8`** menyapu bab
-  awal yang belum pernah diuji, (b) **bab baru L20+** bila dicatat, atau (c) **`/jlpt` mock**
-  uji terpadu tertulis. `/quiz review` kurang perlu — tak ada 🔴 & cuma 1 🟡 tipis.
+- ✅ **Bab awal L5/L6/L8 bersih** — で-transport, を-objek, い-adj neg (`おいしくない`, bukan
+  `おいしいじゃありません`), な-adj benda (`にぎやかな`), どんな+benda: semua benar sekali coba.
+- ✅ **L14-progresif → 🟢** (音便 `よんで`). Semua bentuk verb pokok (て・ない・辞書・た) tetap 🟢.
+- ⚠️ **に multi-fungsi jadi titik lemah baru** — bukan penempatan dasar, tapi **fungsi
+  beri-terima "kepada/dari" (L7)** & **stem+に 行きます (L13)** — dua bab yang paling tipis datanya.
+  Justru target bagus untuk sesi berikut.
+- **Rekomendasi:** **`/quiz lesson 7`** (に beri-terima + もう) atau **`/quiz lesson 13`**
+  (に-tujuan stem + を meninggalkan tempat) untuk mengunci 2 wilayah 🟡 baru → naikkan ke 🟢.
+  Menyapu lanjut: **`/quiz lesson 4-6`** (L4 baca jam belum mantap).
