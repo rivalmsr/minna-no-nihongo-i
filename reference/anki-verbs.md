@@ -143,5 +143,5 @@ Grup II: buang ます, tempel て／ない／る／た langsung. Grup III: `し�
 
 ---
 
-_Auto-generated 2026-08-21 oleh `scripts/sync-anki-verbs.sh` dari
+_Auto-generated 2026-08-26 oleh `scripts/sync-anki-verbs.sh` dari
 `learn-anki/Minna no Nihongo I/MNN*.txt`. Total 87 verb._
