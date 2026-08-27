@@ -7,7 +7,7 @@ Diperbarui otomatis oleh skill `/quiz` setiap selesai sesi. Melacak akurasi
 **Ambang status:** akurasi <60% 🔴 LEMAH · 60–79% 🟡 · ≥80% 🟢
 (butuh minimal **3 attempt** sebelum status dihitung; di bawah itu = ⚪ belum cukup data)
 
-_Terakhir diperbarui: 2026-08-26 · total sesi: 17_
+_Terakhir diperbarui: 2026-08-27 · total sesi: 18_
 
 ---
 
@@ -17,8 +17,8 @@ _Terakhir diperbarui: 2026-08-26 · total sesi: 17_
 | L4-jam | 0 | 1 | 0% | ⚪ |
 | L5-で-transport | 1 | 1 | 100% | ⚪ |
 | L6-を-objek | 1 | 1 | 100% | ⚪ |
-| L7-に-memberi | 3 | 4 | 75% | 🟡 |
-| L7-に-menerima | 3 | 4 | 75% | 🟡 |
+| L7-に-memberi | 5 | 6 | 83% | 🟢 |
+| L7-に-menerima | 5 | 6 | 83% | 🟢 |
 | L7-で-alat | 2 | 2 | 100% | ⚪ |
 | L7-で-bahasa | 2 | 2 | 100% | ⚪ |
 | L7-もう | 2 | 2 | 100% | ⚪ |
@@ -44,25 +44,25 @@ _Terakhir diperbarui: 2026-08-26 · total sesi: 17_
 | L13-を-meninggalkan | 3 | 3 | 100% | 🟢 |
 | L13-で-vs-を | 2 | 2 | 100% | ⚪ |
 | L13-ています-keadaan | 0 | 1 | 0% | ⚪ |
-| L14-te-konjugasi | 22 | 24 | 92% | 🟢 |
+| L14-te-konjugasi | 23 | 25 | 92% | 🟢 |
 | L14-てください | 4 | 5 | 80% | 🟢 |
 | L14-ています-progresif | 4 | 5 | 80% | 🟢 |
 | L14-ましょうか | 1 | 1 | 100% | ⚪ |
 | L15-てもいいです | 1 | 1 | 100% | ⚪ |
 | L15-てはいけません | 1 | 1 | 100% | ⚪ |
-| L15-ています-keadaan | 1 | 1 | 100% | ⚪ |
-| L16-てから | 2 | 2 | 100% | ⚪ |
+| L15-ています-keadaan | 2 | 3 | 67% | 🟡 |
+| L16-てから | 2 | 3 | 67% | 🟡 |
 | L16-に-naik | 1 | 1 | 100% | ⚪ |
-| L17-ない-konjugasi | 9 | 10 | 90% | 🟢 |
+| L17-ない-konjugasi | 10 | 11 | 91% | 🟢 |
 | L17-なければなりません | 4 | 4 | 100% | 🟢 |
 | L17-なくてもいいです | 4 | 5 | 80% | 🟢 |
-| L17-ないでください | 1 | 1 | 100% | ⚪ |
+| L17-ないでください | 2 | 2 | 100% | ⚪ |
 | L18-ことができます | 8 | 9 | 89% | 🟢 |
-| L18-まえに | 5 | 6 | 83% | 🟢 |
+| L18-まえに | 6 | 7 | 86% | 🟢 |
 | L18-辞書形-konjugasi | 9 | 11 | 82% | 🟢 |
 | L19-たことがあります | 10 | 11 | 91% | 🟢 |
 | L19-た-konjugasi | 14 | 15 | 93% | 🟢 |
-| L19-なります | 19 | 22 | 86% | 🟢 |
+| L19-なります | 21 | 24 | 88% | 🟢 |
 | L19-たり | 11 | 12 | 92% | 🟢 |
 | L19-に-vs-を-のぼる | 5 | 5 | 100% | 🟢 |
 
@@ -70,7 +70,7 @@ _Terakhir diperbarui: 2026-08-26 · total sesi: 17_
 | Partikel | Benar | Total | Akurasi | Status |
 |----------|-------|-------|---------|--------|
 | から | 2 | 2 | 100% | ⚪ |
-| に | 27 | 33 | 82% | 🟢 |
+| に | 29 | 35 | 83% | 🟢 |
 | で | 12 | 12 | 100% | 🟢 |
 | を | 9 | 9 | 100% | 🟢 |
 | の | 1 | 1 | 100% | ⚪ |
@@ -83,45 +83,43 @@ _Terakhir diperbarui: 2026-08-26 · total sesi: 17_
 | Lesson 4 | 0 | 1 | 0% | ⚪ |
 | Lesson 5 | 1 | 1 | 100% | ⚪ |
 | Lesson 6 | 1 | 1 | 100% | ⚪ |
-| Lesson 7 | 12 | 14 | 86% | 🟢 |
+| Lesson 7 | 16 | 18 | 89% | 🟢 |
 | Lesson 8 | 4 | 4 | 100% | 🟢 |
 | Lesson 9 | 6 | 6 | 100% | 🟢 |
 | Lesson 10 | 26 | 30 | 87% | 🟢 |
 | Lesson 11 | 3 | 3 | 100% | 🟢 |
 | Lesson 12 | 3 | 3 | 100% | 🟢 |
 | Lesson 13 | 13 | 15 | 87% | 🟢 |
-| Lesson 14 | 22 | 24 | 92% | 🟢 |
-| Lesson 15 | 3 | 3 | 100% | 🟢 |
-| Lesson 16 | 3 | 3 | 100% | 🟢 |
-| Lesson 17 | 10 | 11 | 91% | 🟢 |
-| Lesson 18 | 14 | 16 | 88% | 🟢 |
-| Lesson 19 | 46 | 52 | 88% | 🟢 |
+| Lesson 14 | 23 | 25 | 92% | 🟢 |
+| Lesson 15 | 4 | 5 | 80% | 🟢 |
+| Lesson 16 | 3 | 4 | 75% | 🟡 |
+| Lesson 17 | 11 | 12 | 92% | 🟢 |
+| Lesson 18 | 15 | 17 | 88% | 🟢 |
+| Lesson 19 | 48 | 54 | 89% | 🟢 |
 
 ---
 
 ## Weak areas (prioritas soal berikutnya)
-_Tidak ada 🔴. Sesi 2026-08-26 (sesi 17, `lesson 13` fokus stem+に行きます) skor **11/12 (92%)** —
-**menutup 🟡 Lesson 13**: 67% → **🟢 87%**. Target utama **stem + に 行きます tembus 5/5**
-(買い/泳ぎ/食べ+に/見/遊び — tak satu pun tertipu 辞書形/て形) → `L13-に-tujuan` **🟢 86%**. を
-meninggalkan tempat 4/4 (えきを/公園を/うちを + おります・でます) → **🟢 100%**. 1 salah (Soal 10):
-`もう（　）`status menikah dijawab **結婚します**, kunci **結婚しています** (ています = keadaan berlanjut,
-bukan kejadian akan datang)._
-1. 🟡 **Arah beri↔terima (verb あげる/もらう/かす/かりる)** — `L7-に-memberi` 75% (3/4) &
-   `L7-に-menerima` 75% (3/4). Partikel に sudah beres; sisa = **menentukan verb dari arah**
-   saat に bisa "kepada" ATAU "dari". Drill konteks eksplisit (母**に** もらう vs 母**に** あげる).
-2. ⚪ **L13-ています-keadaan (結婚しています)** — 0/1 baru. Bingung ています *keadaan/status*
-   (L13: menikah/tahu/tinggal) vs bentuk polos 〜します. Beda pula dari ています *progresif*
-   (L14 "sedang…"). Data tipis; sisipkan soal keadaan (結婚して/住んで/知って います).
-3. ⚪ **L4-jam (baca jam khusus)** — 0/1. `7時` dijawab **ななじ**, kunci **しちじ**. Baca jam
-   ireguler 4時=よじ / 7時=しちじ / 9時=くじ belum otomatis. Data tipis; sisipkan lagi.
+_Tidak ada 🔴. Sesi 2026-08-27 (sesi 18, adaptif: L7 beri-terima + celah mock JLPT) skor
+**10/12 (83%)** — **menutup 🟡 arah beri-terima L7**: `L7-に-memberi` & `L7-に-menerima`
+keduanya **75% → 🟢 83%** (soal 1–4 benar: あげる/かりる direction + に). Tapi 2 pola lain jatuh
+ke 🟡: **てから** (attachment) & **ています-keadaan** (jebakan しりません)._
+1. 🟡 **L16-てから (attachment て形+から)** — 67% (2/3). `シャワーを 浴びて（　）ねます` dijawab
+   **あとで**, kunci **から**. Arti "setelah" benar, tapi **bentuk salah**: `て形+から` (浴びてから)
+   vs `あとで` yang butuh **た形/Nの** (浴びた あとで). Jangkar: て形→**てから**, た形→**あとで**.
+2. 🟡 **L15-ています-keadaan (jebakan しりません)** — 67% (2/3). `しって いますか`→negatif dijawab
+   **しっていません**, kunci **しりません** ("tahu" negatif ISTIMEWA, bukan しって いません). 住んで
+   います (keadaan) sudah benar; yang meleset khusus negatif しる. Sisipkan lagi しって/しりません.
+3. ⚪ **L4-jam (baca jam khusus)** — 0/1. `7時`→ななじ, kunci しちじ. Jam ireguler 4/7/9 belum
+   otomatis. Data tipis; sisipkan lagi.
 
 **Sinyal yang perlu diperhatikan:**
-- ✅ **Dua 🟡 dari sesi 15 sudah DITUTUP** dalam 2 sesi: partikel に (sesi 16) & stem+に行きます +
-  Lesson 13 (sesi ini). Diskriminasi 辞書形↔stem↔て形 pada pola tujuan sangat kuat (5/5).
-- ✅ **Partikel semua 🟢**: に 82%, を 100%, で 100%, が 100%.
-- ⚠️ **Pola ています bercabang** — user perlu bedakan 3 makna: progresif (L14 "sedang", sudah 🟢),
-  **keadaan/status (L13, baru meleset)**, kebiasaan (L15). Konteks "もう + status" → keadaan.
-- **Rekomendasi:** grammar N5 nyaris seluruhnya 🟢 & tak ada 🔴. Sisa 🟡 tinggal **arah beri-terima
-  (L7)**. Pilihan: (a) **`/jlpt` mock** cek terpadu (celah grammar sudah menyempit — waktu tepat),
-  (b) **`/quiz review`** sapu 🟡 beri-terima + sisipan ています-keadaan & baca jam, atau
-  (c) **`/quiz lesson 4-6`** tuntaskan bab awal yang masih ⚪.
+- ✅ **Arah beri-terima L7 DITUTUP → 🟢** — verb direction (あげる/かりる) + partikel に semua
+  benar. 🟡 yang dikejar 2 sesi tuntas. まえに juga benar (来るまえに) → 辞書形+まえに mantap.
+- ⚠️ **Pasangan waktu belum sepenuhnya beres** — まえに ✓ tapi **てから↔あとで** masih tertukar
+  (bukan makna, tapi bentuk sambung て形/た形). Ini sisa dari celah mock JLPT ke-6.
+- ⚠️ **ています keadaan/status**: yang meleset spesifik **negatif しる = しりません** (jebakan
+  kronis L15, muncul lagi). Bentuk positif (住んでいます) & progresif (L14) sudah 🟢.
+- **Rekomendasi:** tak ada 🔴; 2 🟡 baru sempit & spesifik (bentuk sambung, bukan konsep).
+  **`/quiz review`** untuk drill てから↔あとで + しりません, atau **`/quiz lesson 16`** (て urutan/
+  てから + が-は topik). Sisa ⚪ tipis: L4 baca jam.
