@@ -21,6 +21,20 @@ atau update skor), tambahkan satu blok di paling atas daftar di bawah, format:
 
 ---
 
+### 2026-08-27 — Ringkasan hasil boros token; pisah ke /summary
+- **Problem:** step 7 `/quiz` & `/jlpt` mencetak analisis PENUH tiap sesi (tabel semua
+  soal benar+salah, breakdown per pola/partikel/lesson/subtipe, 3 area terlemah,
+  rekomendasi panjang) — boros token padahal KB ini berprinsip hemat. Sebagian besar
+  output berulang & bisa dilihat on-demand.
+- **Fix:** step 7 kedua skill diringkas → hanya **skor + tabel soal SALAH saja +
+  pembahasan ringkas + 1 baris area terlemah + hint `/summary`**. Analisis lengkap
+  dipindah ke **skill baru `/summary`** (`/summary` = tracker quiz, `/summary jlpt` =
+  tracker mock) yang **read-only** membaca `evaluation.md`/`jlpt-evaluation.md` +
+  baris teratas `history.md`. **Step 6 (update tracker) tetap jalan penuh** — yang
+  diringkas hanya tampilan chat, bukan pemeliharaan data.
+- **File:** `.claude/skills/quiz/SKILL.md`, `.claude/skills/jlpt/SKILL.md`,
+  `.claude/skills/summary/SKILL.md` (baru), `CLAUDE.md`, memory `quiz-summary-ringkas`
+
 ### 2026-08-26 — Keterangan opsi panel asimetris jadi tell halus
 - **Problem:** `/quiz` sesi sweep L4-8 (soal 6, `おいしくないです`), di panel AskUserQuestion
   **hanya opsi BENAR** yang diberi `description` (`negatif い-adjektiva`), sedangkan tiga

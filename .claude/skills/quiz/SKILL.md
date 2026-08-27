@@ -194,14 +194,21 @@ Tambah 1 entri **paling atas** di tabel `progress/history.md`:
 `| YYYY-MM-DD | <cakupan> | <N> | <benar>/<N> (xx%) | <catatan singkat> |`
 (gunakan tanggal hari ini).
 
-### 7. Tampilkan hasil + analisis
-Ringкас ke user:
-- **Skor**: benar/total (persen).
-- **Per pola / partikel / lesson**: akurasi sesi ini (highlight yang salah).
-- **3 area terlemah** saat ini (dari evaluation.md yang sudah diupdate).
-- **Rekomendasi**: materi mana yang perlu diulang + saran `/quiz review` atau
-  `/quiz lesson X`.
-- Konfirmasi file `progress/` sudah diperbarui.
+### 7. Tampilkan hasil — RINGKAS (hemat token)
+Default tampilan chat **RINGKAS** (hemat token; analisis lengkap pindah ke `/summary`):
+- **Skor**: benar/total (persen), satu baris.
+- **Tabel HANYA soal yang SALAH** — kolom `# · pola · jawabanmu · kunci`. Jangan tampilkan
+  baris soal benar. Kanji tetap berfurigana. Kalau **semua benar** → skor + ucapan singkat,
+  tanpa tabel.
+- **Pembahasan ringkas per soal salah** — 1 baris tiap salah (kaitkan ke pola/lesson).
+- **1 baris "area terlemah teratas"** (tag + akurasi, dari evaluation.md yang sudah diupdate).
+- **Baris penutup:** `→ /summary untuk rincian lengkap (per pola/partikel/lesson, 3 area
+  terlemah, rekomendasi)`.
+
+**JANGAN** cetak breakdown per pola/partikel/lesson, daftar 3 area terlemah lengkap, atau
+rekomendasi panjang di sini — itu tugas `/summary`. **Step 6 (update tracker) tetap jalan
+penuh**; yang diringkas hanya tampilan chat, bukan pemeliharaan data. Konfirmasi file
+`progress/` cukup **implisit** (tak perlu kalimat khusus).
 
 ## Format tampilan (kanji besar)
 

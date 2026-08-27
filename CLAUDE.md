@@ -34,6 +34,7 @@ progress/
 scripts/sync-anki-verbs.sh        regen anki-verbs.md dari learn-anki/*.txt (gitignored)
 scripts/sync-anki-weak-items.sh   regen anki-weak-items.md dari collection.anki2 (Anki desktop)
 .claude/skills/quiz/         skill /quiz (detail operasional lengkap)
+.claude/skills/summary/      skill /summary (rincian lengkap hasil — pelengkap ringkasan ringkas /quiz & /jlpt)
 .claude/skills/sync-anki/    skill /sync-anki (refresh anki-verbs.md & anki-weak-items.md)
 docs/cara-kerja.md           peta flow & logika bisnis KB (diagram)
 docs/perbaikan-kb.md         log perbaikan sistem/aturan (problem→fix→tanggal)
@@ -87,6 +88,11 @@ Daftar pelajaran lengkap (judul + topik + status) ada di tabel `README.md`.
     panel AskUserQuestion** (jangan copot furigana untuk meringkas panel; kalau
     `（　）` dipakai sbg blank, taruh furigana di luar blank: `大学生（だいがくせい）（　）`).
   - Soal susun kalimat (文法2) pakai format nomor 1–4 + posisi ★ gaya JLPT asli.
+  - **Ringkasan hasil = RINGKAS (hemat token).** Setelah `/quiz` & `/jlpt`, tampilan chat
+    hanya: skor + **tabel soal SALAH saja** + pembahasan ringkas + 1 baris area terlemah.
+    Breakdown penuh (per pola/partikel/lesson, 3 area terlemah, rekomendasi) diminta lewat
+    **`/summary`** (`/summary jlpt` untuk tracker mock). Update tracker tetap jalan penuh —
+    yang diringkas hanya tampilan. Skill: `.claude/skills/summary/SKILL.md`.
 - **Hemat token:** baca **anchor** lesson (header + Topik + "Ringkasan cepat", ~20 baris),
   bukan file utuh. Detail pola/partikel/kosakata dibaca on-demand via `Grep`. Jangan
   `Read` utuh `vocabulary.md` / `particles.md` / lesson penuh saat quiz.

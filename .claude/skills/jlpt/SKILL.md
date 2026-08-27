@@ -165,14 +165,21 @@ Tambah 1 entri **paling atas** di tabel `progress/history.md`:
 (gunakan tanggal hari ini; label diawali `JLPT` agar beda dari baris `/quiz`).
 **Jangan** sentuh `progress/evaluation.md`.
 
-### 7. Tampilkan hasil + analisis
-- **Skor total** + skor **per sesi** (Sesi 1 vs Sesi 2).
-- **Per subtipe:** akurasi sesi ini (highlight yang salah).
-- **Subtipe terlemah** saat ini (dari `jlpt-evaluation.md` yang sudah diupdate).
-- **Rekomendasi:** subtipe yang perlu diasah + saran `/jlpt review` atau `/jlpt moji`/
-  `/jlpt bunpou`. Kalau kelemahan berupa pola grammar tertentu, arahkan juga ke
-  `/quiz review`.
-- Konfirmasi `progress/jlpt-evaluation.md` & `history.md` sudah diperbarui.
+### 7. Tampilkan hasil — RINGKAS (hemat token)
+Default tampilan chat **RINGKAS** (analisis lengkap pindah ke `/summary jlpt`):
+- **Skor total** + skor **per sesi** (Sesi 1 vs Sesi 2), satu-dua baris.
+- **Tabel HANYA soal yang SALAH** — kolom `# · subtipe · jawabanmu · kunci`. Jangan tampilkan
+  baris soal benar. Kanji tetap berfurigana. Kalau **semua benar** → skor + ucapan singkat,
+  tanpa tabel.
+- **Pembahasan ringkas per soal salah** — 1 baris tiap salah.
+- **1 baris "subtipe terlemah teratas"** (tag + akurasi, dari `jlpt-evaluation.md` yang
+  sudah diupdate).
+- **Baris penutup:** `→ /summary jlpt untuk rincian lengkap (per subtipe, terlemah,
+  rekomendasi)`.
+
+**JANGAN** cetak breakdown per subtipe lengkap, daftar terlemah, atau rekomendasi panjang di
+sini — itu tugas `/summary jlpt`. **Step 6 (update tracker) tetap jalan penuh**; yang
+diringkas hanya tampilan chat. Konfirmasi file cukup **implisit**.
 
 ## Format tampilan (kanji besar)
 
