@@ -11,53 +11,52 @@ memeringkat **weak types** untuk memandu `/jlpt review`.
 **Ambang status:** akurasi <60% 🔴 LEMAH · 60–79% 🟡 · ≥80% 🟢
 (butuh minimal **3 attempt** sebelum status dihitung; di bawah itu = ⚪ belum cukup data)
 
-_Terakhir diperbarui: 2026-08-26 · total sesi: 6_
+_Terakhir diperbarui: 2026-08-27 · total sesi: 7_
 
 ---
 
 ## Sesi 1 — 文字・語彙 (Moji-Goi)
 | Subtipe | Tag | Benar | Total | Akurasi | Status |
 |---------|-----|-------|-------|---------|--------|
-| Baca kanji (cara baca) | `MG-yomi` | 11 | 12 | 92% | 🟢 |
-| Tulis kanji (penulisan) | `MG-hyouki` | 11 | 12 | 92% | 🟢 |
-| Kosakata dalam konteks | `MG-bunmyaku` | 10 | 12 | 83% | 🟢 |
-| Sinonim / 言い換え類義 | `MG-ruigi` | 12 | 12 | 100% | 🟢 |
+| Baca kanji (cara baca) | `MG-yomi` | 13 | 14 | 93% | 🟢 |
+| Tulis kanji (penulisan) | `MG-hyouki` | 13 | 14 | 93% | 🟢 |
+| Kosakata dalam konteks | `MG-bunmyaku` | 12 | 14 | 86% | 🟢 |
+| Sinonim / 言い換え類義 | `MG-ruigi` | 14 | 14 | 100% | 🟢 |
 
 ## Sesi 2 — 文法・読解 (Bunpou-Dokkai)
 | Subtipe | Tag | Benar | Total | Akurasi | Status |
 |---------|-----|-------|-------|---------|--------|
-| Tata bahasa (grammar) | `DK-bunpou` | 14 | 17 | 82% | 🟢 |
-| Susun kalimat (★) | `DK-narabekae` | 6 | 7 | 86% | 🟢 |
-| Bacaan pendek | `DK-dokkai` | 11 | 12 | 92% | 🟢 |
-| Bacaan informasi (info-search) | `DK-joho` | 11 | 12 | 92% | 🟢 |
+| Tata bahasa (grammar) | `DK-bunpou` | 16 | 20 | 80% | 🟢 |
+| Susun kalimat (★) | `DK-narabekae` | 7 | 8 | 88% | 🟢 |
+| Bacaan pendek | `DK-dokkai` | 13 | 14 | 93% | 🟢 |
+| Bacaan informasi (info-search) | `DK-joho` | 13 | 14 | 93% | 🟢 |
 
 ---
 
 ## Weak types (prioritas soal `/jlpt review`)
-_Sesi 2026-08-26 (mock keenam, **15/16 = 94%**): **SEMUA 8 subtipe tetap 🟢.** Sesi 1
-文字・語彙 **8/8 SEMPURNA** — termasuk **つける↔けす AKHIRNYA BENAR** (`エアコンを つけます`, cue
-panas→nyalakan): kelemahan kronis 2 mock beruntun kini tertutup. Juga jukujikun 時計=とけい ✓,
-kanji 🔴 先生/友達/東 ✓. Satu-satunya error = Sesi 2 soal 9: **`まえに`↔`てから`** (「ねる（　）
-はを みがきます」pilih てから, harusnya まえに = "sebelum"). Subtipe terendah kini `DK-bunpou`
-82% — ditarik oleh miss まえに ini._
-1. ⚠️ **`まえに` (sebelum) ↔ `てから` (setelah) tertukar** — soal 9. Bukan cuma makna
-   berlawanan, tapi **bentuk sambung beda**: `まえに` butuh **辞書形** (ねる**まえに**), `てから`
-   butuh **て形** (寝**てから**). Jangkar: 辞書形+まえに = "SEBELUM"; て形+てから = "SETELAH, baru".
-   Sisipkan lagi di `DK-bunpou`/`/quiz` (L16-てから vs L18-まえに).
-2. ✅ **`DK-narabekae` kini RELIABEL** — 86% (6/7). Soal 12 diuji ULANG **tanpa bocoran panel**
-   (rule anti-leak diterapkan: tak ada urutan di `question`, `description` kosong) → **tetap
-   benar** (`かいもの`, pola stem+に行きます). Skor susun kalimat sekarang jujur. Keluar dari
-   daftar "tak reliabel".
+_Sesi 2026-08-27 (mock ketujuh, **15/16 = 94%**): **SEMUA 8 subtipe tetap 🟢.** Sesi 1
+文字・語彙 **8/8 SEMPURNA** lagi (kanji 🔴 先生/時計=とけい ✓, つける benar `でんきを つけます`
+cue gelap→nyalakan). Satu-satunya error = Sesi 2 soal 10: **`はたらく` partikel** (「スーパー
+（　）はたらいて います」pilih に, harusnya で). 🎉 **`まえに↔てから` (soal 9) AKHIRNYA BENAR** —
+lubang kronis mock ke-6 kini tertutup. Subtipe terendah bergeser ke `DK-bunpou` 80% —
+ditarik miss はたらく+で._
+1. ⚠️ **`はたらく` (で) ↔ `つとめる` (に) tertukar** — soal 10, pilih に. Dua verba "bekerja di",
+   partikel beda: **はたらく + で** (tempat aktivitas: スーパー**で**), **つとめる + に** (melekat ke
+   instansi: かいしゃ**に**). Ini **cermin** dari 🟡 `/quiz` `L15-に-vs-で-statis` (dulu keliru
+   つとめる+で; kini keliru はたらく+に) — pola yang sama dilihat dari sisi berlawanan. Jangkar:
+   はたらく=で (aktivitas), つとめる=に (menempel instansi). Sisipkan lagi di `DK-bunpou`/`/quiz`.
+2. 🎉 **`まえに↔てから` TUTUP** — benar di mock ini setelah salah di mock ke-6. Bentuk sambung
+   (辞書形+まえに "sebelum" ↔ て形+てから "setelah") kini dibedakan. Pantau sekali lagi untuk
+   konfirmasi.
 
 **Sinyal yang perlu diperhatikan:**
-- 🎉 **つける↔けす TUTUP** — benar di mock ini setelah salah 2× beruntun. Pasangan lawan-arti
-  kronis akhirnya terkunci (cue konteks membantu). Pantau sekali lagi untuk konfirmasi.
-- ✅ **Kanji 🔴 Anki konsisten** — 先生/友達/東 & jukujikun 時計=とけい benar. Bias kanji 🔴 solid.
-- ✅ **DK-narabekae bersih tanpa hint** — bukti paham urutan, bukan artefak panel bocor.
-- 🔺 **Fokus tersisa = pasangan waktu まえに↔てから** (mirip pola kronis lawan-arti, tapi ini
-  grammar bukan verb). Sempit & spesifik. Selebihnya matang.
-- **Rekomendasi:** JLPT sudah sangat matang (94% dua mock beruntun, semua subtipe 🟢). Sisa
-  lubang tipis = `まえに↔てから`. Drill via `/quiz lesson 16` (てから) + `/quiz lesson 18` (まえに)
-  atau `/jlpt review`. Grammar `/quiz` juga masih punya 🟡 arah beri-terima (L7).
-- **Sesi 2026-08-26 (mock keenam) skor 15/16 (94%)** — level tertinggi bertahan; lubang
-  bergeser dari lawan-arti verb (tutup) ke pasangan waktu まえに↔てから.
+- 🎉 **まえに↔てから TUTUP** — pasangan waktu kronis mock lalu kini benar. Bersamaan dgn `/quiz`
+  yang juga menutup てから↔あとで, trio まえに/てから/あとで matang.
+- ✅ **Sesi 1 文字・語彙 SEMPURNA dua mock beruntun** — kanji 🔴 & つける konsisten. Bias 🔴 solid.
+- 🔺 **Fokus tersisa = pasangan partikel `はたらく で ↔ つとめる に`** — mirip ciri titik lemah user
+  (dua verb sekelas, partikel beda). Sempit & spesifik; identik dengan 🟡 `/quiz` L15. Selebihnya matang.
+- **Rekomendasi:** JLPT sangat matang (94% tiga mock beruntun, semua subtipe 🟢). Sisa lubang
+  tipis = `はたらく+で ↔ つとめる+に`. Drill via `/quiz review` (target `L15-に-vs-で-statis`) atau
+  `/jlpt review`. Grammar `/quiz` juga masih punya 🟡 L4-jam (7時=しちじ) untuk dikonfirmasi.
+- **Sesi 2026-08-27 (mock ketujuh) skor 15/16 (94%)** — level tertinggi bertahan; lubang bergeser
+  dari pasangan waktu (tutup) ke pasangan partikel はたらく/つとめる.

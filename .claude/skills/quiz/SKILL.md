@@ -297,8 +297,13 @@ GRUP I (音便) karena paling sering keliru.
   cek tiap opsi dipasang ke kalimat; kalau >1 opsi menghasilkan kalimat sah & masuk akal,
   soal **rancu** → tambah cue pembeda atau ganti distraktor. Contoh cacat: 〜ては（　）
   dgn opsi いけません **dan** なりません (dua-duanya larangan sah); 「家族と（　）を します」
-  dgn りょこう **dan** さんぽ (dua-duanya masuk akal). Item 🔴 Anki boleh jadi kunci, tapi
-  konteks tetap harus mengunci satu jawaban.
+  dgn りょこう **dan** さんぽ (dua-duanya masuk akal); **自/他動詞** `テストが もう（　）` dgn opsi
+  はじまります **dan** はじまりました (もう ambigu "sudah"/"sebentar lagi" → dua tense 自動詞 sama-sama
+  sah). Item 🔴 Anki boleh jadi kunci, tapi konteks tetap harus mengunci satu jawaban.
+- **Saat menguji 自↔他動詞, jaga tense/aspek KONSTAN.** Beri pasangan 自↔他 pada bentuk yang
+  sama (はじまります↔はじめます), bukan campur tense. Kalau perlu 4 opsi, kunci tense lewat
+  keterangan waktu eksplisit — jangan andalkan `もう` (ambigu). Yang diuji = golongan verba
+  (partikel が vs を), bukan lampau/non-lampau.
 - Nada ramah, dorong belajar. Penjelasan singkat & jelas, dalam Bahasa Indonesia.
 - Angka/tanggal boleh diminta dibaca (mis. `7時` → しちじ) untuk menguji L4.
 - Untuk pola berlawanan yang sering tertukar (で↔に tempat, あります↔います,

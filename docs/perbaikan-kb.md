@@ -21,6 +21,20 @@ atau update skor), tambahkan satu blok di paling atas daftar di bawah, format:
 
 ---
 
+### 2026-08-28 — Soal 自他動詞 rancu karena distraktor tense (もう + はじまる)
+- **Problem:** soal `/quiz review` (sesi 21) yang menguji 自動詞 vs 他動詞 memakai kalimat
+  `テストが もう（　）。` dengan 4 opsi はじめます/はじめました/はじまります/はじまりました. Maksudnya
+  menguji golongan verba (自 vs 他), tapi distraktor mencampur **tense** — dan `もう` valid
+  untuk **dua-duanya**: `もう はじまります` ("sebentar lagi mulai") & `もう はじまりました`
+  ("sudah mulai") sama-sama gramatikal. Jadi antara 2 opsi 自動詞 tak ada satu jawaban pasti
+  → melanggar aturan "distraktor wajib jelas salah, tepat satu benar".
+- **Fix:** saat menguji **自/他動詞**, jaga dimensi lain (tense/aspek) **konstan** — beri hanya
+  2 opsi berpasangan 自↔他 pada tense yang sama (はじまります↔はじめます), atau kalau butuh 4 opsi
+  pakai konteks yang mengunci tense (mis. tambах keterangan waktu eksplisit). Hindari `もう`
+  sebagai satu-satunya penanda waktu karena ambigu (sudah/sebentar lagi). Soal yang terlanjur
+  tampil dihitung **benar** bila user memilih golongan verba yang tepat.
+- **File:** `.claude/skills/quiz/SKILL.md` (prinsip di "Catatan gaya" — contoh soal cacat baru).
+
 ### 2026-08-27 — Ringkasan hasil boros token; pisah ke /summary
 - **Problem:** step 7 `/quiz` & `/jlpt` mencetak analisis PENUH tiap sesi (tabel semua
   soal benar+salah, breakdown per pola/partikel/lesson/subtipe, 3 area terlemah,
