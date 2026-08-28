@@ -1,5 +1,10 @@
 # Evaluasi Latihan — Tracker Kelemahan
 
+> ⚙️ **Tabel AUTO-GENERATED oleh `scripts/kb.py`** (`render`/`record`) dari sumber
+> `progress/attempts.jsonl` + `baseline.json`. **Jangan edit angka tabel dengan tangan**
+> (tertimpa saat render). Prosa **Weak areas** = milik model, disuplai lewat
+> `weak_narrative` saat `kb.py record`. Detail: `docs/engine-bookkeeping-plan.md`.
+
 Diperbarui otomatis oleh skill `/quiz` setiap selesai sesi. Melacak akurasi
 **per pola kalimat**, **per partikel**, dan **per lesson**, lalu memeringkat
 **weak areas** untuk memandu pemilihan soal berikutnya.

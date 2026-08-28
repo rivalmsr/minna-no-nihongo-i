@@ -1,5 +1,8 @@
 # Riwayat Sesi Latihan
 
+> ⚙️ Baris tabel **di-prepend oleh `scripts/kb.py record`** (kolom Catatan = prosa model).
+> Boleh dibaca; hindari edit tangan pada baris lama.
+
 Log ringkas tiap sesi `/quiz` (entri terbaru di atas). Ditambah otomatis oleh skill.
 
 | Tanggal | Cakupan | Jml soal | Skor | Catatan |

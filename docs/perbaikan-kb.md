@@ -21,6 +21,23 @@ atau update skor), tambahkan satu blok di paling atas daftar di bawah, format:
 
 ---
 
+### 2026-08-28 — Bookkeeping /quiz & /jlpt dipindah ke engine deterministik (`kb.py`)
+- **Problem:** pembukuan (hitung skor/akurasi, tentukan status 🔴🟡🟢, ranking weak-area,
+  seleksi cakupan, tulis-ulang tabel) dikerjakan model **manual** tiap sesi → boros token,
+  rawan salah hitung, tak reprodusibel.
+- **Fix:** engine `scripts/kb.py` (Python stdlib, tanpa dependency). Sumber kebenaran =
+  **JSONL append-only** (`progress/attempts.jsonl` + `baseline.json`); tracker `.md` jadi
+  **VIEW yang di-generate**. Perintah: `import` (seed sekali), `render` (regen), `record
+  <session.json>` (ingest sesi → re-render + prepend history), `plan` (seleksi cakupan +
+  bobot 🟡 + `vehicles_red` 🔴 + posisi jawaban tersebar). **Golden test** (`scripts/test_kb.py`)
+  menjamin render **nol-diff** dengan tabel lama sebelum dipercaya. Pemisahan `kind` menjaga
+  `/jlpt` tak menyentuh `evaluation.md`. SKILL.md quiz/jlpt: step 6 → `kb.py record`, step 2 →
+  `kb.py plan`; tracker `.md` ditandai **AUTO-GENERATED**. Batas: engine = angka; model =
+  kalimat soal + prosa (`history_note`/`weak_narrative`).
+- **File:** `scripts/kb.py`, `scripts/test_kb.py`, `progress/{attempts.jsonl,baseline.json}`,
+  `progress/{evaluation,jlpt-evaluation,history}.md` (marker), `.claude/skills/{quiz,jlpt}/SKILL.md`,
+  `docs/engine-bookkeeping-plan.md`, `README.md`, `CLAUDE.md`, `docs/cara-kerja.md`.
+
 ### 2026-08-28 — Soal 自他動詞 rancu karena distraktor tense (もう + はじまる)
 - **Problem:** soal `/quiz review` (sesi 21) yang menguji 自動詞 vs 他動詞 memakai kalimat
   `テストが もう（　）。` dengan 4 opsi はじめます/はじめました/はじまります/はじまりました. Maksudnya

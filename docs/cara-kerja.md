@@ -41,8 +41,10 @@ terpisah) menyumbang **sinyal item yang sering kamu lupa** untuk mempertajam pil
 |--------|---------------|-------|
 | **Sumber kebenaran** | `lessons/lesson-0X.md` | Tata bahasa yang SUDAH dipelajari — acuan mutlak semua soal |
 | **Kolam materi** | `reference/n5-vocabulary.md`, `n5-synonyms.md`, `anki-verbs.md`, `particles.md`, `quiz-taxonomy.md` | Pool kosakata, sinonim, kata kerja, partikel, & daftar tag pola |
-| **Memori kemajuan** | `progress/evaluation.md`, `jlpt-evaluation.md`, `anki-weak-items.md`, `history.md` | Peta kelemahan (per pola & per item) + riwayat sesi |
-| **Mesin latihan** | `.claude/skills/quiz/`, `.claude/skills/jlpt/` | Logika membuat, menilai, & mengadaptasi soal |
+| **Sumber skor** | `progress/attempts.jsonl`, `baseline.json` | Kebenaran skor (JSONL append-only) — dari sini tracker `.md` di-generate |
+| **Memori kemajuan** | `progress/evaluation.md`, `jlpt-evaluation.md`, `history.md` (AUTO-GENERATED) + `anki-weak-items.md` | Peta kelemahan + riwayat sesi — **view** yang ditulis engine |
+| **Mesin pembukuan** | `scripts/kb.py` (+ `test_kb.py`) | Engine deterministik: hitung skor/status/ranking, `render`/`record` tracker, `plan` seleksi cakupan |
+| **Mesin latihan** | `.claude/skills/quiz/`, `.claude/skills/jlpt/` | Logika membuat, menilai, & mengadaptasi soal (pembukuan didelegasikan ke `kb.py`) |
 | **Aturan main** | `CLAUDE.md` | Hub konteks + prinsip yang selalu berlaku |
 | **Jembatan Anki** | `scripts/sync-anki-*.sh` | Tarik data dari deck/collection Anki → file KB |
 | **Pintu refresh Anki** | `.claude/skills/sync-anki/` | Command `/sync-anki` — bungkus kedua script + notif hasil |

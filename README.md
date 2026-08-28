@@ -36,17 +36,22 @@ minna-no-nihongo-i/
 │   ├── n5-synonyms.md     <- pool sinonim/parafrase N5 (sumber soal sinonim /jlpt)
 │   ├── anki-verbs.md      <- pool kata kerja (AUTO-GENERATED dari deck Anki; jangan edit tangan)
 │   └── quiz-taxonomy.md   <- tag pola & partikel (/quiz) + tag subtipe JLPT (/jlpt)
-├── progress/              <- data latihan (diperbarui otomatis oleh /quiz & /jlpt)
-│   ├── evaluation.md      <- tracker kelemahan /quiz (per pola/partikel/lesson)
-│   ├── jlpt-evaluation.md <- tracker mock /jlpt (per subtipe ujian JLPT)
+├── progress/              <- data latihan (di-generate oleh engine scripts/kb.py)
+│   ├── attempts.jsonl     <- SUMBER kebenaran skor (append-only, 1 sesi/baris)
+│   ├── baseline.json      <- agregat awal (impor sekali dari tabel .md lama)
+│   ├── evaluation.md      <- tracker kelemahan /quiz (AUTO-GENERATED; per pola/partikel/lesson)
+│   ├── jlpt-evaluation.md <- tracker mock /jlpt (AUTO-GENERATED; per subtipe ujian JLPT)
 │   ├── anki-weak-items.md <- item lemah dari collection Anki (AUTO-GENERATED; lapses+leech)
-│   └── history.md         <- riwayat sesi latihan (dibagi /quiz & /jlpt, entri berlabel)
+│   └── history.md         <- riwayat sesi latihan (AUTO-GENERATED; dibagi /quiz & /jlpt)
 ├── docs/
 │   ├── cara-kerja.md          <- flow & logika bisnis KB (diagram) — mulai baca dari sini
 │   ├── perbaikan-kb.md        <- log perbaikan sistem/aturan (problem→fix→tanggal)
 │   ├── estimasi-token.md      <- estimasi biaya token /quiz & /jlpt
+│   ├── engine-bookkeeping-plan.md <- desain engine pembukuan deterministik (kb.py)
 │   └── anki-integration-plan.md <- rencana + status integrasi data Anki
 ├── scripts/
+│   ├── kb.py                   <- engine pembukuan (import/render/record/plan) — sumber JSONL → view .md
+│   ├── test_kb.py              <- test engine (golden + unit)
 │   ├── sync-anki-verbs.sh      <- regen anki-verbs.md dari learn-anki/ (folder deck Anki; gitignored)
 │   └── sync-anki-weak-items.sh <- regen anki-weak-items.md dari collection.anki2 (Anki desktop)
 └── .claude/skills/

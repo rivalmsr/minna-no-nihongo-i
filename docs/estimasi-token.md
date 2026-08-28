@@ -18,6 +18,13 @@
 Rentang "billed" lebar karena bergantung **jumlah turn × ukuran konteks** dan **prompt
 caching** (TTL 5 menit — kalau panel dijawab cepat, cache warm → jauh lebih murah).
 
+> ⚙️ **Sejak engine `kb.py` (2026-08-28):** pembukuan (tulis-ulang tabel, hitung akurasi/
+> status/ranking) **tidak lagi** memakai token model — dikerjakan `scripts/kb.py record`.
+> Yang model tulis kini hanya **prosa singkat** (`history_note`/`weak_narrative`) + satu
+> `session.json`. Biaya **tulis (output)** turun signifikan vs versi lama yang menulis
+> ulang 3 tabel penuh + section Weak areas tiap sesi. Angka tabel di bawah = bagian
+> **baca (input)**, relatif tak berubah.
+
 ## Anggaran baca (input) — bagian yang dikontrol desain hemat-token
 | Sumber | /quiz | /jlpt |
 |---|---|---|

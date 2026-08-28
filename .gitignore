@@ -5,3 +5,7 @@
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
 .obsidian/cache
+
+# Python (engine scripts/kb.py)
+__pycache__/
+*.pyc

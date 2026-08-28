@@ -1,5 +1,9 @@
 # Evaluasi Mock JLPT N5 (tertulis) — Tracker per Subtipe
 
+> ⚙️ **Tabel AUTO-GENERATED oleh `scripts/kb.py`** (`render`/`record`) dari sumber
+> `progress/attempts.jsonl` + `baseline.json` (hanya sesi `kind=jlpt`). **Jangan edit angka
+> tabel dengan tangan.** Prosa **Weak types** = milik model (`weak_narrative` saat `record`).
+
 Diperbarui otomatis oleh skill `/jlpt` setiap selesai sesi. Melacak akurasi
 **per subtipe soal JLPT N5 tertulis** (2 sesi: 文字・語彙 + 文法・読解), lalu
 memeringkat **weak types** untuk memandu `/jlpt review`.

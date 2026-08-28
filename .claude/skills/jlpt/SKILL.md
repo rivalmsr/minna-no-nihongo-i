@@ -104,6 +104,9 @@ Bila belum ada data (tracker kosong) → sebar merata ke semua subtipe.
   ke item yang sering user lupa (lihat prinsip 4b), terutama subtipe `MG-yomi`/`MG-hyouki`.
 
 ### 2. Tentukan cakupan & campuran soal
+- **Pintasan engine (disarankan):** `python3 scripts/kb.py plan --kind jlpt --mode
+  <mock|moji|bunpou|review>` → JSON `weights` (subtipe lemah), `vehicles_red` (kanji/
+  kosakata 🔴 Anki), `answer_positions` (posisi kunci tersebar). Pakai sbg kerangka.
 - Cakupan tata bahasa = lesson yang tersedia (`lessons/`). Untuk bacaan/grammar, pakai
   pola in-scope; boleh utamakan **bab terbaru + pola lemah** dari `evaluation.md`.
 - Muat materi sesuai **"Hemat token"**: anchor lesson + `Grep` kosakata/sinonim/verb
@@ -150,20 +153,29 @@ Nilai **semua soal** sebagai lembar hasil: nomor, ✅/❌, jawaban benar, dan **
 singkat** (Bahasa Indonesia). Kelompokkan per sesi. Semua kanji di lembar hasil
 **berfurigana**. Catat tag subtipe + benar/salah tiap soal untuk langkah 6.
 
-### 6. Perbarui data (hitung eksplisit)
-Untuk tiap **subtipe** yang muncul di sesi ini:
-- `Total_baru = Total_lama + jumlah soal subtipe itu`
-- `Benar_baru = Benar_lama + jumlah benar subtipe itu`
-- `Akurasi = round(Benar_baru / Total_baru * 100)%`
-- Status: `<60% 🔴 LEMAH`, `60–79% 🟡`, `≥80% 🟢`; jika `Total_baru < 3` → `⚪`.
-Tulis ulang kedua tabel di `progress/jlpt-evaluation.md` (Sesi 1 & Sesi 2). Susun ulang
-**Weak types**: urut 🔴 lalu 🟡 dari akurasi terendah (maks ~5). Perbarui baris
-`Terakhir diperbarui` + `total sesi`. Hapus placeholder `_(kosong)_` begitu ada data.
+### 6. Perbarui data — via engine `kb.py record` (JANGAN hitung manual)
+**Pembukuan dikerjakan engine `scripts/kb.py`, bukan hitung tangan.** Tulis `session.json`
+dengan **`"kind":"jlpt"`** lalu jalankan `python3 scripts/kb.py record <path/session.json>`.
+Engine: append `attempts.jsonl` → hitung ulang subtipe → tulis ulang kedua tabel
+`jlpt-evaluation.md` → prepend baris `history.md`. **`kind=jlpt` menjamin
+`evaluation.md` (quiz) TAK tersentuh** (pemisahan otomatis di engine).
 
-Tambah 1 entri **paling atas** di tabel `progress/history.md`:
-`| YYYY-MM-DD | JLPT <mock/moji/bunpou/review> | <N> | <benar>/<N> (xx%) | <catatan singkat> |`
-(gunakan tanggal hari ini; label diawali `JLPT` agar beda dari baris `/quiz`).
-**Jangan** sentuh `progress/evaluation.md`.
+**Skema `session.json` (jlpt):**
+```json
+{"kind":"jlpt","date":"YYYY-MM-DD","mode":"<mock/moji/bunpou/review>",
+ "cakupan":"JLPT <mock/moji/bunpou/review> (…)",
+ "history_note":"<catatan kualitatif>", "weak_narrative":"<prosa Weak types>",
+ "questions":[{"qno":1,"correct":true,"subtype":"MG-yomi"}]}
+```
+- **Tiap question WAJIB punya `subtype`** (`MG-*`/`DK-*` dari `reference/quiz-taxonomy.md`).
+  Soal `DK-bunpou`/`DK-narabekae` boleh menambah `tags` pola/partikel (opsional, hanya
+  informatif — engine tetap **tak** menulisnya ke `evaluation.md`).
+- `cakupan` **diawali `JLPT`** (agar baris history beda dari `/quiz`). `history_note` &
+  `weak_narrative` = prosa yang KAMU tulis; engine mencetak ranking weak deterministik
+  sebagai bahannya.
+- Seleksi/porsi soal: `kb.py plan --kind jlpt --mode <…>` (lihat step 2).
+- **Semantik direplikasi engine (referensi):** `Akurasi=round(Benar/Total*100)`; status
+  `<60% 🔴 · 60–79% 🟡 · ≥80% 🟢 · <3 ⚪`; Weak types 🔴→🟡 akurasi terendah (maks ~5).
 
 ### 7. Tampilkan hasil — RINGKAS (hemat token)
 Default tampilan chat **RINGKAS** (analisis lengkap pindah ke `/summary jlpt`):

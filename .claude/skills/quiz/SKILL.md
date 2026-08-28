@@ -122,6 +122,11 @@ yang tersedia.
   dipakai untuk membias pemilihan kendaraan verb/kosakata di langkah 3.
 
 ### 2. Tentukan cakupan & campuran soal
+- **Pintasan engine (disarankan):** jalankan `python3 scripts/kb.py plan --mode
+  <adaptif|review|lesson-N>` → JSON berisi `lessons` (cakupan), `weights` (bobot tag
+  🔴/🟡), `vehicles_red` (item 🔴 Anki utk kendaraan), & `answer_positions` (posisi
+  kunci tersebar 1–4). Pakai ini sebagai kerangka; kamu tinggal menyusun kalimat soal.
+  Tetap baca **anchor** lesson in-scope untuk contoh pola. (Manual di bawah = fallback.)
 - Tentukan cakupan: pakai argumen bila ada; kalau `/quiz` polos, hitung lewat
   "Menentukan cakupan default" di atas (hemat — jangan baca semua lesson).
 - Muat materi sesuai kontrak **"Hemat token (WAJIB)"** di atas: baca **anchor**
@@ -179,20 +184,32 @@ nomor, ✅/❌, jawaban benar, dan **penjelasan singkat** (Bahasa Indonesia, kai
 ke pola/lesson). Catat **tag** `{lesson, pola, partikel}` + benar/salah tiap soal
 untuk langkah 6.
 
-### 6. Perbarui data (hitung eksplisit)
-Untuk tiap **tag** (pola, tiap partikel, dan lesson) yang muncul di sesi ini:
-- `Total_baru = Total_lama + jumlah soal bertag itu`
-- `Benar_baru = Benar_lama + jumlah benar bertag itu`
-- `Akurasi = round(Benar_baru / Total_baru * 100)%`
-- Status: `<60% 🔴 LEMAH`, `60–79% 🟡`, `≥80% 🟢`; jika `Total_baru < 3` → `⚪`.
-Tulis ulang ketiga tabel di `progress/evaluation.md` (tambah baris tag baru bila
-belum ada; jaga baris tag lama). Susun ulang bagian **Weak areas**: urutkan tag
-berstatus 🔴 lalu 🟡 dari akurasi terendah (maks ~5), sebut pola/partikel + akurasi.
-Hapus baris placeholder `_(kosong)_` begitu ada data nyata.
+### 6. Perbarui data — via engine `kb.py record` (JANGAN hitung manual)
+**Pembukuan kini dikerjakan engine deterministik `scripts/kb.py`, bukan hitung tangan.**
+Setelah menilai semua soal, tulis satu `session.json` lalu jalankan:
+`python3 scripts/kb.py record <path/session.json>`. Engine otomatis: append
+`progress/attempts.jsonl` → hitung ulang akurasi/status → tulis ulang tabel
+`evaluation.md` → prepend baris `history.md`. **Kamu tidak menghitung skor/akurasi
+sendiri** (rawan salah & boros token).
 
-Tambah 1 entri **paling atas** di tabel `progress/history.md`:
-`| YYYY-MM-DD | <cakupan> | <N> | <benar>/<N> (xx%) | <catatan singkat> |`
-(gunakan tanggal hari ini).
+**Skema `session.json`** (taruh di scratchpad):
+```json
+{"kind":"quiz","date":"YYYY-MM-DD","mode":"<review/adaptif/lesson N>",
+ "cakupan":"<teks kolom Cakupan history>",
+ "history_note":"<catatan kualitatif 1 baris utk history>",
+ "weak_narrative":"<prosa lengkap section Weak areas: numbered 🔴/🟡 + Sinyal + Rekomendasi>",
+ "questions":[{"qno":1,"correct":true,"subtype":null,
+   "tags":{"pola":["<tag>"],"partikel":["<p>"],"lesson":["Lesson N"]}}]}
+```
+- **Tag WAJIB** dari `reference/quiz-taxonomy.md` (tiap soal: pola + partikel + lesson).
+- `history_note` & `weak_narrative` = **prosa yang KAMU tulis** (engine hanya
+  menempatkan; angka/status/ranking dihitung engine). Setelah `record`, engine
+  **mencetak ranking weak deterministik** — pakai itu sebagai bahan `weak_narrative`.
+- Untuk **acak posisi kunci** & **seleksi cakupan**, pakai `kb.py plan` (lihat step 2).
+- **Semantik yang direplikasi engine (referensi, tak perlu dihitung tangan):**
+  `Akurasi=round(Benar/Total*100)`; status `<60% 🔴 · 60–79% 🟡 · ≥80% 🟢 · <3 attempt ⚪`;
+  Weak areas = 🔴 lalu 🟡 dari akurasi terendah (maks ~5); history = 1 baris terbaru di atas.
+- **Jangan** edit angka tabel `evaluation.md`/`history.md` dengan tangan (tertimpa engine).
 
 ### 7. Tampilkan hasil — RINGKAS (hemat token)
 Default tampilan chat **RINGKAS** (hemat token; analisis lengkap pindah ke `/summary`):
