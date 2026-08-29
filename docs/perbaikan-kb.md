@@ -21,6 +21,18 @@ atau update skor), tambahkan satu blok di paling atas daftar di bawah, format:
 
 ---
 
+### 2026-08-29 — Guardrail koherensi waktu↔aksi di soal `/jlpt`
+- **Problem:** mock 2026-08-29 soal 12 (`DK-narabekae`) merakit kalimat 「わたしは **まいあさ**
+  シャワーを あびて、はを みがいて、**ねます**」 — tata bahasa て-rangkaian benar & jawabannya valid,
+  tapi kalimatnya **janggal secara semantik** (rutinitas pagi tapi ditutup "tidur"). Soal susun
+  kalimat/konteks dicek untuk grammar & ketaksaan jawaban, tapi belum dicek **kewajaran kalimat
+  utuh** (keterangan waktu vs verb penutup, urutan aksi logis).
+- **Fix:** tambah blockquote **⏱️ KOHERENSI waktu↔aksi (WAJIB cek)** di template `DK-narabekae`
+  — kalimat rakitan harus masuk akal sebagai kalimat nyata: `まいあさ`/`あさ` → penutup berangkat/
+  mulai (…行きます/…たべます), rutinitas malam (シャワー→はみがき→ねる) pakai `まいばん`/`よる`; jaga
+  urutan aksi logis (かく→はる→だす). Berlaku juga `DK-bunmyaku`/`DK-dokkai`/`DK-joho`.
+- **File:** `.claude/skills/jlpt/SKILL.md` (template `DK-narabekae`).
+
 ### 2026-08-29 — Grading pindah ke engine (`key`/`submitted`, `grade()`)
 - **Problem:** untuk pilihan ganda, "menilai" = `submitted == key` (mekanis, tak butuh model),
   tapi model yang menulis `correct: true/false` ke `session.json` → error-surface (salah-ingat

@@ -285,6 +285,15 @@ cross-tag pola/partikel). Boleh pakai verb dari `anki-verbs.md` dalam pola in-sc
 > posisi/urutan. Rangka slot `＿①＿ ＿②＿ ＿★③＿ ＿④＿` boleh (itu kerangka soal, bukan
 > jawaban). Bila potongan pola lemah perlu bantuan, hint cukup **nama pola** (mis.
 > "ingat: まえに butuh 辞書形"), BUKAN urutannya.
+> ⏱️ **KOHERENSI waktu↔aksi (WAJIB cek sebelum pakai).** Kalimat rakitan (utuh, setelah
+> disusun benar) harus **masuk akal sebagai kalimat nyata** — bukan sekadar tata bahasa
+> valid. **Cek keterangan waktu vs verb penutup:** `まいあさ`/`あさ` → rutinitas pagi &
+> penutup **berangkat/mulai** (…がっこうへ 行きます / …を たべます), **BUKAN** ねます (tidur);
+> rutinitas malam (シャワー→はみがき→ねる) pakai `まいばん`/`よる`. Juga jaga **urutan aksi
+> logis** (mis. 手紙を かく→切手を はる→出す, jangan terbalik). Contoh cacat (mock 2026-08-29
+> soal 12): 「わたしは **まいあさ** シャワーを あびて、はを みがいて、**ねます**」 — grammar て-rangkaian
+> benar, tapi "pagi lalu tidur" janggal → ganti `まいあさ`→`まいばん` atau penutup→`がっこうへ 行きます`.
+> Berlaku juga untuk `DK-bunmyaku` & `DK-dokkai`/`DK-joho`: konteks kalimat/teks harus wajar.
 
 **`DK-dokkai` — Bacaan pendek (~60–80 kata).** Tampilkan 1 paragraf pakai pola in-scope,
 lalu 2 pertanyaan pemahaman. Semua kanji berfurigana.
