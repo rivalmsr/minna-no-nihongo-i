@@ -160,6 +160,10 @@ Engine: append `attempts.jsonl` → hitung ulang subtipe → tulis ulang kedua t
 `jlpt-evaluation.md` → prepend baris `history.md`. **`kind=jlpt` menjamin
 `evaluation.md` (quiz) TAK tersentuh** (pemisahan otomatis di engine).
 
+**Alur 2 langkah (angka dari engine):** `kb.py record --dry-run <session.json>` →
+cetak delta subtipe + weak ranking tanpa menulis → tulis `weak_narrative`/`history_note`
+pakai angka itu → jalankan lagi tanpa `--dry-run`.
+
 **Skema `session.json` (jlpt):**
 ```json
 {"kind":"jlpt","date":"YYYY-MM-DD","mode":"<mock/moji/bunpou/review>",

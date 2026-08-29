@@ -192,6 +192,14 @@ Setelah menilai semua soal, tulis satu `session.json` lalu jalankan:
 `evaluation.md` → prepend baris `history.md`. **Kamu tidak menghitung skor/akurasi
 sendiri** (rawan salah & boros token).
 
+**Alur disarankan (2 langkah — angka dari engine, bukan hitung tangan):**
+1. `python3 scripts/kb.py record --dry-run <session.json>` → cetak **delta per tag
+   (before → after)** + weak ranking, **tanpa menulis** apa pun. (`session.json` boleh
+   tanpa `weak_narrative` dulu.)
+2. **Tulis `weak_narrative`/`history_note` memakai angka yang DICETAK engine** (jangan
+   hitung sendiri), lalu jalankan lagi **tanpa** `--dry-run` untuk menyimpan.
+   Ini menutup "chicken-and-egg" narasi & mencegah prosa ≠ tabel.
+
 **Skema `session.json`** (taruh di scratchpad):
 ```json
 {"kind":"quiz","date":"YYYY-MM-DD","mode":"<review/adaptif/lesson N>",

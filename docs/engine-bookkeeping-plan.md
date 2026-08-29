@@ -89,6 +89,9 @@ CLI (argparse):
 - `kb.py import` — parse tabel `evaluation.md`+`jlpt-evaluation.md` → tulis `baseline.json`.
 - `kb.py render` — regen 3 `.md` dari baseline+attempts (idempoten).
 - `kb.py record <session.json>` — validasi skema → append `attempts.jsonl` → `render`.
+  - `--dry-run` — hitung & cetak **delta per tag (before→after)** + weak ranking **TANPA
+    menulis**. Alur 2 langkah: dry-run → tulis prosa pakai angka engine → record sungguhan.
+    Menutup "chicken-and-egg" narasi (prosa butuh angka final; angka butuh record).
 - `kb.py plan --kind {quiz,jlpt} --mode {adaptif,review,lesson-N,moji,bunpou,mock}`
   → cetak session-plan JSON (baca `progress/anki-weak-items.md` untuk `vehicles_red`).
 

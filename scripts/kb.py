@@ -390,40 +390,92 @@ def _replace_weak_section(path: str, heading_substr: str, narrative: str) -> Non
         f.write(new)
 
 
+def _touched_cells(session: dict) -> list:
+    """(dim, tag) unik yang disentuh sesi (urut kemunculan)."""
+    kind = session["kind"]
+    seen, cells = set(), []
+    for q in session.get("questions", []):
+        if kind == "jlpt":
+            pairs = [("subtype", q["subtype"])] if q.get("subtype") else []
+        else:
+            pairs = [(d, t) for d, ts in (q.get("tags") or {}).items() for t in ts]
+        for p in pairs:
+            if p not in seen:
+                seen.add(p)
+                cells.append(p)
+    return cells
+
+
+def session_deltas(baseline: dict, existing: list, session: dict) -> tuple:
+    """Hitung before/after tiap tag yang disentuh sesi. PURE — tak menulis apa pun.
+
+    Return (rows, agg_after). rows = list dict {dim, tag, before, after} di mana
+    before/after = (benar, total, akurasi, status).
+    """
+    kind = session["kind"]
+    before = aggregate(baseline, existing, kind)
+    after = aggregate(baseline, existing + [session], kind)
+
+    def cell(agg, dim, tag):
+        c = agg.get(dim, {}).get(tag, {"benar": 0, "total": 0})
+        return (c["benar"], c["total"], accuracy(c["benar"], c["total"]),
+                status(c["benar"], c["total"]))
+
+    rows = [
+        {"dim": dim, "tag": tag, "before": cell(before, dim, tag),
+         "after": cell(after, dim, tag)}
+        for dim, tag in _touched_cells(session)
+    ]
+    return rows, after
+
+
+def _print_weak(agg: dict, label: str = "Weak (deterministik)") -> None:
+    weak = rank_weak(agg)
+    if weak:
+        print(f"{label}:")
+        for w in weak:
+            print(f"  {w['status']} {w['tag']} ({w['dim']}) {w['benar']}/{w['total']} {w['acc']}%")
+
+
 def cmd_record(args) -> int:
     with open(args.session, encoding="utf-8") as f:
         session = _validate_session(json.load(f))
+    baseline = load_baseline()
+    existing = load_attempts()
+    kind = session["kind"]
+    acc = accuracy(session["correct"], session["n"])
 
-    # 1. append ke sumber
+    # DRY-RUN: hitung & cetak hasil TANPA menulis (putus chicken-and-egg narasi).
+    if getattr(args, "dry_run", False):
+        rows, after = session_deltas(baseline, existing, session)
+        print(f"DRY-RUN (tak menulis apa pun) → {kind} {session['date']} "
+              f"{session['correct']}/{session['n']} ({acc}%)")
+        if rows:
+            print("Delta per tag (before → after):")
+            for r in rows:
+                bb, bt, ba, bs = r["before"]
+                ab, at, aa, ast = r["after"]
+                print(f"  {r['tag']} ({r['dim']}): {bb}/{bt} {ba}% {bs} → "
+                      f"{ab}/{at} {aa}% {ast}")
+        _print_weak(after, "Weak setelah sesi ini")
+        print("→ Pakai angka DI ATAS untuk menulis weak_narrative/history_note, "
+              "lalu jalankan lagi TANPA --dry-run.")
+        return 0
+
+    # RUN sungguhan
     with open(ATTEMPTS_PATH, "a", encoding="utf-8") as f:
         f.write(json.dumps(session, ensure_ascii=False) + "\n")
-
-    baseline = load_baseline()
     attempts = load_attempts()
-
-    # 2. re-render tabel + date/sesi
     rerender_trackers(baseline, attempts)
-
-    # 3. prepend baris history
     _prepend_history(session)
-
-    # 4. ganti prosa Weak areas/types bila disuplai model
     if session.get("weak_narrative"):
-        if session["kind"] == "quiz":
+        if kind == "quiz":
             _replace_weak_section(EVAL_PATH, "Weak areas", session["weak_narrative"])
         else:
             _replace_weak_section(JLPT_PATH, "Weak types", session["weak_narrative"])
-
-    # 5. cetak ranking weak deterministik (bahan untuk narasi model berikutnya)
-    agg = aggregate(baseline, attempts, session["kind"])
-    acc = accuracy(session["correct"], session["n"])
-    print(f"OK recorded → {session['kind']} {session['date']} "
+    print(f"OK recorded → {kind} {session['date']} "
           f"{session['correct']}/{session['n']} ({acc}%)")
-    weak = rank_weak(agg)
-    if weak:
-        print("Weak (deterministik):")
-        for w in weak:
-            print(f"  {w['status']} {w['tag']} ({w['dim']}) {w['benar']}/{w['total']} {w['acc']}%")
+    _print_weak(aggregate(baseline, attempts, kind))
     return 0
 
 
@@ -517,6 +569,8 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("render", help="Regen tracker .md dari baseline+attempts").set_defaults(func=cmd_render)
     pr = sub.add_parser("record", help="Ingest satu session.json")
     pr.add_argument("session", help="Path session.json")
+    pr.add_argument("--dry-run", action="store_true",
+                    help="Hitung & cetak hasil (delta + weak) TANPA menulis apa pun")
     pr.set_defaults(func=cmd_record)
     pp = sub.add_parser("plan", help="Cetak session-plan JSON")
     pp.add_argument("--kind", choices=["quiz", "jlpt"], default="quiz")

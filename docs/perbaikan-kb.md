@@ -21,6 +21,20 @@ atau update skor), tambahkan satu blok di paling atas daftar di bawah, format:
 
 ---
 
+### 2026-08-29 — `kb.py record --dry-run` (putus chicken-and-egg narasi)
+- **Problem:** `weak_narrative`/`history_note` (prosa) butuh **angka final** sesi, tapi angka
+  final baru ada **setelah** `record` — padahal prosa itu bagian dari `session.json` yang
+  di-`record`. Ketergantungan melingkar → model terpaksa **hitung delta manual** untuk
+  menulis narasi (mengulang beban yang mau dihapus engine) & berisiko **prosa ≠ tabel**.
+- **Fix:** flag `--dry-run` pada `record` — hitung & cetak **delta per tag (before→after)** +
+  weak ranking **tanpa menulis apa pun** (helper pure `session_deltas`). Alur 2 langkah:
+  dry-run → tulis prosa pakai angka yang dicetak engine → `record` sungguhan. Angka narasi
+  jadi **benar by-construction** (bukan hasil hitung tangan). Bukan menambal bug (data selalu
+  benar karena tabel dihitung dari data mentah, bukan prosa) — ini **robustness**: hilangkan
+  ketergantungan pada disiplin manual. SKILL.md quiz/jlpt step 6 diperbarui ke alur 2 langkah.
+- **File:** `scripts/kb.py`, `scripts/test_kb.py`, `.claude/skills/{quiz,jlpt}/SKILL.md`,
+  `docs/engine-bookkeeping-plan.md`.
+
 ### 2026-08-28 — Bookkeeping /quiz & /jlpt dipindah ke engine deterministik (`kb.py`)
 - **Problem:** pembukuan (hitung skor/akurasi, tentukan status 🔴🟡🟢, ranking weak-area,
   seleksi cakupan, tulis-ulang tabel) dikerjakan model **manual** tiap sesi → boros token,

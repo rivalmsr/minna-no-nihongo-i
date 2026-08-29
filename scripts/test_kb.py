@@ -124,17 +124,39 @@ def test_compute_scope_review():
     assert all(w["n"] > 0 for w in scope["weights"])
 
 
+def test_session_deltas():
+    baseline = {"quiz": {"pola": {"X": {"benar": 5, "total": 7}}}, "jlpt": {}}
+    session = {"kind": "quiz", "questions": [
+        {"correct": True, "tags": {"pola": ["X"]}},    # X: 5/7 → 6/8
+        {"correct": False, "tags": {"pola": ["Y"]}},   # Y baru: 0/0 → 0/1
+    ]}
+    rows, after = kb.session_deltas(baseline, [], session)
+    d = {r["tag"]: r for r in rows}
+    assert d["X"]["before"][:2] == (5, 7) and d["X"]["after"][:2] == (6, 8)
+    assert d["Y"]["before"][:2] == (0, 0) and d["Y"]["after"][:2] == (0, 1)
+    assert after["pola"]["X"] == {"benar": 6, "total": 8}
+    # PURE: baseline tak termutasi
+    assert baseline["quiz"]["pola"]["X"] == {"benar": 5, "total": 7}
+
+
 def test_render_golden():
-    """Pure render (tanpa attempt baru) tak boleh mengubah byte tracker."""
+    """Idempoten: render(baseline, attempts nyata) == file tracker saat ini."""
     baseline = kb.load_baseline()
+    attempts = kb.load_attempts()
     with open(kb.EVAL_PATH, encoding="utf-8") as f:
         eval_txt = f.read()
     with open(kb.JLPT_PATH, encoding="utf-8") as f:
         jlpt_txt = f.read()
-    e = kb.render_evaluation(eval_txt, kb.aggregate(baseline, [], "quiz"), None, 0)
-    j = kb.render_jlpt(jlpt_txt, kb.aggregate(baseline, [], "jlpt"), None, 0)
-    assert e == eval_txt, "render_evaluation mengubah byte pada pure render"
-    assert j == jlpt_txt, "render_jlpt mengubah byte pada pure render"
+    q_sess = [s for s in attempts if s.get("kind") == "quiz"]
+    j_sess = [s for s in attempts if s.get("kind") == "jlpt"]
+    q_date = q_sess[-1]["date"] if q_sess else None
+    j_date = j_sess[-1]["date"] if j_sess else None
+    q_sesi = baseline.get("meta", {}).get("quiz_sesi", 0) + len(q_sess)
+    j_sesi = baseline.get("meta", {}).get("jlpt_sesi", 0) + len(j_sess)
+    e = kb.render_evaluation(eval_txt, kb.aggregate(baseline, attempts, "quiz"), q_date, q_sesi)
+    j = kb.render_jlpt(jlpt_txt, kb.aggregate(baseline, attempts, "jlpt"), j_date, j_sesi)
+    assert e == eval_txt, "render_evaluation tak idempoten vs file saat ini"
+    assert j == jlpt_txt, "render_jlpt tak idempoten vs file saat ini"
 
 
 def run():
