@@ -49,6 +49,30 @@ terpisah) menyumbang **sinyal item yang sering kamu lupa** untuk mempertajam pil
 | **Jembatan Anki** | `scripts/sync-anki-*.sh` | Tarik data dari deck/collection Anki → file KB |
 | **Pintu refresh Anki** | `.claude/skills/sync-anki/` | Command `/sync-anki` — bungkus kedua script + notif hasil |
 
+## Engine vs model — siapa mengerjakan apa (per flow)
+
+Pemisahan tegas: **engine `scripts/kb.py` = semua yang deterministik** (hitung, banding,
+ranking, seleksi, render); **model = yang butuh judgment bahasa** (bikin soal, tetapkan
+kunci, prosa). Perintah engine: `import`/`render`/`record`(`--dry-run`)/`plan`/`summary`.
+
+| Flow · sub-langkah | ⚙️ Engine | 🧠 Model |
+|---|:---:|:---:|
+| `/quiz` · seleksi cakupan + bobot + acak posisi | `plan` | |
+| `/quiz` · **generate soal + tetapkan `key`** | | ✅ |
+| `/quiz` · **grade** (`submitted == key`) | `record` (`grade()`) | |
+| `/quiz` · **override** soal rancu | | ✅ (`override`+`note`) |
+| `/quiz` · skor/akurasi/status/ranking + tulis tabel + history | `record` | |
+| `/quiz` · prosa `weak_narrative`/`history_note` (angka dari `--dry-run`) | | ✅ |
+| `/jlpt` · seleksi + grade + pembukuan (tracker terpisah, `kind=jlpt`) | `plan`+`record` | |
+| `/jlpt` · generate soal + kunci + teks bacaan | | ✅ |
+| `/summary` · breakdown per dim + 3 terlemah + skor terakhir | `summary` | |
+| `/summary` · sajian furigana + rekomendasi | | ✅ |
+| `/sync-anki` · regen `anki-verbs.md` / `anki-weak-items.md` | `sync-anki-*.sh`¹ | |
+| semua · sisip furigana, pembahasan | | ✅ |
+
+¹ `/sync-anki` deterministik tapi lewat **script bash tersendiri**, bukan `kb.py` (domain
+beda: parsing Anki). Detail engine pembukuan: `docs/engine-bookkeeping-plan.md`.
+
 ## Alur 1 — Mencatat materi (input / "ingest")
 
 ```mermaid

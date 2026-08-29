@@ -21,6 +21,19 @@ atau update skor), tambahkan satu blok di paling atas daftar di bawah, format:
 
 ---
 
+### 2026-08-29 — Grading pindah ke engine (`key`/`submitted`, `grade()`)
+- **Problem:** untuk pilihan ganda, "menilai" = `submitted == key` (mekanis, tak butuh model),
+  tapi model yang menulis `correct: true/false` ke `session.json` → error-surface (salah-ingat
+  kunci / salah-tulis boolean). Kecerdasan bahasa sebenarnya cuma di **menentukan kunci** (saat
+  generate), bukan di membandingkan.
+- **Fix:** tiap soal `session.json` kini bawa **`key`** (opsi benar) + **`submitted`** (klik user);
+  fungsi pure `grade(q)` di engine menghitung benar/salah. `override` (correct/incorrect) + `note`
+  untuk soal rancu (satu-satunya kasus model ikut memutuskan). `_validate_session` **menurunkan**
+  `n`/`correct` dari `grade()` (tak percaya angka model; `WARN` bila beda). Boolean `correct` lama
+  tetap diterima → `attempts.jsonl` lama tak perlu migrasi (golden test tetap lolos).
+- **File:** `scripts/kb.py` (`grade`, `aggregate`, `_validate_session`), `scripts/test_kb.py`
+  (13 test), `.claude/skills/{quiz,jlpt}/SKILL.md`, `docs/engine-bookkeeping-plan.md` §9.
+
 ### 2026-08-29 — `kb.py record --dry-run` (putus chicken-and-egg narasi)
 - **Problem:** `weak_narrative`/`history_note` (prosa) butuh **angka final** sesi, tapi angka
   final baru ada **setelah** `record` — padahal prosa itu bagian dari `session.json` yang

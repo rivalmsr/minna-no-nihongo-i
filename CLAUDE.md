@@ -33,7 +33,7 @@ progress/
   jlpt-evaluation.md  tracker mock /jlpt (per subtipe ujian JLPT) — AUTO-GENERATED oleh kb.py
   anki-weak-items.md  item lemah dari collection Anki (lapses+leech) — AUTO-GENERATED, sinyal pelengkap evaluation.md
   history.md          riwayat tiap sesi /quiz & /jlpt — AUTO-GENERATED oleh kb.py
-scripts/kb.py                     engine pembukuan: import/render/record/plan (JSONL → view .md). Detail: docs/engine-bookkeeping-plan.md
+scripts/kb.py                     engine pembukuan: import/render/record/plan/summary (JSONL → view .md). Detail: docs/engine-bookkeeping-plan.md
 scripts/sync-anki-verbs.sh        regen anki-verbs.md dari learn-anki/*.txt (gitignored)
 scripts/sync-anki-weak-items.sh   regen anki-weak-items.md dari collection.anki2 (Anki desktop)
 .claude/skills/quiz/         skill /quiz (detail operasional lengkap)
@@ -49,8 +49,11 @@ docs/engine-bookkeeping-plan.md  desain engine pembukuan deterministik (kb.py)
 > `/quiz` & `/jlpt` dikerjakan `scripts/kb.py` (sumber `progress/attempts.jsonl` +
 > `baseline.json`; tracker `.md` = view AUTO-GENERATED). Tiap akhir sesi: tulis
 > `session.json` → `python3 scripts/kb.py record <session.json>` (JANGAN hitung/tulis
-> angka tabel dengan tangan). Seleksi cakupan: `kb.py plan`. Model tetap pegang isi
-> soal + prosa (`history_note`/`weak_narrative`). Detail: `docs/engine-bookkeeping-plan.md`.
+> angka tabel dengan tangan). Seleksi cakupan: `kb.py plan`; breakdown `/summary`:
+> `kb.py summary`. **Grading = engine:** tiap soal bawa `key`+`submitted` (engine banding;
+> soal rancu → `override`+`note`). **Angka narasi:** `kb.py record --dry-run` dulu (cetak
+> delta+weak TANPA menulis), baru tulis prosa. Model pegang isi soal + kunci + prosa
+> (`history_note`/`weak_narrative`). Detail: `docs/engine-bookkeeping-plan.md`.
 
 Daftar pelajaran lengkap (judul + topik + status) ada di tabel `README.md`.
 

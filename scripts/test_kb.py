@@ -32,6 +32,32 @@ def test_status():
     assert kb.status(22, 25) == kb.GREEN  # 88%
 
 
+def test_grade():
+    assert kb.grade({"key": "に", "submitted": "に"}) is True
+    assert kb.grade({"key": "に", "submitted": "を"}) is False
+    assert kb.grade({"key": " に ", "submitted": "に"}) is True          # strip
+    assert kb.grade({"key": "A", "submitted": "B", "override": "correct"}) is True
+    assert kb.grade({"key": "A", "submitted": "A", "override": "incorrect"}) is False
+    assert kb.grade({"correct": True}) is True                          # legacy
+    assert kb.grade({"correct": False}) is False
+    try:
+        kb.grade({"qno": 9})
+        assert False, "harus ValueError bila tak ada field grading"
+    except ValueError:
+        pass
+
+
+def test_aggregate_grade_keysubmit():
+    """aggregate memakai grade(): key/submitted diturunkan, bukan field correct."""
+    baseline = {"quiz": {}, "jlpt": {}}
+    attempts = [{"kind": "quiz", "questions": [
+        {"key": "に", "submitted": "に", "tags": {"pola": ["P"]}},   # benar
+        {"key": "で", "submitted": "を", "tags": {"pola": ["P"]}},   # salah
+    ]}]
+    agg = kb.aggregate(baseline, attempts, "quiz")
+    assert agg["pola"]["P"] == {"benar": 1, "total": 2}
+
+
 def test_aggregate_quiz():
     baseline = {
         "quiz": {
@@ -137,6 +163,22 @@ def test_session_deltas():
     assert after["pola"]["X"] == {"benar": 6, "total": 8}
     # PURE: baseline tak termutasi
     assert baseline["quiz"]["pola"]["X"] == {"benar": 5, "total": 7}
+
+
+def test_build_summary():
+    baseline = {"quiz": {"pola": {"A": {"benar": 3, "total": 6}}}, "jlpt": {},
+                "meta": {"quiz_sesi": 5}}
+    attempts = [{"kind": "quiz", "date": "2026-08-29", "mode": "review", "n": 2,
+                 "correct": 1, "questions": [
+                     {"correct": True, "tags": {"pola": ["A"]}},
+                     {"correct": False, "tags": {"pola": ["B"]}}]}]
+    s = kb.build_summary(baseline, attempts, "quiz")
+    assert s["sesi"] == 6                       # 5 baseline + 1 sesi
+    pola = {r["tag"]: r for r in s["breakdown"]["pola"]}
+    assert pola["A"]["benar"] == 4 and pola["A"]["total"] == 7  # 3/6 + 1/1
+    assert pola["B"]["total"] == 1
+    assert s["last_session"]["acc"] == 50
+    assert any(w["tag"] == "A" for w in s["weak"])  # 4/7=57% 🔴
 
 
 def test_render_golden():

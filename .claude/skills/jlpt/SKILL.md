@@ -169,8 +169,11 @@ pakai angka itu → jalankan lagi tanpa `--dry-run`.
 {"kind":"jlpt","date":"YYYY-MM-DD","mode":"<mock/moji/bunpou/review>",
  "cakupan":"JLPT <mock/moji/bunpou/review> (…)",
  "history_note":"<catatan kualitatif>", "weak_narrative":"<prosa Weak types>",
- "questions":[{"qno":1,"correct":true,"subtype":"MG-yomi"}]}
+ "questions":[{"qno":1,"key":"がっこう","submitted":"がっこう","subtype":"MG-yomi"}]}
 ```
+- **Menilai = engine:** tiap soal bawa `key` (opsi benar) + `submitted` (klik user);
+  engine hitung benar/salah. Soal rancu → `"override":"correct"/"incorrect"` + `"note"`.
+  (Boolean `correct` lama masih diterima.)
 - **Tiap question WAJIB punya `subtype`** (`MG-*`/`DK-*` dari `reference/quiz-taxonomy.md`).
   Soal `DK-bunpou`/`DK-narabekae` boleh menambah `tags` pola/partikel (opsional, hanya
   informatif — engine tetap **tak** menulisnya ke `evaluation.md`).

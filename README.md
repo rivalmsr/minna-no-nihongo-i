@@ -50,7 +50,7 @@ minna-no-nihongo-i/
 │   ├── engine-bookkeeping-plan.md <- desain engine pembukuan deterministik (kb.py)
 │   └── anki-integration-plan.md <- rencana + status integrasi data Anki
 ├── scripts/
-│   ├── kb.py                   <- engine pembukuan (import/render/record/plan) — sumber JSONL → view .md
+│   ├── kb.py                   <- engine pembukuan (import/render/record/plan/summary) — sumber JSONL → view .md
 │   ├── test_kb.py              <- test engine (golden + unit)
 │   ├── sync-anki-verbs.sh      <- regen anki-verbs.md dari learn-anki/ (folder deck Anki; gitignored)
 │   └── sync-anki-weak-items.sh <- regen anki-weak-items.md dari collection.anki2 (Anki desktop)

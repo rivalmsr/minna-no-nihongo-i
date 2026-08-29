@@ -40,10 +40,14 @@ Skill ini **melengkapi** mode hemat, jadi jangan boros:
 ## Langkah eksekusi
 
 1. Parse argumen (`jlpt` → tracker mock; selain itu → tracker quiz).
-2. Baca tracker terkait + baris teratas `history.md`.
-3. Kalau ada data sesi terakhir di konteks, hitung breakdown sesi itu (jangan mengarang;
-   pakai angka yang sudah tercatat).
-4. Sajikan (lihat format di bawah).
+2. **Ambil angka dari engine (disarankan):** `python3 scripts/kb.py summary --kind
+   <quiz|jlpt>` → JSON `breakdown` (per pola/partikel/lesson atau subtipe, dgn
+   akurasi+status), `weak` (maks 5, terurut), `last_session`, `sesi`. **Pakai angka ini
+   apa adanya** — jangan hitung/ranking sendiri (deterministik, sumber tunggal). Prosa
+   narasi untuk **weak areas** boleh dibaca dari `evaluation.md`/`jlpt-evaluation.md`
+   (bagian yang model tulis) bila perlu konteks kualitatif. (Fallback tanpa engine: baca
+   tracker `.md` langsung.)
+3. Sajikan (lihat format di bawah) — bungkus angka engine dengan furigana + rekomendasi.
 
 ## Format tampilan
 

@@ -94,6 +94,8 @@ CLI (argparse):
     Menutup "chicken-and-egg" narasi (prosa butuh angka final; angka butuh record).
 - `kb.py plan --kind {quiz,jlpt} --mode {adaptif,review,lesson-N,moji,bunpou,mock}`
   → cetak session-plan JSON (baca `progress/anki-weak-items.md` untuk `vehicles_red`).
+- `kb.py summary --kind {quiz,jlpt}` → breakdown lengkap JSON (per dim + `weak` + `sesi`
+  + `last_session`) untuk skill `/summary`; deterministik, read-only.
 
 ## 5. Task berurutan (dengan acceptance criteria)
 
@@ -130,6 +132,63 @@ AUTO-GENERATED, update `docs/cara-kerja.md`, `perbaikan-kb.md`, `estimasi-token.
 - **Furigana** → tabel hanya tag ASCII/kana (tak perlu furigana); prosa ber-furigana dari model.
 - **Idempotensi** → `render` = fungsi murni (baseline+attempts); aman diulang.
 - **Parser Markdown rapuh** → dipakai **hanya sekali** di `import`; setelah itu sumber = JSONL.
+
+## 9. Ekstensi (2026-08-29, ✅ terimplementasi) — grading pindah ke engine
+
+**Motivasi:** untuk soal pilihan ganda dengan kunci yang ditentukan saat generate,
+"menilai" = `submitted == key` — perbandingan mekanis yang **tak butuh model**. Saat ini
+model menulis `correct: true/false` ke `session.json` → satu error-surface (salah-ingat
+kunci / salah-tulis boolean). Pindahkan perbandingan ke engine; model cukup menaruh
+**kunci** (saat generate) + **jawaban user**, plus **override** untuk soal rancu.
+
+### Kontrak `session.json` — field question (baru)
+```json
+{"qno":1,"key":"に","submitted":"に","subtype":null,"tags":{...}}
+{"qno":3,"key":"はじまります","submitted":"はじまりました",
+ "override":"correct","note":"もう ambigu tense","tags":{...}}
+```
+- `key` = label opsi benar (persis string panel). `submitted` = label yang user klik.
+- `override` ∈ {`correct`,`incorrect`} — **opsional**, hanya untuk soal cacat/rancu; memaksa
+  hasil mengabaikan perbandingan. `note` = alasan (untuk jejak).
+- **Backward-compat:** `correct` boolean lama tetap diterima (baris `attempts.jsonl` yang
+  sudah ada tak perlu migrasi).
+
+### Fungsi grading (pure)
+```python
+def grade(q) -> bool:
+    if "override" in q:               return q["override"] == "correct"
+    if "key" in q and "submitted" in q: return q["submitted"].strip() == q["key"].strip()
+    if "correct" in q:                return bool(q["correct"])   # legacy
+    raise ValueError("question tak punya key/submitted maupun correct")
+```
+- `aggregate`, `session_deltas`, hitung `n`/`correct` sesi → semua pakai `grade(q)`,
+  bukan `q["correct"]` langsung.
+- `_validate_session` **menurunkan** `correct=sum(grade(q))` & `n=len(q)` dari engine
+  (tak percaya angka dari model); kalau model tetap kirim `correct`/`n` yang beda → warn.
+
+### Diagram peran (sesudah)
+```
+generate  → MODEL tetapkan key tiap soal (judgment bahasa)  ← satu-satunya "kecerdasan"
+submit    → user klik → MODEL taruh submitted (+ override bila rancu)
+grade     → ENGINE: correct = (submitted == key)            ← pindah dari model
+tally     → ENGINE: skor/status/ranking (sudah)
+```
+
+### Risiko & mitigasi
+- **String key ≠ submitted** (furigana/spasi beda) → false-negative. Mitigasi: `.strip()`;
+  aturan "key harus == label panel persis". (Normalisasi lebih jauh dihindari agar sederhana.)
+- **Salah pakai override** → batasi hanya soal ter-flag rancu; `note` wajib diisi.
+- **Legacy tak rusak** → cabang `correct` dipertahankan; golden/aggregate lama tetap lolos.
+
+### Verifikasi
+- Unit test `grade`: match / mismatch / override / legacy.
+- `record --dry-run` dgn `session.json` ber-`key/submitted` → `correct` count = hitungan engine.
+- Golden test lama tetap lolos (sesi22 pakai `correct` legacy → agregat identik).
+
+### File tersentuh (ekstensi)
+`scripts/kb.py` (`grade`, `aggregate`, `_validate_session`, `_touched_cells` tetap),
+`scripts/test_kb.py`, `.claude/skills/{quiz,jlpt}/SKILL.md` (skema question + "engine yang
+menilai"), doc ini, `docs/perbaikan-kb.md`.
 
 ## 8. File tersentuh
 - Baru: `scripts/kb.py`, `scripts/test_kb.py`, `progress/attempts.jsonl`, `progress/baseline.json`,

@@ -20,6 +20,7 @@ import math
 import os
 import random
 import re
+import sys
 
 # ── Path ────────────────────────────────────────────────────────────────────
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -66,6 +67,22 @@ def status(benar: int, total: int) -> str:
     return GREEN
 
 
+# ── Grading (bandingkan jawaban vs kunci) ─────────────────────────────────────
+def grade(q: dict) -> bool:
+    """Benar/salah satu soal. Prioritas: override > key/submitted > correct (legacy).
+
+    Untuk pilihan ganda, menilai = `submitted == key` (deterministik). `override`
+    (correct/incorrect) dipakai HANYA untuk soal rancu. `correct` boolean = kompat lama.
+    """
+    if "override" in q:
+        return q["override"] == "correct"
+    if "key" in q and "submitted" in q:
+        return str(q["submitted"]).strip() == str(q["key"]).strip()
+    if "correct" in q:
+        return bool(q["correct"])
+    raise ValueError(f"question qno={q.get('qno')}: tak ada key/submitted maupun correct")
+
+
 # ── Agregasi ─────────────────────────────────────────────────────────────────
 def _bump(agg: dict, dim: str, tag: str, correct: int) -> None:
     d = agg.setdefault(dim, {})
@@ -85,7 +102,7 @@ def aggregate(baseline: dict, attempts: list, kind: str) -> dict:
         if sess.get("kind") != kind:
             continue
         for q in sess.get("questions", []):
-            correct = 1 if q.get("correct") else 0
+            correct = 1 if grade(q) else 0
             if kind == "jlpt":
                 st = q.get("subtype")
                 if st:
@@ -354,10 +371,19 @@ def _validate_session(s: dict) -> dict:
     if s["kind"] not in ("quiz", "jlpt"):
         raise SystemExit("field `kind` harus 'quiz' atau 'jlpt'")
     qs = s["questions"]
-    s["n"] = s.get("n", len(qs))
-    s["correct"] = s.get("correct", sum(1 for q in qs if q.get("correct")))
     if s["kind"] == "jlpt" and any(q.get("subtype") is None for q in qs):
         raise SystemExit("sesi jlpt: tiap question wajib punya `subtype`")
+    # Skor DITURUNKAN engine dari grade(), bukan dipercaya dari model.
+    try:
+        n, correct = len(qs), sum(1 for q in qs if grade(q))
+    except ValueError as e:
+        raise SystemExit(str(e))
+    if s.get("n") is not None and s["n"] != n:
+        print(f"WARN: n model={s['n']} ≠ {n} (dihitung engine); pakai {n}", file=sys.stderr)
+    if s.get("correct") is not None and s["correct"] != correct:
+        print(f"WARN: correct model={s['correct']} ≠ {correct} (dihitung engine); "
+              f"pakai {correct}", file=sys.stderr)
+    s["n"], s["correct"] = n, correct
     return s
 
 
@@ -543,6 +569,40 @@ def vehicles_red() -> list[str]:
     return out[:12]
 
 
+def build_summary(baseline: dict, attempts: list, kind: str) -> dict:
+    """Breakdown deterministik untuk `/summary` (PURE). Dipakai model sbg sumber angka."""
+    agg = aggregate(baseline, attempts, kind)
+    dims = ["subtype"] if kind == "jlpt" else ["pola", "partikel", "lesson"]
+    breakdown = {}
+    for dim in dims:
+        breakdown[dim] = [
+            {"tag": tag, "benar": c["benar"], "total": c["total"],
+             "acc": accuracy(c["benar"], c["total"]),
+             "status": status(c["benar"], c["total"])}
+            for tag, c in agg.get(dim, {}).items()
+        ]
+    sess = _sessions_of(attempts, kind)
+    last = None
+    if sess:
+        s = sess[-1]
+        last = {"date": s["date"], "mode": s.get("mode"), "n": s.get("n"),
+                "correct": s.get("correct"),
+                "acc": accuracy(s.get("correct", 0), s.get("n", 0))}
+    return {
+        "kind": kind,
+        "sesi": baseline.get("meta", {}).get(f"{kind}_sesi", 0) + len(sess),
+        "breakdown": breakdown,
+        "weak": rank_weak(agg),
+        "last_session": last,
+    }
+
+
+def cmd_summary(args) -> int:
+    out = build_summary(load_baseline(), load_attempts(), args.kind)
+    print(json.dumps(out, ensure_ascii=False, indent=1))
+    return 0
+
+
 def cmd_plan(args) -> int:
     baseline = load_baseline()
     attempts = load_attempts()
@@ -577,6 +637,9 @@ def build_parser() -> argparse.ArgumentParser:
     pp.add_argument("--mode", default="adaptif")
     pp.add_argument("--n", type=int, default=12)
     pp.set_defaults(func=cmd_plan)
+    ps = sub.add_parser("summary", help="Cetak breakdown lengkap JSON (untuk /summary)")
+    ps.add_argument("--kind", choices=["quiz", "jlpt"], default="quiz")
+    ps.set_defaults(func=cmd_summary)
     return p
 
 

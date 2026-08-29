@@ -206,9 +206,14 @@ sendiri** (rawan salah & boros token).
  "cakupan":"<teks kolom Cakupan history>",
  "history_note":"<catatan kualitatif 1 baris utk history>",
  "weak_narrative":"<prosa lengkap section Weak areas: numbered 🔴/🟡 + Sinyal + Rekomendasi>",
- "questions":[{"qno":1,"correct":true,"subtype":null,
+ "questions":[{"qno":1,"key":"に","submitted":"に","subtype":null,
    "tags":{"pola":["<tag>"],"partikel":["<p>"],"lesson":["Lesson N"]}}]}
 ```
+- **Menilai = engine.** Tiap soal bawa **`key`** (label opsi benar, persis string panel) +
+  **`submitted`** (label yang user klik); engine menghitung benar/salah (`submitted==key`).
+  **Jangan** tulis `correct` sendiri (engine yang menurunkan skor & akan `WARN` bila beda).
+  Soal **rancu** → tambah **`"override":"correct"`** (atau `"incorrect"`) + `"note":"alasan"`
+  untuk memaksa hasil. (Boolean `correct` lama masih diterima demi kompat.)
 - **Tag WAJIB** dari `reference/quiz-taxonomy.md` (tiap soal: pola + partikel + lesson).
 - `history_note` & `weak_narrative` = **prosa yang KAMU tulis** (engine hanya
   menempatkan; angka/status/ranking dihitung engine). Setelah `record`, engine

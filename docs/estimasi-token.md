@@ -23,7 +23,9 @@ caching** (TTL 5 menit — kalau panel dijawab cepat, cache warm → jauh lebih 
 > Yang model tulis kini hanya **prosa singkat** (`history_note`/`weak_narrative`) + satu
 > `session.json`. Biaya **tulis (output)** turun signifikan vs versi lama yang menulis
 > ulang 3 tabel penuh + section Weak areas tiap sesi. Angka tabel di bawah = bagian
-> **baca (input)**, relatif tak berubah.
+> **baca (input)**, relatif tak berubah — kecuali **SKILL file** yang kini sedikit lebih
+> besar (~+0.5–1K) karena instruksi engine (`plan`/`record`/`--dry-run`/grading). Engine
+> juga menambah pemanggilan `kb.py plan`/`summary` (output JSON ~0.3–0.5K/panggilan).
 
 ## Anggaran baca (input) — bagian yang dikontrol desain hemat-token
 | Sumber | /quiz | /jlpt |
