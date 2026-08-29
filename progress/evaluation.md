@@ -12,7 +12,7 @@ Diperbarui otomatis oleh skill `/quiz` setiap selesai sesi. Melacak akurasi
 **Ambang status:** akurasi <60% 🔴 LEMAH · 60–79% 🟡 · ≥80% 🟢
 (butuh minimal **3 attempt** sebelum status dihitung; di bawah itu = ⚪ belum cukup data)
 
-_Terakhir diperbarui: 2026-08-28 · total sesi: 21_
+_Terakhir diperbarui: 2026-08-29 · total sesi: 22_
 
 ---
 
@@ -49,40 +49,40 @@ _Terakhir diperbarui: 2026-08-28 · total sesi: 21_
 | L13-を-meninggalkan | 3 | 3 | 100% | 🟢 |
 | L13-で-vs-を | 2 | 2 | 100% | ⚪ |
 | L13-ています-keadaan | 1 | 2 | 50% | ⚪ |
-| L14-te-konjugasi | 25 | 27 | 93% | 🟢 |
-| L14-てください | 4 | 5 | 80% | 🟢 |
+| L14-te-konjugasi | 26 | 28 | 93% | 🟢 |
+| L14-てください | 5 | 6 | 83% | 🟢 |
 | L14-ています-progresif | 4 | 5 | 80% | 🟢 |
 | L14-ましょうか | 1 | 1 | 100% | ⚪ |
 | L15-てもいいです | 1 | 1 | 100% | ⚪ |
 | L15-てはいけません | 1 | 1 | 100% | ⚪ |
 | L15-ています-keadaan | 6 | 7 | 86% | 🟢 |
-| L15-に-vs-で-statis | 5 | 7 | 71% | 🟡 |
+| L15-に-vs-で-statis | 8 | 10 | 80% | 🟢 |
 | L16-てから | 5 | 6 | 83% | 🟢 |
 | L16-て-urutan | 1 | 1 | 100% | ⚪ |
-| L16-他動詞-自動詞 | 3 | 4 | 75% | 🟡 |
-| L16-に-naik | 3 | 5 | 60% | 🟡 |
+| L16-他動詞-自動詞 | 4 | 5 | 80% | 🟢 |
+| L16-に-naik | 6 | 8 | 75% | 🟡 |
 | L17-ない-konjugasi | 10 | 11 | 91% | 🟢 |
 | L17-なければなりません | 4 | 4 | 100% | 🟢 |
 | L17-なくてもいいです | 4 | 5 | 80% | 🟢 |
 | L17-ないでください | 2 | 2 | 100% | ⚪ |
 | L18-ことができます | 8 | 9 | 89% | 🟢 |
-| L18-まえに | 8 | 9 | 89% | 🟢 |
-| L18-辞書形-konjugasi | 10 | 12 | 83% | 🟢 |
-| L19-たことがあります | 11 | 12 | 92% | 🟢 |
-| L19-た-konjugasi | 16 | 17 | 94% | 🟢 |
-| L19-なります | 22 | 25 | 88% | 🟢 |
-| L19-たり | 12 | 13 | 92% | 🟢 |
+| L18-まえに | 9 | 10 | 90% | 🟢 |
+| L18-辞書形-konjugasi | 11 | 13 | 85% | 🟢 |
+| L19-たことがあります | 12 | 13 | 92% | 🟢 |
+| L19-た-konjugasi | 18 | 19 | 95% | 🟢 |
+| L19-なります | 23 | 26 | 88% | 🟢 |
+| L19-たり | 13 | 14 | 93% | 🟢 |
 | L19-に-vs-を-のぼる | 5 | 5 | 100% | 🟢 |
 
 ## Per partikel
 | Partikel | Benar | Total | Akurasi | Status |
 |----------|-------|-------|---------|--------|
 | から | 2 | 2 | 100% | ⚪ |
-| に | 35 | 43 | 81% | 🟢 |
-| で | 12 | 13 | 92% | 🟢 |
-| を | 12 | 13 | 92% | 🟢 |
+| に | 40 | 48 | 83% | 🟢 |
+| で | 13 | 14 | 93% | 🟢 |
+| を | 13 | 14 | 93% | 🟢 |
 | の | 1 | 1 | 100% | ⚪ |
-| が | 8 | 8 | 100% | 🟢 |
+| が | 9 | 9 | 100% | 🟢 |
 | へ | 1 | 1 | 100% | ⚪ |
 
 ## Per lesson
@@ -98,36 +98,20 @@ _Terakhir diperbarui: 2026-08-28 · total sesi: 21_
 | Lesson 11 | 3 | 3 | 100% | 🟢 |
 | Lesson 12 | 3 | 3 | 100% | 🟢 |
 | Lesson 13 | 14 | 16 | 88% | 🟢 |
-| Lesson 14 | 24 | 26 | 92% | 🟢 |
-| Lesson 15 | 13 | 16 | 81% | 🟢 |
-| Lesson 16 | 12 | 16 | 75% | 🟡 |
+| Lesson 14 | 25 | 27 | 93% | 🟢 |
+| Lesson 15 | 16 | 19 | 84% | 🟢 |
+| Lesson 16 | 16 | 20 | 80% | 🟢 |
 | Lesson 17 | 11 | 12 | 92% | 🟢 |
-| Lesson 18 | 17 | 19 | 89% | 🟢 |
-| Lesson 19 | 51 | 57 | 89% | 🟢 |
+| Lesson 18 | 18 | 20 | 90% | 🟢 |
+| Lesson 19 | 54 | 60 | 90% | 🟢 |
 
 ---
 
 ## Weak areas (prioritas soal berikutnya)
-_Tidak ada 🔴. Sesi 2026-08-28 (sesi 21, `/quiz review`) skor **10/12 (83%)** — drill khusus
-pasangan verba-partikel. **Tiga 🟡 lama tembus 🟢:** `L4-jam` 75%→**🟢 83%** (7時=しちじ & 4時=よじ
-benar), `Lesson 4` → 🟢, `Lesson 15` tetap 🟢 (つとめる+に, 住む+に benar). Pola 自他動詞 & のる/て形
-membaik. **2 salah, sama-sama "verba mirip, partikel beda":** (4) `急行（きゅうこう）（に）のりかえます`
-dijawab **を** — のりかえる ambil に seperti のる, bukan を; (8) `スーパー（で）はたらいて います` dijawab
-**を** — はたらく ambil で (tempat aktivitas), lawan つとめる+に. Soal 3 (もう+はじまる) rancu di sisi
-tense → dihitung benar (golongan 自動詞 tepat); dicatat di perbaikan-kb._
-1. 🟡 **L16-に-naik (60%, 3/5)** — のりかえる/おりる partikel masih goyang. Jangkar: **のる・のりかえる → に**
-   (kendaraan yang dituju/dinaiki), **おりる → を** (kendaraan yang ditinggalkan). Sisipkan lagi.
-2. 🟡 **L15-に-vs-で-statis (71%, 5/7)** — つとめる+に & 住む+に kini mantap, tapi **はたらく+で masih
-   ketuker jadi を**. Kunci pembeda: つとめる=に (melekat instansi), **はたらく=で (tempat aktivitas)**.
-3. 🟡 **L16-他動詞-自動詞 (75%, 3/4)** & **Lesson 16 (75%)** — はじまる（が,自）↔はじめる（を,他） sudah
-   membaik (3/4); Lesson 16 ditarik terutama oleh のりかえる/おりる (item 1).
+_Tidak ada 🔴. Sesi 2026-08-29 (adaptif, engine `kb.py`) skor **12/12 (100%)** — sesi pertama dengan engine pembukuan. **Tiga 🟡 lama tembus 🟢:** `L15-に-vs-で-statis` 71%→**🟢 80%** (つとめる+に, はたらく+で, 住む+に semua benar — pasangan はたらく(で)↔つとめる(に) yang kronis kini mantap), `L16-他動詞-自動詞` 75%→**🟢 80%** (はじまる 自動詞), `Lesson 16` 75%→**🟢 80%**, `Lesson 15`→🟢 84%. Verb 🔴 Anki (けす・でかける・急行・いく) dipakai sbg kendaraan, semua benar._
+1. 🟡 **L16-に-naik (75%, 6/8)** — satu-satunya sisa 🟡. のりかえる+に & おりる+を **sudah benar sesi ini** (naik dari 60%); tinggal 1 attempt bersih untuk tembus 🟢. Jangkar tetap: **のる・のりかえる → に**, **おりる → を**.
 
 **Sinyal yang perlu diperhatikan:**
-- ✅ **L4-jam tuntas 🟢** (baca jam 4/7 khusus mantap); L15 つとめる/住む+に konsisten benar; 自他動詞
-  はじまる/はじめる sudah 3/4. Grammar inti L13–L19 tetap 🟢.
-- ⚠️ **Satu celah gigih**: pasangan **"dua verba 'kerja/naik-turun', partikel beda"** — はたらく（で）
-  vs つとめる（に）, のる/のりかえる（に） vs おりる（を）. Ini ciri titik lemah user yang paling bandel;
-  arah kesalahan konsisten (over-pakai を). Perlu 1–2 drill lagi untuk mengunci.
-- **Rekomendasi:** tak ada 🔴. **`/quiz review`** singkat lagi khusus のりかえる+に / おりる+を /
-  はたらく+で akan menutup sisa 🟡 (semua tinggal 1–2 attempt bersih). Grammar sudah sangat matang →
-  **`/jlpt` mock** layak. Anki 🔴 belum terpakai: だします・つけます・なくします・かえします.
+- ✅ **Pasangan verba-partikel yang kronis tuntas** — はたらく/つとめる/住む (L15) & はじまる/はじめる (L16 自他) semua 🟢. Refleks "jangan default ke を" kini terpasang.
+- ✅ **Grammar N5 nyaris semua 🟢** — L13–L19 mantap; kelemahan tersisa hanya のりかえる/おりる (sangat sempit).
+- **Rekomendasi:** tinggal **1 drill kecil** のりかえる+に / おりる+を untuk menutup L16-に-naik → semua 🟢. Setelah itu grammar N5 praktis lengkap → fokus **`/jlpt` mock** rutin. Sisa 🟡 `/jlpt` = `DK-narabekae` (posisi ます-stem).
