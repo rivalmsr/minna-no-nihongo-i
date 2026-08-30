@@ -515,17 +515,55 @@ def tag_to_lesson(tag: str) -> str | None:
     return f"Lesson {int(m.group(1))}" if m else None
 
 
-def latest_lesson() -> str | None:
-    nums = [
+def _lesson_nums() -> list[int]:
+    return sorted(
         int(m.group(1))
         for p in glob.glob(os.path.join(REPO_ROOT, "lessons", "lesson-*.md"))
         if (m := re.search(r"lesson-(\d+)\.md", p))
-    ]
+    )
+
+
+def latest_lesson() -> str | None:
+    nums = _lesson_nums()
     return f"Lesson {max(nums)}" if nums else None
 
 
-def compute_scope(agg: dict, mode: str, n: int = 12) -> dict:
+def all_lessons() -> list[str]:
+    return [f"Lesson {n}" for n in _lesson_nums()]
+
+
+def lesson_last_tested(attempts: list, kind: str = "quiz") -> dict[str, str]:
+    """Map Lesson → tanggal terakhir diuji (ISO string), dari attempts berkind sama."""
+    out: dict[str, str] = {}
+    for sess in attempts:
+        if sess.get("kind") != kind:
+            continue
+        date = sess.get("date", "")
+        for q in sess.get("questions", []):
+            for les in (q.get("tags") or {}).get("lesson", []):
+                if date > out.get(les, ""):
+                    out[les] = date
+    return out
+
+
+def maintenance_lessons(agg: dict, attempts: list, limit: int = 3) -> list[str]:
+    """B2: saat tak ada weak-area, sapa bab paling RAWAN LUNTUR — urut dari yang
+    paling lama tak diuji (spaced review), tie-break akurasi terendah. Deterministik."""
+    last = lesson_last_tested(attempts, "quiz")
+    lagg = agg.get("lesson", {})
+
+    def sort_key(les: str):
+        lt = last.get(les, "")  # "" = belum pernah diuji → paling prioritas
+        c = lagg.get(les, {"benar": 0, "total": 0})
+        acc = accuracy(c["benar"], c["total"]) if c["total"] else 0
+        return (lt, acc, les)
+
+    return sorted(all_lessons(), key=sort_key)[:limit]
+
+
+def compute_scope(agg: dict, mode: str, n: int = 12, attempts: list | None = None) -> dict:
     """Deterministik: daftar lesson + bobot tag berdasarkan weak-area & mode."""
+    attempts = attempts or []
     weak = rank_weak(agg, limit=8)
     weak_pola = [w for w in weak if w["dim"] == "pola"]
     weak_lessons: list[str] = []
@@ -534,13 +572,23 @@ def compute_scope(agg: dict, mode: str, n: int = 12) -> dict:
         if les and les not in weak_lessons:
             weak_lessons.append(les)
 
+    maintenance = False
+    review_reason = None
     if mode == "review":
         lessons = weak_lessons[:3]
         pool = weak_pola or weak
     elif mode.startswith("lesson-"):
         lessons = [f"Lesson {int(mode.split('-', 1)[1])}"]
         pool = [w for w in weak_pola if tag_to_lesson(w["tag"]) in lessons]
-    else:  # adaptif (default)
+    elif not weak_lessons and not weak_pola:  # adaptif TANPA weak-area → B2 maintenance
+        maintenance = True
+        lessons = maintenance_lessons(agg, attempts, limit=3)
+        pool = []
+        review_reason = (
+            "Tak ada weak-area (semua 🟢/⚪) → mode maintenance: spaced review bab "
+            "paling lama tak diuji (lawan decay). Sebar merata; tak ada bobot weak."
+        )
+    else:  # adaptif (default) dgn weak-area
         lessons = weak_lessons[:2]
         lt = latest_lesson()
         if lt and lt not in lessons:
@@ -552,7 +600,11 @@ def compute_scope(agg: dict, mode: str, n: int = 12) -> dict:
         per = max(1, n // min(len(pool), 4))
         for w in pool[:4]:
             weights.append({"tag": w["tag"], "n": per})
-    return {"lessons": lessons, "weights": weights}
+    out = {"lessons": lessons, "weights": weights}
+    if maintenance:
+        out["maintenance"] = True
+        out["review_reason"] = review_reason
+    return out
 
 
 def vehicles_red() -> list[str]:
@@ -612,7 +664,7 @@ def cmd_plan(args) -> int:
     attempts = load_attempts()
     agg = aggregate(baseline, attempts, args.kind)
     n = args.n
-    scope = compute_scope(agg, args.mode, n)
+    scope = compute_scope(agg, args.mode, n, attempts)
     out = {
         "kind": args.kind,
         "mode": args.mode,
@@ -622,6 +674,9 @@ def cmd_plan(args) -> int:
         "vehicles_red": vehicles_red(),
         "answer_positions": spread_positions(n, 4),
     }
+    if scope.get("maintenance"):
+        out["maintenance"] = True
+        out["review_reason"] = scope["review_reason"]
     print(json.dumps(out, ensure_ascii=False, indent=1))
     return 0
 

@@ -108,7 +108,16 @@ Untuk `/quiz` polos, hitung daftar lesson yang perlu dibaca — **hemat, jangan 
    (prioritas: akurasi terendah dulu). Muat **hanya anchor** lesson itu (lihat
    "Hemat token"), bukan lesson lain.
 4. Jika belum ada data (sesi pertama / evaluation.md kosong) → cakupan = **bab terbaru saja**.
+5. **Jika TAK ADA weak-area** (semua pola/lesson 🟢/⚪ — tak ada 🔴/🟡) → **mode maintenance
+   (spaced review)**: JANGAN menyempit ke bab terbaru saja. Sapa **bab yang paling lama
+   tak diuji** (lawan decay — status 🟢 itu foto lama, pemahaman bisa luntur) + bab
+   ber-data tipis (⚪). Sebar merata; tak ada bobot weak. Engine sudah menghitung ini:
+   `kb.py plan --mode adaptif` mengembalikan `"maintenance":true` + `lessons` = 3 bab
+   paling lama tak disentuh (urut *last-tested* dari `attempts.jsonl`, tie-break akurasi
+   terendah). Beri tahu user singkat bahwa sesi ini "review pemeliharaan" (bukan ada
+   kelemahan baru).
 Alokasi 12 soal: mayoritas ke lesson lemah (materi berstatus 🔴/🟡), sisanya ke bab terbaru.
+Saat maintenance (tak ada weak) → sebar **merata** ke 3 bab yang disodorkan engine.
 
 Jika cakupan menyebут lesson yang file-nya belum ada, beri tahu user lesson mana
 yang tersedia.

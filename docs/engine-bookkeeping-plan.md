@@ -211,12 +211,17 @@ menilai"), doc ini, `docs/perbaikan-kb.md`.
   (dibagi antar tag 🔴/🟡 by akurasi asc) + ~40% bab terbaru, dgn cap per-tag supaya tak
   menumpuk semua ke satu tag. Sertakan `lesson`/`subtype` target per slot, bukan cuma `tag`.
 
-### B2 — perilaku saat **0 weak area** (maintenance mode)
+### B2 — perilaku saat **0 weak area** (maintenance mode) — ✅ SELESAI 2026-08-30
 - **Amatan (quiz 2026-08-30):** setelah sesi ini, `evaluation.md` **tak punya 🔴/🟡 lagi**
-  (semua 🟢/⚪). Mode `adaptif` ke depan akan menyodorkan "bab terbaru + tag akurasi-terendah
-  yang sebenarnya sudah 🟢" — tak ada lubang pola nyata untuk dikejar.
-- **Arah fix:** deteksi kondisi "tak ada weak area" di `plan` → kembalikan sinyal eksplisit
-  (mis. `"maintenance":true` + saran spaced-review tag 🟢 terlama-tak-diuji, atau rekomendasi
-  pindah `/jlpt`). Hindari memberi kesan ada kelemahan padahal cuma varian statistik 🟢.
-- **Referensi sinyal terkait:** `progress/history.md` (frekuensi tag), `evaluation.md`
-  (kolom akurasi/status), tracker JLPT `jlpt-evaluation.md` (subtipe 🟡 tersisa `DK-narabekae`).
+  (semua 🟢/⚪). Mode `adaptif` **menyempit ke bab terbaru saja** (`plan` → `lessons:["Lesson 19"]`,
+  `weights:[]`) — L2–L18 tak lagi diprobe, decay tak terdeteksi.
+- **Fix (terimplementasi):** `compute_scope` mendeteksi "tak ada weak-area" pada mode adaptif →
+  **mode maintenance**: `lessons` = 3 bab **paling lama tak diuji** (spaced review lawan decay),
+  urut `lesson_last_tested()` dari `attempts.jsonl` (bab belum pernah diuji = prioritas teratas),
+  tie-break akurasi terendah; `weights:[]` (sebar merata). Output `plan` menyertakan
+  `"maintenance":true` + `"review_reason"`. Skill `/quiz` (§"Menentukan cakupan default" butir 5)
+  memberi tahu user "review pemeliharaan", bukan kelemahan baru.
+- **File:** `scripts/kb.py` (`_lesson_nums`/`all_lessons`/`lesson_last_tested`/`maintenance_lessons`
+  + cabang di `compute_scope`), `scripts/test_kb.py` (2 test), `.claude/skills/quiz/SKILL.md`.
+- **Verifikasi:** `plan --mode adaptif` kini → `lessons:["Lesson 2","Lesson 3","Lesson 4"]`
+  `maintenance:true`; 15 test kb lulus.

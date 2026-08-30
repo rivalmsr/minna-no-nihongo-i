@@ -21,6 +21,18 @@ atau update skor), tambahkan satu blok di paling atas daftar di bawah, format:
 
 ---
 
+### 2026-08-30 — `/quiz` maintenance mode saat 0 weak-area (spaced review, B2)
+- **Problem:** setelah weak-area habis (semua 🟢/⚪), `kb.py plan --mode adaptif` **menyempit
+  cakupan ke bab terbaru saja** (`lessons:["Lesson 19"]`, `weights:[]`). Padahal tujuan `/quiz`
+  = deteksi kelemahan **seluruh** materi Minna; status 🟢 itu foto lama & bisa **luntur** (decay).
+  Akibatnya `/quiz` polos akan terus mengulang bab terakhir; L2–L18 tak pernah diprobe ulang.
+- **Fix:** `compute_scope` mode adaptif tanpa weak-area → **maintenance**: pilih 3 bab **paling
+  lama tak diuji** (urut `lesson_last_tested()` dari `attempts.jsonl`; bab belum pernah diuji =
+  prioritas), tie-break akurasi terendah; sebar merata (`weights:[]`). `plan` menandai
+  `"maintenance":true`+`"review_reason"`; skill `/quiz` memberi tahu user ini "review pemeliharaan".
+- **File:** `scripts/kb.py`, `scripts/test_kb.py` (2 test baru), `.claude/skills/quiz/SKILL.md`,
+  `docs/engine-bookkeeping-plan.md` (B2 → SELESAI).
+
 ### 2026-08-30 — Tambah subtipe `DK-bunshou` (文章の文法 / 問題3) ke `/jlpt`
 - **Problem:** mock `/jlpt` meniru struktur JLPT N5 tertulis, tapi **melewatkan satu seksi
   resmi**: 問題3「文章の文法」— paragraf pendek dgn beberapa rumpang, jawaban ditentukan **alur

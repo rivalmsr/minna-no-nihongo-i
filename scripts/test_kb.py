@@ -150,6 +150,36 @@ def test_compute_scope_review():
     assert all(w["n"] > 0 for w in scope["weights"])
 
 
+def test_compute_scope_maintenance():
+    # Tak ada weak-area (semua 🟢) → adaptif jatuh ke mode maintenance (B2)
+    agg = {
+        "pola": {"L19-なります": {"benar": 22, "total": 25}},  # 88% 🟢
+        "lesson": {
+            "Lesson 18": {"benar": 18, "total": 20},  # 90% — baru diuji
+            "Lesson 19": {"benar": 54, "total": 60},  # 90% — baru diuji
+        },
+    }
+    attempts = [
+        {"kind": "quiz", "date": "2026-08-29",
+         "questions": [{"correct": True, "tags": {"lesson": ["Lesson 18", "Lesson 19"]}}]},
+    ]
+    scope = kb.compute_scope(agg, "adaptif", n=12, attempts=attempts)
+    assert scope.get("maintenance") is True
+    assert scope["weights"] == []                       # tak ada bobot weak
+    # Bab yang BELUM pernah diuji (mis. Lesson 2/3) harus muncul lebih dulu
+    # daripada Lesson 18/19 yang baru diuji.
+    assert "Lesson 18" not in scope["lessons"] and "Lesson 19" not in scope["lessons"]
+    assert len(scope["lessons"]) == 3
+
+
+def test_compute_scope_maintenance_off_when_weak():
+    # Masih ada 🟡 → BUKAN maintenance (tetap adaptif normal)
+    agg = {"pola": {"L16-に-naik": {"benar": 3, "total": 5}}}  # 60% 🟡
+    scope = kb.compute_scope(agg, "adaptif", n=12, attempts=[])
+    assert "maintenance" not in scope
+    assert any(w["tag"] == "L16-に-naik" for w in scope["weights"])
+
+
 def test_session_deltas():
     baseline = {"quiz": {"pola": {"X": {"benar": 5, "total": 7}}}, "jlpt": {}}
     session = {"kind": "quiz", "questions": [
