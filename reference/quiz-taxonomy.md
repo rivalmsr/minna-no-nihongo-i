@@ -119,6 +119,7 @@ partikel di atas.
 | `MG-ruigi` | 1 文字・語彙 | Sinonim / 言い換え類義: pilih kata/kalimat **arti terdekat** |
 | `DK-bunpou` | 2 文法・読解 | Tata bahasa: pilih partikel/pola tepat (cross-tag pola in-scope) |
 | `DK-narabekae` | 2 文法・読解 | Susun kalimat: potongan 1–4 + posisi **★** |
+| `DK-bunshou` | 2 文法・読解 | 文章の文法 (問題3): paragraf pendek dgn **beberapa rumpang** → pilih pola/penghubung/指示語/arah pemberian yang cocok **alur wacana** (bukan kalimat lepas) |
 | `DK-dokkai` | 2 文法・読解 | Bacaan pendek (~60–80 kata) + pertanyaan pemahaman |
 | `DK-joho` | 2 文法・読解 | Bacaan informasi (brosur/pengumuman) → cari info spesifik |
 

@@ -43,6 +43,7 @@ SUBTYPE_META = [
     ("MG-ruigi", "Sinonim / 言い換え類義", 1),
     ("DK-bunpou", "Tata bahasa (grammar)", 2),
     ("DK-narabekae", "Susun kalimat (★)", 2),
+    ("DK-bunshou", "Tata bahasa dalam teks (cloze)", 2),
     ("DK-dokkai", "Bacaan pendek", 2),
     ("DK-joho", "Bacaan informasi (info-search)", 2),
 ]
@@ -320,10 +321,13 @@ def render_jlpt(text: str, agg: dict, date: str | None, sesi: int) -> str:
 
     def rows(session_key):
         sess = int(session_key[-1])
+        # Subtipe JLPT = himpunan tertutup (SUBTYPE_META) → selalu tampilkan semua
+        # baris sesi ini, termasuk yang belum ada attempt (⚪ 0/0), agar tracker
+        # mendokumentasikan struktur ujian lengkap.
         return [
-            _fmt_row(tag, sub[tag], backtick=True, label=label)
+            _fmt_row(tag, sub.get(tag, {"benar": 0, "total": 0}), backtick=True, label=label)
             for tag, label, s in SUBTYPE_META
-            if s == sess and tag in sub
+            if s == sess
         ]
 
     text = _splice_tables(text, [("Sesi 1", "s1"), ("Sesi 2", "s2")], rows)

@@ -21,8 +21,9 @@ JLPT N5 tertulis = 2 sesi. `聴解` (listening) **di luar cakupan** (butuh audio
 
 - **Sesi 1 · 文字・語彙 (Moji-Goi):** `MG-yomi` (baca kanji), `MG-hyouki` (tulis kanji),
   `MG-bunmyaku` (kosakata konteks), `MG-ruigi` (sinonim/言い換え類義).
-- **Sesi 2 · 文法・読解 (Bunpou-Dokkai):** `DK-bunpou` (grammar), `DK-narabekae` (susun
-  kalimat ★), `DK-dokkai` (bacaan pendek), `DK-joho` (bacaan informasi / info-search).
+- **Sesi 2 · 文法・読解 (Bunpou-Dokkai):** `DK-bunpou` (grammar kalimat lepas),
+  `DK-narabekae` (susun kalimat ★), `DK-bunshou` (文章の文法 / 問題3 — grammar dalam teks/
+  cloze), `DK-dokkai` (bacaan pendek), `DK-joho` (bacaan informasi / info-search).
 
 Tag subtipe ada di `reference/quiz-taxonomy.md` (section "Tag subtipe JLPT").
 
@@ -80,12 +81,15 @@ Kontrak baca per sesi (sama semangatnya dgn `/quiz`):
 `/jlpt [moji | bunpou | review] [N]`
 
 - **`/jlpt` (polos) → MOCK PENUH:** **Sesi 1 = 8 soal** (2 tiap subtipe MG) + **Sesi 2 =
-  8 soal** (2 `DK-bunpou`, 1 `DK-narabekae`, 1 blok `DK-dokkai` = 1 paragraf + 2
-  pertanyaan, 1 blok `DK-joho` = 1 teks + 2 pertanyaan). **Total 16 soal** (4 panel
-  AskUserQuestion penuh: 4+4+4+4).
+  8 soal** (1 `DK-bunpou`, 1 `DK-narabekae`, 1 blok `DK-bunshou` = 1 paragraf + 2 rumpang,
+  1 blok `DK-dokkai` = 1 paragraf + 2 pertanyaan, 1 blok `DK-joho` = 1 teks + 2 pertanyaan).
+  **Total 16 soal** (4 panel AskUserQuestion penuh: 4+4+4+4). Komposisi Sesi 2 sengaja
+  **menyertakan SEMUA lima subtipe DK tiap mock** (cakupan penuh > kuantitas per subtipe);
+  butuh porsi grammar lebih banyak → pakai `/jlpt bunpou`.
 - **`/jlpt moji` → hanya Sesi 1** (文字・語彙): **12 soal**, 3 tiap subtipe (3 panel penuh).
-- **`/jlpt bunpou` → hanya Sesi 2** (文法・読解): **12 soal** (mis. 4 `DK-bunpou`, 2
-  `DK-narabekae`, 1 blok bacaan pendek 3 soal, 1 blok info-search 3 soal).
+- **`/jlpt bunpou` → hanya Sesi 2** (文法・読解): **12 soal** (mis. 2 `DK-bunpou`, 2
+  `DK-narabekae`, 1 blok `DK-bunshou` 2 soal, 1 blok bacaan pendek 3 soal, 1 blok
+  info-search 3 soal).
 - **`/jlpt review` → hanya subtipe LEMAH** (🔴/🟡 dari `jlpt-evaluation.md`): 12 soal,
   bobot ke subtipe akurasi terendah.
 - **Angka `N`** → override jumlah soal untuk sesi itu (bagi proporsional; jaga tetap
@@ -133,9 +137,10 @@ asli).
     merata (1/2/3/4) lintas soal — jangan menaruh jawaban benar di nomor 1 terus.** Porsi hint di
     `description` MEMUDAR BERTAHAP mengikuti penguasaan (scaffolding fade)** — lihat
     "Hint fading (scaffolding)" di Catatan gaya.
-- Untuk soal **bacaan** (`DK-dokkai`, `DK-joho`): tampilkan **teks** sekali di chat
-  (H2/blockquote) + soal-soalnya, lalu **panel per-blok** berisi HANYA soal blok itu,
-  ditaruh tepat di bawah ceritanya. **Aturan panel bacaan (WAJIB):**
+- Untuk soal **berteks** (`DK-bunshou`, `DK-dokkai`, `DK-joho`): tampilkan **teks** sekali
+  di chat (H2/blockquote) + soal-soalnya, lalu **panel per-blok** berisi HANYA soal blok itu,
+  ditaruh tepat di bawah teksnya. (`DK-bunshou` = teks ber-rumpang; rumpang yang diuji jangan
+  diberi cue.) **Aturan panel berteks (WAJIB):**
   - **Cerita TETAP disertakan di DALAM tiap `question` panel** blok itu (di-prefix
     `【文章】`), sebab panel yang terlihat saat menjawab — kalau cerita cuma di chat, ia
     **hilang** ketika panel terbuka & user terpaksa scroll (bisa tak sengaja melihat soal
@@ -294,6 +299,32 @@ cross-tag pola/partikel). Boleh pakai verb dari `anki-verbs.md` dalam pola in-sc
 > soal 12): 「わたしは **まいあさ** シャワーを あびて、はを みがいて、**ねます**」 — grammar て-rangkaian
 > benar, tapi "pagi lalu tidur" janggal → ganti `まいあさ`→`まいばん` atau penutup→`がっこうへ 行きます`.
 > Berlaku juga untuk `DK-bunmyaku` & `DK-dokkai`/`DK-joho`: konteks kalimat/teks harus wajar.
+
+**`DK-bunshou` — 文章の文法 (問題3): tata bahasa DALAM teks (cloze).** Tampilkan **1 paragraf
+pendek** (gaya karangan/surat, pola in-scope), dengan **beberapa rumpang bernomor**
+（１）（２）… di dalam alur cerita. Tiap rumpang = 1 soal pilihan ganda. **Beda dari
+`DK-bunpou`:** jawaban ditentukan oleh **alur wacana**, bukan kalimat lepas. Yang khas diuji:
+- **penghubung antar-kalimat**: でも / それから / そして / だから / では
+- **arah pemberian & sudut pandang**: あげる↔もらう↔くれる (siapa subjek ketahuan dari cerita
+  → di sini justru **tak rancu**, cerita mengunci arah; bandingkan jebakan `に` dua-arah di
+  kalimat lepas `/quiz`)
+- **指示語 (kata tunjuk)**: その / それ / ここ (merujuk kalimat sebelumnya)
+- **pilihan pola/bentuk** yang **cocok konteks & tense cerita**, bukan sekadar bentuk benar
+```
+[Teks] リサさんの さくぶん（作文）:
+「先週（せんしゅう）、友達（ともだち）と 京都（きょうと）へ 行（い）きました。お寺（てら）を
+見（み）たり、写真（しゃしん）を とったり しました。（１）、とても つかれました。
+友達（ともだち）が お茶（ちゃ）を （２）、うれしかったです。」
+（１） 1. だから  2. でも  3. それから  4. では        → (jwb 1; sebab-akibat: banyak aktivitas→capek)
+（２） 1. あげて  2. もらって  3. くれて  4. かって     → (jwb 3; teman memberi KE aku → くれる)
+```
+> **Aturan panel (WAJIB, sama semangatnya dgn bacaan):** teks paragraf **ikut di DALAM tiap
+> `question` panel** rumpang itu (prefix `【文章】`), sebab panel yang terlihat saat menjawab —
+> beri **jarak** (1 baris kosong) sebelum `（N）…`, JANGAN garis horizontal. Teks boleh
+> diringkas tapi **furigana tetap** & jangan buang kalimat yang jadi cue jawaban rumpang.
+> **Rumpang yang diuji JANGAN diberi cue jawaban** di teks. `description` opsi ikut hint fading
+> (semua 🟢 → polos). Cek **koherensi** cerita (lihat guardrail waktu↔aksi di `DK-narabekae`).
+> Tiap soal bertag `subtype:"DK-bunshou"` (+ boleh cross-tag pola bila jelas, opsional).
 
 **`DK-dokkai` — Bacaan pendek (~60–80 kata).** Tampilkan 1 paragraf pakai pola in-scope,
 lalu 2 pertanyaan pemahaman. Semua kanji berfurigana.

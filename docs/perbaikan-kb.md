@@ -21,6 +21,21 @@ atau update skor), tambahkan satu blok di paling atas daftar di bawah, format:
 
 ---
 
+### 2026-08-30 — Tambah subtipe `DK-bunshou` (文章の文法 / 問題3) ke `/jlpt`
+- **Problem:** mock `/jlpt` meniru struktur JLPT N5 tertulis, tapi **melewatkan satu seksi
+  resmi**: 問題3「文章の文法」— paragraf pendek dgn beberapa rumpang, jawaban ditentukan **alur
+  wacana** (penghubung antar-kalimat, arah pemberian あげ/もらい/くれ, 指示語, pilihan pola sesuai
+  konteks), beda dari `DK-bunpou` (kalimat lepas). Akibatnya mock bukan 1:1 struktur ujian.
+- **Fix:** tambah subtipe `DK-bunshou` di seluruh rantai — `reference/quiz-taxonomy.md` (tabel
+  subtipe), `scripts/kb.py` `SUBTYPE_META` (urut setelah `DK-narabekae`), template subtipe +
+  aturan panel berteks di `.claude/skills/jlpt/SKILL.md`, dan komposisi mock (Sesi 2 kini
+  menyertakan blok `DK-bunshou` + semua 5 subtipe DK tiap mock). Sekalian: render tabel
+  `jlpt-evaluation.md` diubah menampilkan **semua** subtipe (himpunan tertutup) termasuk yang
+  0/0 (⚪) — dulu hanya subtipe yang sudah ada attempt yang muncul, jadi subtipe baru tak
+  terlihat sampai dipakai.
+- **File:** `reference/quiz-taxonomy.md`, `scripts/kb.py`, `.claude/skills/jlpt/SKILL.md`,
+  `progress/jlpt-evaluation.md` (re-render).
+
 ### 2026-08-30 — Soal memberi↔menerima (あげる/もらう) tak boleh andalkan `に` (dua-arah)
 - **Problem:** quiz 2026-08-30 soal 11 (`L7-に-menerima`) 「父（ちち）**に** 時計（とけい）を（　）」 opsi
   あげました/もらいました. Partikel `に` **dua-arah**: `父に…を あげました` (に = penerima) dan
