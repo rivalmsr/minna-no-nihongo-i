@@ -123,12 +123,12 @@ Total ditandai — Minna: 🔴23 · 🟡58 · ⚪91  |  Kanji N5: 🔴10 · 🟡
 | 🟡 | 万 | まん | sepuluh ribu | 7 |
 | 🟡 | 小 | ちいさい | kecil | 7 |
 | 🟡 | 聞 | きく | mendengar | 7 |
+| 🟡 | 言 | いう | berkata | 7 |
 | 🟡 | 午 | ご | siang | 6 |
 | 🟡 | 来 | くる | datang | 6 |
 | 🟡 | 牛 | うし | sapi | 6 |
 | 🟡 | 白 | しろ | putih | 6 |
 | 🟡 | 西 | にし | barat | 6 |
-| 🟡 | 言 | いう | berkata | 6 |
 | 🟡 | 話 | はなす | berbicara | 6 |
 | 🟡 | 語 | ご | bahasa | 6 |
 | 🟡 | 道 | みち | jalan | 6 |
@@ -140,4 +140,4 @@ Total ditandai — Minna: 🔴23 · 🟡58 · ⚪91  |  Kanji N5: 🔴10 · 🟡
 | 🟡 | 立 | たつ | berdiri | 5 |
 
 ---
-_Auto-generated 2026-08-29 oleh `scripts/sync-anki-weak-items.sh` dari `collection.anki2`._
+_Auto-generated 2026-08-30 oleh `scripts/sync-anki-weak-items.sh` dari `collection.anki2`._
