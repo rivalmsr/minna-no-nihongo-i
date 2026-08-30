@@ -172,6 +172,15 @@ def test_compute_scope_maintenance():
     assert len(scope["lessons"]) == 3
 
 
+def test_compute_scope_maintenance_only_adaptif():
+    # Mode JLPT (mock/moji/bunpou) TANPA weak TAK boleh kena maintenance —
+    # itu khusus quiz adaptif. Harus fall-through ke cakupan bab terbaru.
+    agg = {"subtype": {"MG-yomi": {"benar": 19, "total": 20}}}  # 🟢, tak ada weak
+    for m in ("mock", "moji", "bunpou"):
+        scope = kb.compute_scope(agg, m, n=12, attempts=[])
+        assert "maintenance" not in scope, f"maintenance bocor ke mode {m}"
+
+
 def test_compute_scope_maintenance_off_when_weak():
     # Masih ada 🟡 → BUKAN maintenance (tetap adaptif normal)
     agg = {"pola": {"L16-に-naik": {"benar": 3, "total": 5}}}  # 60% 🟡

@@ -30,7 +30,14 @@ atau update skor), tambahkan satu blok di paling atas daftar di bawah, format:
   lama tak diuji** (urut `lesson_last_tested()` dari `attempts.jsonl`; bab belum pernah diuji =
   prioritas), tie-break akurasi terendah; sebar merata (`weights:[]`). `plan` menandai
   `"maintenance":true`+`"review_reason"`; skill `/quiz` memberi tahu user ini "review pemeliharaan".
-- **File:** `scripts/kb.py`, `scripts/test_kb.py` (2 test baru), `.claude/skills/quiz/SKILL.md`,
+- **Scoping (penting):** maintenance **HANYA** untuk `mode == "adaptif"` (quiz). Sempat bocor
+  ke semua mode `/jlpt` (mock/moji/bunpou) karena kondisi awal cuma cek `not weak_lessons and
+  not weak_pola` — untuk JLPT itu selalu benar (agg berbasis *subtype*, tak punya dim pola/lesson),
+  dan `maintenance_lessons` pakai *last-tested quiz* yang tak relevan buat JLPT. **Kenapa `/jlpt`
+  tak butuh maintenance:** mock JLPT sudah **menguji SEMUA subtipe tiap sesi** (struktural
+  selalu-luas), jadi tak ada penyempitan/decay per-subtipe yang perlu dilawan. Diperbaiki +
+  di-lock dengan test `test_compute_scope_maintenance_only_adaptif`.
+- **File:** `scripts/kb.py`, `scripts/test_kb.py` (3 test baru), `.claude/skills/quiz/SKILL.md`,
   `docs/engine-bookkeeping-plan.md` (B2 → SELESAI).
 
 ### 2026-08-30 — Tambah subtipe `DK-bunshou` (文章の文法 / 問題3) ke `/jlpt`

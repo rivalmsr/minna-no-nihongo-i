@@ -580,7 +580,7 @@ def compute_scope(agg: dict, mode: str, n: int = 12, attempts: list | None = Non
     elif mode.startswith("lesson-"):
         lessons = [f"Lesson {int(mode.split('-', 1)[1])}"]
         pool = [w for w in weak_pola if tag_to_lesson(w["tag"]) in lessons]
-    elif not weak_lessons and not weak_pola:  # adaptif TANPA weak-area → B2 maintenance
+    elif mode == "adaptif" and not weak_lessons and not weak_pola:  # B2: HANYA quiz adaptif tanpa weak-area
         maintenance = True
         lessons = maintenance_lessons(agg, attempts, limit=3)
         pool = []
