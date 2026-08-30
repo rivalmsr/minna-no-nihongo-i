@@ -196,3 +196,27 @@ menilai"), doc ini, `docs/perbaikan-kb.md`.
 - Berubah jadi GENERATED: `progress/evaluation.md`, `progress/jlpt-evaluation.md`, `progress/history.md`.
 - Berubah (integrasi): `.claude/skills/quiz/SKILL.md`, `.claude/skills/jlpt/SKILL.md`,
   `docs/cara-kerja.md`, `docs/perbaikan-kb.md`, `docs/estimasi-token.md`, `README.md`, `CLAUDE.md`.
+
+## 10. Backlog (observasi pemakaian)
+
+> Bukan bug pembukuan (integritas angka & audit trail sudah benar) — murni **kualitas
+> heuristik `plan`**. Dicatat saat pemakaian, dikerjakan bila mulai mengganggu.
+
+### B1 — `plan.weights` masih kasar (dump ke satu tag)
+- **Amatan (quiz 2026-08-30):** `kb.py plan --mode adaptif` mengembalikan
+  `weights:[{tag:"L16-に-naik", n:12}]` — **seluruh 12 soal** ditumpuk ke satu-satunya tag
+  🟡, bukan "mayoritas ke weak, sisanya ke bab terbaru" seperti kontrak `/quiz`. Praktis
+  field ini tak terpakai; model menyebar campuran soal manual (4 L16 + sisanya L19).
+- **Arah fix:** `compute_scope` mengembalikan alokasi campuran, mis. proporsi ~60% weak
+  (dibagi antar tag 🔴/🟡 by akurasi asc) + ~40% bab terbaru, dgn cap per-tag supaya tak
+  menumpuk semua ke satu tag. Sertakan `lesson`/`subtype` target per slot, bukan cuma `tag`.
+
+### B2 — perilaku saat **0 weak area** (maintenance mode)
+- **Amatan (quiz 2026-08-30):** setelah sesi ini, `evaluation.md` **tak punya 🔴/🟡 lagi**
+  (semua 🟢/⚪). Mode `adaptif` ke depan akan menyodorkan "bab terbaru + tag akurasi-terendah
+  yang sebenarnya sudah 🟢" — tak ada lubang pola nyata untuk dikejar.
+- **Arah fix:** deteksi kondisi "tak ada weak area" di `plan` → kembalikan sinyal eksplisit
+  (mis. `"maintenance":true` + saran spaced-review tag 🟢 terlama-tak-diuji, atau rekomendasi
+  pindah `/jlpt`). Hindari memberi kesan ada kelemahan padahal cuma varian statistik 🟢.
+- **Referensi sinyal terkait:** `progress/history.md` (frekuensi tag), `evaluation.md`
+  (kolom akurasi/status), tracker JLPT `jlpt-evaluation.md` (subtipe 🟡 tersisa `DK-narabekae`).
