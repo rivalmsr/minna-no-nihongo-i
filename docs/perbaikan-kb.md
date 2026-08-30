@@ -21,6 +21,29 @@ atau update skor), tambahkan satu blok di paling atas daftar di bawah, format:
 
 ---
 
+### 2026-08-30 — Soal memberi↔menerima (あげる/もらう) tak boleh andalkan `に` (dua-arah)
+- **Problem:** quiz 2026-08-30 soal 11 (`L7-に-menerima`) 「父（ちち）**に** 時計（とけい）を（　）」 opsi
+  あげました/もらいました. Partikel `に` **dua-arah**: `父に…を あげました` (に = penerima) dan
+  `父に…を もらいました` (に = pemberi) **sama-sama gramatikal & wajar** → soal punya **dua kunci**,
+  melanggar "tepat satu jawaban benar". User pilih あげました (sah) → di-`override` benar saat grading.
+- **Fix:** tambah butir guardrail — saat menguji memberi↔menerima, **jangan andalkan `に`**; kunci
+  arahnya: uji **もらう** pakai **から** untuk pemberi (「父から…を（　）」, から tak bisa jadi penerima →
+  あげる gugur); uji **あげる** pastikan penerima jelas bukan diri sendiri + konteks mematikan もらう.
+- **File:** `.claude/skills/quiz/SKILL.md` ("Catatan gaya").
+
+### 2026-08-30 — Hint opsi 自他動詞 tak boleh menyebut partikel penentu yang sudah di soal
+- **Problem:** quiz 2026-08-30 soal 4 (`L16-他動詞-自動詞`) 「電気（でんき）**が**（　）…」 dgn opsi
+  ついて/つけて, hint-nya menulis 「ついて = 自動詞, **subjek pakai が**」 / 「つけて = 他動詞,
+  objek pakai を」. Kunci soal justru partikel `が` yang **sudah tampil di kalimat** → user bisa
+  mencocokkan が-di-soal ke が-di-hint secara mekanis dan pilih ついて **tanpa menalar 自↔他**.
+  Simetri gaya sudah oke (dua opsi sama-sama dijelaskan), tapi **isinya** membocorkan cue penentu.
+  Tambahan: pola ini sudah 🟢 (83%) → mestinya hint sudah difade netral, bukan penuh.
+- **Fix:** perkuat aturan simetri `description` — **larang menyebut cue penentu (partikel/keterangan
+  waktu) yang sudah muncul di kalimat soal**. Gloss harus **netral berbasis makna** (「電気が… =
+  lampu menyala sendiri」 vs 「だれかが 電気を… = menyalakan」), bukan menyebut が/を. Untuk pola
+  自他 yang sudah 🟢, fade lebih jauh → opsi polos `—`, user menilai dari partikel di kalimat.
+- **File:** `.claude/skills/quiz/SKILL.md` (aturan "Simetri `description`").
+
 ### 2026-08-29 — Guardrail koherensi waktu↔aksi di soal `/jlpt`
 - **Problem:** mock 2026-08-29 soal 12 (`DK-narabekae`) merakit kalimat 「わたしは **まいあさ**
   シャワーを あびて、はを みがいて、**ねます**」 — tata bahasa て-rangkaian benar & jawabannya valid,

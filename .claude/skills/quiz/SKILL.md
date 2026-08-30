@@ -170,6 +170,16 @@ User menjawab **semua soal dulu**, koreksi & analisis baru muncul **di akhir**.
     keterangan sementara distraktor `—` (atau sebaliknya) — itu jadi **tell halus**, user
     menebak kunci dari letak keterangan bukan pemahaman. Hint fading berlaku **merata ke
     semua opsi**, bukan menyisakan satu opsi bergloss sendirian.
+    **JANGAN sebut cue penentu yang SUDAH tampil di kalimat soal (WAJIB).** Kalau kunci
+    ditentukan oleh sebuah penanda yang sudah kelihatan di soal (mis. partikel `が`/`を`
+    pada soal 自↔他動詞, keterangan waktu, dll.), **jangan** menuliskan penanda itu di
+    `description` opsi — user tinggal mencocokkan teks (「opsi X ↔ が」 = が ada di soal)
+    tanpa menalar materi yang diuji. Contoh cacat: soal `電気が（　）` dgn hint
+    「ついて = 自動詞, subjek pakai **が**」 — が-nya sudah di kalimat, jadi bocor. Gloss
+    yang benar = **netral berbasis makna**, tak menyebut partikel: 「電気が… = lampu
+    menyala sendiri」 vs 「だれかが 電気を… = menyalakan lampu」. Untuk pola yang sudah 🟢
+    (mis. `L16-他動詞-自動詞`), fade lebih jauh: opsi polos `—` dua-duanya, user menilai
+    dari partikel di kalimat.
   - **Taruh opsi benar di posisi acak & sebar merata (1/2/3/4) lintas soal — JANGAN
     menaruh jawaban benar di nomor 1 terus** (kalau selalu di posisi sama, user menebak
     dari pola bukan pemahaman).
@@ -334,6 +344,16 @@ GRUP I (音便) karena paling sering keliru.
   sama (はじまります↔はじめます), bukan campur tense. Kalau perlu 4 opsi, kunci tense lewat
   keterangan waktu eksplisit — jangan andalkan `もう` (ambigu). Yang diuji = golongan verba
   (partikel が vs を), bukan lampau/non-lampau.
+- **Saat menguji memberi↔menerima (あげる/もらう/くれる), JANGAN andalkan `に` — dua-arah.**
+  `X に … を あげました` (X = **penerima**) dan `X に … を もらいました` (X = **pemberi**) sama-sama
+  gramatikal → soal jadi **dua kunci**. Contoh cacat: 「父（ちち）に 時計（とけい）を（　）」 opsi
+  あげました **dan** もらいました dua-duanya sah. **Kunci arahnya:**
+  - Uji **もらう** → tandai pemberi dengan **から**: 「父（ちち）**から** …を（　）」 — から tak bisa jadi
+    penerima, jadi あげる gugur, kunci pasti もらいました.
+  - Uji **あげる** → pastikan penerima **jelas bukan diri sendiri** + subjek/konteks mematikan もらう
+    (mis. 「(わたしは) 妹（いもうと）に プレゼントを（　）」 dalam konteks memberi). Jangan pakai penerima
+    ambigu yang bisa dibaca sebagai sumber.
+  Prinsipnya sama dgn 自他 di atas: pastikan **konteks mengunci tepat satu jawaban** sebelum soal dipakai.
 - Nada ramah, dorong belajar. Penjelasan singkat & jelas, dalam Bahasa Indonesia.
 - Angka/tanggal boleh diminta dibaca (mis. `7時` → しちじ) untuk menguji L4.
 - Untuk pola berlawanan yang sering tertukar (で↔に tempat, あります↔います,
