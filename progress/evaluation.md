@@ -12,16 +12,16 @@ Diperbarui otomatis oleh skill `/quiz` setiap selesai sesi. Melacak akurasi
 **Ambang status:** akurasi <60% 🔴 LEMAH · 60–79% 🟡 · ≥80% 🟢
 (butuh minimal **3 attempt** sebelum status dihitung; di bawah itu = ⚪ belum cukup data)
 
-_Terakhir diperbarui: 2026-08-30 · total sesi: 23_
+_Terakhir diperbarui: 2026-08-31 · total sesi: 24_
 
 ---
 
 ## Per pola kalimat
 | Tag | Benar | Total | Akurasi | Status |
 |-----|-------|-------|---------|--------|
-| L4-jam | 5 | 6 | 83% | 🟢 |
-| L5-で-transport | 1 | 1 | 100% | ⚪ |
-| L6-を-objek | 1 | 1 | 100% | ⚪ |
+| L4-jam | 6 | 7 | 86% | 🟢 |
+| L5-で-transport | 2 | 2 | 100% | ⚪ |
+| L6-を-objek | 2 | 2 | 100% | ⚪ |
 | L7-に-memberi | 5 | 6 | 83% | 🟢 |
 | L7-に-menerima | 7 | 8 | 88% | 🟢 |
 | L7-で-alat | 2 | 2 | 100% | ⚪ |
@@ -73,24 +73,34 @@ _Terakhir diperbarui: 2026-08-30 · total sesi: 23_
 | L19-なります | 23 | 27 | 85% | 🟢 |
 | L19-たり | 14 | 15 | 93% | 🟢 |
 | L19-に-vs-を-のぼる | 6 | 6 | 100% | 🟢 |
+| L5-と-dengan | 1 | 1 | 100% | ⚪ |
+| L5-どこも | 1 | 1 | 100% | ⚪ |
+| L6-で-tempat | 1 | 1 | 100% | ⚪ |
+| L6-ませんか | 1 | 1 | 100% | ⚪ |
+| L6-に-bertemu | 1 | 1 | 100% | ⚪ |
+| L4-から-まで | 1 | 1 | 100% | ⚪ |
+| L4-kata-kerja | 1 | 1 | 100% | ⚪ |
+| L4-に-waktu | 1 | 1 | 100% | ⚪ |
+| L5-へ-tujuan | 1 | 1 | 100% | ⚪ |
 
 ## Per partikel
 | Partikel | Benar | Total | Akurasi | Status |
 |----------|-------|-------|---------|--------|
-| から | 2 | 2 | 100% | ⚪ |
-| に | 44 | 52 | 85% | 🟢 |
-| で | 13 | 14 | 93% | 🟢 |
-| を | 18 | 19 | 95% | 🟢 |
+| から | 3 | 3 | 100% | 🟢 |
+| に | 46 | 54 | 85% | 🟢 |
+| で | 15 | 16 | 94% | 🟢 |
+| を | 19 | 20 | 95% | 🟢 |
 | の | 1 | 1 | 100% | ⚪ |
 | が | 10 | 10 | 100% | 🟢 |
-| へ | 2 | 2 | 100% | ⚪ |
+| へ | 4 | 4 | 100% | 🟢 |
+| と | 1 | 1 | 100% | ⚪ |
 
 ## Per lesson
 | Lesson | Benar | Total | Akurasi | Status |
 |--------|-------|-------|---------|--------|
-| Lesson 4 | 5 | 6 | 83% | 🟢 |
-| Lesson 5 | 1 | 1 | 100% | ⚪ |
-| Lesson 6 | 1 | 1 | 100% | ⚪ |
+| Lesson 4 | 9 | 10 | 90% | 🟢 |
+| Lesson 5 | 5 | 5 | 100% | 🟢 |
+| Lesson 6 | 5 | 5 | 100% | 🟢 |
 | Lesson 7 | 18 | 20 | 90% | 🟢 |
 | Lesson 8 | 4 | 4 | 100% | 🟢 |
 | Lesson 9 | 6 | 6 | 100% | 🟢 |
@@ -108,9 +118,4 @@ _Terakhir diperbarui: 2026-08-30 · total sesi: 23_
 ---
 
 ## Weak areas (prioritas soal berikutnya)
-_🎉 **Tidak ada 🔴 maupun 🟡** — semua pola/partikel/lesson kini 🟢/⚪. Sesi 2026-08-30 (adaptif, engine) skor **11/12 (92%)**. **Tonggak:** `L16-に-naik` 75%→**🟢 82%** (のる+に, おりる+を, のりかえる+に semua benar) — inilah 🟡 terakhir yang tersisa, kini tuntas. `Lesson 16` 80%→85%, `L16-他動詞-自動詞`→🟢 83% (つく 自動詞+が). Kendaraan 🔴 Anki (おります・けします・かえします) dipakai di dalam pola, semua benar._
-
-**Sinyal yang perlu diperhatikan:**
-- ⚠️ **Slip kecil `L19-なります`** (85%): pada い-adjektiva あたたかい, kunci = **あたたか+く なります** (く-form), user pilih に (jalur な-adj/N). Bukan pola lemah (masih 🟢), tapi refleks 「い-adj → く なる / な-adj·N → に なる」 layak dijaga. **Bukan** titik lemah/drill — cukup 1 pengingat.
-- ✅ **Grammar N5 praktis lengkap** — L4–L19 semua 🟢/⚪, tak ada lagi weak area di tracker /quiz.
-- **Rekomendasi:** fokus geser ke **`/jlpt` mock rutin** (subtipe 🟡 tersisa di tracker JLPT: `DK-narabekae` posisi ます-stem). `/quiz` cukup jadi pemeliharaan berkala; tak ada lagi lubang pola untuk dikejar._
+_🎉 **Tidak ada 🔴 maupun 🟡** — semua pola/partikel/lesson tetap 🟢/⚪. Sesi 2026-08-31 (maintenance/spaced review L4–L6, engine) skor **12/12 (100%)**. **Tonggak:** bab dasar yang lama terlupakan kini disapa & naik ke 🟢 — `Lesson 4` 83%→**90%**, `Lesson 5` ⚪→**🟢 100%** (5/5), `Lesson 6` ⚪→**🟢 100%** (5/5). Partikel dasar solid: へ 4/4, から 3/3, で 94% (15/16), に 85% (46/54). Pola pengantar L5/L6 (で-transport, と-dengan, どこも, を-objek, で-tempat, ませんか, に-bertemu) semua benar._
