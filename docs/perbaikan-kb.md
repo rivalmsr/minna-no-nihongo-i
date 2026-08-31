@@ -21,6 +21,19 @@ atau update skor), tambahkan satu blok di paling atas daftar di bawah, format:
 
 ---
 
+### 2026-08-31 — Simetri hint panel = tingkat kedetailan, bukan cuma keberadaan
+- **Problem:** aturan simetri `description` lama hanya mencegah "kunci bergloss vs distraktor `—`".
+  Tapi di sesi /quiz 2026-08-31 muncul varian lebih halus yang **lolos** cek itu: **semua** opsi
+  bergloss, tapi **kunci** diberi keterangan yang **menjabarkan persis konstruksi/verba target**
+  sedang distraktor cuma gloss partikel generik → tetap **tell** (user pilih opsi yang glossnya
+  paling "nyambung"). Contoh: (a) `どこ（　）行きません` — も digloss 「pembentuk どこ〜+ません」
+  (menyebut ません yang sudah tampil); (b) `友達（　）会います` — に digloss 「target yang ditemui」
+  (menempel ke 会います yang kelihatan).
+- **Fix:** perketat klausa **Simetri `description`** di `SKILL.md` — simetri juga soal **tingkat
+  kedetailan**: semua opsi harus gloss generik setara, kunci **tak boleh** dijelaskan lewat
+  konstruksi/verba yang diuji. Dua contoh cacat どこも/会います dicantumkan + versi benarnya.
+- **File:** `.claude/skills/quiz/SKILL.md`
+
 ### 2026-08-31 — `plan` sadar-taxonomy + tag pola L2/L3 (mismatch cakupan maintenance)
 - **Problem:** mode **maintenance** (`kb.py plan --mode adaptif` tanpa weak-area) memilih bab
   paling lama tak diuji dari **`all_lessons()`** (semua file `lessons/*.md`), sehingga menyodorkan

@@ -179,6 +179,18 @@ User menjawab **semua soal dulu**, koreksi & analisis baru muncul **di akhir**.
     keterangan sementara distraktor `—` (atau sebaliknya) — itu jadi **tell halus**, user
     menebak kunci dari letak keterangan bukan pemahaman. Hint fading berlaku **merata ke
     semua opsi**, bukan menyisakan satu opsi bergloss sendirian.
+    **Simetri juga soal TINGKAT KEDETAILAN, bukan cuma keberadaan (WAJIB).** Lolos cek
+    "semua bergloss" TAK cukup: kalau **kunci** diberi gloss yang **menjelaskan persis
+    konstruksi/verba target** sedang distraktor cuma gloss partikel generik, itu tetap
+    **tell** (user menebak dari opsi yang keterangannya paling "nyambung"). Semua opsi harus
+    setara: gloss fungsi/arti **generik** yang tak menyebut pola yang diuji. Contoh cacat
+    (dari sesi 2026-08-31): (a) soal `どこ（　）行きません` — opsi も digloss
+    「pembentuk どこ〜+ません = ...pun tidak」 (menjabarkan konstruksi target + menyebut
+    ません yang sudah tampil) sedang へ/に/で generik → **tell**. Benar: も =
+    「penanda tambahan/penekanan (juga/pun)」, netral, tak menyebut ません. (b) soal
+    `友達（　）会います` — opsi に digloss 「lawan/target yang **ditemui**」 (menempel ke
+    会います yang kelihatan) sedang distraktor generik → **tell**. Benar: に =
+    「penanda titik sasaran tindakan」, tanpa kata "ditemui".
     **JANGAN sebut cue penentu yang SUDAH tampil di kalimat soal (WAJIB).** Kalau kunci
     ditentukan oleh sebuah penanda yang sudah kelihatan di soal (mis. partikel `が`/`を`
     pada soal 自↔他動詞, keterangan waktu, dll.), **jangan** menuliskan penanda itu di
