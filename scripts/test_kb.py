@@ -218,6 +218,21 @@ def test_maintenance_skips_untagged(monkeypatch):
     assert set(scope["lessons"]) <= {"Lesson 2", "Lesson 3"}
 
 
+def test_recent_themes():
+    attempts = [
+        {"kind": "jlpt", "date": "2026-08-20", "themes": {"dokkai": "keluarga"},
+         "questions": []},
+        {"kind": "quiz", "date": "2026-08-25", "questions": []},  # bukan jlpt → dilewati
+        {"kind": "jlpt", "date": "2026-08-31",
+         "themes": {"dokkai": "taman", "joho": "perpustakaan"}, "questions": []},
+    ]
+    # Ambil themes dari sesi jlpt TERBARU yang bertag.
+    assert kb.recent_themes(attempts, "jlpt") == {"dokkai": "taman", "joho": "perpustakaan"}
+    # Tak ada themes → dict kosong.
+    assert kb.recent_themes([{"kind": "jlpt", "date": "2026-08-01", "questions": []}]) == {}
+    assert kb.recent_themes([]) == {}
+
+
 def test_session_deltas():
     baseline = {"quiz": {"pola": {"X": {"benar": 5, "total": 7}}}, "jlpt": {}}
     session = {"kind": "quiz", "questions": [

@@ -375,6 +375,9 @@ def _validate_session(s: dict) -> dict:
             raise SystemExit(f"session.json kurang field wajib: {k}")
     if s["kind"] not in ("quiz", "jlpt"):
         raise SystemExit("field `kind` harus 'quiz' atau 'jlpt'")
+    if "themes" in s and not isinstance(s["themes"], dict):
+        raise SystemExit("field `themes` (opsional) harus object subtipe→tema, mis. "
+                         '{"dokkai":"liburan","joho":"jadwal-bus","bunshou":"surat"}')
     qs = s["questions"]
     if s["kind"] == "jlpt" and any(q.get("subtype") is None for q in qs):
         raise SystemExit("sesi jlpt: tiap question wajib punya `subtype`")
@@ -565,6 +568,16 @@ def lesson_last_tested(attempts: list, kind: str = "quiz") -> dict[str, str]:
     return out
 
 
+def recent_themes(attempts: list, kind: str = "jlpt") -> dict:
+    """Tema teks (dokkai/joho/bunshou) dari sesi `kind` TERBARU yang punya field
+    `themes` — supaya mock berikutnya bisa MENGHINDARI tema itu (rotasi). Sumber =
+    `attempts.jsonl` (bukan parse view .md). Kosong bila belum ada sesi bertag tema."""
+    for sess in reversed(attempts):  # attempts terurut lama→baru; ambil yang terbaru
+        if sess.get("kind") == kind and isinstance(sess.get("themes"), dict) and sess["themes"]:
+            return dict(sess["themes"])
+    return {}
+
+
 def maintenance_lessons(agg: dict, attempts: list, limit: int = 3) -> list[str]:
     """B2: saat tak ada weak-area, sapa bab paling RAWAN LUNTUR — urut dari yang
     paling lama tak diuji (spaced review), tie-break akurasi terendah. Deterministik."""
@@ -698,6 +711,9 @@ def cmd_plan(args) -> int:
     if scope.get("maintenance"):
         out["maintenance"] = True
         out["review_reason"] = scope["review_reason"]
+    if args.kind == "jlpt":
+        # Tema teks mock TERAKHIR → skill pilih tema BEDA (rotasi dokkai/joho/bunshou).
+        out["avoid_themes"] = recent_themes(attempts, "jlpt")
     print(json.dumps(out, ensure_ascii=False, indent=1))
     return 0
 

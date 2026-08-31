@@ -21,6 +21,30 @@ atau update skor), tambahkan satu blok di paling atas daftar di bawah, format:
 
 ---
 
+### 2026-08-31 — Rotasi tema teks `/jlpt` (dokkai/joho/bunshou monoton)
+- **Problem:** soal berteks `/jlpt` selalu bertema sama — `DK-dokkai` = **taman (公園)**,
+  `DK-joho` = **perpустakaan (図書館)** — tiap mock, karena model menyalin tema dari **contoh
+  template** di `SKILL.md` alih-alih memvariasikan. User menandai keluhan ini. (Data tak bisa
+  konfirmasi penuh: `attempts.jsonl` tak simpan teks soal, hanya kunci/tag.)
+- **Fix:** tambah blok **ROTASI TEMA teks (WAJIB)** di `.claude/skills/jlpt/SKILL.md` setelah
+  template `DK-joho` — tegaskan contoh 公園/図書館 hanya ilustrasi format; sediakan **pool tema
+  N5** per subtipe (dokkai/joho/bunshou); aturan: jangan pakai tema sama dua mock berturut-turut,
+  idealnya 3 blok berteks dalam satu mock saling beda topik.
+- **Fix-2 (mekanisme, jawab "gimana tahu tema sebelumnya?") — via JSONL+engine, BUKAN parse
+  view.** Iterasi pertama sempat keliru menaruh tag `[tema:]` di prosa `history_note` lalu
+  `grep` dari `history.md` — itu melawan arah data (mem-parse view render; rapuh). Diperbaiki:
+  tema = data terstruktur append-only → disimpan di **`attempts.jsonl`** (sumber kebenaran),
+  disurиткan engine. Implementasi:
+  - `session.json` (jlpt) dapat field opsional **`themes`** (`{dokkai,joho,bunshou}`); `record`
+    sudah menulis seluruh dict sesi → otomatis persist (soft-validate object).
+  - `recent_themes(attempts,"jlpt")` = tema sesi jlpt terbaru yang bertag; `plan --kind jlpt`
+    kini mengembalikan **`avoid_themes`**. Skill baca `avoid_themes` → pilih tema beda; tulis
+    `themes` saat record. Echo `[tema:]` di `history_note` boleh, tapi cuma cermin (bukan sumber).
+  - Mock 2026-08-31 di-**backfill** `themes` (taman/perpustakaan/jalan-jalan-kyoto) agar
+    `avoid_themes` langsung berisi. Test `test_recent_themes` mengunci (20/20 lolos).
+- **File:** `.claude/skills/jlpt/SKILL.md`, `scripts/kb.py`, `scripts/test_kb.py`,
+  `progress/attempts.jsonl` (backfill 1 baris)
+
 ### 2026-08-31 — Simetri hint panel = tingkat kedetailan, bukan cuma keberadaan
 - **Problem:** aturan simetri `description` lama hanya mencegah "kunci bergloss vs distraktor `—`".
   Tapi di sesi /quiz 2026-08-31 muncul varian lebih halus yang **lolos** cek itu: **semua** opsi

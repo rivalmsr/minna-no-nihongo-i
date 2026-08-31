@@ -174,8 +174,12 @@ pakai angka itu → jalankan lagi tanpa `--dry-run`.
 {"kind":"jlpt","date":"YYYY-MM-DD","mode":"<mock/moji/bunpou/review>",
  "cakupan":"JLPT <mock/moji/bunpou/review> (…)",
  "history_note":"<catatan kualitatif>", "weak_narrative":"<prosa Weak types>",
+ "themes":{"dokkai":"<tema>","joho":"<tema>","bunshou":"<tema>"},
  "questions":[{"qno":1,"key":"がっこう","submitted":"がっこう","subtype":"MG-yomi"}]}
 ```
+- **`themes` (opsional, WAJIB untuk mock/bunpou berteks):** object subtipe→tema teks yang
+  dipakai sesi ini (rotasi anti-monoton). Engine simpan ke `attempts.jsonl` → muncul sebagai
+  `avoid_themes` di `plan` mock berikutnya. Lihat "ROTASI TEMA teks". `/jlpt moji` boleh tanpa.
 - **Menilai = engine:** tiap soal bawa `key` (opsi benar) + `submitted` (klik user);
   engine hitung benar/salah. Soal rancu → `"override":"correct"/"incorrect"` + `"note"`.
   (Boolean `correct` lama masih diterima.)
@@ -341,6 +345,36 @@ jadwal; pertanyaan cari info spesifik.
 ど・にち 10:00〜16:00 / やすみ: まいしゅう かようび
 Q: どようびは なんじから ですか。  1. 9じ  2. 10じ  3. 16じ  4. やすみ   → (jwb 2)
 ```
+
+> 🎨 **ROTASI TEMA teks (WAJIB — jangan monoton).** Contoh di atas (公園/図書館) hanya
+> **ilustrasi format**, BUKAN tema tetap. Kesalahan berulang (kesadaran 2026-08-31): tiap
+> mock `DK-dokkai` selalu bertema **taman** & `DK-joho` selalu **perpustakaan** karena
+> menyalin contoh template. **Sebelum menulis teks, pilih tema BEDA dari mock sebelumnya**
+> (cek `history.md`/ingatan sesi terakhir). Pool tema N5 (kosakata in-scope):
+> - **`DK-dokkai`** (cerita): rutinitas harian · akhir pekan/liburan · keluarga · sekolah/
+>   kelas · hobi (olahraga/masak/musik) · belanja · cuaca/musim · perjalanan · pekerjaan.
+> - **`DK-joho`** (info): jadwal kereta/bus · menu restoran · jam buka toko · pengumuman
+>   kelas/acara · poster event · daftar harga · jadwal les/klub · aturan (mis. sampah).
+> - **`DK-bunshou`** (karangan/surat): surat ke teman · buku harian · pengalaman jalan-
+>   jalan (variasikan kota & aktivitas) · rencana akhir pekan · perkenalan diri/keluarga.
+>
+> Aturan minimal: **jangan pakai tema yang sama dua mock berturut-turut** untuk subtipe
+> yang sama. Idealnya ketiga blok berteks dalam **satu** mock juga saling beda topik.
+>
+> **⚙️ CARA TAHU tema mock sebelumnya — lewat ENGINE (JSONL), bukan parse view.** Tema =
+> data terstruktur append-only yang dikonsumsi mesin → rumahnya di **`attempts.jsonl`**
+> (sumber kebenaran), disurиткan engine. JANGAN grep dari `history.md` (itu view render).
+> Alur:
+> 1. **Baca (mulai mock):** `kb.py plan --kind jlpt --mode mock` sudah mengembalikan
+>    **`"avoid_themes"`** = tema teks mock JLPT terakhir (mis. `{"dokkai":"taman",
+>    "joho":"perpustakaan"}`). **Pilih tema BEDA** dari itu untuk tiap subtipe berteks.
+>    Kosong `{}` → bebas, tapi tetap hindari 公園/図書館 default.
+> 2. **Tulis (saat `record`):** `session.json` **WAJIB** memuat field
+>    **`"themes":{"dokkai":"<x>","joho":"<y>","bunshou":"<z>"}`** (pakai kata pool di atas).
+>    Engine menyimpannya apa adanya ke `attempts.jsonl` → jadi `avoid_themes` mock berikutnya.
+>    `/jlpt moji` (tanpa blok teks) → `themes` boleh dilewati. Boleh **juga** menaruh echo
+>    `[tema: …]` di `history_note` untuk keterbacaan manusia, tapi itu **hanya cermin** —
+>    sumber yang dibaca engine tetap field `themes`, bukan prosa.
 
 ## Hint fading (scaffolding) — porsi `description` mengikuti penguasaan
 
