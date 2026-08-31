@@ -15,33 +15,33 @@ memeringkat **weak types** untuk memandu `/jlpt review`.
 **Ambang status:** akurasi <60% 🔴 LEMAH · 60–79% 🟡 · ≥80% 🟢
 (butuh minimal **3 attempt** sebelum status dihitung; di bawah itu = ⚪ belum cukup data)
 
-_Terakhir diperbarui: 2026-08-30 · total sesi: 10_
+_Terakhir diperbarui: 2026-08-31 · total sesi: 11_
 
 ---
 
 ## Sesi 1 — 文字・語彙 (Moji-Goi)
 | Subtipe | Tag | Benar | Total | Akurasi | Status |
 |---------|-----|-------|-------|---------|--------|
-| Baca kanji (cara baca) | `MG-yomi` | 19 | 20 | 95% | 🟢 |
-| Tulis kanji (penulisan) | `MG-hyouki` | 19 | 20 | 95% | 🟢 |
-| Kosakata dalam konteks | `MG-bunmyaku` | 17 | 20 | 85% | 🟢 |
-| Sinonim / 言い換え類義 | `MG-ruigi` | 20 | 20 | 100% | 🟢 |
+| Baca kanji (cara baca) | `MG-yomi` | 21 | 22 | 95% | 🟢 |
+| Tulis kanji (penulisan) | `MG-hyouki` | 21 | 22 | 95% | 🟢 |
+| Kosakata dalam konteks | `MG-bunmyaku` | 19 | 22 | 86% | 🟢 |
+| Sinonim / 言い換え類義 | `MG-ruigi` | 22 | 22 | 100% | 🟢 |
 
 ## Sesi 2 — 文法・読解 (Bunpou-Dokkai)
 | Subtipe | Tag | Benar | Total | Akurasi | Status |
 |---------|-----|-------|-------|---------|--------|
-| Tata bahasa (grammar) | `DK-bunpou` | 24 | 28 | 86% | 🟢 |
-| Susun kalimat (★) | `DK-narabekae` | 10 | 12 | 83% | 🟢 |
-| Tata bahasa dalam teks (cloze) | `DK-bunshou` | 0 | 0 | 0% | ⚪ |
-| Bacaan pendek | `DK-dokkai` | 19 | 20 | 95% | 🟢 |
-| Bacaan informasi (info-search) | `DK-joho` | 18 | 20 | 90% | 🟢 |
+| Tata bahasa (grammar) | `DK-bunpou` | 25 | 29 | 86% | 🟢 |
+| Susun kalimat (★) | `DK-narabekae` | 11 | 13 | 85% | 🟢 |
+| Tata bahasa dalam teks (cloze) | `DK-bunshou` | 1 | 2 | 50% | ⚪ |
+| Bacaan pendek | `DK-dokkai` | 21 | 22 | 95% | 🟢 |
+| Bacaan informasi (info-search) | `DK-joho` | 20 | 22 | 91% | 🟢 |
 
 ---
 
 ## Weak types (prioritas soal `/jlpt review`)
-_🎉 **PERFECT 16/16 (100%)** — mock kesepuluh, tak ada satu pun salah. **Seluruh 8 subtipe 🟢 & semua NAIK:** `MG-yomi` 95%, `MG-hyouki` 95%, `MG-bunmyaku` 83%→**85%** (titik terlemah lama, kini menguat — りょこう & けします benar dgn cue konteks yang mengunci), `MG-ruigi` 100%, `DK-bunpou` 84%→**86%**, `DK-narabekae` 82%→**83%** (おふろに はいってから, koheren pola urutan), `DK-dokkai` 95%, `DK-joho` 90%. Kendaraan 🔴 Anki (kanji 先/時/友/会; kosakata りょこう/けします; verb おります) semua benar di format soal JLPT normal._
+_Tak ada subtipe 🔴/🟡 — 7 dari 8 subtipe tetap 🟢. Mock ke-11 skor **15/16 (94%)**. **Baru ada data:** `DK-bunshou` (文章の文法/cloze) diuji perdana → **1/2 50% ⚪** (belum cukup 3 attempt untuk status). Semua subtipe lain naik/stabil: `MG-bunmyaku` 85%→**86%** (りょこう & けします benar dgn cue konteks), `DK-narabekae` 83%→**85%**, `DK-joho` 90%→**91%**, `MG-ruigi` 100%, `MG-yomi`/`MG-hyouki` 95%, `DK-bunpou` 86%, `DK-dokkai` 95%._
 
 **Sinyal yang perlu diperhatikan:**
-- ✅ **JLPT tertulis N5 matang penuh** — dua mock beruntun tanpa 🔴/🟡; `MG-bunmyaku` (yang pernah paling rendah) kini 85% stabil. Tak ada lubang subtipe.
-- ✅ **Item 🔴 Anki tertangani dalam konteks** — begitu kanji/kosakata sulit muncul di soal JLPT normal (bukan drill), semua terjawab benar → sinyal lapses Anki belum tentu jadi error saat ada konteks.
-- **Rekomendasi:** pertahankan lewat **mock berkala** saja; tak ada subtipe untuk dikejar. Energi latihan bisa dialihkan ke pemeliharaan ringan `/quiz` (juga sudah bersih 🟢) — praktis N5 tertulis siap._
+- ⚠️ **Arah pemberin dalam wacana (`DK-bunshou`)** — satu-satunya error: `友達が わたしに おみやげを（　）` → kunci **くれました** (subjek=orang lain, penerima=わたし → memberい KE aku); user pilih かいました. Di cloze, arah pemberian dikunci alur cerita (siapa subjek/penerima) — refleks あげる↔もらう↔くれる perlu diperkuat. Perlu ≥2 mock lagi memuat `DK-bunshou` untuk memastikan status.
+- ✅ **Sisa JLPT tertulis matang** — tak ada subtipe 🔴/🟡; item 🔴 Anki tertangani dalam konteks soal normal.
+- **Rekomendasi:** `/jlpt review` atau mock berikut condongkan porsi `DK-bunshou` (kumpulkan attempt) + selipkan pola pemberian あげる/くれる/もらう dalam teks._
