@@ -21,6 +21,23 @@ atau update skor), tambahkan satu blok di paling atas daftar di bawah, format:
 
 ---
 
+### 2026-08-31 — `plan` sadar-taxonomy + tag pola L2/L3 (mismatch cakupan maintenance)
+- **Problem:** mode **maintenance** (`kb.py plan --mode adaptif` tanpa weak-area) memilih bab
+  paling lama tak diuji dari **`all_lessons()`** (semua file `lessons/*.md`), sehingga menyodorkan
+  **Lesson 2 & 3** — padahal `reference/quiz-taxonomy.md` **tak punya tag pola** untuk L2/L3
+  (dulu dibatasi L4–L19). Engine "buta" batas taxonomy: sarannya (L2–L4) bentrok dgn cakupan
+  quiz yang valid, dan soal L2/L3 tak bisa ditandai tag apa pun. Ketahuan saat `/quiz` maintenance
+  2026-08-31 (harus di-workaround manual ke L4–L6).
+- **Fix (keduanya, sesuai keputusan user):**
+  1. **Tambah tag pola L2 & L3** ke `quiz-taxonomy.md` (これ/それ/あれ, この/その/あの, の-jenis,
+     の-milik, なん · ここ/そこ/あそこ, こちら-sopan, どこ, どちら-asal, どこの-asal, いくら) +
+     ubah catatan source-of-truth `lesson-04..19` → `lesson-02..19`. Kini L2/L3 quizzable.
+  2. **Engine sadar-taxonomy:** `taxonomy_lessons()` mem-parse tag `L<n>-` dari taxonomy →
+     `quizzable_lessons()` = `all_lessons()` ∩ taxonomy; `maintenance_lessons()` menyeleksi
+     dari `quizzable_lessons()` (fallback ke `all_lessons()` bila taxonomy tak terbaca).
+     Bab tanpa tag tak akan disodorkan lagi (defensif untuk lesson baru yang belum ditandai).
+- **File:** `scripts/kb.py`, `reference/quiz-taxonomy.md`, `scripts/test_kb.py`
+
 ### 2026-08-30 — `/quiz` maintenance mode saat 0 weak-area (spaced review, B2)
 - **Problem:** setelah weak-area habis (semua 🟢/⚪), `kb.py plan --mode adaptif` **menyempit
   cakupan ke bab terbaru saja** (`lessons:["Lesson 19"]`, `weights:[]`). Padahal tujuan `/quiz`

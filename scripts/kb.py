@@ -25,6 +25,7 @@ import sys
 # ── Path ────────────────────────────────────────────────────────────────────
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROGRESS = os.path.join(REPO_ROOT, "progress")
+TAXONOMY_PATH = os.path.join(REPO_ROOT, "reference", "quiz-taxonomy.md")
 BASELINE_PATH = os.path.join(PROGRESS, "baseline.json")
 ATTEMPTS_PATH = os.path.join(PROGRESS, "attempts.jsonl")
 EVAL_PATH = os.path.join(PROGRESS, "evaluation.md")
@@ -532,6 +533,24 @@ def all_lessons() -> list[str]:
     return [f"Lesson {n}" for n in _lesson_nums()]
 
 
+def taxonomy_lessons() -> set[str]:
+    """Lesson yang punya tag pola di quiz-taxonomy.md (mis. `L2-...` → 'Lesson 2').
+    Dipakai membatasi seleksi cakupan `plan` ke bab yang benar-benar quizzable —
+    engine tak menyodorkan lesson yang belum ditandai (mis. dulu L2/L3)."""
+    if not os.path.exists(TAXONOMY_PATH):
+        return set()
+    with open(TAXONOMY_PATH, encoding="utf-8") as f:
+        nums = re.findall(r"`L(\d+)-", f.read())
+    return {f"Lesson {int(n)}" for n in nums}
+
+
+def quizzable_lessons() -> list[str]:
+    """all_lessons() ∩ taxonomy_lessons() — bab yang ada file-nya DAN sudah bertag.
+    Fallback ke all_lessons() bila taxonomy tak terbaca (jangan mematikan plan)."""
+    tax = taxonomy_lessons()
+    return [l for l in all_lessons() if l in tax] if tax else all_lessons()
+
+
 def lesson_last_tested(attempts: list, kind: str = "quiz") -> dict[str, str]:
     """Map Lesson → tanggal terakhir diuji (ISO string), dari attempts berkind sama."""
     out: dict[str, str] = {}
@@ -558,7 +577,9 @@ def maintenance_lessons(agg: dict, attempts: list, limit: int = 3) -> list[str]:
         acc = accuracy(c["benar"], c["total"]) if c["total"] else 0
         return (lt, acc, les)
 
-    return sorted(all_lessons(), key=sort_key)[:limit]
+    # Hanya bab yang quizzable (punya tag di taxonomy) — jangan sodorkan lesson
+    # yang belum ditandai (engine sadar-taxonomy).
+    return sorted(quizzable_lessons(), key=sort_key)[:limit]
 
 
 def compute_scope(agg: dict, mode: str, n: int = 12, attempts: list | None = None) -> dict:

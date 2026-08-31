@@ -5,13 +5,24 @@ analisis di `progress/evaluation.md` konsisten antar sesi. Setiap soal ditandai
 minimal satu **tag pola** + tag **partikel** yang relevan + **lesson** asalnya.
 
 > Aturan: tata bahasa soal **hanya** boleh dari pola di tabel ini (source of truth =
-> `lessons/lesson-04..19.md`). Jangan buat tag baru saat menilai; pakai yang ada di sini.
+> `lessons/lesson-02..19.md`). Jangan buat tag baru saat menilai; pakai yang ada di sini.
 > Kalau ada lesson baru ditambahkan, perbarui tabel ini lebih dulu.
 
 ## Tag pola (per lesson)
 
 | Tag | Lesson | Pola |
 |-----|--------|------|
+| `L2-これ-benda` | 2 | Kata tunjuk benda berdiri sendiri これ/それ/あれ + は |
+| `L2-この-benda` | 2 | Kata tunjuk menempel この/その/あの + benda + は |
+| `L2-の-jenis` | 2 | の menerangkan jenis/kategori (なんの ほん) |
+| `L2-の-milik` | 2 | の kepemilikan (だれの, わたしの, の pengganti benda) |
+| `L2-なん` | 2 | Pertanyaan benda なん ですか |
+| `L3-ここ-tempat` | 3 | Kata tunjuk tempat ここ/そこ/あそこ |
+| `L3-こちら-sopan` | 3 | Bentuk sopan こちら/そちら/あちら (tempat/arah) |
+| `L3-どこ` | 3 | Menanyakan lokasi どこ |
+| `L3-どちら-asal` | 3 | どちら sopan (lokasi/asal negara/instansi) |
+| `L3-どこの-asal` | 3 | これ/それ/あれ + どこの (asal/buatan barang) |
+| `L3-いくら` | 3 | Menanyakan harga この/その/あの + benda + いくら |
 | `L4-jam` | 4 | Menyatakan waktu (じ/ふん, ごぜん/ごご) |
 | `L4-hari` | 4 | Hari + と penghubung (なんようび) |
 | `L4-から-まで` | 4 | Rentang waktu から〜まで |

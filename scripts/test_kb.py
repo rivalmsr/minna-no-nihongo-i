@@ -189,6 +189,35 @@ def test_compute_scope_maintenance_off_when_weak():
     assert any(w["tag"] == "L16-に-naik" for w in scope["weights"])
 
 
+def test_taxonomy_lessons_parses_real_file():
+    # L2/L3 sudah ditambahkan ke taxonomy → harus terdeteksi quizzable.
+    tax = kb.taxonomy_lessons()
+    assert {"Lesson 2", "Lesson 3", "Lesson 4", "Lesson 19"} <= tax
+
+
+def test_quizzable_filters_untagged(monkeypatch):
+    # Lesson yang ada file-nya tapi TAK bertag di taxonomy tak boleh quizzable.
+    monkeypatch.setattr(kb, "all_lessons",
+                        lambda: ["Lesson 2", "Lesson 3", "Lesson 99"])
+    monkeypatch.setattr(kb, "taxonomy_lessons",
+                        lambda: {"Lesson 2", "Lesson 3"})
+    assert kb.quizzable_lessons() == ["Lesson 2", "Lesson 3"]
+
+
+def test_maintenance_skips_untagged(monkeypatch):
+    # Bab tanpa tag (Lesson 99) tak boleh muncul di cakupan maintenance,
+    # walau "belum pernah diuji" (yang biasanya jadi prioritas tertinggi).
+    monkeypatch.setattr(kb, "all_lessons",
+                        lambda: ["Lesson 2", "Lesson 3", "Lesson 99"])
+    monkeypatch.setattr(kb, "taxonomy_lessons",
+                        lambda: {"Lesson 2", "Lesson 3"})
+    agg = {"pola": {"L19-なります": {"benar": 22, "total": 25}}}  # 🟢, no weak
+    scope = kb.compute_scope(agg, "adaptif", n=12, attempts=[])
+    assert scope.get("maintenance") is True
+    assert "Lesson 99" not in scope["lessons"]
+    assert set(scope["lessons"]) <= {"Lesson 2", "Lesson 3"}
+
+
 def test_session_deltas():
     baseline = {"quiz": {"pola": {"X": {"benar": 5, "total": 7}}}, "jlpt": {}}
     session = {"kind": "quiz", "questions": [
