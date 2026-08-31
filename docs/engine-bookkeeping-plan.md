@@ -67,6 +67,12 @@ Render: `count(tag) = baseline[tag] + Σ attempts bertag`. Sesi baru = tambah at
  "vehicles_red":["きゅうこう","おります","でかけます"],
  "answer_positions":[3,1,4,2,2,4,1,3,4,1,2,3]}
 ```
+Field kondisional:
+- `lessons` **hanya bab quizzable** (yang punya tag pola di `quiz-taxonomy.md`;
+  `quizzable_lessons() = all_lessons() ∩ taxonomy_lessons()`). Bab tanpa tag tak disodorkan
+  (lihat B3). Mode adaptif tanpa weak-area → `"maintenance":true` + `"review_reason"` (B2).
+- `--kind jlpt` menambah **`"avoid_themes"`** = tema teks (`{dokkai,joho,bunshou}`) mock JLPT
+  terakhir, dari `recent_themes(attempts)`; skill memilih tema BEDA (rotasi anti-monoton, B4).
 
 ## 4. Modul & signature (`scripts/kb.py`)
 
@@ -78,8 +84,12 @@ def load_baseline(path) -> dict
 def load_attempts(path) -> list[dict]
 def aggregate(baseline:dict, attempts:list, kind:str) -> dict   # {dim:{tag:{benar,total}}}
 def rank_weak(agg:dict, limit:int=5) -> list[dict]            # 🔴→🟡, akurasi asc
-def tag_to_lesson(tag:str, taxonomy:dict) -> str|None
-def compute_scope(agg, taxonomy, latest_lesson, mode) -> dict  # lessons + weights
+def tag_to_lesson(tag:str) -> str|None                        # "L<n>-..." → "Lesson <n>"
+def taxonomy_lessons() -> set[str]                            # bab bertag di quiz-taxonomy.md
+def quizzable_lessons() -> list[str]                          # all_lessons ∩ taxonomy (B3)
+def maintenance_lessons(agg, attempts, limit=3) -> list[str]  # bab paling lama tak diuji (B2)
+def recent_themes(attempts, kind="jlpt") -> dict              # tema mock terakhir (B4)
+def compute_scope(agg, mode, n=12, attempts=None) -> dict     # lessons + weights (+maintenance)
 def spread_positions(n:int, k:int=4, seed:int|None=None) -> list[int]
 def render_evaluation(agg:dict, narrative:str, meta:dict) -> str
 def render_jlpt(agg:dict, narrative:str, meta:dict) -> str
@@ -93,7 +103,9 @@ CLI (argparse):
     menulis**. Alur 2 langkah: dry-run → tulis prosa pakai angka engine → record sungguhan.
     Menutup "chicken-and-egg" narasi (prosa butuh angka final; angka butuh record).
 - `kb.py plan --kind {quiz,jlpt} --mode {adaptif,review,lesson-N,moji,bunpou,mock}`
-  → cetak session-plan JSON (baca `progress/anki-weak-items.md` untuk `vehicles_red`).
+  → cetak session-plan JSON. Baca `progress/anki-weak-items.md` (`vehicles_red`),
+  `reference/quiz-taxonomy.md` (batasi `lessons` ke bab quizzable, B3), dan untuk `--kind
+  jlpt` sertakan `avoid_themes` dari `attempts.jsonl` (B4).
 - `kb.py summary --kind {quiz,jlpt}` → breakdown lengkap JSON (per dim + `weak` + `sesi`
   + `last_session`) untuk skill `/summary`; deterministik, read-only.
 
@@ -225,3 +237,24 @@ menilai"), doc ini, `docs/perbaikan-kb.md`.
   + cabang di `compute_scope`), `scripts/test_kb.py` (2 test), `.claude/skills/quiz/SKILL.md`.
 - **Verifikasi:** `plan --mode adaptif` kini → `lessons:["Lesson 2","Lesson 3","Lesson 4"]`
   `maintenance:true`; 15 test kb lulus.
+
+### B3 — `plan` sadar-taxonomy (cakupan hanya bab bertag) — ✅ SELESAI 2026-08-31
+- **Amatan (quiz maintenance 2026-08-31):** `maintenance_lessons` memilih dari `all_lessons()`
+  (semua file `lessons/*.md`) → menyodorkan **L2/L3** yang **tak punya tag** di `quiz-taxonomy.md`
+  (dulu dibatasi L4–L19) → soal L2/L3 tak bisa ditandai; saran bentrok cakupan valid.
+- **Fix:** (1) tambah tag pola L2/L3 ke `quiz-taxonomy.md` (source-of-truth `lesson-02..19`);
+  (2) `taxonomy_lessons()` parse tag `L<n>-` → `quizzable_lessons() = all_lessons() ∩ taxonomy`;
+  `maintenance_lessons()` menyeleksi dari `quizzable_lessons()` (fallback `all_lessons()` bila
+  taxonomy tak terbaca). Bab tanpa tag tak disodorkan (defensif untuk lesson baru belum ditandai).
+- **File:** `scripts/kb.py`, `reference/quiz-taxonomy.md`, `scripts/test_kb.py` (3 test).
+
+### B4 — rotasi tema teks `/jlpt` (anti-monoton) — ✅ SELESAI 2026-08-31
+- **Amatan:** cerita `DK-dokkai`/`DK-joho`/`DK-bunshou` selalu bertema sama (taman/perpustakaan)
+  tiap mock karena model menyalin contoh template.
+- **Fix (JSONL+engine, bukan parse view):** field opsional **`themes`** di `session.json` (jlpt)
+  → `record` persist ke `attempts.jsonl`; `recent_themes(attempts)` → `plan --kind jlpt`
+  mengembalikan **`avoid_themes`**; skill pilih tema beda + tulis `themes` saat record. Iterasi
+  awal (tag `[tema:]` di prosa `history_note` lalu grep `history.md`) dibuang karena mem-parse
+  view. Mock 2026-08-31 di-backfill `themes`.
+- **File:** `scripts/kb.py`, `.claude/skills/jlpt/SKILL.md`, `scripts/test_kb.py`
+  (`test_recent_themes`), `progress/attempts.jsonl` (backfill).

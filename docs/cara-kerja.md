@@ -207,10 +207,17 @@ Satu baris ditambahkan ke `history.md` (entri terbaru di atas).
 ### 3. Pembobotan & cakupan soal berikutnya
 - **Cakupan default** (`/quiz` polos) = **pelajaran lemah + bab terbaru**, dibatasi
   **maks ~3 lesson** (prioritas akurasi terendah) demi hemat token — bukan semua lesson.
+- **Maintenance (0 weak-area):** kalau semua pola 🟢/⚪, `plan` beralih ke **spaced review** —
+  3 bab **paling lama tak diuji** (lawan decay), `"maintenance":true`; sebar merata tanpa bobot.
+- **Sadar-taxonomy:** `plan` hanya menyodorkan **bab quizzable** (punya tag di
+  `quiz-taxonomy.md`); bab tanpa tag tak dipilih. → detail B2/B3 `engine-bookkeeping-plan.md`.
 - **Bobot adaptif:** ≥**40%** soal diambil dari weak area bila ada; sisanya sebar merata.
   Mode `review` → hampir semua soal dari tag 🔴/🟡. Sesi pertama (belum ada data) →
   sebar merata ke seluruh pola in-scope.
 - **Bias kendaraan Anki** → lihat bagian "DUA sinyal" di atas (lunak + fallback).
+- **Rotasi tema teks (`/jlpt`):** cerita `DK-dokkai`/`joho`/`bunshou` tak boleh monoton —
+  `plan --kind jlpt` memberi `avoid_themes` (tema mock terakhir dari `attempts.jsonl`),
+  skill memilih tema beda & menyimpan `themes` sesi ini (B4).
 
 ### 4. Aturan penyajian (menjaga recall tetap jujur)
 - **Mode ujian:** jawab **semua** soal dulu, koreksi & analisis muncul **di akhir**.
