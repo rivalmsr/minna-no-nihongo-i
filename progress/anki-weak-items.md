@@ -14,11 +14,11 @@ Tingkat: **🔴** = `leech` atau `lapses ≥ 8` · **🟡** = `lapses 5–7` · 
 
 > Ringkasan cepat (anchor — baca ini saja saat quiz): PRIORITAS TINGGI 🔴
 >
-> **Verb/kosakata (Minna):** だします I 🩸, もらいます I 🩸, おいくつ 🩸, けします I 🩸, つけます II 🩸, りょこう 🩸, きんがく 🩸, となり 🩸, おしえます II 🩸, おります II 🩸, かえします I 🩸, けんがくします III 🩸, じむしょ 🩸, でかけます II 🩸, なくします I 🩸, おつり 🩸, きゅうこう 🩸, げんきん 🩸, じこくひょう 🩸, ついたち 🩸, つくります I 🩸, てちょう 🩸, とります I 🩸
+> **Verb/kosakata (Minna):** だします I 🩸, もらいます I 🩸, りょこう 🩸, おいくつ 🩸, きんがく 🩸, けします I 🩸, つけます II 🩸, となり 🩸, おしえます II 🩸, おります II 🩸, かえします I 🩸, けんがくします III 🩸, じむしょ 🩸, てちょう 🩸, でかけます II 🩸, なくします I 🩸, おつり 🩸, きゅうこう 🩸, げんきん 🩸, じこくひょう 🩸, ついたち 🩸, つくります I 🩸, とります I 🩸, ひこうき 🩸, ふうとう 🩸
 >
-> **Kanji N5:** 生（せい） 🩸, 先（せん） 🩸, 年（ねん） 🩸, 時（じ） 🩸, 千（せん） 🩸, 北（きた） 🩸, 友（とも） 🩸, 会（あう） 🩸, 南（みなみ） 🩸, 東（ひがし） 🩸
+> **Kanji N5:** 生（せい） 🩸, 先（せん） 🩸, 年（ねん） 🩸, 千（せん） 🩸, 時（じ） 🩸, 北（きた） 🩸, 友（とも） 🩸, 会（あう） 🩸, 南（みなみ） 🩸, 東（ひがし） 🩸
 
-Total ditandai — Minna: 🔴23 · 🟡58 · ⚪91  |  Kanji N5: 🔴10 · 🟡18 · ⚪29
+Total ditandai — Minna: 🔴25 · 🟡56 · ⚪92  |  Kanji N5: 🔴10 · 🟡18 · ⚪29
 
 ## Kosakata / Verb lemah — Minna no Nihongo I
 
@@ -26,17 +26,18 @@ Total ditandai — Minna: 🔴23 · 🟡58 · ⚪91  |  Kanji N5: 🔴10 · 🟡
 |---|------|------|-----|:------:|
 | 🔴 🩸 | だします I | mengeluarkan, menyerahkan, mengirim | L16 | 14 |
 | 🔴 🩸 | もらいます I | mendapatkan, menerima | L7 | 14 |
+| 🔴 🩸 | りょこう | tamasya, perjalanan | L9 | 13 |
 | 🔴 🩸 | おいくつ | umur berapa (bentuk sopan dari なんさい) | L1 | 12 |
+| 🔴 🩸 | きんがく | jumlah uang | L16 | 12 |
 | 🔴 🩸 | けします I | mematikan, memadamkan | L14 | 12 |
 | 🔴 🩸 | つけます II | menyalakan, memasang, menghidupkan | L14 | 12 |
-| 🔴 🩸 | りょこう | tamasya, perjalanan | L9 | 12 |
-| 🔴 🩸 | きんがく | jumlah uang | L16 | 11 |
 | 🔴 🩸 | となり | sebelah | L10 | 11 |
 | 🔴 🩸 | おしえます II | mengajar | L7 | 9 |
 | 🔴 🩸 | おります II | turun | L16 | 9 |
 | 🔴 🩸 | かえします I | mengembalikan | L17 | 9 |
 | 🔴 🩸 | けんがくします III | mengunjungi (untuk observasi) | L16 | 9 |
 | 🔴 🩸 | じむしょ | kantor | L3 | 9 |
+| 🔴 🩸 | てちょう | buku agenda | L2 | 9 |
 | 🔴 🩸 | でかけます II | pergi, keluar, berangkat | L17 | 9 |
 | 🔴 🩸 | なくします I | kehilangan | L17 | 9 |
 | 🔴 🩸 | おつり | uang kembalian | L14 | 8 |
@@ -45,8 +46,9 @@ Total ditandai — Minna: 🔴23 · 🟡58 · ⚪91  |  Kanji N5: 🔴10 · 🟡
 | 🔴 🩸 | じこくひょう | jadwal | L15 | 8 |
 | 🔴 🩸 | ついたち | tanggal 1 | — | 8 |
 | 🔴 🩸 | つくります I | membuat, membangun, memproduksi | L15 | 8 |
-| 🔴 🩸 | てちょう | buku agenda | L2 | 8 |
 | 🔴 🩸 | とります I | mengambil (foto), memotret | — | 8 |
+| 🔴 🩸 | ひこうき | pesawat terbang | — | 8 |
+| 🔴 🩸 | ふうとう | amplop | — | 8 |
 | 🟡 | あけます II | membuka | L14 | 7 |
 | 🟡 | いつか | tanggal 5, lima hari | — | 7 |
 | 🟡 | がくせい | siswa | L1 | 7 |
@@ -60,8 +62,6 @@ Total ditandai — Minna: 🔴23 · 🟡58 · ⚪91  |  Kanji N5: 🔴10 · 🟡
 | 🟡 | どなた | siapa (bentuk sopan dari だれ) | L1 | 7 |
 | 🟡 | なのか | tanggal 7, tujuh hari | — | 7 |
 | 🟡 | はがき | kartu pos | — | 7 |
-| 🟡 | ひこうき | pesawat terbang | — | 7 |
-| 🟡 | ふうとう | amplop | — | 7 |
 | 🟡 | みじかい | pendek | L16 | 7 |
 | 🟡 | あれ | itu (jauh dari pembicara dan lawan bicara) | L2 | 6 |
 | 🟡 | うわぎ | baju, jaket | L17 | 6 |
@@ -113,8 +113,8 @@ Total ditandai — Minna: 🔴23 · 🟡58 · ⚪91  |  Kanji N5: 🔴10 · 🟡
 | 🔴 🩸 | 生 | せい | hidup | 16 |
 | 🔴 🩸 | 先 | せん | dahulu, depan | 13 |
 | 🔴 🩸 | 年 | ねん | tahun | 12 |
+| 🔴 🩸 | 千 | せん | seribu | 11 |
 | 🔴 🩸 | 時 | じ | jam | 11 |
-| 🔴 🩸 | 千 | せん | seribu | 10 |
 | 🔴 🩸 | 北 | きた | utara | 9 |
 | 🔴 🩸 | 友 | とも | teman | 9 |
 | 🔴 🩸 | 会 | あう | bertemu | 8 |
@@ -125,6 +125,7 @@ Total ditandai — Minna: 🔴23 · 🟡58 · ⚪91  |  Kanji N5: 🔴10 · 🟡
 | 🟡 | 聞 | きく | mendengar | 7 |
 | 🟡 | 言 | いう | berkata | 7 |
 | 🟡 | 午 | ご | siang | 6 |
+| 🟡 | 少 | すくない | sedikit | 6 |
 | 🟡 | 来 | くる | datang | 6 |
 | 🟡 | 牛 | うし | sapi | 6 |
 | 🟡 | 白 | しろ | putih | 6 |
@@ -133,11 +134,10 @@ Total ditandai — Minna: 🔴23 · 🟡58 · ⚪91  |  Kanji N5: 🔴10 · 🟡
 | 🟡 | 語 | ご | bahasa | 6 |
 | 🟡 | 道 | みち | jalan | 6 |
 | 🟡 | 円 | えん | yen | 5 |
-| 🟡 | 少 | すくない | sedikit | 5 |
 | 🟡 | 後 | うしろ | belakang | 5 |
 | 🟡 | 書 | かく | menulis | 5 |
 | 🟡 | 毎 | まい | setiap | 5 |
 | 🟡 | 立 | たつ | berdiri | 5 |
 
 ---
-_Auto-generated 2026-08-30 oleh `scripts/sync-anki-weak-items.sh` dari `collection.anki2`._
+_Auto-generated 2026-08-31 oleh `scripts/sync-anki-weak-items.sh` dari `collection.anki2`._
