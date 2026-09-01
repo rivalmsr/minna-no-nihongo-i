@@ -12,7 +12,7 @@ Diperbarui otomatis oleh skill `/quiz` setiap selesai sesi. Melacak akurasi
 **Ambang status:** akurasi <60% 🔴 LEMAH · 60–79% 🟡 · ≥80% 🟢
 (butuh minimal **3 attempt** sebelum status dihitung; di bawah itu = ⚪ belum cukup data)
 
-_Terakhir diperbarui: 2026-08-31 · total sesi: 24_
+_Terakhir diperbarui: 2026-09-01 · total sesi: 25_
 
 ---
 
@@ -35,10 +35,10 @@ _Terakhir diperbarui: 2026-08-31 · total sesi: 24_
 | L9-が-paham | 1 | 1 | 100% | ⚪ |
 | L9-が-pandai | 1 | 1 | 100% | ⚪ |
 | L9-punya | 1 | 1 | 100% | ⚪ |
-| L10-あります | 5 | 5 | 100% | 🟢 |
-| L10-います | 2 | 2 | 100% | ⚪ |
-| L10-に-keberadaan | 12 | 15 | 80% | 🟢 |
-| L10-posisi | 7 | 8 | 88% | 🟢 |
+| L10-あります | 6 | 6 | 100% | 🟢 |
+| L10-います | 3 | 3 | 100% | 🟢 |
+| L10-に-keberadaan | 13 | 16 | 81% | 🟢 |
+| L10-posisi | 8 | 9 | 89% | 🟢 |
 | L11-まい | 1 | 1 | 100% | ⚪ |
 | L11-かい-frekuensi | 1 | 1 | 100% | ⚪ |
 | L11-かかります | 1 | 1 | 100% | ⚪ |
@@ -82,15 +82,23 @@ _Terakhir diperbarui: 2026-08-31 · total sesi: 24_
 | L4-kata-kerja | 1 | 1 | 100% | ⚪ |
 | L4-に-waktu | 1 | 1 | 100% | ⚪ |
 | L5-へ-tujuan | 1 | 1 | 100% | ⚪ |
+| L2-の-jenis | 1 | 1 | 100% | ⚪ |
+| L2-この-benda | 1 | 1 | 100% | ⚪ |
+| L2-なん | 1 | 1 | 100% | ⚪ |
+| L2-の-milik | 1 | 1 | 100% | ⚪ |
+| L3-どこ | 1 | 1 | 100% | ⚪ |
+| L3-いくら | 1 | 1 | 100% | ⚪ |
+| L3-どこの-asal | 1 | 1 | 100% | ⚪ |
+| L3-ここ-tempat | 1 | 1 | 100% | ⚪ |
 
 ## Per partikel
 | Partikel | Benar | Total | Akurasi | Status |
 |----------|-------|-------|---------|--------|
 | から | 3 | 3 | 100% | 🟢 |
-| に | 46 | 54 | 85% | 🟢 |
+| に | 47 | 55 | 85% | 🟢 |
 | で | 15 | 16 | 94% | 🟢 |
 | を | 19 | 20 | 95% | 🟢 |
-| の | 1 | 1 | 100% | ⚪ |
+| の | 3 | 3 | 100% | 🟢 |
 | が | 10 | 10 | 100% | 🟢 |
 | へ | 4 | 4 | 100% | 🟢 |
 | と | 1 | 1 | 100% | ⚪ |
@@ -104,7 +112,7 @@ _Terakhir diperbarui: 2026-08-31 · total sesi: 24_
 | Lesson 7 | 18 | 20 | 90% | 🟢 |
 | Lesson 8 | 4 | 4 | 100% | 🟢 |
 | Lesson 9 | 6 | 6 | 100% | 🟢 |
-| Lesson 10 | 26 | 30 | 87% | 🟢 |
+| Lesson 10 | 30 | 34 | 88% | 🟢 |
 | Lesson 11 | 3 | 3 | 100% | 🟢 |
 | Lesson 12 | 3 | 3 | 100% | 🟢 |
 | Lesson 13 | 14 | 16 | 88% | 🟢 |
@@ -114,8 +122,10 @@ _Terakhir diperbarui: 2026-08-31 · total sesi: 24_
 | Lesson 17 | 11 | 12 | 92% | 🟢 |
 | Lesson 18 | 18 | 20 | 90% | 🟢 |
 | Lesson 19 | 58 | 65 | 89% | 🟢 |
+| Lesson 2 | 4 | 4 | 100% | 🟢 |
+| Lesson 3 | 4 | 4 | 100% | 🟢 |
 
 ---
 
 ## Weak areas (prioritas soal berikutnya)
-_🎉 **Tidak ada 🔴 maupun 🟡** — semua pola/partikel/lesson tetap 🟢/⚪. Sesi 2026-08-31 (maintenance/spaced review L4–L6, engine) skor **12/12 (100%)**. **Tonggak:** bab dasar yang lama terlupakan kini disapa & naik ke 🟢 — `Lesson 4` 83%→**90%**, `Lesson 5` ⚪→**🟢 100%** (5/5), `Lesson 6` ⚪→**🟢 100%** (5/5). Partikel dasar solid: へ 4/4, から 3/3, で 94% (15/16), に 85% (46/54). Pola pengantar L5/L6 (で-transport, と-dengan, どこも, を-objek, で-tempat, ませんか, に-bertemu) semua benar._
+🎉 **Tidak ada 🔴 maupun 🟡** — semua pola/partikel/lesson tetap 🟢/⚪. Sesi 2026-09-01 (maintenance/spaced review L2·L3·L10, engine) skor **12/12 (100%)**. **Tonggak:** dua bab pengantar yang belum pernah ber-data kini disapa & naik ke 🟢 — `Lesson 2` ⚪→**🟢 100%** (4/4), `Lesson 3` ⚪→**🟢 100%** (4/4). Kata tunjuk benda/tempat mantap: これ/この, の (jenis+milik), なん, どこ, いくら, どこの-asal, ここ-tempat semua benar. Partikel `の` ⚪→**🟢 100%** (3/3). L10 keberadaan solid: `Lesson 10` 87%→**88%** (30/34), `L10-に-keberadaan` 81% (13/16), `L10-います` ⚪→**🟢 100%** (3/3), posisi となり (item Anki 🔴) benar. Tak ada kelemahan baru — review pemeliharaan lawan decay berjalan baik.

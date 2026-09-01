@@ -7,6 +7,7 @@ Log ringkas tiap sesi `/quiz` (entri terbaru di atas). Ditambah otomatis oleh sk
 
 | Tanggal | Cakupan | Jml soal | Skor | Catatan |
 |---------|---------|----------|------|---------|
+| 2026-09-01 | Maintenance/spaced review L2, L3, L10 (kata tunjuk benda/tempat + keberadaan) | 12 | 12/12 (100%) | Maintenance (tak ada weak-area) — spaced review L2/L3/L10; skor 12/12 (100%). |
 | 2026-08-31 | JLPT mock penuh (Sesi 1 文字語彙 8 + Sesi 2 文法読解 8) | 16 | 15/16 (94%) | Mock ke-11. 15/16 (94%). Sesi1 8/8 sempurna; Sesi2 7/8. Satu-satunya salah: DK-bunshou（２）arah pemberian — 友達が わたしに おみやげを → kunci くれました (memberi KE aku), user pilih かいました. DK-bunshou pertama kali diuji (⚪→ada data). Kendaraan 🔴 Anki (先/友/会/東, けします/りょこう) semua benar. |
 | 2026-08-31 | L4–L6 (spaced review, merata) | 12 | 12/12 (100%) | Maintenance/spaced review L4–L6 (bab paling lama tak diuji). 12/12 — partikel dasar (へ/で/と/に/を/も), から〜まで, konjugasi ます lampau, baca jam 4時=よじ semua tepat. |
 | 2026-08-30 | JLPT mock penuh (Sesi 1 文字語彙 8 + Sesi 2 文法読解 8; bias 🔴 kanji/kosakata Anki 先/時/友/会/りょこう/けします/おります; grammar L16/L18) | 16 | 16/16 (100%) | Mock kesepuluh, 16/16 (100%) — PERFECT. Sesi 1 文字語彙 8/8: kanji 🔴 先生/時計/友達/会社 ✓, kosakata konteks 🔴 りょこう(cue 沖縄へ)/けします(cue 出るとき) ✓, sinonim やさしい=かんたん & 父と母=両親 ✓. Sesi 2 文法読解 8/8: ことができます+が, 辞書形+まえに(ねる), おりる+を, narabekae おふろに はいってから(coherent malam→寝る), dokkai 2/2 & joho 2/2. Semua 8 subtipe 🟢. |

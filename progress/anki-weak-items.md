@@ -14,11 +14,11 @@ Tingkat: **🔴** = `leech` atau `lapses ≥ 8` · **🟡** = `lapses 5–7` · 
 
 > Ringkasan cepat (anchor — baca ini saja saat quiz): PRIORITAS TINGGI 🔴
 >
-> **Verb/kosakata (Minna):** だします I 🩸, もらいます I 🩸, りょこう 🩸, おいくつ 🩸, きんがく 🩸, けします I 🩸, つけます II 🩸, となり 🩸, おしえます II 🩸, おります II 🩸, かえします I 🩸, けんがくします III 🩸, じむしょ 🩸, てちょう 🩸, でかけます II 🩸, なくします I 🩸, おつり 🩸, きゅうこう 🩸, げんきん 🩸, じこくひょう 🩸, ついたち 🩸, つくります I 🩸, とります I 🩸, ひこうき 🩸, ふうとう 🩸
+> **Verb/kosakata (Minna):** だします I 🩸, もらいます I 🩸, りょこう 🩸, おいくつ 🩸, きんがく 🩸, けします I 🩸, つけます II 🩸, となり 🩸, なくします I 🩸, おしえます II 🩸, おります II 🩸, かえします I 🩸, けんがくします III 🩸, じむしょ 🩸, てちょう 🩸, でかけます II 🩸, おつり 🩸, きゅうこう 🩸, げんきん 🩸, じこくひょう 🩸, ついたち 🩸, つくります I 🩸, とります I 🩸, ひこうき 🩸, ふうとう 🩸
 >
 > **Kanji N5:** 生（せい） 🩸, 先（せん） 🩸, 年（ねん） 🩸, 千（せん） 🩸, 時（じ） 🩸, 北（きた） 🩸, 友（とも） 🩸, 会（あう） 🩸, 南（みなみ） 🩸, 東（ひがし） 🩸
 
-Total ditandai — Minna: 🔴25 · 🟡56 · ⚪92  |  Kanji N5: 🔴10 · 🟡18 · ⚪29
+Total ditandai — Minna: 🔴25 · 🟡56 · ⚪95  |  Kanji N5: 🔴10 · 🟡19 · ⚪28
 
 ## Kosakata / Verb lemah — Minna no Nihongo I
 
@@ -32,6 +32,7 @@ Total ditandai — Minna: 🔴25 · 🟡56 · ⚪92  |  Kanji N5: 🔴10 · 🟡
 | 🔴 🩸 | けします I | mematikan, memadamkan | L14 | 12 |
 | 🔴 🩸 | つけます II | menyalakan, memasang, menghidupkan | L14 | 12 |
 | 🔴 🩸 | となり | sebelah | L10 | 11 |
+| 🔴 🩸 | なくします I | kehilangan | L17 | 10 |
 | 🔴 🩸 | おしえます II | mengajar | L7 | 9 |
 | 🔴 🩸 | おります II | turun | L16 | 9 |
 | 🔴 🩸 | かえします I | mengembalikan | L17 | 9 |
@@ -39,7 +40,6 @@ Total ditandai — Minna: 🔴25 · 🟡56 · ⚪92  |  Kanji N5: 🔴10 · 🟡
 | 🔴 🩸 | じむしょ | kantor | L3 | 9 |
 | 🔴 🩸 | てちょう | buku agenda | L2 | 9 |
 | 🔴 🩸 | でかけます II | pergi, keluar, berangkat | L17 | 9 |
-| 🔴 🩸 | なくします I | kehilangan | L17 | 9 |
 | 🔴 🩸 | おつり | uang kembalian | L14 | 8 |
 | 🔴 🩸 | きゅうこう | ekspres | — | 8 |
 | 🔴 🩸 | げんきん | uang tunai | L18 | 8 |
@@ -110,7 +110,7 @@ Total ditandai — Minna: 🔴25 · 🟡56 · ⚪92  |  Kanji N5: 🔴10 · 🟡
 
 | | Kanji | Bacaan | Arti | lapses |
 |---|:---:|--------|------|:------:|
-| 🔴 🩸 | 生 | せい | hidup | 16 |
+| 🔴 🩸 | 生 | せい | hidup | 17 |
 | 🔴 🩸 | 先 | せん | dahulu, depan | 13 |
 | 🔴 🩸 | 年 | ねん | tahun | 12 |
 | 🔴 🩸 | 千 | せん | seribu | 11 |
@@ -134,10 +134,11 @@ Total ditandai — Minna: 🔴25 · 🟡56 · ⚪92  |  Kanji N5: 🔴10 · 🟡
 | 🟡 | 語 | ご | bahasa | 6 |
 | 🟡 | 道 | みち | jalan | 6 |
 | 🟡 | 円 | えん | yen | 5 |
+| 🟡 | 安 | やすい | murah | 5 |
 | 🟡 | 後 | うしろ | belakang | 5 |
 | 🟡 | 書 | かく | menulis | 5 |
 | 🟡 | 毎 | まい | setiap | 5 |
 | 🟡 | 立 | たつ | berdiri | 5 |
 
 ---
-_Auto-generated 2026-08-31 oleh `scripts/sync-anki-weak-items.sh` dari `collection.anki2`._
+_Auto-generated 2026-09-01 oleh `scripts/sync-anki-weak-items.sh` dari `collection.anki2`._
