@@ -303,6 +303,17 @@ cross-tag pola/partikel). Boleh pakai verb dari `anki-verbs.md` dalam pola in-sc
 > soal 12): 「わたしは **まいあさ** シャワーを あびて、はを みがいて、**ねます**」 — grammar て-rangkaian
 > benar, tapi "pagi lalu tidur" janggal → ganti `まいあさ`→`まいばん` atau penutup→`がっこうへ 行きます`.
 > Berlaku juga untuk `DK-bunmyaku` & `DK-dokkai`/`DK-joho`: konteks kalimat/teks harus wajar.
+> 🧩 **POTONGAN vs RANGKA — jangan duplikat (WAJIB cek sebelum pakai).** Kata yang sudah
+> **terpasang tetap di rangka soal** (mis. `パーティーで ＿①＿ …` — パーティーで sudah di kalimat)
+> **TAK BOLEH** juga muncul sebagai salah satu potongan 1–4. Kalau duplikat, soal **tak bisa
+> disusun** (potongan tak punya slot) & user tak bisa menjawab. **Aturan:** keempat potongan =
+> **tepat** kata-kata yang mengisi keempat slot kosong `＿①＿ ＿②＿ ＿★③＿ ＿④＿` — tak lebih,
+> tak kurang, tak ada yang sudah tercetak di rangka. Sebelum memakai soal: rakit potongan ke
+> slot → pastikan **jumlah potongan = jumlah slot** & tak ada sisa/bentrok. Contoh cacat (mock
+> 2026-09-01 soal 10): rangka `パーティーで ＿①＿ ＿②＿ ＿★③＿ ＿④＿ します` tapi potongan memuat
+> `パーティーで` lagi → 4 potongan untuk hanya 4 slot yang seharusnya diisi うたを/うたったり/
+> おどったり (3 kata) + 1 duplikat → rancu. **Fix:** buang `パーティーで` dari rangka (jadikan
+> slot ①), atau ganti potongan ke-4 dengan kata lain yang memang punya slot.
 
 **`DK-bunshou` — 文章の文法 (問題3): tata bahasa DALAM teks (cloze).** Tampilkan **1 paragraf
 pendek** (gaya karangan/surat, pola in-scope), dengan **beberapa rumpang bernomor**

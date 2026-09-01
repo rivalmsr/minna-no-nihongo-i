@@ -21,6 +21,19 @@ atau update skor), tambahkan satu blok di paling atas daftar di bawah, format:
 
 ---
 
+### 2026-09-01 — `DK-narabekae` cacat: potongan duplikat kata yang sudah di rangka
+- **Problem:** mock `/jlpt` 2026-09-01 soal 10 (susun kalimat) tak bisa dijawab — rangka
+  `パーティーで ＿①＿ ＿②＿ ＿★③＿ ＿④＿ します` sudah memuat `パーティーで` **tetap di kalimat**,
+  tetapi `パーティーで` juga muncul sebagai salah satu potongan 1–4. Akibatnya potongan (4 kata:
+  パーティーで/うたを/うたったり/おどったり) melebihi slot kosong yang sebenarnya perlu diisi (hanya 3:
+  うたを/うたったり/おどったり) → soal rancu, user tak bisa menyusun. User menandainya saat menjawab.
+  Soal dibuang dari skor (15/15, tak dihitung), tapi **aturannya belum ada** sehingga bisa terulang.
+- **Fix:** tambah guardrail **"POTONGAN vs RANGKA — jangan duplikat (WAJIB cek)"** di template
+  `DK-narabekae` (`.claude/skills/jlpt/SKILL.md`): keempat potongan = **tepat** kata pengisi keempat
+  slot kosong; tak ada potongan yang sudah tercetak tetap di rangka; sebelum pakai, rakit potongan
+  → pastikan **jumlah potongan = jumlah slot**, tak ada sisa/bentrok. Sertakan contoh cacat + fix.
+- **File:** `.claude/skills/jlpt/SKILL.md` (template `DK-narabekae`)
+
 ### 2026-08-31 — Rotasi tema teks `/jlpt` (dokkai/joho/bunshou monoton)
 - **Problem:** soal berteks `/jlpt` selalu bertema sama — `DK-dokkai` = **taman (公園)**,
   `DK-joho` = **perpустakaan (図書館)** — tiap mock, karena model menyalin tema dari **contoh
