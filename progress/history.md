@@ -7,6 +7,7 @@ Log ringkas tiap sesi `/quiz` (entri terbaru di atas). Ditambah otomatis oleh sk
 
 | Tanggal | Cakupan | Jml soal | Skor | Catatan |
 |---------|---------|----------|------|---------|
+| 2026-09-02 | JLPT mock penuh (2 sesi, 16 soal; tema kelas/toko/jalan-jalan) | 16 | 16/16 (100%) | Mock penuh ke-13 (2 sesi, 16 soal) skor 16/16 (100%). Semua subtipe benar. [tema: dokkai=sekolah-kelas, joho=jam-buka-toko, bunshou=jalan-jalan-gunung — beda dari mock lalu belanja/bus/ulang-tahun]. Kendaraan 🔴 Anki (先生・友達 kanji, つけます・りょこう kosakata) tertangani. Milestone: DK-bunshou naik ke 🟢. |
 | 2026-09-02 | maintenance/spaced review L13·L17·L11 (engine) | 12 | 10/12 (83%) | Maintenance/spaced review L13·L17·L11 (engine, mode adaptif→maintenance). 10/12 (83%). L17 & L11 mulus (ない-konjugasi 4/4 verba Anki 🔴: だす・かえす・つける・けす; satuan hitung + かかります semua benar). Dua slip di L13: bentuk 〜ています & pilih で↔を — decay muncul di sini. |
 | 2026-09-01 | JLPT mock penuh (Sesi 1 文字語彙 8 + Sesi 2 文法読解 7; soal narabekae cacat dibuang) | 15 | 15/15 (100%) | Mock penuh 15/15 (100%) — soal 10 (narabekae) cacat (duplikat パーティーで di rangka+potongan) dibuang, tak dihitung. DK-bunshou くれました (titik lemah lalu) kini benar. [tema: dokkai=belanja-akhir-pekan, joho=jadwal-bus, bunshou=ulang-tahun] |
 | 2026-09-01 | Maintenance/spaced review L2, L3, L10 (kata tunjuk benda/tempat + keberadaan) | 12 | 12/12 (100%) | Maintenance (tak ada weak-area) — spaced review L2/L3/L10; skor 12/12 (100%). |
