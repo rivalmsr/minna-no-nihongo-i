@@ -21,6 +21,25 @@ atau update skor), tambahkan satu blok di paling atas daftar di bawah, format:
 
 ---
 
+### 2026-09-02 — `MG-yomi`/`MG-hyouki` monoton: kanji baca/tulis JLPT berulang (先生/友達/時間)
+- **Problem:** user menyadari soal baca-tulis kanji `/jlpt` terasa monoton — 先生／友達／時間
+  muncul berkali-kali antar-mock. Penyebab: (1) rotasi tema (`avoid_themes`) hanya menyentuh
+  3 subtipe berteks (dokkai/joho/bunshou); `MG-yomi`/`MG-hyouki` **tak punya penangkal
+  pengulangan**. (2) Skill membias `MG-yomi`/`MG-hyouki` ke KANJI 🔴 Anki, padahal pool 🔴
+  hanya ~10 kanji (生・先・年・千・時・北・友・会・南・東) → tiap mock nyaris pasti nyomot dari situ.
+- **Fix:** dua sumbu (mirror mekanisme tema):
+  1. **Engine `avoid_items`** — `kb.py` fungsi baru `recent_kanji_items()` mengumpulkan `key`
+     soal `MG-yomi`/`MG-hyouki` dari **2 mock terakhir** di `attempts.jsonl`; `cmd_plan`
+     (kind=jlpt) mengembalikannya sbg `avoid_items`. Tak perlu field baru saat `record` —
+     identitas item sudah tersimpan di `key` tiap question (beda dari tema yang butuh field
+     `themes` eksplisit).
+  2. **Longgarkan bias 🔴** — prinsip 4b skill diubah: `MG-yomi`/`MG-hyouki` sumber utama =
+     **seluruh kanji N5** (`n5-vocabulary.md`), kanji 🔴 disentuh **sesekali** (≈1/2 soal per
+     subtipe), bukan default. Tambah subsection "ROTASI kanji baca/tulis" + wajib hindari
+     `avoid_items` + variasikan kategori kanji antar-mock.
+- **File:** `scripts/kb.py` (`recent_kanji_items`, `cmd_plan`), `.claude/skills/jlpt/SKILL.md`
+  (prinsip 4b, langkah 1 & 2, subsection rotasi kanji).
+
 ### 2026-09-01 — `DK-narabekae` cacat: potongan duplikat kata yang sudah di rangka
 - **Problem:** mock `/jlpt` 2026-09-01 soal 10 (susun kalimat) tak bisa dijawab — rangka
   `パーティーで ＿①＿ ＿②＿ ＿★③＿ ＿④＿ します` sudah memuat `パーティーで` **tetap di kalimat**,

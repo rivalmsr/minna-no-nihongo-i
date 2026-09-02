@@ -41,13 +41,20 @@ Tag subtipe ada di `reference/quiz-taxonomy.md` (section "Tag subtipe JLPT").
    jangan edit tangan; kalau verb terasa ketinggalan jalankan `bash scripts/sync-anki-verbs.sh`.
 4b. **Bias item ke `progress/anki-weak-items.md`** (sinyal EMPIRIS item yang user sering
    lupa di Anki: `lapses` + `leech`). Saat memilih kanji/kosakata/verb untuk mengisi soal,
-   **prioritaskan yang bertanda 🔴** bila cocok subtipe & cakupan: **`MG-yomi`/`MG-hyouki`
-   → boboti ke KANJI 🔴** (mis. 生・先・時), **`MG-bunmyaku` → KOSAKATA 🔴**, **`DK-bunpou`
-   → VERB 🔴** di dalam pola in-scope. Bias LUNAK & tunduk pada aturan 1–3 (jangan drill
-   item lepas; item tetap muncul di format soal JLPT normal). **Fallback:** kalau tak ada
-   item 🔴 yang cocok subtipe/cakupan, **pakai kanji/kosakata lain** dari `n5-vocabulary.md`
-   / `n5-synonyms.md` / `anki-verbs.md` — simulasi JLPT tetap yang utama, Anki hanya bias.
-   AUTO-GENERATED dari `collection.anki2`; regen `bash scripts/sync-anki-weak-items.sh`.
+   **prioritaskan yang bertanda 🔴** bila cocok subtipe & cakupan: **`MG-bunmyaku` →
+   KOSAKATA 🔴**, **`DK-bunpou` → VERB 🔴** di dalam pola in-scope. Bias LUNAK & tunduk pada
+   aturan 1–3 (jangan drill item lepas; item tetap muncul di format soal JLPT normal).
+   **Fallback:** kalau tak ada item 🔴 yang cocok subtipe/cakupan, **pakai kanji/kosakata
+   lain** dari `n5-vocabulary.md` / `n5-synonyms.md` / `anki-verbs.md` — simulasi JLPT tetap
+   yang utama, Anki hanya bias. AUTO-GENERATED dari `collection.anki2`; regen
+   `bash scripts/sync-anki-weak-items.sh`.
+   > ⚠️ **`MG-yomi`/`MG-hyouki` = bias 🔴 LONGGAR + WAJIB rotasi (anti-monoton).** Pool kanji
+   > 🔴 cuma ~10 item (生・先・年・千・時・北・友・会・南・東) → kalau tiap mock dipaksa ambil dari
+   > situ, soal jadi monoton (先生／友達／時間 berulang). **Aturan:** (a) **rotasi ke seluruh kanji
+   > N5** di `n5-vocabulary.md` sbg sumber utama; kanji 🔴 disentuh **sesekali** (≈1 dari 2 soal
+   > tiap subtipe, tak wajib tiap mock), **bukan** default. (b) **Hindari `avoid_items`** dari
+   > `kb.py plan` (= kanji/kata MG-yomi/hyouki yang dipakai **2 mock terakhir**) — pilih item
+   > BEDA. Lihat "ROTASI kanji baca/tulis" di bawah.
 5. **Tulisan:** hiragana + kanji umum N5. **Setiap kanji diberi bacaan hiragana** dalam
    kurung, mis. `学校（がっこう）` — **KECUALI** kata kanji yang justru sedang diuji
    bacaannya di soal `MG-yomi` (di situ furigana-nya jadi jawaban, jangan dibocorkan;
@@ -105,12 +112,15 @@ Bila belum ada data (tracker kosong) → sebar merata ke semua subtipe.
 - (Opsional) baca `progress/evaluation.md` untuk tahu pola grammar yang lemah → biar
   soal `DK-bunpou` menyasar itu.
 - Baca **anchor 🔴** `progress/anki-weak-items.md` → untuk membias kanji/kosakata/verb
-  ke item yang sering user lupa (lihat prinsip 4b), terutama subtipe `MG-yomi`/`MG-hyouki`.
+  ke item yang sering user lupa (lihat prinsip 4b). Untuk `MG-yomi`/`MG-hyouki` bias 🔴
+  **longgar** + rotasi (lihat "ROTASI kanji baca/tulis").
 
 ### 2. Tentukan cakupan & campuran soal
 - **Pintasan engine (disarankan):** `python3 scripts/kb.py plan --kind jlpt --mode
   <mock|moji|bunpou|review>` → JSON `weights` (subtipe lemah), `vehicles_red` (kanji/
-  kosakata 🔴 Anki), `answer_positions` (posisi kunci tersebar). Pakai sbg kerangka.
+  kosakata 🔴 Anki), `answer_positions` (posisi kunci tersebar), `avoid_themes` (tema teks
+  mock terakhir → pilih beda) & `avoid_items` (kanji MG-yomi/hyouki 2 mock terakhir → pilih
+  beda). Pakai sbg kerangka.
 - Cakupan tata bahasa = lesson yang tersedia (`lessons/`). Untuk bacaan/grammar, pakai
   pola in-scope; boleh utamakan **bab terbaru + pola lemah** dari `evaluation.md`.
 - Muat materi sesuai **"Hemat token"**: anchor lesson + `Grep` kosakata/sinonim/verb
@@ -386,6 +396,21 @@ Q: どようびは なんじから ですか。  1. 9じ  2. 10じ  3. 16じ  4.
 >    `/jlpt moji` (tanpa blok teks) → `themes` boleh dilewati. Boleh **juga** menaruh echo
 >    `[tema: …]` di `history_note` untuk keterbacaan manusia, tapi itu **hanya cermin** —
 >    sumber yang dibaca engine tetap field `themes`, bukan prosa.
+
+> 🔤 **ROTASI kanji baca/tulis (WAJIB — `MG-yomi`/`MG-hyouki` jangan monoton).** Kesalahan
+> berulang (kesadaran 2026-09-02): tiap mock nyomot 先生／友達／時間 karena bias 🔴 dipaksa ke
+> pool kanji 🔴 yang cuma ~10 item. **Aturan:**
+> - **Sumber utama = seluruh kanji N5** di `n5-vocabulary.md` (kolom Kana⇄Kanji). Rotasi
+>   lebar: tiap mock ganti kanji yang diuji. Kanji 🔴 (`anki-weak-items.md`) disentuh
+>   **sesekali** (≈1 dari 2 soal per subtipe, TAK wajib tiap mock) — bias, bukan default.
+> - **Hindari `avoid_items`** dari `kb.py plan --kind jlpt` = daftar `key` MG-yomi/hyouki yang
+>   dipakai **2 mock terakhir** (mis. `["せんせい","先生","時間","学校"]`). Pilih kanji/kata
+>   **BEDA** dari daftar itu. Kosong `[]` → bebas, tapi tetap variasikan.
+> - **Tak perlu field baru saat `record`.** Beda dari tema: identitas item **sudah** tersimpan
+>   di `key` tiap question → engine menurunkan `avoid_items` otomatis. Cukup pastikan `key`
+>   MG-yomi/hyouki = kata yang benar-benar diuji (bacaan → kana; penulisan → kanji).
+> - Ganti juga **kategori** kanji antar-mock (angka/waktu · arah/tempat · orang/keluarga ·
+>   kata kerja · alam/hari) biar tak selalu ruang semantik yang sama.
 
 ## Hint fading (scaffolding) — porsi `description` mengikuti penguasaan
 

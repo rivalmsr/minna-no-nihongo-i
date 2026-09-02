@@ -578,6 +578,22 @@ def recent_themes(attempts: list, kind: str = "jlpt") -> dict:
     return {}
 
 
+def recent_kanji_items(attempts: list, kind: str = "jlpt", lookback: int = 2) -> list[str]:
+    """Kanji/kata yang BARU diuji di subtipe baca-tulis kanji (`MG-yomi`/`MG-hyouki`)
+    pada `lookback` sesi `kind` TERBARU — supaya mock berikutnya MENGHINDARI item itu
+    (rotasi anti-monoton, mirror `recent_themes`). Sumber = `key` tiap question di
+    `attempts.jsonl`. Kosong bila belum ada sesi berisi subtipe tsb."""
+    sessions = [s for s in attempts if s.get("kind") == kind]
+    seen: list[str] = []
+    for sess in reversed(sessions[-lookback:]):  # terbaru dulu; jaga urutan stabil
+        for q in sess.get("questions", []):
+            if q.get("subtype") in ("MG-yomi", "MG-hyouki"):
+                key = q.get("key")
+                if key and key not in seen:
+                    seen.append(key)
+    return seen
+
+
 def maintenance_lessons(agg: dict, attempts: list, limit: int = 3) -> list[str]:
     """B2: saat tak ada weak-area, sapa bab paling RAWAN LUNTUR — urut dari yang
     paling lama tak diuji (spaced review), tie-break akurasi terendah. Deterministik."""
@@ -714,6 +730,9 @@ def cmd_plan(args) -> int:
     if args.kind == "jlpt":
         # Tema teks mock TERAKHIR → skill pilih tema BEDA (rotasi dokkai/joho/bunshou).
         out["avoid_themes"] = recent_themes(attempts, "jlpt")
+        # Kanji baca/tulis yang BARU diuji (2 mock terakhir) → skill pilih kanji BEDA
+        # (rotasi anti-monoton MG-yomi/MG-hyouki; lawan pengulangan 先生/友達/時間).
+        out["avoid_items"] = recent_kanji_items(attempts, "jlpt")
     print(json.dumps(out, ensure_ascii=False, indent=1))
     return 0
 
