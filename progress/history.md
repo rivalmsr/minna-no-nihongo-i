@@ -7,6 +7,7 @@ Log ringkas tiap sesi `/quiz` (entri terbaru di atas). Ditambah otomatis oleh sk
 
 | Tanggal | Cakupan | Jml soal | Skor | Catatan |
 |---------|---------|----------|------|---------|
+| 2026-09-02 | maintenance/spaced review L13·L17·L11 (engine) | 12 | 10/12 (83%) | Maintenance/spaced review L13·L17·L11 (engine, mode adaptif→maintenance). 10/12 (83%). L17 & L11 mulus (ない-konjugasi 4/4 verba Anki 🔴: だす・かえす・つける・けす; satuan hitung + かかります semua benar). Dua slip di L13: bentuk 〜ています & pilih で↔を — decay muncul di sini. |
 | 2026-09-01 | JLPT mock penuh (Sesi 1 文字語彙 8 + Sesi 2 文法読解 7; soal narabekae cacat dibuang) | 15 | 15/15 (100%) | Mock penuh 15/15 (100%) — soal 10 (narabekae) cacat (duplikat パーティーで di rangka+potongan) dibuang, tak dihitung. DK-bunshou くれました (titik lemah lalu) kini benar. [tema: dokkai=belanja-akhir-pekan, joho=jadwal-bus, bunshou=ulang-tahun] |
 | 2026-09-01 | Maintenance/spaced review L2, L3, L10 (kata tunjuk benda/tempat + keberadaan) | 12 | 12/12 (100%) | Maintenance (tak ada weak-area) — spaced review L2/L3/L10; skor 12/12 (100%). |
 | 2026-08-31 | JLPT mock penuh (Sesi 1 文字語彙 8 + Sesi 2 文法読解 8) | 16 | 15/16 (94%) | Mock ke-11. 15/16 (94%). Sesi1 8/8 sempurna; Sesi2 7/8. Satu-satunya salah: DK-bunshou（２）arah pemberian — 友達が わたしに おみやげを → kunci くれました (memberi KE aku), user pilih かいました. DK-bunshou pertama kali diuji (⚪→ada data). Kendaraan 🔴 Anki (先/友/会/東, けします/りょこう) semua benar. |

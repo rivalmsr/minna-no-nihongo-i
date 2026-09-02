@@ -12,7 +12,7 @@ Diperbarui otomatis oleh skill `/quiz` setiap selesai sesi. Melacak akurasi
 **Ambang status:** akurasi <60% 🔴 LEMAH · 60–79% 🟡 · ≥80% 🟢
 (butuh minimal **3 attempt** sebelum status dihitung; di bawah itu = ⚪ belum cukup data)
 
-_Terakhir diperbarui: 2026-09-01 · total sesi: 25_
+_Terakhir diperbarui: 2026-09-02 · total sesi: 26_
 
 ---
 
@@ -39,16 +39,16 @@ _Terakhir diperbarui: 2026-09-01 · total sesi: 25_
 | L10-います | 3 | 3 | 100% | 🟢 |
 | L10-に-keberadaan | 13 | 16 | 81% | 🟢 |
 | L10-posisi | 8 | 9 | 89% | 🟢 |
-| L11-まい | 1 | 1 | 100% | ⚪ |
-| L11-かい-frekuensi | 1 | 1 | 100% | ⚪ |
-| L11-かかります | 1 | 1 | 100% | ⚪ |
+| L11-まい | 2 | 2 | 100% | ⚪ |
+| L11-かい-frekuensi | 2 | 2 | 100% | ⚪ |
+| L11-かかります | 2 | 2 | 100% | ⚪ |
 | L12-より | 1 | 1 | 100% | ⚪ |
 | L12-のほうが | 1 | 1 | 100% | ⚪ |
 | L12-lampau-positif | 1 | 1 | 100% | ⚪ |
-| L13-に-tujuan | 6 | 7 | 86% | 🟢 |
-| L13-を-meninggalkan | 3 | 3 | 100% | 🟢 |
-| L13-で-vs-を | 2 | 2 | 100% | ⚪ |
-| L13-ています-keadaan | 1 | 2 | 50% | ⚪ |
+| L13-に-tujuan | 7 | 8 | 88% | 🟢 |
+| L13-を-meninggalkan | 4 | 4 | 100% | 🟢 |
+| L13-で-vs-を | 2 | 3 | 67% | 🟡 |
+| L13-ています-keadaan | 1 | 3 | 33% | 🔴 |
 | L14-te-konjugasi | 28 | 30 | 93% | 🟢 |
 | L14-てください | 5 | 6 | 83% | 🟢 |
 | L14-ています-progresif | 4 | 5 | 80% | 🟢 |
@@ -61,10 +61,10 @@ _Terakhir diperbarui: 2026-09-01 · total sesi: 25_
 | L16-て-urutan | 1 | 1 | 100% | ⚪ |
 | L16-他動詞-自動詞 | 5 | 6 | 83% | 🟢 |
 | L16-に-naik | 9 | 11 | 82% | 🟢 |
-| L17-ない-konjugasi | 10 | 11 | 91% | 🟢 |
-| L17-なければなりません | 4 | 4 | 100% | 🟢 |
-| L17-なくてもいいです | 4 | 5 | 80% | 🟢 |
-| L17-ないでください | 2 | 2 | 100% | ⚪ |
+| L17-ない-konjugasi | 14 | 15 | 93% | 🟢 |
+| L17-なければなりません | 5 | 5 | 100% | 🟢 |
+| L17-なくてもいいです | 5 | 6 | 83% | 🟢 |
+| L17-ないでください | 3 | 3 | 100% | 🟢 |
 | L18-ことができます | 8 | 9 | 89% | 🟢 |
 | L18-まえに | 9 | 10 | 90% | 🟢 |
 | L18-辞書形-konjugasi | 11 | 13 | 85% | 🟢 |
@@ -90,16 +90,17 @@ _Terakhir diperbarui: 2026-09-01 · total sesi: 25_
 | L3-いくら | 1 | 1 | 100% | ⚪ |
 | L3-どこの-asal | 1 | 1 | 100% | ⚪ |
 | L3-ここ-tempat | 1 | 1 | 100% | ⚪ |
+| L11-が-vs-を | 1 | 1 | 100% | ⚪ |
 
 ## Per partikel
 | Partikel | Benar | Total | Akurasi | Status |
 |----------|-------|-------|---------|--------|
 | から | 3 | 3 | 100% | 🟢 |
-| に | 47 | 55 | 85% | 🟢 |
-| で | 15 | 16 | 94% | 🟢 |
-| を | 19 | 20 | 95% | 🟢 |
+| に | 48 | 56 | 86% | 🟢 |
+| で | 15 | 17 | 88% | 🟢 |
+| を | 20 | 21 | 95% | 🟢 |
 | の | 3 | 3 | 100% | 🟢 |
-| が | 10 | 10 | 100% | 🟢 |
+| が | 11 | 11 | 100% | 🟢 |
 | へ | 4 | 4 | 100% | 🟢 |
 | と | 1 | 1 | 100% | ⚪ |
 
@@ -113,13 +114,13 @@ _Terakhir diperbarui: 2026-09-01 · total sesi: 25_
 | Lesson 8 | 4 | 4 | 100% | 🟢 |
 | Lesson 9 | 6 | 6 | 100% | 🟢 |
 | Lesson 10 | 30 | 34 | 88% | 🟢 |
-| Lesson 11 | 3 | 3 | 100% | 🟢 |
+| Lesson 11 | 7 | 7 | 100% | 🟢 |
 | Lesson 12 | 3 | 3 | 100% | 🟢 |
-| Lesson 13 | 14 | 16 | 88% | 🟢 |
+| Lesson 13 | 16 | 20 | 80% | 🟢 |
 | Lesson 14 | 25 | 27 | 93% | 🟢 |
 | Lesson 15 | 16 | 19 | 84% | 🟢 |
 | Lesson 16 | 22 | 26 | 85% | 🟢 |
-| Lesson 17 | 11 | 12 | 92% | 🟢 |
+| Lesson 17 | 15 | 16 | 94% | 🟢 |
 | Lesson 18 | 18 | 20 | 90% | 🟢 |
 | Lesson 19 | 58 | 65 | 89% | 🟢 |
 | Lesson 2 | 4 | 4 | 100% | 🟢 |
@@ -128,4 +129,4 @@ _Terakhir diperbarui: 2026-09-01 · total sesi: 25_
 ---
 
 ## Weak areas (prioritas soal berikutnya)
-🎉 **Tidak ada 🔴 maupun 🟡** — semua pola/partikel/lesson tetap 🟢/⚪. Sesi 2026-09-01 (maintenance/spaced review L2·L3·L10, engine) skor **12/12 (100%)**. **Tonggak:** dua bab pengantar yang belum pernah ber-data kini disapa & naik ke 🟢 — `Lesson 2` ⚪→**🟢 100%** (4/4), `Lesson 3` ⚪→**🟢 100%** (4/4). Kata tunjuk benda/tempat mantap: これ/この, の (jenis+milik), なん, どこ, いくら, どこの-asal, ここ-tempat semua benar. Partikel `の` ⚪→**🟢 100%** (3/3). L10 keberadaan solid: `Lesson 10` 87%→**88%** (30/34), `L10-に-keberadaan` 81% (13/16), `L10-います` ⚪→**🟢 100%** (3/3), posisi となり (item Anki 🔴) benar. Tak ada kelemahan baru — review pemeliharaan lawan decay berjalan baik.
+Dua kelemahan baru muncul di **Lesson 13** (bab tersapa mode maintenance; sisa L17/L11 tetap 🟢). 1) 🔴 **L13-ています-keadaan** turun ke **1/3 (33%)** — soal 「雨が（　）」 dijawab `ふります` (bentuk kamus/kebiasaan) padahal keadaan berlangsung 'sedang turun' butuh **ふっています**. 2) 🟡 **L13-で-vs-を** **2/3 (67%)** — soal 「公園（　）さんぽして います」 dijawab `を` (mengira 'meninggalkan/melintasi tempat') padahal さんぽします = aktivitas biasa DI tempat → **で**; を hanya untuk verba meninggalkan (出ます・おります・でます). **Sinyal:** keduanya konsep L13 yang lama tak diuji — decay wajar, bukan pola sistemik. **Rekomendasi:** sesi berikut sisipkan 2–3 soal L13 kontras ています (keadaan berlangsung) vs bentuk ます biasa, plus pasangan で↔を (さんぽします/します DI tempat vs 出ます/おります meninggalkan tempat).
