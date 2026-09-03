@@ -106,6 +106,10 @@ minimal satu **tag pola** + tag **partikel** yang relevan + **lesson** asalnya.
 | `L19-たり` | 19 | 〜たり、〜たり します (beberapa aktivitas, tak berurutan) |
 | `L19-なります` | 19 | Perubahan: な/N に なります, い → く なります |
 | `L19-に-vs-を-のぼる` | 19 | やまに のぼる (tujuan) vs かいだんを のぼる (permukaan) |
+| `L20-普通形-動詞` | 20 | Verba → 普通形 per tensis (辞書形／〜ない／〜た／〜なかった) |
+| `L20-普通形-い形` | 20 | い-adj → 普通形 (buang です; 〜くない／〜かった／〜くなかった) |
+| `L20-普通形-な形-名詞` | 20 | な-adj / kata benda → 普通形 (だ／じゃない／だった／じゃなかった) |
+| `L20-普通体-会話` | 20 | Ragam kasual: うん/ううん, tanya N/な-adj tanpa だ, こっち系, peniadaan partikel は/を |
 
 ## Tag partikel
 

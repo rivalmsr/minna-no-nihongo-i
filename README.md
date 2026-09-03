@@ -28,7 +28,8 @@ minna-no-nihongo-i/
 │   ├── lesson-16.md       <- 第16課: 〜て/〜てから (urutan aksi), は〜が, gabung sifat (で/くて)
 │   ├── lesson-17.md       <- 第17課: bentuk ない — ないでください, なければなりません, なくてもいいです
 │   ├── lesson-18.md       <- 第18課: bentuk kamus (辞書形) — ことができます, しゅみ, まえに
-│   └── lesson-19.md       <- 第19課: bentuk た — たことがあります, たり〜たり, なります
+│   ├── lesson-19.md       <- 第19課: bentuk た — たことがあります, たり〜たり, なります
+│   └── lesson-20.md       <- 第20課: 普通形 (bentuk biasa) — futsuukei/futsuutai, kasual, peniadaan partikel
 ├── reference/
 │   ├── particles.md       <- ringkasan partikel
 │   ├── vocabulary.md      <- kosakata terkumpul (per lesson)
@@ -82,6 +83,7 @@ minna-no-nihongo-i/
 | [第17課 (Lesson 17)](lessons/lesson-17.md) | Bentuk ない | 〜ないでください, 〜なければなりません, 〜なくてもいいです, を→は | 練習A ✅ |
 | [第18課 (Lesson 18)](lessons/lesson-18.md) | Bentuk kamus (辞書形) | 〜ことができます, N が できます, しゅみ, 〜まえに | 練習A ✅ |
 | [第19課 (Lesson 19)](lessons/lesson-19.md) | Bentuk た | 〜たことがあります, 〜たり〜たりします, 〜なります | 言葉 ✅ · 練習A ✅ |
+| [第20課 (Lesson 20)](lessons/lesson-20.md) | 普通形 (bentuk biasa) | futsuukei per tensis (V/い/な/N), pola bab 1–19 → 普通形, kasual (うん/ううん, こっち系), peniadaan partikel | 練習A ✅ · 練習B ✅ |
 
 ## Latihan adaptif (`/quiz`)
 
