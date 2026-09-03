@@ -14,11 +14,11 @@ Tingkat: **🔴** = `leech` atau `lapses ≥ 8` · **🟡** = `lapses 5–7` · 
 
 > Ringkasan cepat (anchor — baca ini saja saat quiz): PRIORITAS TINGGI 🔴
 >
-> **Verb/kosakata (Minna):** だします I 🩸, もらいます I 🩸, りょこう 🩸, おいくつ 🩸, きんがく 🩸, けします I 🩸, つけます II 🩸, となり 🩸, なくします I 🩸, おしえます II 🩸, おります II 🩸, かえします I 🩸, けんがくします III 🩸, じむしょ 🩸, てちょう 🩸, でかけます II 🩸, いつか 🩸, おつり 🩸, きゅうこう 🩸, げんきん 🩸, じこくひょう 🩸, だいたい 🩸, ついたち 🩸, つくります I 🩸, とります I 🩸, ひこうき 🩸, ふうとう 🩸
+> **Verb/kosakata (Minna):** だします I 🩸, もらいます I 🩸, りょこう 🩸, おいくつ 🩸, きんがく 🩸, けします I 🩸, つけます II 🩸, となり 🩸, なくします I 🩸, おしえます II 🩸, おります II 🩸, かえします I 🩸, けんがくします III 🩸, じむしょ 🩸, てちょう 🩸, でかけます II 🩸, いつか 🩸, おつり 🩸, きゅうこう 🩸, きります I 🩸, げんきん 🩸, じこくひょう 🩸, だいたい 🩸, ついたち 🩸, つくります I 🩸, とります I 🩸, ひこうき 🩸, ふうとう 🩸
 >
-> **Kanji N5:** 生（せい） 🩸, 先（せん） 🩸, 年（ねん） 🩸, 千（せん） 🩸, 時（じ） 🩸, 北（きた） 🩸, 友（とも） 🩸, 会（あう） 🩸, 南（みなみ） 🩸, 東（ひがし） 🩸
+> **Kanji N5:** 生（せい） 🩸, 先（せん） 🩸, 年（ねん） 🩸, 千（せん） 🩸, 時（じ） 🩸, 友（とも） 🩸, 北（きた） 🩸, 会（あう） 🩸, 南（みなみ） 🩸, 東（ひがし） 🩸
 
-Total ditandai — Minna: 🔴27 · 🟡55 · ⚪96  |  Kanji N5: 🔴10 · 🟡19 · ⚪28
+Total ditandai — Minna: 🔴28 · 🟡55 · ⚪98  |  Kanji N5: 🔴10 · 🟡22 · ⚪26
 
 ## Kosakata / Verb lemah — Minna no Nihongo I
 
@@ -30,7 +30,7 @@ Total ditandai — Minna: 🔴27 · 🟡55 · ⚪96  |  Kanji N5: 🔴10 · 🟡
 | 🔴 🩸 | おいくつ | umur berapa (bentuk sopan dari なんさい) | L1 | 12 |
 | 🔴 🩸 | きんがく | jumlah uang | L16 | 12 |
 | 🔴 🩸 | けします I | mematikan, memadamkan | L14 | 12 |
-| 🔴 🩸 | つけます II | menyalakan, memasang, menghidupkan | L14 | 12 |
+| 🔴 🩸 | つけます II | memakai (aksesoris seperti anting, cincin) | L14 | 12 |
 | 🔴 🩸 | となり | sebelah | L10 | 11 |
 | 🔴 🩸 | なくします I | kehilangan | L17 | 10 |
 | 🔴 🩸 | おしえます II | mengajar | L7 | 9 |
@@ -43,6 +43,7 @@ Total ditandai — Minna: 🔴27 · 🟡55 · ⚪96  |  Kanji N5: 🔴10 · 🟡
 | 🔴 🩸 | いつか | tanggal 5, lima hari | — | 8 |
 | 🔴 🩸 | おつり | uang kembalian | L14 | 8 |
 | 🔴 🩸 | きゅうこう | ekspres | — | 8 |
+| 🔴 🩸 | きります I | memotong, menggunting | L7 | 8 |
 | 🔴 🩸 | げんきん | uang tunai | L18 | 8 |
 | 🔴 🩸 | じこくひょう | jadwal | L15 | 8 |
 | 🔴 🩸 | だいたい | kira-kira | L9 | 8 |
@@ -53,12 +54,13 @@ Total ditandai — Minna: 🔴27 · 🟡55 · ⚪96  |  Kanji N5: 🔴10 · 🟡
 | 🔴 🩸 | ふうとう | amplop | — | 8 |
 | 🟡 | あけます II | membuka | L14 | 7 |
 | 🟡 | がくせい | siswa | L1 | 7 |
-| 🟡 | きります I | memotong, menggunting | L7 | 7 |
 | 🟡 | ことし | tahun ini | — | 7 |
 | 🟡 | しめます II | menutup | L14 | 7 |
+| 🟡 | しらべます II | memeriksa, meneliti, mengecek | L20 | 7 |
 | 🟡 | そちら | disitu (sopan) | L3 | 7 |
 | 🟡 | つくえ | meja, meja tulis | L2 | 7 |
 | 🟡 | ていしょく | menu paket | L13 | 7 |
+| 🟡 | とまります I | menginap | L19 | 7 |
 | 🟡 | どなた | siapa (bentuk sopan dari だれ) | L1 | 7 |
 | 🟡 | なのか | tanggal 7, tujuh hari | — | 7 |
 | 🟡 | はがき | kartu pos | — | 7 |
@@ -71,11 +73,10 @@ Total ditandai — Minna: 🔴27 · 🟡55 · ⚪96  |  Kanji N5: 🔴10 · 🟡
 | 🟡 | かります II | meminjam, menyewa | L7 | 6 |
 | 🟡 | ぎんこう | bank | — | 6 |
 | 🟡 | くち | mulut | L16 | 6 |
-| 🟡 | しらべます II | memeriksa, meneliti, mengecek | L20 | 6 |
 | 🟡 | しります I | mengetahui, mengenal | L15 | 6 |
 | 🟡 | すてます II | membuang | L18 | 6 |
 | 🟡 | そうですね | ya, benar / ya, betul | — | 6 |
-| 🟡 | とまります I | menginap | L19 | 6 |
+| 🟡 | とお | 10 buah | — | 6 |
 | 🟡 | ならいます I | belajar | L7 | 6 |
 | 🟡 | ねんがじょう | kartu tahun baru | L7 | 6 |
 | 🟡 | ひくい | rendah | — | 6 |
@@ -93,13 +94,13 @@ Total ditandai — Minna: 🔴27 · 🟡55 · ⚪96  |  Kanji N5: 🔴10 · 🟡
 | 🟡 | かかります I | memakan, perlu (digunakan untuk waktu dan uang) | — | 5 |
 | 🟡 | きせつ | musim | — | 5 |
 | 🟡 | きって | perangko | — | 5 |
+| 🟡 | くろい | hitam | — | 5 |
 | 🟡 | ここのか | tanggal 9, sembilan hari | — | 5 |
 | 🟡 | しやくしょ | kantor walikota | L15 | 5 |
 | 🟡 | せんたくします III | mencuci pakaian | L19 | 5 |
 | 🟡 | そこ | disitu | L3 | 5 |
 | 🟡 | つかれます II | lelah (jika menyatakan keadaan lelah, digunakan bentuk た seperti つかれました) | L13 | 5 |
 | 🟡 | でんき | listrik, lampu | L14 | 5 |
-| 🟡 | とお | 10 buah | — | 5 |
 | 🟡 | とおか | tanggal 10, sepuluh hari | — | 5 |
 | 🟡 | とります I | mengambil | L14 | 5 |
 | 🟡 | ふたり | 2 orang | — | 5 |
@@ -112,12 +113,12 @@ Total ditandai — Minna: 🔴27 · 🟡55 · ⚪96  |  Kanji N5: 🔴10 · 🟡
 | | Kanji | Bacaan | Arti | lapses |
 |---|:---:|--------|------|:------:|
 | 🔴 🩸 | 生 | せい | hidup | 17 |
-| 🔴 🩸 | 先 | せん | dahulu, depan | 13 |
+| 🔴 🩸 | 先 | せん | dahulu, depan | 14 |
 | 🔴 🩸 | 年 | ねん | tahun | 12 |
 | 🔴 🩸 | 千 | せん | seribu | 11 |
 | 🔴 🩸 | 時 | じ | jam | 11 |
+| 🔴 🩸 | 友 | とも | teman | 10 |
 | 🔴 🩸 | 北 | きた | utara | 9 |
-| 🔴 🩸 | 友 | とも | teman | 9 |
 | 🔴 🩸 | 会 | あう | bertemu | 8 |
 | 🔴 🩸 | 南 | みなみ | selatan | 8 |
 | 🔴 🩸 | 東 | ひがし | timur | 8 |
@@ -127,19 +128,22 @@ Total ditandai — Minna: 🔴27 · 🟡55 · ⚪96  |  Kanji N5: 🔴10 · 🟡
 | 🟡 | 聞 | きく | mendengar | 7 |
 | 🟡 | 言 | いう | berkata | 7 |
 | 🟡 | 道 | みち | jalan | 7 |
+| 🟡 | 円 | えん | yen | 6 |
 | 🟡 | 午 | ご | siang | 6 |
+| 🟡 | 安 | やすい | murah | 6 |
 | 🟡 | 少 | すくない | sedikit | 6 |
 | 🟡 | 来 | くる | datang | 6 |
 | 🟡 | 白 | しろ | putih | 6 |
 | 🟡 | 西 | にし | barat | 6 |
 | 🟡 | 話 | はなす | berbicara | 6 |
 | 🟡 | 語 | ご | bahasa | 6 |
-| 🟡 | 円 | えん | yen | 5 |
-| 🟡 | 安 | やすい | murah | 5 |
+| 🟡 | 五 | ご | lima | 5 |
+| 🟡 | 左 | ひだり | kiri | 5 |
 | 🟡 | 後 | うしろ | belakang | 5 |
 | 🟡 | 書 | かく | menulis | 5 |
 | 🟡 | 毎 | まい | setiap | 5 |
+| 🟡 | 気 | き | energi, suasana | 5 |
 | 🟡 | 立 | たつ | berdiri | 5 |
 
 ---
-_Auto-generated 2026-09-02 oleh `scripts/sync-anki-weak-items.sh` dari `collection.anki2`._
+_Auto-generated 2026-09-03 oleh `scripts/sync-anki-weak-items.sh` dari `collection.anki2`._
