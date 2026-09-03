@@ -108,7 +108,16 @@ Untuk `/quiz` polos, hitung daftar lesson yang perlu dibaca — **hemat, jangan 
    (prioritas: akurasi terendah dulu). Muat **hanya anchor** lesson itu (lihat
    "Hemat token"), bukan lesson lain.
 4. Jika belum ada data (sesi pertama / evaluation.md kosong) → cakupan = **bab terbaru saja**.
+5. **Jika TAK ADA weak-area** (semua pola/lesson 🟢/⚪ — tak ada 🔴/🟡) → **mode maintenance
+   (spaced review)**: JANGAN menyempit ke bab terbaru saja. Sapa **bab yang paling lama
+   tak diuji** (lawan decay — status 🟢 itu foto lama, pemahaman bisa luntur) + bab
+   ber-data tipis (⚪). Sebar merata; tak ada bobot weak. Engine sudah menghitung ini:
+   `kb.py plan --mode adaptif` mengembalikan `"maintenance":true` + `lessons` = 3 bab
+   paling lama tak disentuh (urut *last-tested* dari `attempts.jsonl`, tie-break akurasi
+   terendah). Beri tahu user singkat bahwa sesi ini "review pemeliharaan" (bukan ada
+   kelemahan baru).
 Alokasi 12 soal: mayoritas ke lesson lemah (materi berstatus 🔴/🟡), sisanya ke bab terbaru.
+Saat maintenance (tak ada weak) → sebar **merata** ke 3 bab yang disodorkan engine.
 
 Jika cakupan menyebут lesson yang file-nya belum ada, beri tahu user lesson mana
 yang tersedia.
@@ -122,6 +131,11 @@ yang tersedia.
   dipakai untuk membias pemilihan kendaraan verb/kosakata di langkah 3.
 
 ### 2. Tentukan cakupan & campuran soal
+- **Pintasan engine (disarankan):** jalankan `python3 scripts/kb.py plan --mode
+  <adaptif|review|lesson-N>` → JSON berisi `lessons` (cakupan), `weights` (bobot tag
+  🔴/🟡), `vehicles_red` (item 🔴 Anki utk kendaraan), & `answer_positions` (posisi
+  kunci tersebar 1–4). Pakai ini sebagai kerangka; kamu tinggal menyusun kalimat soal.
+  Tetap baca **anchor** lesson in-scope untuk contoh pola. (Manual di bawah = fallback.)
 - Tentukan cakupan: pakai argumen bila ada; kalau `/quiz` polos, hitung lewat
   "Menentukan cakupan default" di atas (hemat — jangan baca semua lesson).
 - Muat materi sesuai kontrak **"Hemat token (WAJIB)"** di atas: baca **anchor**
@@ -165,6 +179,28 @@ User menjawab **semua soal dulu**, koreksi & analisis baru muncul **di akhir**.
     keterangan sementara distraktor `—` (atau sebaliknya) — itu jadi **tell halus**, user
     menebak kunci dari letak keterangan bukan pemahaman. Hint fading berlaku **merata ke
     semua opsi**, bukan menyisakan satu opsi bergloss sendirian.
+    **Simetri juga soal TINGKAT KEDETAILAN, bukan cuma keberadaan (WAJIB).** Lolos cek
+    "semua bergloss" TAK cukup: kalau **kunci** diberi gloss yang **menjelaskan persis
+    konstruksi/verba target** sedang distraktor cuma gloss partikel generik, itu tetap
+    **tell** (user menebak dari opsi yang keterangannya paling "nyambung"). Semua opsi harus
+    setara: gloss fungsi/arti **generik** yang tak menyebut pola yang diuji. Contoh cacat
+    (dari sesi 2026-08-31): (a) soal `どこ（　）行きません` — opsi も digloss
+    「pembentuk どこ〜+ません = ...pun tidak」 (menjabarkan konstruksi target + menyebut
+    ません yang sudah tampil) sedang へ/に/で generik → **tell**. Benar: も =
+    「penanda tambahan/penekanan (juga/pun)」, netral, tak menyebut ません. (b) soal
+    `友達（　）会います` — opsi に digloss 「lawan/target yang **ditemui**」 (menempel ke
+    会います yang kelihatan) sedang distraktor generik → **tell**. Benar: に =
+    「penanda titik sasaran tindakan」, tanpa kata "ditemui".
+    **JANGAN sebut cue penentu yang SUDAH tampil di kalimat soal (WAJIB).** Kalau kunci
+    ditentukan oleh sebuah penanda yang sudah kelihatan di soal (mis. partikel `が`/`を`
+    pada soal 自↔他動詞, keterangan waktu, dll.), **jangan** menuliskan penanda itu di
+    `description` opsi — user tinggal mencocokkan teks (「opsi X ↔ が」 = が ada di soal)
+    tanpa menalar materi yang diuji. Contoh cacat: soal `電気が（　）` dgn hint
+    「ついて = 自動詞, subjek pakai **が**」 — が-nya sudah di kalimat, jadi bocor. Gloss
+    yang benar = **netral berbasis makna**, tak menyebut partikel: 「電気が… = lampu
+    menyala sendiri」 vs 「だれかが 電気を… = menyalakan lampu」. Untuk pola yang sudah 🟢
+    (mis. `L16-他動詞-自動詞`), fade lebih jauh: opsi polos `—` dua-duanya, user menilai
+    dari partikel di kalimat.
   - **Taruh opsi benar di posisi acak & sebar merata (1/2/3/4) lintas soal — JANGAN
     menaruh jawaban benar di nomor 1 terus** (kalau selalu di posisi sama, user menebak
     dari pola bukan pemahaman).
@@ -179,20 +215,45 @@ nomor, ✅/❌, jawaban benar, dan **penjelasan singkat** (Bahasa Indonesia, kai
 ke pola/lesson). Catat **tag** `{lesson, pola, partikel}` + benar/salah tiap soal
 untuk langkah 6.
 
-### 6. Perbarui data (hitung eksplisit)
-Untuk tiap **tag** (pola, tiap partikel, dan lesson) yang muncul di sesi ini:
-- `Total_baru = Total_lama + jumlah soal bertag itu`
-- `Benar_baru = Benar_lama + jumlah benar bertag itu`
-- `Akurasi = round(Benar_baru / Total_baru * 100)%`
-- Status: `<60% 🔴 LEMAH`, `60–79% 🟡`, `≥80% 🟢`; jika `Total_baru < 3` → `⚪`.
-Tulis ulang ketiga tabel di `progress/evaluation.md` (tambah baris tag baru bila
-belum ada; jaga baris tag lama). Susun ulang bagian **Weak areas**: urutkan tag
-berstatus 🔴 lalu 🟡 dari akurasi terendah (maks ~5), sebut pola/partikel + akurasi.
-Hapus baris placeholder `_(kosong)_` begitu ada data nyata.
+### 6. Perbarui data — via engine `kb.py record` (JANGAN hitung manual)
+**Pembukuan kini dikerjakan engine deterministik `scripts/kb.py`, bukan hitung tangan.**
+Setelah menilai semua soal, tulis satu `session.json` lalu jalankan:
+`python3 scripts/kb.py record <path/session.json>`. Engine otomatis: append
+`progress/attempts.jsonl` → hitung ulang akurasi/status → tulis ulang tabel
+`evaluation.md` → prepend baris `history.md`. **Kamu tidak menghitung skor/akurasi
+sendiri** (rawan salah & boros token).
 
-Tambah 1 entri **paling atas** di tabel `progress/history.md`:
-`| YYYY-MM-DD | <cakupan> | <N> | <benar>/<N> (xx%) | <catatan singkat> |`
-(gunakan tanggal hari ini).
+**Alur disarankan (2 langkah — angka dari engine, bukan hitung tangan):**
+1. `python3 scripts/kb.py record --dry-run <session.json>` → cetak **delta per tag
+   (before → after)** + weak ranking, **tanpa menulis** apa pun. (`session.json` boleh
+   tanpa `weak_narrative` dulu.)
+2. **Tulis `weak_narrative`/`history_note` memakai angka yang DICETAK engine** (jangan
+   hitung sendiri), lalu jalankan lagi **tanpa** `--dry-run` untuk menyimpan.
+   Ini menutup "chicken-and-egg" narasi & mencegah prosa ≠ tabel.
+
+**Skema `session.json`** (taruh di scratchpad):
+```json
+{"kind":"quiz","date":"YYYY-MM-DD","mode":"<review/adaptif/lesson N>",
+ "cakupan":"<teks kolom Cakupan history>",
+ "history_note":"<catatan kualitatif 1 baris utk history>",
+ "weak_narrative":"<prosa lengkap section Weak areas: numbered 🔴/🟡 + Sinyal + Rekomendasi>",
+ "questions":[{"qno":1,"key":"に","submitted":"に","subtype":null,
+   "tags":{"pola":["<tag>"],"partikel":["<p>"],"lesson":["Lesson N"]}}]}
+```
+- **Menilai = engine.** Tiap soal bawa **`key`** (label opsi benar, persis string panel) +
+  **`submitted`** (label yang user klik); engine menghitung benar/salah (`submitted==key`).
+  **Jangan** tulis `correct` sendiri (engine yang menurunkan skor & akan `WARN` bila beda).
+  Soal **rancu** → tambah **`"override":"correct"`** (atau `"incorrect"`) + `"note":"alasan"`
+  untuk memaksa hasil. (Boolean `correct` lama masih diterima demi kompat.)
+- **Tag WAJIB** dari `reference/quiz-taxonomy.md` (tiap soal: pola + partikel + lesson).
+- `history_note` & `weak_narrative` = **prosa yang KAMU tulis** (engine hanya
+  menempatkan; angka/status/ranking dihitung engine). Setelah `record`, engine
+  **mencetak ranking weak deterministik** — pakai itu sebagai bahan `weak_narrative`.
+- Untuk **acak posisi kunci** & **seleksi cakupan**, pakai `kb.py plan` (lihat step 2).
+- **Semantik yang direplikasi engine (referensi, tak perlu dihitung tangan):**
+  `Akurasi=round(Benar/Total*100)`; status `<60% 🔴 · 60–79% 🟡 · ≥80% 🟢 · <3 attempt ⚪`;
+  Weak areas = 🔴 lalu 🟡 dari akurasi terendah (maks ~5); history = 1 baris terbaru di atas.
+- **Jangan** edit angka tabel `evaluation.md`/`history.md` dengan tangan (tertimpa engine).
 
 ### 7. Tampilkan hasil — RINGKAS (hemat token)
 Default tampilan chat **RINGKAS** (hemat token; analisis lengkap pindah ke `/summary`):
@@ -304,6 +365,16 @@ GRUP I (音便) karena paling sering keliru.
   sama (はじまります↔はじめます), bukan campur tense. Kalau perlu 4 opsi, kunci tense lewat
   keterangan waktu eksplisit — jangan andalkan `もう` (ambigu). Yang diuji = golongan verba
   (partikel が vs を), bukan lampau/non-lampau.
+- **Saat menguji memberi↔menerima (あげる/もらう/くれる), JANGAN andalkan `に` — dua-arah.**
+  `X に … を あげました` (X = **penerima**) dan `X に … を もらいました` (X = **pemberi**) sama-sama
+  gramatikal → soal jadi **dua kunci**. Contoh cacat: 「父（ちち）に 時計（とけい）を（　）」 opsi
+  あげました **dan** もらいました dua-duanya sah. **Kunci arahnya:**
+  - Uji **もらう** → tandai pemberi dengan **から**: 「父（ちち）**から** …を（　）」 — から tak bisa jadi
+    penerima, jadi あげる gugur, kunci pasti もらいました.
+  - Uji **あげる** → pastikan penerima **jelas bukan diri sendiri** + subjek/konteks mematikan もらう
+    (mis. 「(わたしは) 妹（いもうと）に プレゼントを（　）」 dalam konteks memberi). Jangan pakai penerima
+    ambigu yang bisa dibaca sebagai sumber.
+  Prinsipnya sama dgn 自他 di atas: pastikan **konteks mengunci tepat satu jawaban** sebelum soal dipakai.
 - Nada ramah, dorong belajar. Penjelasan singkat & jelas, dalam Bahasa Indonesia.
 - Angka/tanggal boleh diminta dibaca (mis. `7時` → しちじ) untuk menguji L4.
 - Untuk pola berlawanan yang sering tertukar (で↔に tempat, あります↔います,

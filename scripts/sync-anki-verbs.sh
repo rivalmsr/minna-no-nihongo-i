@@ -3,7 +3,7 @@
 # sync-anki-verbs.sh
 # Regenerasi reference/anki-verbs.md dari deck Anki (UPSTREAM source of truth).
 #
-# Folder Anki (`learn-anki/Minna no Nihongo I`) adalah sumber yang terus di-update
+# Folder Anki (`learn-anki/minna-no-nihongo-1`) adalah sumber yang terus di-update
 # user. Jalankan script ini tiap kali deck itu berubah supaya pool kata kerja untuk
 # /quiz tetap sinkron. File output = TURUNAN, jangan di-edit tangan.
 #
@@ -12,7 +12,7 @@
 set -euo pipefail
 
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-ANKI_DIR="$PROJECT_ROOT/../../learn-anki/Minna no Nihongo I"
+ANKI_DIR="$PROJECT_ROOT/../../learn-anki/minna-no-nihongo-1"
 OUT="$PROJECT_ROOT/reference/anki-verbs.md"
 
 if [ ! -d "$ANKI_DIR" ]; then
@@ -21,13 +21,13 @@ if [ ! -d "$ANKI_DIR" ]; then
   exit 1
 fi
 
-# Ekstrak baris kata kerja satu grup (I/II/III) dari semua MNN*.txt, urut per bab.
+# Ekstrak baris kata kerja satu grup (I/II/III) dari semua mnn-*.txt, urut per bab.
 # Kolom Anki: <kata><TAB><arti>; kata kerja ditandai grup di token terakhir kolom-1.
 gen_group() {
   local grp="$1" f base L
-  for f in "$ANKI_DIR"/MNN*.txt; do
+  for f in "$ANKI_DIR"/mnn-*.txt; do
     base="$(basename "$f")"
-    L="$(printf '%s' "$base" | sed -E 's/MNN0?([0-9]+)\.txt/\1/')"
+    L="$(printf '%s' "$base" | sed -E 's/mnn-0?([0-9]+)\.txt/\1/')"
     awk -F'\t' -v grp="$grp" -v L="$L" '
       {
         n = split($1, p, " ")
@@ -53,7 +53,7 @@ cat > "$OUT" <<EOF
 
 > ⚙️ **FILE AUTO-GENERATED — jangan edit tangan.** Regenerasi dari deck Anki dengan
 > \`bash scripts/sync-anki-verbs.sh\`. Upstream source of truth = folder
-> \`learn-anki/Minna no Nihongo I/MNN*.txt\` (yang kamu update untuk Anki). Jalankan
+> \`learn-anki/minna-no-nihongo-1/mnn-*.txt\` (yang kamu update untuk Anki). Jalankan
 > ulang script tiap kali deck bertambah/berubah agar /quiz tetap sinkron.
 
 Ekstraksi **semua kata kerja** dari deck Anki. Tujuan file ini bukan menghafal arti
@@ -111,7 +111,7 @@ ${TABLE_III}
 ---
 
 _Auto-generated ${TODAY} oleh \`scripts/sync-anki-verbs.sh\` dari
-\`learn-anki/Minna no Nihongo I/MNN*.txt\`. Total ${N_TOTAL} verb._
+\`learn-anki/minna-no-nihongo-1/mnn-*.txt\`. Total ${N_TOTAL} verb._
 EOF
 
 echo "OK → $OUT"

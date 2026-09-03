@@ -28,7 +28,8 @@ minna-no-nihongo-i/
 │   ├── lesson-16.md       <- 第16課: 〜て/〜てから (urutan aksi), は〜が, gabung sifat (で/くて)
 │   ├── lesson-17.md       <- 第17課: bentuk ない — ないでください, なければなりません, なくてもいいです
 │   ├── lesson-18.md       <- 第18課: bentuk kamus (辞書形) — ことができます, しゅみ, まえに
-│   └── lesson-19.md       <- 第19課: bentuk た — たことがあります, たり〜たり, なります
+│   ├── lesson-19.md       <- 第19課: bentuk た — たことがあります, たり〜たり, なります
+│   └── lesson-20.md       <- 第20課: 普通形 (bentuk biasa) — futsuukei/futsuutai, kasual, peniadaan partikel
 ├── reference/
 │   ├── particles.md       <- ringkasan partikel
 │   ├── vocabulary.md      <- kosakata terkumpul (per lesson)
@@ -36,17 +37,22 @@ minna-no-nihongo-i/
 │   ├── n5-synonyms.md     <- pool sinonim/parafrase N5 (sumber soal sinonim /jlpt)
 │   ├── anki-verbs.md      <- pool kata kerja (AUTO-GENERATED dari deck Anki; jangan edit tangan)
 │   └── quiz-taxonomy.md   <- tag pola & partikel (/quiz) + tag subtipe JLPT (/jlpt)
-├── progress/              <- data latihan (diperbarui otomatis oleh /quiz & /jlpt)
-│   ├── evaluation.md      <- tracker kelemahan /quiz (per pola/partikel/lesson)
-│   ├── jlpt-evaluation.md <- tracker mock /jlpt (per subtipe ujian JLPT)
+├── progress/              <- data latihan (di-generate oleh engine scripts/kb.py)
+│   ├── attempts.jsonl     <- SUMBER kebenaran skor (append-only, 1 sesi/baris)
+│   ├── baseline.json      <- agregat awal (impor sekali dari tabel .md lama)
+│   ├── evaluation.md      <- tracker kelemahan /quiz (AUTO-GENERATED; per pola/partikel/lesson)
+│   ├── jlpt-evaluation.md <- tracker mock /jlpt (AUTO-GENERATED; per subtipe ujian JLPT)
 │   ├── anki-weak-items.md <- item lemah dari collection Anki (AUTO-GENERATED; lapses+leech)
-│   └── history.md         <- riwayat sesi latihan (dibagi /quiz & /jlpt, entri berlabel)
+│   └── history.md         <- riwayat sesi latihan (AUTO-GENERATED; dibagi /quiz & /jlpt)
 ├── docs/
 │   ├── cara-kerja.md          <- flow & logika bisnis KB (diagram) — mulai baca dari sini
 │   ├── perbaikan-kb.md        <- log perbaikan sistem/aturan (problem→fix→tanggal)
 │   ├── estimasi-token.md      <- estimasi biaya token /quiz & /jlpt
+│   ├── engine-bookkeeping-plan.md <- desain engine pembukuan deterministik (kb.py)
 │   └── anki-integration-plan.md <- rencana + status integrasi data Anki
 ├── scripts/
+│   ├── kb.py                   <- engine pembukuan (import/render/record/plan/summary) — sumber JSONL → view .md
+│   ├── test_kb.py              <- test engine (golden + unit)
 │   ├── sync-anki-verbs.sh      <- regen anki-verbs.md dari learn-anki/ (folder deck Anki; gitignored)
 │   └── sync-anki-weak-items.sh <- regen anki-weak-items.md dari collection.anki2 (Anki desktop)
 └── .claude/skills/
@@ -77,6 +83,7 @@ minna-no-nihongo-i/
 | [第17課 (Lesson 17)](lessons/lesson-17.md) | Bentuk ない | 〜ないでください, 〜なければなりません, 〜なくてもいいです, を→は | 練習A ✅ |
 | [第18課 (Lesson 18)](lessons/lesson-18.md) | Bentuk kamus (辞書形) | 〜ことができます, N が できます, しゅみ, 〜まえに | 練習A ✅ |
 | [第19課 (Lesson 19)](lessons/lesson-19.md) | Bentuk た | 〜たことがあります, 〜たり〜たりします, 〜なります | 言葉 ✅ · 練習A ✅ |
+| [第20課 (Lesson 20)](lessons/lesson-20.md) | 普通形 (bentuk biasa) | futsuukei per tensis (V/い/な/N), pola bab 1–19 → 普通形, kasual (うん/ううん, こっち系), peniadaan partikel | 練習A ✅ · 練習B ✅ |
 
 ## Latihan adaptif (`/quiz`)
 

@@ -2,7 +2,7 @@
 
 > ⚙️ **FILE AUTO-GENERATED — jangan edit tangan.** Regenerasi dari deck Anki dengan
 > `bash scripts/sync-anki-verbs.sh`. Upstream source of truth = folder
-> `learn-anki/Minna no Nihongo I/MNN*.txt` (yang kamu update untuk Anki). Jalankan
+> `learn-anki/minna-no-nihongo-1/mnn-*.txt` (yang kamu update untuk Anki). Jalankan
 > ulang script tiap kali deck bertambah/berubah agar /quiz tetap sinkron.
 
 Ekstraksi **semua kata kerja** dari deck Anki. Tujuan file ini bukan menghafal arti
@@ -11,7 +11,7 @@ mengkonjugasikannya — konsep **active recall**. `/quiz` memakai file ini sebag
 kolam verb utama untuk soal konjugasi & pemakaian.
 
 > Ringkasan cepat (anchor — baca ini saja saat quiz):
-> - **87 verb**, dikelompokkan **grup I (46) / II (25) / III (16)** (penentu bentuk て・ない・辞書・た).
+> - **105 verb**, dikelompokkan **grup I (55) / II (32) / III (18)** (penentu bentuk て・ない・辞書・た).
 > - **Grup II** paling mudah: buang ます → tempel langsung (`たべます→たべて／たべない／たべる／たべた`).
 > - **Grup III** cuma 2 pola: `〜します` & `〜きます` (irregular, hafal).
 > - **Grup I** butuh **音便** (lihat tabel 音便 di bawah) untuk bentuk て／た.
@@ -42,7 +42,7 @@ Grup II: buang ます, tempel て／ない／る／た langsung. Grup III: `し�
 
 ---
 
-## GRUP I (46) — perlu 音便 untuk て／た
+## GRUP I (55) — perlu 音便 untuk て／た
 | ます形 | Arti | Bab |
 |--------|------|-----|
 | あります | ada (benda mati) | L10 |
@@ -91,8 +91,17 @@ Grup II: buang ます, tempel て／ない／る／た langsung. Grup III: `し�
 | とまります | menginap | L19 |
 | なります | menjadi | L19 |
 | いります | memerlukan | L20 |
+| おもいます | mengira, berpikir | L21 |
+| いいます | mengatakan, berkata | L21 |
+| かちます | menang | L21 |
+| あります | ada | L21 |
+| [おまつりが] あります | diadakan pesta perayaan | L21 |
+| やくにたちます | berguna, bermanfaat | L21 |
+| うごきます | pindah, bergerak | L21 |
+| かぶります | memakai (penutup kepala seperti topi) | L22 |
+| はきます | memakai (bagian bawah badan seperti sepatu, celana) | L22 |
 
-## GRUP II (25) — buang ます, tempel langsung
+## GRUP II (32) — buang ます, tempel langsung
 | ます形 | Arti | Bab |
 |--------|------|-----|
 | います | ada (benda hidup) | L10 |
@@ -120,8 +129,15 @@ Grup II: buang ます, tempel て／ない／る／た langsung. Grup III: `し�
 | すてます | membuang | L18 |
 | かえます | mengganti, menukar | L18 |
 | しらべます | memeriksa, meneliti, mengecek | L20 |
+| まけます | kalah | L21 |
+| やめます | berhenti | L21 |
+| きをつけます | berwaspada, berhati-hati | L21 |
+| かけます | memakai (めがねをかけます: memakai kacamata) | L22 |
+| つけます | memakai (aksesoris seperti anting, cincin) | L22 |
+| きます | memakai (baju bagian atas) | L22 |
+| うまれます | lahir | L22 |
 
-## GRUP III (16) — します／きます (irregular)
+## GRUP III (18) — します／きます (irregular)
 | ます形 | Arti | Bab |
 |--------|------|-----|
 | けっこんします | menikah | L13 |
@@ -140,8 +156,10 @@ Grup II: buang ます, tempel て／ない／る／た langsung. Grup III: `し�
 | よやくします | memesan (reservasi) | L18 |
 | そうじします | membersihkan | L19 |
 | せんたくします | mencuci pakaian | L19 |
+| りゅうがくします | studi di luar negeri | L21 |
+| します | memakai (ネクタイをします: memakai dasi) | L22 |
 
 ---
 
-_Auto-generated 2026-08-28 oleh `scripts/sync-anki-verbs.sh` dari
-`learn-anki/Minna no Nihongo I/MNN*.txt`. Total 87 verb._
+_Auto-generated 2026-09-03 oleh `scripts/sync-anki-verbs.sh` dari
+`learn-anki/minna-no-nihongo-1/mnn-*.txt`. Total 105 verb._

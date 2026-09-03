@@ -5,13 +5,24 @@ analisis di `progress/evaluation.md` konsisten antar sesi. Setiap soal ditandai
 minimal satu **tag pola** + tag **partikel** yang relevan + **lesson** asalnya.
 
 > Aturan: tata bahasa soal **hanya** boleh dari pola di tabel ini (source of truth =
-> `lessons/lesson-04..19.md`). Jangan buat tag baru saat menilai; pakai yang ada di sini.
+> `lessons/lesson-02..19.md`). Jangan buat tag baru saat menilai; pakai yang ada di sini.
 > Kalau ada lesson baru ditambahkan, perbarui tabel ini lebih dulu.
 
 ## Tag pola (per lesson)
 
 | Tag | Lesson | Pola |
 |-----|--------|------|
+| `L2-これ-benda` | 2 | Kata tunjuk benda berdiri sendiri これ/それ/あれ + は |
+| `L2-この-benda` | 2 | Kata tunjuk menempel この/その/あの + benda + は |
+| `L2-の-jenis` | 2 | の menerangkan jenis/kategori (なんの ほん) |
+| `L2-の-milik` | 2 | の kepemilikan (だれの, わたしの, の pengganti benda) |
+| `L2-なん` | 2 | Pertanyaan benda なん ですか |
+| `L3-ここ-tempat` | 3 | Kata tunjuk tempat ここ/そこ/あそこ |
+| `L3-こちら-sopan` | 3 | Bentuk sopan こちら/そちら/あちら (tempat/arah) |
+| `L3-どこ` | 3 | Menanyakan lokasi どこ |
+| `L3-どちら-asal` | 3 | どちら sopan (lokasi/asal negara/instansi) |
+| `L3-どこの-asal` | 3 | これ/それ/あれ + どこの (asal/buatan barang) |
+| `L3-いくら` | 3 | Menanyakan harga この/その/あの + benda + いくら |
 | `L4-jam` | 4 | Menyatakan waktu (じ/ふん, ごぜん/ごご) |
 | `L4-hari` | 4 | Hari + と penghubung (なんようび) |
 | `L4-から-まで` | 4 | Rentang waktu から〜まで |
@@ -95,6 +106,10 @@ minimal satu **tag pola** + tag **partikel** yang relevan + **lesson** asalnya.
 | `L19-たり` | 19 | 〜たり、〜たり します (beberapa aktivitas, tak berurutan) |
 | `L19-なります` | 19 | Perubahan: な/N に なります, い → く なります |
 | `L19-に-vs-を-のぼる` | 19 | やまに のぼる (tujuan) vs かいだんを のぼる (permukaan) |
+| `L20-普通形-動詞` | 20 | Verba → 普通形 per tensis (辞書形／〜ない／〜た／〜なかった) |
+| `L20-普通形-い形` | 20 | い-adj → 普通形 (buang です; 〜くない／〜かった／〜くなかった) |
+| `L20-普通形-な形-名詞` | 20 | な-adj / kata benda → 普通形 (だ／じゃない／だった／じゃなかった) |
+| `L20-普通体-会話` | 20 | Ragam kasual: うん/ううん, tanya N/な-adj tanpa だ, こっち系, peniadaan partikel は/を |
 
 ## Tag partikel
 
@@ -119,6 +134,7 @@ partikel di atas.
 | `MG-ruigi` | 1 文字・語彙 | Sinonim / 言い換え類義: pilih kata/kalimat **arti terdekat** |
 | `DK-bunpou` | 2 文法・読解 | Tata bahasa: pilih partikel/pola tepat (cross-tag pola in-scope) |
 | `DK-narabekae` | 2 文法・読解 | Susun kalimat: potongan 1–4 + posisi **★** |
+| `DK-bunshou` | 2 文法・読解 | 文章の文法 (問題3): paragraf pendek dgn **beberapa rumpang** → pilih pola/penghubung/指示語/arah pemberian yang cocok **alur wacana** (bukan kalimat lepas) |
 | `DK-dokkai` | 2 文法・読解 | Bacaan pendek (~60–80 kata) + pertanyaan pemahaman |
 | `DK-joho` | 2 文法・読解 | Bacaan informasi (brosur/pengumuman) → cari info spesifik |
 

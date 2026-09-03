@@ -733,3 +733,44 @@ Kosakata yang muncul di catatan, dikelompokkan per pelajaran.
 | 〜たり、〜たり します | menyebut beberapa aktivitas (tak berurutan) |
 | な-adj／N + に なります | menjadi … |
 | い-adj → く なります | menjadi … (い-adj) |
+
+## 第20課 (Lesson 20) — 普通形 (bentuk biasa)
+
+### Kata kerja
+| Jepang | Romaji | Arti | 普通形 (tensis) |
+|--------|--------|------|----------------|
+| いります (要ります) | irimasu | perlu / butuh (ビザが いります) | いる／いらない |
+| ざんぎょうします (残業します) | zangyō shimasu | lembur | ざんぎょうする |
+| でんわします (電話します) | denwa shimasu | menelepon | でんわする |
+
+### Kata benda
+| Jepang | Romaji | Arti |
+|--------|--------|------|
+| らいしゅう (来週) | raishū | minggu depan |
+| しやくしょ (市役所) | shiyakusho | kantor pemerintah kota |
+| パソコン | pasokon | komputer (PC) |
+| ビザ | biza | visa |
+| レポート | repōto | laporan |
+| しけん (試験) | shiken | ujian |
+| あめ (雨) | ame | hujan |
+| コンビニ | konbini | minimarket |
+| しゃいん (社員) | shain | karyawan (perusahaan) |
+| ドイツご (ドイツ語) | doitsugo | bahasa Jerman |
+
+### Kata sifat
+| Jepang | Romaji | Arti | Jenis |
+|--------|--------|------|-------|
+| ほしい (欲しい) | hoshii | ingin (memiliki) | い-adj |
+| いそがしい (忙しい) | isogashii | sibuk | い-adj |
+| ひま (暇) | hima | senggang / luang | な-adj |
+| べんり (便利) | benri | praktis / mudah | な-adj |
+
+### Ungkapan / pola
+| Jepang | Arti |
+|--------|------|
+| 普通形（ふつうけい） | bentuk biasa (informal) |
+| 普通体（ふつうたい） | ragam bahasa biasa/informal |
+| 丁寧形（ていねいけい）／丁寧体（ていねいたい） | bentuk/ragam sopan (〜ます/〜です) |
+| うん／ううん | ya / tidak (kasual, ganti はい/いいえ) |
+| こっち／そっち／あっち／どっち | bentuk kasual こちら/そちら/あちら/どちら |
+| Peniadaan partikel は/を | dalam ragam 普通体 bila makna 100% jelas |

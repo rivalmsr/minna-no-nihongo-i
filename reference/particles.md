@@ -187,3 +187,15 @@ Selain "dan" (Lesson 4), と juga berarti **bersama siapa** aktivitas dilakukan.
 - にく**と** やさい (daging dan sayuran — penghubung benda).
 - ともだち**と** いきます。 (Pergi bersama teman.)
 - Pengecualian: ひとり**で** (sendirian) memakai で, bukan と.
+
+## Peniadaan partikel (省略) — ragam 普通体 / kasual
+
+Di [Lesson 20](../lessons/lesson-20.md), dalam percakapan **kasual (普通体)** sebagian
+partikel **boleh dihilangkan** — hanya bila makna kalimat **100% jelas** dari konteks.
+Yang paling sering ditiadakan:
+
+- **は** (penanda topik): この ほん**は** だれの? → この ほん、だれの?
+- **を** (penanda objek): もう ひるごはん**を** たべた? → もう ひるごはん、たべた?
+
+> ⚠️ **Saran pemula:** tetap **pakai semua partikel** dulu; peniadaan yang salah bikin
+> salah paham. Kuasai fungsi tiap partikel sebelum mulai menghilangkannya.

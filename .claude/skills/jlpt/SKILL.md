@@ -21,8 +21,9 @@ JLPT N5 tertulis = 2 sesi. `聴解` (listening) **di luar cakupan** (butuh audio
 
 - **Sesi 1 · 文字・語彙 (Moji-Goi):** `MG-yomi` (baca kanji), `MG-hyouki` (tulis kanji),
   `MG-bunmyaku` (kosakata konteks), `MG-ruigi` (sinonim/言い換え類義).
-- **Sesi 2 · 文法・読解 (Bunpou-Dokkai):** `DK-bunpou` (grammar), `DK-narabekae` (susun
-  kalimat ★), `DK-dokkai` (bacaan pendek), `DK-joho` (bacaan informasi / info-search).
+- **Sesi 2 · 文法・読解 (Bunpou-Dokkai):** `DK-bunpou` (grammar kalimat lepas),
+  `DK-narabekae` (susun kalimat ★), `DK-bunshou` (文章の文法 / 問題3 — grammar dalam teks/
+  cloze), `DK-dokkai` (bacaan pendek), `DK-joho` (bacaan informasi / info-search).
 
 Tag subtipe ada di `reference/quiz-taxonomy.md` (section "Tag subtipe JLPT").
 
@@ -40,13 +41,20 @@ Tag subtipe ada di `reference/quiz-taxonomy.md` (section "Tag subtipe JLPT").
    jangan edit tangan; kalau verb terasa ketinggalan jalankan `bash scripts/sync-anki-verbs.sh`.
 4b. **Bias item ke `progress/anki-weak-items.md`** (sinyal EMPIRIS item yang user sering
    lupa di Anki: `lapses` + `leech`). Saat memilih kanji/kosakata/verb untuk mengisi soal,
-   **prioritaskan yang bertanda 🔴** bila cocok subtipe & cakupan: **`MG-yomi`/`MG-hyouki`
-   → boboti ke KANJI 🔴** (mis. 生・先・時), **`MG-bunmyaku` → KOSAKATA 🔴**, **`DK-bunpou`
-   → VERB 🔴** di dalam pola in-scope. Bias LUNAK & tunduk pada aturan 1–3 (jangan drill
-   item lepas; item tetap muncul di format soal JLPT normal). **Fallback:** kalau tak ada
-   item 🔴 yang cocok subtipe/cakupan, **pakai kanji/kosakata lain** dari `n5-vocabulary.md`
-   / `n5-synonyms.md` / `anki-verbs.md` — simulasi JLPT tetap yang utama, Anki hanya bias.
-   AUTO-GENERATED dari `collection.anki2`; regen `bash scripts/sync-anki-weak-items.sh`.
+   **prioritaskan yang bertanda 🔴** bila cocok subtipe & cakupan: **`MG-bunmyaku` →
+   KOSAKATA 🔴**, **`DK-bunpou` → VERB 🔴** di dalam pola in-scope. Bias LUNAK & tunduk pada
+   aturan 1–3 (jangan drill item lepas; item tetap muncul di format soal JLPT normal).
+   **Fallback:** kalau tak ada item 🔴 yang cocok subtipe/cakupan, **pakai kanji/kosakata
+   lain** dari `n5-vocabulary.md` / `n5-synonyms.md` / `anki-verbs.md` — simulasi JLPT tetap
+   yang utama, Anki hanya bias. AUTO-GENERATED dari `collection.anki2`; regen
+   `bash scripts/sync-anki-weak-items.sh`.
+   > ⚠️ **`MG-yomi`/`MG-hyouki` = bias 🔴 LONGGAR + WAJIB rotasi (anti-monoton).** Pool kanji
+   > 🔴 cuma ~10 item (生・先・年・千・時・北・友・会・南・東) → kalau tiap mock dipaksa ambil dari
+   > situ, soal jadi monoton (先生／友達／時間 berulang). **Aturan:** (a) **rotasi ke seluruh kanji
+   > N5** di `n5-vocabulary.md` sbg sumber utama; kanji 🔴 disentuh **sesekali** (≈1 dari 2 soal
+   > tiap subtipe, tak wajib tiap mock), **bukan** default. (b) **Hindari `avoid_items`** dari
+   > `kb.py plan` (= kanji/kata MG-yomi/hyouki yang dipakai **2 mock terakhir**) — pilih item
+   > BEDA. Lihat "ROTASI kanji baca/tulis" di bawah.
 5. **Tulisan:** hiragana + kanji umum N5. **Setiap kanji diberi bacaan hiragana** dalam
    kurung, mis. `学校（がっこう）` — **KECUALI** kata kanji yang justru sedang diuji
    bacaannya di soal `MG-yomi` (di situ furigana-nya jadi jawaban, jangan dibocorkan;
@@ -80,12 +88,15 @@ Kontrak baca per sesi (sama semangatnya dgn `/quiz`):
 `/jlpt [moji | bunpou | review] [N]`
 
 - **`/jlpt` (polos) → MOCK PENUH:** **Sesi 1 = 8 soal** (2 tiap subtipe MG) + **Sesi 2 =
-  8 soal** (2 `DK-bunpou`, 1 `DK-narabekae`, 1 blok `DK-dokkai` = 1 paragraf + 2
-  pertanyaan, 1 blok `DK-joho` = 1 teks + 2 pertanyaan). **Total 16 soal** (4 panel
-  AskUserQuestion penuh: 4+4+4+4).
+  8 soal** (1 `DK-bunpou`, 1 `DK-narabekae`, 1 blok `DK-bunshou` = 1 paragraf + 2 rumpang,
+  1 blok `DK-dokkai` = 1 paragraf + 2 pertanyaan, 1 blok `DK-joho` = 1 teks + 2 pertanyaan).
+  **Total 16 soal** (4 panel AskUserQuestion penuh: 4+4+4+4). Komposisi Sesi 2 sengaja
+  **menyertakan SEMUA lima subtipe DK tiap mock** (cakupan penuh > kuantitas per subtipe);
+  butuh porsi grammar lebih banyak → pakai `/jlpt bunpou`.
 - **`/jlpt moji` → hanya Sesi 1** (文字・語彙): **12 soal**, 3 tiap subtipe (3 panel penuh).
-- **`/jlpt bunpou` → hanya Sesi 2** (文法・読解): **12 soal** (mis. 4 `DK-bunpou`, 2
-  `DK-narabekae`, 1 blok bacaan pendek 3 soal, 1 blok info-search 3 soal).
+- **`/jlpt bunpou` → hanya Sesi 2** (文法・読解): **12 soal** (mis. 2 `DK-bunpou`, 2
+  `DK-narabekae`, 1 blok `DK-bunshou` 2 soal, 1 blok bacaan pendek 3 soal, 1 blok
+  info-search 3 soal).
 - **`/jlpt review` → hanya subtipe LEMAH** (🔴/🟡 dari `jlpt-evaluation.md`): 12 soal,
   bobot ke subtipe akurasi terendah.
 - **Angka `N`** → override jumlah soal untuk sesi itu (bagi proporsional; jaga tetap
@@ -101,9 +112,15 @@ Bila belum ada data (tracker kosong) → sebar merata ke semua subtipe.
 - (Opsional) baca `progress/evaluation.md` untuk tahu pola grammar yang lemah → biar
   soal `DK-bunpou` menyasar itu.
 - Baca **anchor 🔴** `progress/anki-weak-items.md` → untuk membias kanji/kosakata/verb
-  ke item yang sering user lupa (lihat prinsip 4b), terutama subtipe `MG-yomi`/`MG-hyouki`.
+  ke item yang sering user lupa (lihat prinsip 4b). Untuk `MG-yomi`/`MG-hyouki` bias 🔴
+  **longgar** + rotasi (lihat "ROTASI kanji baca/tulis").
 
 ### 2. Tentukan cakupan & campuran soal
+- **Pintasan engine (disarankan):** `python3 scripts/kb.py plan --kind jlpt --mode
+  <mock|moji|bunpou|review>` → JSON `weights` (subtipe lemah), `vehicles_red` (kanji/
+  kosakata 🔴 Anki), `answer_positions` (posisi kunci tersebar), `avoid_themes` (tema teks
+  mock terakhir → pilih beda) & `avoid_items` (kanji MG-yomi/hyouki 2 mock terakhir → pilih
+  beda). Pakai sbg kerangka.
 - Cakupan tata bahasa = lesson yang tersedia (`lessons/`). Untuk bacaan/grammar, pakai
   pola in-scope; boleh utamakan **bab terbaru + pola lemah** dari `evaluation.md`.
 - Muat materi sesuai **"Hemat token"**: anchor lesson + `Grep` kosakata/sinonim/verb
@@ -130,9 +147,10 @@ asli).
     merata (1/2/3/4) lintas soal — jangan menaruh jawaban benar di nomor 1 terus.** Porsi hint di
     `description` MEMUDAR BERTAHAP mengikuti penguasaan (scaffolding fade)** — lihat
     "Hint fading (scaffolding)" di Catatan gaya.
-- Untuk soal **bacaan** (`DK-dokkai`, `DK-joho`): tampilkan **teks** sekali di chat
-  (H2/blockquote) + soal-soalnya, lalu **panel per-blok** berisi HANYA soal blok itu,
-  ditaruh tepat di bawah ceritanya. **Aturan panel bacaan (WAJIB):**
+- Untuk soal **berteks** (`DK-bunshou`, `DK-dokkai`, `DK-joho`): tampilkan **teks** sekali
+  di chat (H2/blockquote) + soal-soalnya, lalu **panel per-blok** berisi HANYA soal blok itu,
+  ditaruh tepat di bawah teksnya. (`DK-bunshou` = teks ber-rumpang; rumpang yang diuji jangan
+  diberi cue.) **Aturan panel berteks (WAJIB):**
   - **Cerita TETAP disertakan di DALAM tiap `question` panel** blok itu (di-prefix
     `【文章】`), sebab panel yang terlihat saat menjawab — kalau cerita cuma di chat, ia
     **hilang** ketika panel terbuka & user terpaksa scroll (bisa tak sengaja melihat soal
@@ -150,20 +168,40 @@ Nilai **semua soal** sebagai lembar hasil: nomor, ✅/❌, jawaban benar, dan **
 singkat** (Bahasa Indonesia). Kelompokkan per sesi. Semua kanji di lembar hasil
 **berfurigana**. Catat tag subtipe + benar/salah tiap soal untuk langkah 6.
 
-### 6. Perbarui data (hitung eksplisit)
-Untuk tiap **subtipe** yang muncul di sesi ini:
-- `Total_baru = Total_lama + jumlah soal subtipe itu`
-- `Benar_baru = Benar_lama + jumlah benar subtipe itu`
-- `Akurasi = round(Benar_baru / Total_baru * 100)%`
-- Status: `<60% 🔴 LEMAH`, `60–79% 🟡`, `≥80% 🟢`; jika `Total_baru < 3` → `⚪`.
-Tulis ulang kedua tabel di `progress/jlpt-evaluation.md` (Sesi 1 & Sesi 2). Susun ulang
-**Weak types**: urut 🔴 lalu 🟡 dari akurasi terendah (maks ~5). Perbarui baris
-`Terakhir diperbarui` + `total sesi`. Hapus placeholder `_(kosong)_` begitu ada data.
+### 6. Perbarui data — via engine `kb.py record` (JANGAN hitung manual)
+**Pembukuan dikerjakan engine `scripts/kb.py`, bukan hitung tangan.** Tulis `session.json`
+dengan **`"kind":"jlpt"`** lalu jalankan `python3 scripts/kb.py record <path/session.json>`.
+Engine: append `attempts.jsonl` → hitung ulang subtipe → tulis ulang kedua tabel
+`jlpt-evaluation.md` → prepend baris `history.md`. **`kind=jlpt` menjamin
+`evaluation.md` (quiz) TAK tersentuh** (pemisahan otomatis di engine).
 
-Tambah 1 entri **paling atas** di tabel `progress/history.md`:
-`| YYYY-MM-DD | JLPT <mock/moji/bunpou/review> | <N> | <benar>/<N> (xx%) | <catatan singkat> |`
-(gunakan tanggal hari ini; label diawali `JLPT` agar beda dari baris `/quiz`).
-**Jangan** sentuh `progress/evaluation.md`.
+**Alur 2 langkah (angka dari engine):** `kb.py record --dry-run <session.json>` →
+cetak delta subtipe + weak ranking tanpa menulis → tulis `weak_narrative`/`history_note`
+pakai angka itu → jalankan lagi tanpa `--dry-run`.
+
+**Skema `session.json` (jlpt):**
+```json
+{"kind":"jlpt","date":"YYYY-MM-DD","mode":"<mock/moji/bunpou/review>",
+ "cakupan":"JLPT <mock/moji/bunpou/review> (…)",
+ "history_note":"<catatan kualitatif>", "weak_narrative":"<prosa Weak types>",
+ "themes":{"dokkai":"<tema>","joho":"<tema>","bunshou":"<tema>"},
+ "questions":[{"qno":1,"key":"がっこう","submitted":"がっこう","subtype":"MG-yomi"}]}
+```
+- **`themes` (opsional, WAJIB untuk mock/bunpou berteks):** object subtipe→tema teks yang
+  dipakai sesi ini (rotasi anti-monoton). Engine simpan ke `attempts.jsonl` → muncul sebagai
+  `avoid_themes` di `plan` mock berikutnya. Lihat "ROTASI TEMA teks". `/jlpt moji` boleh tanpa.
+- **Menilai = engine:** tiap soal bawa `key` (opsi benar) + `submitted` (klik user);
+  engine hitung benar/salah. Soal rancu → `"override":"correct"/"incorrect"` + `"note"`.
+  (Boolean `correct` lama masih diterima.)
+- **Tiap question WAJIB punya `subtype`** (`MG-*`/`DK-*` dari `reference/quiz-taxonomy.md`).
+  Soal `DK-bunpou`/`DK-narabekae` boleh menambah `tags` pola/partikel (opsional, hanya
+  informatif — engine tetap **tak** menulisnya ke `evaluation.md`).
+- `cakupan` **diawali `JLPT`** (agar baris history beda dari `/quiz`). `history_note` &
+  `weak_narrative` = prosa yang KAMU tulis; engine mencetak ranking weak deterministik
+  sebagai bahannya.
+- Seleksi/porsi soal: `kb.py plan --kind jlpt --mode <…>` (lihat step 2).
+- **Semantik direplikasi engine (referensi):** `Akurasi=round(Benar/Total*100)`; status
+  `<60% 🔴 · 60–79% 🟡 · ≥80% 🟢 · <3 ⚪`; Weak types 🔴→🟡 akurasi terendah (maks ~5).
 
 ### 7. Tampilkan hasil — RINGKAS (hemat token)
 Default tampilan chat **RINGKAS** (analisis lengkap pindah ke `/summary jlpt`):
@@ -258,14 +296,64 @@ cross-tag pola/partikel). Boleh pakai verb dari `anki-verbs.md` dalam pola in-sc
 わたしは ＿① ＿② ★③ ＿④ たべます。
    1. で  2. はし  3. ごはん  4. を    → susun: はし で ごはん を → ★③ = ごはん (3)
 ```
-> 🚫 **JANGAN BOCORKAN JAWABAN di panel** (kesalahan mock kelima soal 12): (1) `question`
-> panel **tak boleh** memuat urutan kalimat benar (mis. `（ただしい じゅん：A→B→C→D）`) —
-> user harus menyusun sendiri; (2) `description` opsi **tak boleh** menyebut posisi
+> 🚫 **JANGAN BOCORKAN JAWABAN di panel** (kesalahan mock kelima soal 12; TERULANG mock
+> 2026-09-03 soal 10): (1) `question` panel **tak boleh** memuat urutan kalimat benar (mis.
+> `（ただしい じゅん：A→B→C→D）`) — **termasuk mengenumerasi potongan di dalam kurung mengikuti
+> urutan tersusun** (mock 2026-09-03 soal 10: kurung `（いえへ・かえる・まえに・スーパーで）` = persis
+> urutan jawaban → bocor). Kalau perlu mengingatkan daftar potongan di `question`, **ACAK
+> urutannya** (beda dari solusi) atau **jangan diulang** sama sekali (opsi panel sudah
+> memuatnya). User harus menyusun sendiri; (2) `description` opsi **tak boleh** menyebut posisi
 > potongan (mis. "posisi ★③", "slot ①") — itu menunjuk kunci langsung. `description`
 > untuk narabekae **kosongkan** atau paling banter beri **arti kata netral**, tak pernah
 > posisi/urutan. Rangka slot `＿①＿ ＿②＿ ＿★③＿ ＿④＿` boleh (itu kerangka soal, bukan
 > jawaban). Bila potongan pola lemah perlu bantuan, hint cukup **nama pola** (mis.
 > "ingat: まえに butuh 辞書形"), BUKAN urutannya.
+> ⏱️ **KOHERENSI waktu↔aksi (WAJIB cek sebelum pakai).** Kalimat rakitan (utuh, setelah
+> disusun benar) harus **masuk akal sebagai kalimat nyata** — bukan sekadar tata bahasa
+> valid. **Cek keterangan waktu vs verb penutup:** `まいあさ`/`あさ` → rutinitas pagi &
+> penutup **berangkat/mulai** (…がっこうへ 行きます / …を たべます), **BUKAN** ねます (tidur);
+> rutinitas malam (シャワー→はみがき→ねる) pakai `まいばん`/`よる`. Juga jaga **urutan aksi
+> logis** (mis. 手紙を かく→切手を はる→出す, jangan terbalik). Contoh cacat (mock 2026-08-29
+> soal 12): 「わたしは **まいあさ** シャワーを あびて、はを みがいて、**ねます**」 — grammar て-rangkaian
+> benar, tapi "pagi lalu tidur" janggal → ganti `まいあさ`→`まいばん` atau penutup→`がっこうへ 行きます`.
+> Berlaku juga untuk `DK-bunmyaku` & `DK-dokkai`/`DK-joho`: konteks kalimat/teks harus wajar.
+> 🧩 **POTONGAN vs RANGKA — jangan duplikat (WAJIB cek sebelum pakai).** Kata yang sudah
+> **terpasang tetap di rangka soal** (mis. `パーティーで ＿①＿ …` — パーティーで sudah di kalimat)
+> **TAK BOLEH** juga muncul sebagai salah satu potongan 1–4. Kalau duplikat, soal **tak bisa
+> disusun** (potongan tak punya slot) & user tak bisa menjawab. **Aturan:** keempat potongan =
+> **tepat** kata-kata yang mengisi keempat slot kosong `＿①＿ ＿②＿ ＿★③＿ ＿④＿` — tak lebih,
+> tak kurang, tak ada yang sudah tercetak di rangka. Sebelum memakai soal: rakit potongan ke
+> slot → pastikan **jumlah potongan = jumlah slot** & tak ada sisa/bentrok. Contoh cacat (mock
+> 2026-09-01 soal 10): rangka `パーティーで ＿①＿ ＿②＿ ＿★③＿ ＿④＿ します` tapi potongan memuat
+> `パーティーで` lagi → 4 potongan untuk hanya 4 slot yang seharusnya diisi うたを/うたったり/
+> おどったり (3 kata) + 1 duplikat → rancu. **Fix:** buang `パーティーで` dari rangka (jadikan
+> slot ①), atau ganti potongan ke-4 dengan kata lain yang memang punya slot.
+
+**`DK-bunshou` — 文章の文法 (問題3): tata bahasa DALAM teks (cloze).** Tampilkan **1 paragraf
+pendek** (gaya karangan/surat, pola in-scope), dengan **beberapa rumpang bernomor**
+（１）（２）… di dalam alur cerita. Tiap rumpang = 1 soal pilihan ganda. **Beda dari
+`DK-bunpou`:** jawaban ditentukan oleh **alur wacana**, bukan kalimat lepas. Yang khas diuji:
+- **penghubung antar-kalimat**: でも / それから / そして / だから / では
+- **arah pemberian & sudut pandang**: あげる↔もらう↔くれる (siapa subjek ketahuan dari cerita
+  → di sini justru **tak rancu**, cerita mengunci arah; bandingkan jebakan `に` dua-arah di
+  kalimat lepas `/quiz`)
+- **指示語 (kata tunjuk)**: その / それ / ここ (merujuk kalimat sebelumnya)
+- **pilihan pola/bentuk** yang **cocok konteks & tense cerita**, bukan sekadar bentuk benar
+```
+[Teks] リサさんの さくぶん（作文）:
+「先週（せんしゅう）、友達（ともだち）と 京都（きょうと）へ 行（い）きました。お寺（てら）を
+見（み）たり、写真（しゃしん）を とったり しました。（１）、とても つかれました。
+友達（ともだち）が お茶（ちゃ）を （２）、うれしかったです。」
+（１） 1. だから  2. でも  3. それから  4. では        → (jwb 1; sebab-akibat: banyak aktivitas→capek)
+（２） 1. あげて  2. もらって  3. くれて  4. かって     → (jwb 3; teman memberi KE aku → くれる)
+```
+> **Aturan panel (WAJIB, sama semangatnya dgn bacaan):** teks paragraf **ikut di DALAM tiap
+> `question` panel** rumpang itu (prefix `【文章】`), sebab panel yang terlihat saat menjawab —
+> beri **jarak** (1 baris kosong) sebelum `（N）…`, JANGAN garis horizontal. Teks boleh
+> diringkas tapi **furigana tetap** & jangan buang kalimat yang jadi cue jawaban rumpang.
+> **Rumpang yang diuji JANGAN diberi cue jawaban** di teks. `description` opsi ikut hint fading
+> (semua 🟢 → polos). Cek **koherensi** cerita (lihat guardrail waktu↔aksi di `DK-narabekae`).
+> Tiap soal bertag `subtype:"DK-bunshou"` (+ boleh cross-tag pola bila jelas, opsional).
 
 **`DK-dokkai` — Bacaan pendek (~60–80 kata).** Tampilkan 1 paragraf pakai pola in-scope,
 lalu 2 pertanyaan pemahaman. Semua kanji berfurigana.
@@ -282,6 +370,51 @@ jadwal; pertanyaan cari info spesifik.
 ど・にち 10:00〜16:00 / やすみ: まいしゅう かようび
 Q: どようびは なんじから ですか。  1. 9じ  2. 10じ  3. 16じ  4. やすみ   → (jwb 2)
 ```
+
+> 🎨 **ROTASI TEMA teks (WAJIB — jangan monoton).** Contoh di atas (公園/図書館) hanya
+> **ilustrasi format**, BUKAN tema tetap. Kesalahan berulang (kesadaran 2026-08-31): tiap
+> mock `DK-dokkai` selalu bertema **taman** & `DK-joho` selalu **perpustakaan** karena
+> menyalin contoh template. **Sebelum menulis teks, pilih tema BEDA dari mock sebelumnya**
+> (cek `history.md`/ingatan sesi terakhir). Pool tema N5 (kosakata in-scope):
+> - **`DK-dokkai`** (cerita): rutinitas harian · akhir pekan/liburan · keluarga · sekolah/
+>   kelas · hobi (olahraga/masak/musik) · belanja · cuaca/musim · perjalanan · pekerjaan.
+> - **`DK-joho`** (info): jadwal kereta/bus · menu restoran · jam buka toko · pengumuman
+>   kelas/acara · poster event · daftar harga · jadwal les/klub · aturan (mis. sampah).
+> - **`DK-bunshou`** (karangan/surat): surat ke teman · buku harian · pengalaman jalan-
+>   jalan (variasikan kota & aktivitas) · rencana akhir pekan · perkenalan diri/keluarga.
+>
+> Aturan minimal: **jangan pakai tema yang sama dua mock berturut-turut** untuk subtipe
+> yang sama. Idealnya ketiga blok berteks dalam **satu** mock juga saling beda topik.
+>
+> **⚙️ CARA TAHU tema mock sebelumnya — lewat ENGINE (JSONL), bukan parse view.** Tema =
+> data terstruktur append-only yang dikonsumsi mesin → rumahnya di **`attempts.jsonl`**
+> (sumber kebenaran), disurиткan engine. JANGAN grep dari `history.md` (itu view render).
+> Alur:
+> 1. **Baca (mulai mock):** `kb.py plan --kind jlpt --mode mock` sudah mengembalikan
+>    **`"avoid_themes"`** = tema teks mock JLPT terakhir (mis. `{"dokkai":"taman",
+>    "joho":"perpustakaan"}`). **Pilih tema BEDA** dari itu untuk tiap subtipe berteks.
+>    Kosong `{}` → bebas, tapi tetap hindari 公園/図書館 default.
+> 2. **Tulis (saat `record`):** `session.json` **WAJIB** memuat field
+>    **`"themes":{"dokkai":"<x>","joho":"<y>","bunshou":"<z>"}`** (pakai kata pool di atas).
+>    Engine menyimpannya apa adanya ke `attempts.jsonl` → jadi `avoid_themes` mock berikutnya.
+>    `/jlpt moji` (tanpa blok teks) → `themes` boleh dilewati. Boleh **juga** menaruh echo
+>    `[tema: …]` di `history_note` untuk keterbacaan manusia, tapi itu **hanya cermin** —
+>    sumber yang dibaca engine tetap field `themes`, bukan prosa.
+
+> 🔤 **ROTASI kanji baca/tulis (WAJIB — `MG-yomi`/`MG-hyouki` jangan monoton).** Kesalahan
+> berulang (kesadaran 2026-09-02): tiap mock nyomot 先生／友達／時間 karena bias 🔴 dipaksa ke
+> pool kanji 🔴 yang cuma ~10 item. **Aturan:**
+> - **Sumber utama = seluruh kanji N5** di `n5-vocabulary.md` (kolom Kana⇄Kanji). Rotasi
+>   lebar: tiap mock ganti kanji yang diuji. Kanji 🔴 (`anki-weak-items.md`) disentuh
+>   **sesekali** (≈1 dari 2 soal per subtipe, TAK wajib tiap mock) — bias, bukan default.
+> - **Hindari `avoid_items`** dari `kb.py plan --kind jlpt` = daftar `key` MG-yomi/hyouki yang
+>   dipakai **2 mock terakhir** (mis. `["せんせい","先生","時間","学校"]`). Pilih kanji/kata
+>   **BEDA** dari daftar itu. Kosong `[]` → bebas, tapi tetap variasikan.
+> - **Tak perlu field baru saat `record`.** Beda dari tema: identitas item **sudah** tersimpan
+>   di `key` tiap question → engine menurunkan `avoid_items` otomatis. Cukup pastikan `key`
+>   MG-yomi/hyouki = kata yang benar-benar diuji (bacaan → kana; penulisan → kanji).
+> - Ganti juga **kategori** kanji antar-mock (angka/waktu · arah/tempat · orang/keluarga ·
+>   kata kerja · alam/hari) biar tak selalu ruang semantik yang sama.
 
 ## Hint fading (scaffolding) — porsi `description` mengikuti penguasaan
 

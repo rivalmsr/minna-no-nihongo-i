@@ -21,6 +21,220 @@ atau update skor), tambahkan satu blok di paling atas daftar di bawah, format:
 
 ---
 
+### 2026-09-03 — `DK-narabekae` bocor: potongan dienumerasi di kurung `question` dalam urutan tersusun
+- **Problem:** mock 2026-09-03 soal 10 (susun kalimat), panel `question` menutup dengan kurung
+  `（いえへ・かえる・まえに・スーパーで）` — persis urutan jawaban yang benar (rangka
+  `わたしは ＿①＿ ＿②＿ ＿★③＿ ＿④＿ かいものを します` terisi いえへ→かえる→まえに→スーパーで). User
+  menyadari ini bocoran. Aturan "JANGAN bocorkan urutan kalimat benar" sudah ada, tapi hanya
+  mencontohkan bentuk eksplisit `（ただしい じゅん：A→B→C→D）`; enumerasi potongan biasa yang
+  **kebetulan urut solusi** lolos dari kesadaran → terulang. Akibat: "benar" soal 10 bukan
+  sinyal pemahaman valid.
+- **Fix:** (1) Guardrail narabekae di skill diperluas — larangan mencakup **mengenumerasi
+  potongan di kurung `question` mengikuti urutan tersusun**; kalau perlu daftar diingatkan,
+  **acak** urutannya atau **jangan diulang** (opsi panel sudah memuat potongan). (2) Sinyal
+  sesi ditandai di `jlpt-evaluation.md` (Weak types): `DK-narabekae` soal 10 = TAK VALID,
+  jangan dikredit, uji ulang bersih (potongan diacak) mock berikutnya. Skor total tetap jujur.
+- **File:** `.claude/skills/jlpt/SKILL.md`, `progress/jlpt-evaluation.md`
+
+### 2026-09-02 — `MG-yomi`/`MG-hyouki` monoton: kanji baca/tulis JLPT berulang (先生/友達/時間)
+- **Problem:** user menyadari soal baca-tulis kanji `/jlpt` terasa monoton — 先生／友達／時間
+  muncul berkali-kali antar-mock. Penyebab: (1) rotasi tema (`avoid_themes`) hanya menyentuh
+  3 subtipe berteks (dokkai/joho/bunshou); `MG-yomi`/`MG-hyouki` **tak punya penangkal
+  pengulangan**. (2) Skill membias `MG-yomi`/`MG-hyouki` ke KANJI 🔴 Anki, padahal pool 🔴
+  hanya ~10 kanji (生・先・年・千・時・北・友・会・南・東) → tiap mock nyaris pasti nyomot dari situ.
+- **Fix:** dua sumbu (mirror mekanisme tema):
+  1. **Engine `avoid_items`** — `kb.py` fungsi baru `recent_kanji_items()` mengumpulkan `key`
+     soal `MG-yomi`/`MG-hyouki` dari **2 mock terakhir** di `attempts.jsonl`; `cmd_plan`
+     (kind=jlpt) mengembalikannya sbg `avoid_items`. Tak perlu field baru saat `record` —
+     identitas item sudah tersimpan di `key` tiap question (beda dari tema yang butuh field
+     `themes` eksplisit).
+  2. **Longgarkan bias 🔴** — prinsip 4b skill diubah: `MG-yomi`/`MG-hyouki` sumber utama =
+     **seluruh kanji N5** (`n5-vocabulary.md`), kanji 🔴 disentuh **sesekali** (≈1/2 soal per
+     subtipe), bukan default. Tambah subsection "ROTASI kanji baca/tulis" + wajib hindari
+     `avoid_items` + variasikan kategori kanji antar-mock.
+- **File:** `scripts/kb.py` (`recent_kanji_items`, `cmd_plan`), `.claude/skills/jlpt/SKILL.md`
+  (prinsip 4b, langkah 1 & 2, subsection rotasi kanji).
+
+### 2026-09-01 — `DK-narabekae` cacat: potongan duplikat kata yang sudah di rangka
+- **Problem:** mock `/jlpt` 2026-09-01 soal 10 (susun kalimat) tak bisa dijawab — rangka
+  `パーティーで ＿①＿ ＿②＿ ＿★③＿ ＿④＿ します` sudah memuat `パーティーで` **tetap di kalimat**,
+  tetapi `パーティーで` juga muncul sebagai salah satu potongan 1–4. Akibatnya potongan (4 kata:
+  パーティーで/うたを/うたったり/おどったり) melebihi slot kosong yang sebenarnya perlu diisi (hanya 3:
+  うたを/うたったり/おどったり) → soal rancu, user tak bisa menyusun. User menandainya saat menjawab.
+  Soal dibuang dari skor (15/15, tak dihitung), tapi **aturannya belum ada** sehingga bisa terulang.
+- **Fix:** tambah guardrail **"POTONGAN vs RANGKA — jangan duplikat (WAJIB cek)"** di template
+  `DK-narabekae` (`.claude/skills/jlpt/SKILL.md`): keempat potongan = **tepat** kata pengisi keempat
+  slot kosong; tak ada potongan yang sudah tercetak tetap di rangka; sebelum pakai, rakit potongan
+  → pastikan **jumlah potongan = jumlah slot**, tak ada sisa/bentrok. Sertakan contoh cacat + fix.
+- **File:** `.claude/skills/jlpt/SKILL.md` (template `DK-narabekae`)
+
+### 2026-08-31 — Rotasi tema teks `/jlpt` (dokkai/joho/bunshou monoton)
+- **Problem:** soal berteks `/jlpt` selalu bertema sama — `DK-dokkai` = **taman (公園)**,
+  `DK-joho` = **perpустakaan (図書館)** — tiap mock, karena model menyalin tema dari **contoh
+  template** di `SKILL.md` alih-alih memvariasikan. User menandai keluhan ini. (Data tak bisa
+  konfirmasi penuh: `attempts.jsonl` tak simpan teks soal, hanya kunci/tag.)
+- **Fix:** tambah blok **ROTASI TEMA teks (WAJIB)** di `.claude/skills/jlpt/SKILL.md` setelah
+  template `DK-joho` — tegaskan contoh 公園/図書館 hanya ilustrasi format; sediakan **pool tema
+  N5** per subtipe (dokkai/joho/bunshou); aturan: jangan pakai tema sama dua mock berturut-turut,
+  idealnya 3 blok berteks dalam satu mock saling beda topik.
+- **Fix-2 (mekanisme, jawab "gimana tahu tema sebelumnya?") — via JSONL+engine, BUKAN parse
+  view.** Iterasi pertama sempat keliru menaruh tag `[tema:]` di prosa `history_note` lalu
+  `grep` dari `history.md` — itu melawan arah data (mem-parse view render; rapuh). Diperbaiki:
+  tema = data terstruktur append-only → disimpan di **`attempts.jsonl`** (sumber kebenaran),
+  disurиткan engine. Implementasi:
+  - `session.json` (jlpt) dapat field opsional **`themes`** (`{dokkai,joho,bunshou}`); `record`
+    sudah menulis seluruh dict sesi → otomatis persist (soft-validate object).
+  - `recent_themes(attempts,"jlpt")` = tema sesi jlpt terbaru yang bertag; `plan --kind jlpt`
+    kini mengembalikan **`avoid_themes`**. Skill baca `avoid_themes` → pilih tema beda; tulis
+    `themes` saat record. Echo `[tema:]` di `history_note` boleh, tapi cuma cermin (bukan sumber).
+  - Mock 2026-08-31 di-**backfill** `themes` (taman/perpustakaan/jalan-jalan-kyoto) agar
+    `avoid_themes` langsung berisi. Test `test_recent_themes` mengunci (20/20 lolos).
+- **File:** `.claude/skills/jlpt/SKILL.md`, `scripts/kb.py`, `scripts/test_kb.py`,
+  `progress/attempts.jsonl` (backfill 1 baris)
+
+### 2026-08-31 — Simetri hint panel = tingkat kedetailan, bukan cuma keberadaan
+- **Problem:** aturan simetri `description` lama hanya mencegah "kunci bergloss vs distraktor `—`".
+  Tapi di sesi /quiz 2026-08-31 muncul varian lebih halus yang **lolos** cek itu: **semua** opsi
+  bergloss, tapi **kunci** diberi keterangan yang **menjabarkan persis konstruksi/verba target**
+  sedang distraktor cuma gloss partikel generik → tetap **tell** (user pilih opsi yang glossnya
+  paling "nyambung"). Contoh: (a) `どこ（　）行きません` — も digloss 「pembentuk どこ〜+ません」
+  (menyebut ません yang sudah tampil); (b) `友達（　）会います` — に digloss 「target yang ditemui」
+  (menempel ke 会います yang kelihatan).
+- **Fix:** perketat klausa **Simetri `description`** di `SKILL.md` — simetri juga soal **tingkat
+  kedetailan**: semua opsi harus gloss generik setara, kunci **tak boleh** dijelaskan lewat
+  konstruksi/verba yang diuji. Dua contoh cacat どこも/会います dicantumkan + versi benarnya.
+- **File:** `.claude/skills/quiz/SKILL.md`
+
+### 2026-08-31 — `plan` sadar-taxonomy + tag pola L2/L3 (mismatch cakupan maintenance)
+- **Problem:** mode **maintenance** (`kb.py plan --mode adaptif` tanpa weak-area) memilih bab
+  paling lama tak diuji dari **`all_lessons()`** (semua file `lessons/*.md`), sehingga menyodorkan
+  **Lesson 2 & 3** — padahal `reference/quiz-taxonomy.md` **tak punya tag pola** untuk L2/L3
+  (dulu dibatasi L4–L19). Engine "buta" batas taxonomy: sarannya (L2–L4) bentrok dgn cakupan
+  quiz yang valid, dan soal L2/L3 tak bisa ditandai tag apa pun. Ketahuan saat `/quiz` maintenance
+  2026-08-31 (harus di-workaround manual ke L4–L6).
+- **Fix (keduanya, sesuai keputusan user):**
+  1. **Tambah tag pola L2 & L3** ke `quiz-taxonomy.md` (これ/それ/あれ, この/その/あの, の-jenis,
+     の-milik, なん · ここ/そこ/あそこ, こちら-sopan, どこ, どちら-asal, どこの-asal, いくら) +
+     ubah catatan source-of-truth `lesson-04..19` → `lesson-02..19`. Kini L2/L3 quizzable.
+  2. **Engine sadar-taxonomy:** `taxonomy_lessons()` mem-parse tag `L<n>-` dari taxonomy →
+     `quizzable_lessons()` = `all_lessons()` ∩ taxonomy; `maintenance_lessons()` menyeleksi
+     dari `quizzable_lessons()` (fallback ke `all_lessons()` bila taxonomy tak terbaca).
+     Bab tanpa tag tak akan disodorkan lagi (defensif untuk lesson baru yang belum ditandai).
+- **File:** `scripts/kb.py`, `reference/quiz-taxonomy.md`, `scripts/test_kb.py`
+
+### 2026-08-30 — `/quiz` maintenance mode saat 0 weak-area (spaced review, B2)
+- **Problem:** setelah weak-area habis (semua 🟢/⚪), `kb.py plan --mode adaptif` **menyempit
+  cakupan ke bab terbaru saja** (`lessons:["Lesson 19"]`, `weights:[]`). Padahal tujuan `/quiz`
+  = deteksi kelemahan **seluruh** materi Minna; status 🟢 itu foto lama & bisa **luntur** (decay).
+  Akibatnya `/quiz` polos akan terus mengulang bab terakhir; L2–L18 tak pernah diprobe ulang.
+- **Fix:** `compute_scope` mode adaptif tanpa weak-area → **maintenance**: pilih 3 bab **paling
+  lama tak diuji** (urut `lesson_last_tested()` dari `attempts.jsonl`; bab belum pernah diuji =
+  prioritas), tie-break akurasi terendah; sebar merata (`weights:[]`). `plan` menandai
+  `"maintenance":true`+`"review_reason"`; skill `/quiz` memberi tahu user ini "review pemeliharaan".
+- **Scoping (penting):** maintenance **HANYA** untuk `mode == "adaptif"` (quiz). Sempat bocor
+  ke semua mode `/jlpt` (mock/moji/bunpou) karena kondisi awal cuma cek `not weak_lessons and
+  not weak_pola` — untuk JLPT itu selalu benar (agg berbasis *subtype*, tak punya dim pola/lesson),
+  dan `maintenance_lessons` pakai *last-tested quiz* yang tak relevan buat JLPT. **Kenapa `/jlpt`
+  tak butuh maintenance:** mock JLPT sudah **menguji SEMUA subtipe tiap sesi** (struktural
+  selalu-luas), jadi tak ada penyempitan/decay per-subtipe yang perlu dilawan. Diperbaiki +
+  di-lock dengan test `test_compute_scope_maintenance_only_adaptif`.
+- **File:** `scripts/kb.py`, `scripts/test_kb.py` (3 test baru), `.claude/skills/quiz/SKILL.md`,
+  `docs/engine-bookkeeping-plan.md` (B2 → SELESAI).
+
+### 2026-08-30 — Tambah subtipe `DK-bunshou` (文章の文法 / 問題3) ke `/jlpt`
+- **Problem:** mock `/jlpt` meniru struktur JLPT N5 tertulis, tapi **melewatkan satu seksi
+  resmi**: 問題3「文章の文法」— paragraf pendek dgn beberapa rumpang, jawaban ditentukan **alur
+  wacana** (penghubung antar-kalimat, arah pemberian あげ/もらい/くれ, 指示語, pilihan pola sesuai
+  konteks), beda dari `DK-bunpou` (kalimat lepas). Akibatnya mock bukan 1:1 struktur ujian.
+- **Fix:** tambah subtipe `DK-bunshou` di seluruh rantai — `reference/quiz-taxonomy.md` (tabel
+  subtipe), `scripts/kb.py` `SUBTYPE_META` (urut setelah `DK-narabekae`), template subtipe +
+  aturan panel berteks di `.claude/skills/jlpt/SKILL.md`, dan komposisi mock (Sesi 2 kini
+  menyertakan blok `DK-bunshou` + semua 5 subtipe DK tiap mock). Sekalian: render tabel
+  `jlpt-evaluation.md` diubah menampilkan **semua** subtipe (himpunan tertutup) termasuk yang
+  0/0 (⚪) — dulu hanya subtipe yang sudah ada attempt yang muncul, jadi subtipe baru tak
+  terlihat sampai dipakai.
+- **File:** `reference/quiz-taxonomy.md`, `scripts/kb.py`, `.claude/skills/jlpt/SKILL.md`,
+  `progress/jlpt-evaluation.md` (re-render).
+
+### 2026-08-30 — Soal memberi↔menerima (あげる/もらう) tak boleh andalkan `に` (dua-arah)
+- **Problem:** quiz 2026-08-30 soal 11 (`L7-に-menerima`) 「父（ちち）**に** 時計（とけい）を（　）」 opsi
+  あげました/もらいました. Partikel `に` **dua-arah**: `父に…を あげました` (に = penerima) dan
+  `父に…を もらいました` (に = pemberi) **sama-sama gramatikal & wajar** → soal punya **dua kunci**,
+  melanggar "tepat satu jawaban benar". User pilih あげました (sah) → di-`override` benar saat grading.
+- **Fix:** tambah butir guardrail — saat menguji memberi↔menerima, **jangan andalkan `に`**; kunci
+  arahnya: uji **もらう** pakai **から** untuk pemberi (「父から…を（　）」, から tak bisa jadi penerima →
+  あげる gugur); uji **あげる** pastikan penerima jelas bukan diri sendiri + konteks mematikan もらう.
+- **File:** `.claude/skills/quiz/SKILL.md` ("Catatan gaya").
+
+### 2026-08-30 — Hint opsi 自他動詞 tak boleh menyebut partikel penentu yang sudah di soal
+- **Problem:** quiz 2026-08-30 soal 4 (`L16-他動詞-自動詞`) 「電気（でんき）**が**（　）…」 dgn opsi
+  ついて/つけて, hint-nya menulis 「ついて = 自動詞, **subjek pakai が**」 / 「つけて = 他動詞,
+  objek pakai を」. Kunci soal justru partikel `が` yang **sudah tampil di kalimat** → user bisa
+  mencocokkan が-di-soal ke が-di-hint secara mekanis dan pilih ついて **tanpa menalar 自↔他**.
+  Simetri gaya sudah oke (dua opsi sama-sama dijelaskan), tapi **isinya** membocorkan cue penentu.
+  Tambahan: pola ini sudah 🟢 (83%) → mestinya hint sudah difade netral, bukan penuh.
+- **Fix:** perkuat aturan simetri `description` — **larang menyebut cue penentu (partikel/keterangan
+  waktu) yang sudah muncul di kalimat soal**. Gloss harus **netral berbasis makna** (「電気が… =
+  lampu menyala sendiri」 vs 「だれかが 電気を… = menyalakan」), bukan menyebut が/を. Untuk pola
+  自他 yang sudah 🟢, fade lebih jauh → opsi polos `—`, user menilai dari partikel di kalimat.
+- **File:** `.claude/skills/quiz/SKILL.md` (aturan "Simetri `description`").
+
+### 2026-08-29 — Guardrail koherensi waktu↔aksi di soal `/jlpt`
+- **Problem:** mock 2026-08-29 soal 12 (`DK-narabekae`) merakit kalimat 「わたしは **まいあさ**
+  シャワーを あびて、はを みがいて、**ねます**」 — tata bahasa て-rangkaian benar & jawabannya valid,
+  tapi kalimatnya **janggal secara semantik** (rutinitas pagi tapi ditutup "tidur"). Soal susun
+  kalimat/konteks dicek untuk grammar & ketaksaan jawaban, tapi belum dicek **kewajaran kalimat
+  utuh** (keterangan waktu vs verb penutup, urutan aksi logis).
+- **Fix:** tambah blockquote **⏱️ KOHERENSI waktu↔aksi (WAJIB cek)** di template `DK-narabekae`
+  — kalimat rakitan harus masuk akal sebagai kalimat nyata: `まいあさ`/`あさ` → penutup berangkat/
+  mulai (…行きます/…たべます), rutinitas malam (シャワー→はみがき→ねる) pakai `まいばん`/`よる`; jaga
+  urutan aksi logis (かく→はる→だす). Berlaku juga `DK-bunmyaku`/`DK-dokkai`/`DK-joho`.
+- **File:** `.claude/skills/jlpt/SKILL.md` (template `DK-narabekae`).
+
+### 2026-08-29 — Grading pindah ke engine (`key`/`submitted`, `grade()`)
+- **Problem:** untuk pilihan ganda, "menilai" = `submitted == key` (mekanis, tak butuh model),
+  tapi model yang menulis `correct: true/false` ke `session.json` → error-surface (salah-ingat
+  kunci / salah-tulis boolean). Kecerdasan bahasa sebenarnya cuma di **menentukan kunci** (saat
+  generate), bukan di membandingkan.
+- **Fix:** tiap soal `session.json` kini bawa **`key`** (opsi benar) + **`submitted`** (klik user);
+  fungsi pure `grade(q)` di engine menghitung benar/salah. `override` (correct/incorrect) + `note`
+  untuk soal rancu (satu-satunya kasus model ikut memutuskan). `_validate_session` **menurunkan**
+  `n`/`correct` dari `grade()` (tak percaya angka model; `WARN` bila beda). Boolean `correct` lama
+  tetap diterima → `attempts.jsonl` lama tak perlu migrasi (golden test tetap lolos).
+- **File:** `scripts/kb.py` (`grade`, `aggregate`, `_validate_session`), `scripts/test_kb.py`
+  (13 test), `.claude/skills/{quiz,jlpt}/SKILL.md`, `docs/engine-bookkeeping-plan.md` §9.
+
+### 2026-08-29 — `kb.py record --dry-run` (putus chicken-and-egg narasi)
+- **Problem:** `weak_narrative`/`history_note` (prosa) butuh **angka final** sesi, tapi angka
+  final baru ada **setelah** `record` — padahal prosa itu bagian dari `session.json` yang
+  di-`record`. Ketergantungan melingkar → model terpaksa **hitung delta manual** untuk
+  menulis narasi (mengulang beban yang mau dihapus engine) & berisiko **prosa ≠ tabel**.
+- **Fix:** flag `--dry-run` pada `record` — hitung & cetak **delta per tag (before→after)** +
+  weak ranking **tanpa menulis apa pun** (helper pure `session_deltas`). Alur 2 langkah:
+  dry-run → tulis prosa pakai angka yang dicetak engine → `record` sungguhan. Angka narasi
+  jadi **benar by-construction** (bukan hasil hitung tangan). Bukan menambal bug (data selalu
+  benar karena tabel dihitung dari data mentah, bukan prosa) — ini **robustness**: hilangkan
+  ketergantungan pada disiplin manual. SKILL.md quiz/jlpt step 6 diperbarui ke alur 2 langkah.
+- **File:** `scripts/kb.py`, `scripts/test_kb.py`, `.claude/skills/{quiz,jlpt}/SKILL.md`,
+  `docs/engine-bookkeeping-plan.md`.
+
+### 2026-08-28 — Bookkeeping /quiz & /jlpt dipindah ke engine deterministik (`kb.py`)
+- **Problem:** pembukuan (hitung skor/akurasi, tentukan status 🔴🟡🟢, ranking weak-area,
+  seleksi cakupan, tulis-ulang tabel) dikerjakan model **manual** tiap sesi → boros token,
+  rawan salah hitung, tak reprodusibel.
+- **Fix:** engine `scripts/kb.py` (Python stdlib, tanpa dependency). Sumber kebenaran =
+  **JSONL append-only** (`progress/attempts.jsonl` + `baseline.json`); tracker `.md` jadi
+  **VIEW yang di-generate**. Perintah: `import` (seed sekali), `render` (regen), `record
+  <session.json>` (ingest sesi → re-render + prepend history), `plan` (seleksi cakupan +
+  bobot 🟡 + `vehicles_red` 🔴 + posisi jawaban tersebar). **Golden test** (`scripts/test_kb.py`)
+  menjamin render **nol-diff** dengan tabel lama sebelum dipercaya. Pemisahan `kind` menjaga
+  `/jlpt` tak menyentuh `evaluation.md`. SKILL.md quiz/jlpt: step 6 → `kb.py record`, step 2 →
+  `kb.py plan`; tracker `.md` ditandai **AUTO-GENERATED**. Batas: engine = angka; model =
+  kalimat soal + prosa (`history_note`/`weak_narrative`).
+- **File:** `scripts/kb.py`, `scripts/test_kb.py`, `progress/{attempts.jsonl,baseline.json}`,
+  `progress/{evaluation,jlpt-evaluation,history}.md` (marker), `.claude/skills/{quiz,jlpt}/SKILL.md`,
+  `docs/engine-bookkeeping-plan.md`, `README.md`, `CLAUDE.md`, `docs/cara-kerja.md`.
+
 ### 2026-08-28 — Soal 自他動詞 rancu karena distraktor tense (もう + はじまる)
 - **Problem:** soal `/quiz review` (sesi 21) yang menguji 自動詞 vs 他動詞 memakai kalimat
   `テストが もう（　）。` dengan 4 opsi はじめます/はじめました/はじまります/はじまりました. Maksudnya

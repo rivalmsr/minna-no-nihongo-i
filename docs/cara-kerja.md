@@ -41,11 +41,37 @@ terpisah) menyumbang **sinyal item yang sering kamu lupa** untuk mempertajam pil
 |--------|---------------|-------|
 | **Sumber kebenaran** | `lessons/lesson-0X.md` | Tata bahasa yang SUDAH dipelajari — acuan mutlak semua soal |
 | **Kolam materi** | `reference/n5-vocabulary.md`, `n5-synonyms.md`, `anki-verbs.md`, `particles.md`, `quiz-taxonomy.md` | Pool kosakata, sinonim, kata kerja, partikel, & daftar tag pola |
-| **Memori kemajuan** | `progress/evaluation.md`, `jlpt-evaluation.md`, `anki-weak-items.md`, `history.md` | Peta kelemahan (per pola & per item) + riwayat sesi |
-| **Mesin latihan** | `.claude/skills/quiz/`, `.claude/skills/jlpt/` | Logika membuat, menilai, & mengadaptasi soal |
+| **Sumber skor** | `progress/attempts.jsonl`, `baseline.json` | Kebenaran skor (JSONL append-only) — dari sini tracker `.md` di-generate |
+| **Memori kemajuan** | `progress/evaluation.md`, `jlpt-evaluation.md`, `history.md` (AUTO-GENERATED) + `anki-weak-items.md` | Peta kelemahan + riwayat sesi — **view** yang ditulis engine |
+| **Mesin pembukuan** | `scripts/kb.py` (+ `test_kb.py`) | Engine deterministik: hitung skor/status/ranking, `render`/`record` tracker, `plan` seleksi cakupan |
+| **Mesin latihan** | `.claude/skills/quiz/`, `.claude/skills/jlpt/` | Logika membuat, menilai, & mengadaptasi soal (pembukuan didelegasikan ke `kb.py`) |
 | **Aturan main** | `CLAUDE.md` | Hub konteks + prinsip yang selalu berlaku |
 | **Jembatan Anki** | `scripts/sync-anki-*.sh` | Tarik data dari deck/collection Anki → file KB |
 | **Pintu refresh Anki** | `.claude/skills/sync-anki/` | Command `/sync-anki` — bungkus kedua script + notif hasil |
+
+## Engine vs model — siapa mengerjakan apa (per flow)
+
+Pemisahan tegas: **engine `scripts/kb.py` = semua yang deterministik** (hitung, banding,
+ranking, seleksi, render); **model = yang butuh judgment bahasa** (bikin soal, tetapkan
+kunci, prosa). Perintah engine: `import`/`render`/`record`(`--dry-run`)/`plan`/`summary`.
+
+| Flow · sub-langkah | ⚙️ Engine | 🧠 Model |
+|---|:---:|:---:|
+| `/quiz` · seleksi cakupan + bobot + acak posisi | `plan` | |
+| `/quiz` · **generate soal + tetapkan `key`** | | ✅ |
+| `/quiz` · **grade** (`submitted == key`) | `record` (`grade()`) | |
+| `/quiz` · **override** soal rancu | | ✅ (`override`+`note`) |
+| `/quiz` · skor/akurasi/status/ranking + tulis tabel + history | `record` | |
+| `/quiz` · prosa `weak_narrative`/`history_note` (angka dari `--dry-run`) | | ✅ |
+| `/jlpt` · seleksi + grade + pembukuan (tracker terpisah, `kind=jlpt`) | `plan`+`record` | |
+| `/jlpt` · generate soal + kunci + teks bacaan | | ✅ |
+| `/summary` · breakdown per dim + 3 terlemah + skor terakhir | `summary` | |
+| `/summary` · sajian furigana + rekomendasi | | ✅ |
+| `/sync-anki` · regen `anki-verbs.md` / `anki-weak-items.md` | `sync-anki-*.sh`¹ | |
+| semua · sisip furigana, pembahasan | | ✅ |
+
+¹ `/sync-anki` deterministik tapi lewat **script bash tersendiri**, bukan `kb.py` (domain
+beda: parsing Anki). Detail engine pembukuan: `docs/engine-bookkeeping-plan.md`.
 
 ## Alur 1 — Mencatat materi (input / "ingest")
 
@@ -181,10 +207,17 @@ Satu baris ditambahkan ke `history.md` (entri terbaru di atas).
 ### 3. Pembobotan & cakupan soal berikutnya
 - **Cakupan default** (`/quiz` polos) = **pelajaran lemah + bab terbaru**, dibatasi
   **maks ~3 lesson** (prioritas akurasi terendah) demi hemat token — bukan semua lesson.
+- **Maintenance (0 weak-area):** kalau semua pola 🟢/⚪, `plan` beralih ke **spaced review** —
+  3 bab **paling lama tak diuji** (lawan decay), `"maintenance":true`; sebar merata tanpa bobot.
+- **Sadar-taxonomy:** `plan` hanya menyodorkan **bab quizzable** (punya tag di
+  `quiz-taxonomy.md`); bab tanpa tag tak dipilih. → detail B2/B3 `engine-bookkeeping-plan.md`.
 - **Bobot adaptif:** ≥**40%** soal diambil dari weak area bila ada; sisanya sebar merata.
   Mode `review` → hampir semua soal dari tag 🔴/🟡. Sesi pertama (belum ada data) →
   sebar merata ke seluruh pola in-scope.
 - **Bias kendaraan Anki** → lihat bagian "DUA sinyal" di atas (lunak + fallback).
+- **Rotasi tema teks (`/jlpt`):** cerita `DK-dokkai`/`joho`/`bunshou` tak boleh monoton —
+  `plan --kind jlpt` memberi `avoid_themes` (tema mock terakhir dari `attempts.jsonl`),
+  skill memilih tema beda & menyimpan `themes` sesi ini (B4).
 
 ### 4. Aturan penyajian (menjaga recall tetap jujur)
 - **Mode ujian:** jawab **semua** soal dulu, koreksi & analisis muncul **di akhir**.

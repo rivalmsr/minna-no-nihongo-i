@@ -1,0 +1,358 @@
+{
+ "quiz": {
+  "pola": {
+   "L4-jam": {
+    "benar": 5,
+    "total": 6
+   },
+   "L5-で-transport": {
+    "benar": 1,
+    "total": 1
+   },
+   "L6-を-objek": {
+    "benar": 1,
+    "total": 1
+   },
+   "L7-に-memberi": {
+    "benar": 5,
+    "total": 6
+   },
+   "L7-に-menerima": {
+    "benar": 6,
+    "total": 7
+   },
+   "L7-で-alat": {
+    "benar": 2,
+    "total": 2
+   },
+   "L7-で-bahasa": {
+    "benar": 2,
+    "total": 2
+   },
+   "L7-もう": {
+    "benar": 2,
+    "total": 2
+   },
+   "L8-adj-negatif": {
+    "benar": 1,
+    "total": 1
+   },
+   "L8-adj-benda": {
+    "benar": 1,
+    "total": 1
+   },
+   "L8-どう-どんな": {
+    "benar": 1,
+    "total": 1
+   },
+   "L9-から-sebab": {
+    "benar": 2,
+    "total": 2
+   },
+   "L9-が-suka": {
+    "benar": 1,
+    "total": 1
+   },
+   "L9-が-paham": {
+    "benar": 1,
+    "total": 1
+   },
+   "L9-が-pandai": {
+    "benar": 1,
+    "total": 1
+   },
+   "L9-punya": {
+    "benar": 1,
+    "total": 1
+   },
+   "L10-あります": {
+    "benar": 5,
+    "total": 5
+   },
+   "L10-います": {
+    "benar": 2,
+    "total": 2
+   },
+   "L10-に-keberadaan": {
+    "benar": 12,
+    "total": 15
+   },
+   "L10-posisi": {
+    "benar": 7,
+    "total": 8
+   },
+   "L11-まい": {
+    "benar": 1,
+    "total": 1
+   },
+   "L11-かい-frekuensi": {
+    "benar": 1,
+    "total": 1
+   },
+   "L11-かかります": {
+    "benar": 1,
+    "total": 1
+   },
+   "L12-より": {
+    "benar": 1,
+    "total": 1
+   },
+   "L12-のほうが": {
+    "benar": 1,
+    "total": 1
+   },
+   "L12-lampau-positif": {
+    "benar": 1,
+    "total": 1
+   },
+   "L13-に-tujuan": {
+    "benar": 6,
+    "total": 7
+   },
+   "L13-を-meninggalkan": {
+    "benar": 3,
+    "total": 3
+   },
+   "L13-で-vs-を": {
+    "benar": 2,
+    "total": 2
+   },
+   "L13-ています-keadaan": {
+    "benar": 1,
+    "total": 2
+   },
+   "L14-te-konjugasi": {
+    "benar": 25,
+    "total": 27
+   },
+   "L14-てください": {
+    "benar": 4,
+    "total": 5
+   },
+   "L14-ています-progresif": {
+    "benar": 4,
+    "total": 5
+   },
+   "L14-ましょうか": {
+    "benar": 1,
+    "total": 1
+   },
+   "L15-てもいいです": {
+    "benar": 1,
+    "total": 1
+   },
+   "L15-てはいけません": {
+    "benar": 1,
+    "total": 1
+   },
+   "L15-ています-keadaan": {
+    "benar": 6,
+    "total": 7
+   },
+   "L15-に-vs-で-statis": {
+    "benar": 5,
+    "total": 7
+   },
+   "L16-てから": {
+    "benar": 5,
+    "total": 6
+   },
+   "L16-て-urutan": {
+    "benar": 1,
+    "total": 1
+   },
+   "L16-他動詞-自動詞": {
+    "benar": 3,
+    "total": 4
+   },
+   "L16-に-naik": {
+    "benar": 3,
+    "total": 5
+   },
+   "L17-ない-konjugasi": {
+    "benar": 10,
+    "total": 11
+   },
+   "L17-なければなりません": {
+    "benar": 4,
+    "total": 4
+   },
+   "L17-なくてもいいです": {
+    "benar": 4,
+    "total": 5
+   },
+   "L17-ないでください": {
+    "benar": 2,
+    "total": 2
+   },
+   "L18-ことができます": {
+    "benar": 8,
+    "total": 9
+   },
+   "L18-まえに": {
+    "benar": 8,
+    "total": 9
+   },
+   "L18-辞書形-konjugasi": {
+    "benar": 10,
+    "total": 12
+   },
+   "L19-たことがあります": {
+    "benar": 11,
+    "total": 12
+   },
+   "L19-た-konjugasi": {
+    "benar": 16,
+    "total": 17
+   },
+   "L19-なります": {
+    "benar": 22,
+    "total": 25
+   },
+   "L19-たり": {
+    "benar": 12,
+    "total": 13
+   },
+   "L19-に-vs-を-のぼる": {
+    "benar": 5,
+    "total": 5
+   }
+  },
+  "partikel": {
+   "から": {
+    "benar": 2,
+    "total": 2
+   },
+   "に": {
+    "benar": 35,
+    "total": 43
+   },
+   "で": {
+    "benar": 12,
+    "total": 13
+   },
+   "を": {
+    "benar": 12,
+    "total": 13
+   },
+   "の": {
+    "benar": 1,
+    "total": 1
+   },
+   "が": {
+    "benar": 8,
+    "total": 8
+   },
+   "へ": {
+    "benar": 1,
+    "total": 1
+   }
+  },
+  "lesson": {
+   "Lesson 4": {
+    "benar": 5,
+    "total": 6
+   },
+   "Lesson 5": {
+    "benar": 1,
+    "total": 1
+   },
+   "Lesson 6": {
+    "benar": 1,
+    "total": 1
+   },
+   "Lesson 7": {
+    "benar": 17,
+    "total": 19
+   },
+   "Lesson 8": {
+    "benar": 4,
+    "total": 4
+   },
+   "Lesson 9": {
+    "benar": 6,
+    "total": 6
+   },
+   "Lesson 10": {
+    "benar": 26,
+    "total": 30
+   },
+   "Lesson 11": {
+    "benar": 3,
+    "total": 3
+   },
+   "Lesson 12": {
+    "benar": 3,
+    "total": 3
+   },
+   "Lesson 13": {
+    "benar": 14,
+    "total": 16
+   },
+   "Lesson 14": {
+    "benar": 24,
+    "total": 26
+   },
+   "Lesson 15": {
+    "benar": 13,
+    "total": 16
+   },
+   "Lesson 16": {
+    "benar": 12,
+    "total": 16
+   },
+   "Lesson 17": {
+    "benar": 11,
+    "total": 12
+   },
+   "Lesson 18": {
+    "benar": 17,
+    "total": 19
+   },
+   "Lesson 19": {
+    "benar": 51,
+    "total": 57
+   }
+  }
+ },
+ "jlpt": {
+  "subtype": {
+   "MG-yomi": {
+    "benar": 15,
+    "total": 16
+   },
+   "MG-hyouki": {
+    "benar": 15,
+    "total": 16
+   },
+   "MG-bunmyaku": {
+    "benar": 14,
+    "total": 16
+   },
+   "MG-ruigi": {
+    "benar": 16,
+    "total": 16
+   },
+   "DK-bunpou": {
+    "benar": 19,
+    "total": 23
+   },
+   "DK-narabekae": {
+    "benar": 7,
+    "total": 9
+   },
+   "DK-dokkai": {
+    "benar": 15,
+    "total": 16
+   },
+   "DK-joho": {
+    "benar": 14,
+    "total": 16
+   }
+  }
+ },
+ "meta": {
+  "quiz_sesi": 21,
+  "jlpt_sesi": 8
+ }
+}
