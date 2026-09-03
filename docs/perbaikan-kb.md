@@ -21,6 +21,21 @@ atau update skor), tambahkan satu blok di paling atas daftar di bawah, format:
 
 ---
 
+### 2026-09-03 — `DK-narabekae` bocor: potongan dienumerasi di kurung `question` dalam urutan tersusun
+- **Problem:** mock 2026-09-03 soal 10 (susun kalimat), panel `question` menutup dengan kurung
+  `（いえへ・かえる・まえに・スーパーで）` — persis urutan jawaban yang benar (rangka
+  `わたしは ＿①＿ ＿②＿ ＿★③＿ ＿④＿ かいものを します` terisi いえへ→かえる→まえに→スーパーで). User
+  menyadari ini bocoran. Aturan "JANGAN bocorkan urutan kalimat benar" sudah ada, tapi hanya
+  mencontohkan bentuk eksplisit `（ただしい じゅん：A→B→C→D）`; enumerasi potongan biasa yang
+  **kebetulan urut solusi** lolos dari kesadaran → terulang. Akibat: "benar" soal 10 bukan
+  sinyal pemahaman valid.
+- **Fix:** (1) Guardrail narabekae di skill diperluas — larangan mencakup **mengenumerasi
+  potongan di kurung `question` mengikuti urutan tersusun**; kalau perlu daftar diingatkan,
+  **acak** urutannya atau **jangan diulang** (opsi panel sudah memuat potongan). (2) Sinyal
+  sesi ditandai di `jlpt-evaluation.md` (Weak types): `DK-narabekae` soal 10 = TAK VALID,
+  jangan dikredit, uji ulang bersih (potongan diacak) mock berikutnya. Skor total tetap jujur.
+- **File:** `.claude/skills/jlpt/SKILL.md`, `progress/jlpt-evaluation.md`
+
 ### 2026-09-02 — `MG-yomi`/`MG-hyouki` monoton: kanji baca/tulis JLPT berulang (先生/友達/時間)
 - **Problem:** user menyadari soal baca-tulis kanji `/jlpt` terasa monoton — 先生／友達／時間
   muncul berkali-kali antar-mock. Penyebab: (1) rotasi tema (`avoid_themes`) hanya menyentuh

@@ -296,9 +296,13 @@ cross-tag pola/partikel). Boleh pakai verb dari `anki-verbs.md` dalam pola in-sc
 わたしは ＿① ＿② ★③ ＿④ たべます。
    1. で  2. はし  3. ごはん  4. を    → susun: はし で ごはん を → ★③ = ごはん (3)
 ```
-> 🚫 **JANGAN BOCORKAN JAWABAN di panel** (kesalahan mock kelima soal 12): (1) `question`
-> panel **tak boleh** memuat urutan kalimat benar (mis. `（ただしい じゅん：A→B→C→D）`) —
-> user harus menyusun sendiri; (2) `description` opsi **tak boleh** menyebut posisi
+> 🚫 **JANGAN BOCORKAN JAWABAN di panel** (kesalahan mock kelima soal 12; TERULANG mock
+> 2026-09-03 soal 10): (1) `question` panel **tak boleh** memuat urutan kalimat benar (mis.
+> `（ただしい じゅん：A→B→C→D）`) — **termasuk mengenumerasi potongan di dalam kurung mengikuti
+> urutan tersusun** (mock 2026-09-03 soal 10: kurung `（いえへ・かえる・まえに・スーパーで）` = persis
+> urutan jawaban → bocor). Kalau perlu mengingatkan daftar potongan di `question`, **ACAK
+> urutannya** (beda dari solusi) atau **jangan diulang** sama sekali (opsi panel sudah
+> memuatnya). User harus menyusun sendiri; (2) `description` opsi **tak boleh** menyebut posisi
 > potongan (mis. "posisi ★③", "slot ①") — itu menunjuk kunci langsung. `description`
 > untuk narabekae **kosongkan** atau paling banter beri **arti kata netral**, tak pernah
 > posisi/urutan. Rangka slot `＿①＿ ＿②＿ ＿★③＿ ＿④＿` boleh (itu kerangka soal, bukan
