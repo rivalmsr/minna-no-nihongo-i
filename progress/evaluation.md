@@ -12,7 +12,7 @@ Diperbarui otomatis oleh skill `/quiz` setiap selesai sesi. Melacak akurasi
 **Ambang status:** akurasi <60% 🔴 LEMAH · 60–79% 🟡 · ≥80% 🟢
 (butuh minimal **3 attempt** sebelum status dihitung; di bawah itu = ⚪ belum cukup data)
 
-_Terakhir diperbarui: 2026-09-02 · total sesi: 26_
+_Terakhir diperbarui: 2026-09-03 · total sesi: 27_
 
 ---
 
@@ -45,10 +45,10 @@ _Terakhir diperbarui: 2026-09-02 · total sesi: 26_
 | L12-より | 1 | 1 | 100% | ⚪ |
 | L12-のほうが | 1 | 1 | 100% | ⚪ |
 | L12-lampau-positif | 1 | 1 | 100% | ⚪ |
-| L13-に-tujuan | 7 | 8 | 88% | 🟢 |
-| L13-を-meninggalkan | 4 | 4 | 100% | 🟢 |
-| L13-で-vs-を | 2 | 3 | 67% | 🟡 |
-| L13-ています-keadaan | 1 | 3 | 33% | 🔴 |
+| L13-に-tujuan | 9 | 10 | 90% | 🟢 |
+| L13-を-meninggalkan | 6 | 6 | 100% | 🟢 |
+| L13-で-vs-を | 4 | 6 | 67% | 🟡 |
+| L13-ています-keadaan | 2 | 5 | 40% | 🔴 |
 | L14-te-konjugasi | 28 | 30 | 93% | 🟢 |
 | L14-てください | 5 | 6 | 83% | 🟢 |
 | L14-ています-progresif | 4 | 5 | 80% | 🟢 |
@@ -68,10 +68,10 @@ _Terakhir diperbarui: 2026-09-02 · total sesi: 26_
 | L18-ことができます | 8 | 9 | 89% | 🟢 |
 | L18-まえに | 9 | 10 | 90% | 🟢 |
 | L18-辞書形-konjugasi | 11 | 13 | 85% | 🟢 |
-| L19-たことがあります | 13 | 14 | 93% | 🟢 |
-| L19-た-konjugasi | 20 | 21 | 95% | 🟢 |
-| L19-なります | 23 | 27 | 85% | 🟢 |
-| L19-たり | 14 | 15 | 93% | 🟢 |
+| L19-たことがあります | 15 | 16 | 94% | 🟢 |
+| L19-た-konjugasi | 22 | 23 | 96% | 🟢 |
+| L19-なります | 24 | 28 | 86% | 🟢 |
+| L19-たり | 15 | 16 | 94% | 🟢 |
 | L19-に-vs-を-のぼる | 6 | 6 | 100% | 🟢 |
 | L5-と-dengan | 1 | 1 | 100% | ⚪ |
 | L5-どこも | 1 | 1 | 100% | ⚪ |
@@ -96,9 +96,9 @@ _Terakhir diperbarui: 2026-09-02 · total sesi: 26_
 | Partikel | Benar | Total | Akurasi | Status |
 |----------|-------|-------|---------|--------|
 | から | 3 | 3 | 100% | 🟢 |
-| に | 48 | 56 | 86% | 🟢 |
-| で | 15 | 17 | 88% | 🟢 |
-| を | 20 | 21 | 95% | 🟢 |
+| に | 50 | 58 | 86% | 🟢 |
+| で | 16 | 19 | 84% | 🟢 |
+| を | 22 | 23 | 96% | 🟢 |
 | の | 3 | 3 | 100% | 🟢 |
 | が | 11 | 11 | 100% | 🟢 |
 | へ | 4 | 4 | 100% | 🟢 |
@@ -116,17 +116,17 @@ _Terakhir diperbarui: 2026-09-02 · total sesi: 26_
 | Lesson 10 | 30 | 34 | 88% | 🟢 |
 | Lesson 11 | 7 | 7 | 100% | 🟢 |
 | Lesson 12 | 3 | 3 | 100% | 🟢 |
-| Lesson 13 | 16 | 20 | 80% | 🟢 |
+| Lesson 13 | 22 | 28 | 79% | 🟡 |
 | Lesson 14 | 25 | 27 | 93% | 🟢 |
 | Lesson 15 | 16 | 19 | 84% | 🟢 |
 | Lesson 16 | 22 | 26 | 85% | 🟢 |
 | Lesson 17 | 15 | 16 | 94% | 🟢 |
 | Lesson 18 | 18 | 20 | 90% | 🟢 |
-| Lesson 19 | 58 | 65 | 89% | 🟢 |
+| Lesson 19 | 62 | 69 | 90% | 🟢 |
 | Lesson 2 | 4 | 4 | 100% | 🟢 |
 | Lesson 3 | 4 | 4 | 100% | 🟢 |
 
 ---
 
 ## Weak areas (prioritas soal berikutnya)
-Dua kelemahan baru muncul di **Lesson 13** (bab tersapa mode maintenance; sisa L17/L11 tetap 🟢). 1) 🔴 **L13-ています-keadaan** turun ke **1/3 (33%)** — soal 「雨が（　）」 dijawab `ふります` (bentuk kamus/kebiasaan) padahal keadaan berlangsung 'sedang turun' butuh **ふっています**. 2) 🟡 **L13-で-vs-を** **2/3 (67%)** — soal 「公園（　）さんぽして います」 dijawab `を` (mengira 'meninggalkan/melintasi tempat') padahal さんぽします = aktivitas biasa DI tempat → **で**; を hanya untuk verba meninggalkan (出ます・おります・でます). **Sinyal:** keduanya konsep L13 yang lama tak diuji — decay wajar, bukan pola sistemik. **Rekomendasi:** sesi berikut sisipkan 2–3 soal L13 kontras ています (keadaan berlangsung) vs bentuk ます biasa, plus pasangan で↔を (さんぽします/します DI tempat vs 出ます/おります meninggalkan tempat).
+Kelemahan masih terkonsentrasi di **Lesson 13** — bab ini turun 🟢→🟡 (**22/28, 79%**) karena dua konsepnya belum stabil. 1) 🔴 **L13-ています-keadaan** naik tipis ke **2/5 (40%)** tapi tetap merah — soal 「あたらしい 車を（　）」 dijawab `もちます` padahal kepemilikan/keadaan yang berlangsung = **もって います** (もちます = akan memegang/mengambil, bukan status memiliki). 2) 🟡 **L13-で-vs-を** **4/6 (67%)** — **miss soal 3 = ketelitian, BUKAN pola.** User menyatakan sudah tahu jawabannya **で** (公園でさんぽします), hanya kurang teliti saat memilih `を`. Angka tetap jujur (attempt ❌), tapi **jangan** dijadikan target drill / bias soal berikutnya — pemahaman で↔を sudah matang (bukti: soal 4 & 12 を-meninggalkan benar, を-meninggalkan 6/6 100%). **Sinyal:** kelemahan nyata satu-satunya = ています keadaan (ています vs bentuk ます biasa); L19 semua 🟢 (た-konj 96%, たことがあります 94%, なります 86%, たり 94%). **Rekomendasi:** sesi berikut fokus 2–3 soal ています keadaan (もって/けっこんして/しって/すんで vs bentuk ます). で↔を cukup dipantau ringan, tak perlu diperbanyak.
