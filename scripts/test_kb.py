@@ -273,6 +273,33 @@ def test_recent_items_by_subtype():
     assert empty == {st: [] for st in kb._ROTATION_SOURCE}
 
 
+def test_recent_vehicles():
+    attempts = [
+        # sesi lama (di luar window lookback=2) → tak boleh muncul
+        {"kind": "quiz", "date": "2026-08-20", "questions": [
+            {"vehicles": ["すてます"]},
+        ]},
+        {"kind": "jlpt", "date": "2026-08-25", "questions": [  # non-quiz → dilewati
+            {"key": "会社", "subtype": "MG-yomi", "vehicles": ["IGNORE"]},
+        ]},
+        {"kind": "quiz", "date": "2026-08-31", "questions": [
+            {"vehicles": ["のみます", "だします"]},
+            {"vehicles": ["いきます"]},
+            {"vehicles": []},   # kosong → dilewati
+            {},                  # tanpa field → dilewati
+        ]},
+        {"kind": "quiz", "date": "2026-09-04", "questions": [
+            {"vehicles": ["のみます", "あそびます"]},  # のみます dedup
+        ]},
+    ]
+    got = kb.recent_vehicles(attempts, "quiz")  # lookback=2 → dua sesi quiz terbaru
+    # terbaru dulu (09-04 → 08-31), dedup, skip jlpt & sesi 08-20 di luar window
+    assert got == ["のみます", "あそびます", "だします", "いきます"]
+    assert "すてます" not in got and "IGNORE" not in got
+    assert kb.recent_vehicles(attempts, "quiz", lookback=1) == ["のみます", "あそびます"]
+    assert kb.recent_vehicles([], "quiz") == []
+
+
 def test_session_deltas():
     baseline = {"quiz": {"pola": {"X": {"benar": 5, "total": 7}}}, "jlpt": {}}
     session = {"kind": "quiz", "questions": [

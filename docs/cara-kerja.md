@@ -215,6 +215,11 @@ Satu baris ditambahkan ke `history.md` (entri terbaru di atas).
   Mode `review` → hampir semua soal dari tag 🔴/🟡. Sesi pertama (belum ada data) →
   sebar merata ke seluruh pola in-scope.
 - **Bias kendaraan Anki** → lihat bagian "DUA sinyal" di atas (lunak + fallback).
+- **Rotasi permukaan (`/quiz`):** kendaraan verb/kosakata tak boleh monoton antar-sesi —
+  `plan --kind quiz` memberi `avoid_vehicles` (item 2 sesi quiz terakhir dari field
+  `vehicles` di `attempts.jsonl`), skill condongkan ke kendaraan lain. **Yang berputar cuma
+  baju soal, BUKAN pola** — pola lemah tetap diulang (spaced repetition). Bias LUNAK;
+  prioritas: kecocokan pola > item 🔴 Anki > `avoid_vehicles`.
 - **Rotasi tema teks (`/jlpt`):** cerita `DK-dokkai`/`joho`/`bunshou` tak boleh monoton —
   `plan --kind jlpt` memberi `avoid_themes` (tema mock terakhir dari `attempts.jsonl`),
   skill memilih tema beda & menyimpan `themes` sesi ini (B4).

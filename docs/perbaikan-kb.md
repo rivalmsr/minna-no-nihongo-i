@@ -21,6 +21,27 @@ atau update skor), tambahkan satu blok di paling atas daftar di bawah, format:
 
 ---
 
+### 2026-09-04 — `/quiz` dapat rotasi permukaan anti-monoton (`avoid_vehicles`)
+- **Problem:** `/jlpt` sudah punya rotasi anti-monoton (`avoid_themes` + `avoid_items` per
+  subtipe), tapi **`/quiz` belum punya sama sekali**. Satu-satunya pencegah pengulangan =
+  instruksi model "jangan ulang kalimat yang sama" yang **hanya melihat sesi berjalan**,
+  buta terhadap histori → verb/kosakata kendaraan (mis. `のみます`, `だします`) gampang
+  berulang antar-sesi, apalagi karena pool kecil + bias 🔴 Anki menariknya ke item yang sama.
+  Yang bikin monoton di `/quiz` bukan polanya (pengulangan pola lemah itu MEMANG inti spaced
+  repetition), tapi **permukaan soal (kendaraan)**.
+- **Fix:** (1) Engine `scripts/kb.py`: fungsi baru **`recent_vehicles(attempts, kind="quiz",
+  lookback=2)`** → list verb/kosakata yang baru dipakai 2 sesi quiz terakhir (terbaru dulu,
+  dedup), sumber = field opsional **`vehicles`** per question di `attempts.jsonl`. (2)
+  `cmd_plan --kind quiz` kini mengeluarkan **`avoid_vehicles`** (mirror `avoid_items` /jlpt,
+  tapi list datar & khusus quiz). (3) `session.json` skema quiz: tambah field per-question
+  **`vehicles`** (dianjurkan diisi; tanpa itu rotasi mati). Field ini otomatis persist karena
+  `record` menulis `session` verbatim ke `attempts.jsonl` — tak perlu ubah `record`. (4)
+  **Rotasi = permukaan saja, BUKAN pola:** `weights` (pola lemah) tetap diulang. Prioritas bila
+  bentrok: kecocokan pola > bias item 🔴 Anki > rotasi `avoid_vehicles` (rotasi mengalah bila
+  satu-satunya item cocok kebetulan baru dipakai). (5) Tes `test_recent_vehicles` ditambah.
+- **File:** `scripts/kb.py`, `scripts/test_kb.py`, `.claude/skills/quiz/SKILL.md`,
+  `docs/perbaikan-kb.md`.
+
 ### 2026-09-04 — Rotasi anti-monoton diperluas ke `MG-bunmyaku`/`MG-ruigi`/`DK-bunpou`/`DK-narabekae`
 - **Problem:** `/jlpt` cuma punya proteksi pengulangan untuk subtipe berteks (`avoid_themes`)
   dan baca/tulis kanji (`avoid_items` versi lama = list datar `key` MG-yomi/hyouki). **Empat

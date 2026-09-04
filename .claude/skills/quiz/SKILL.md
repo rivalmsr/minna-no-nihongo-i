@@ -142,9 +142,11 @@ yang tersedia.
 ### 2. Tentukan cakupan & campuran soal — **[ENGINE: cakupan/bobot/posisi kunci · MODEL: konsumsi]**
 - **Pintasan engine (disarankan):** jalankan `python3 scripts/kb.py plan --mode
   <adaptif|review|lesson-N>` → JSON berisi `lessons` (cakupan), `weights` (bobot tag
-  🔴/🟡), `vehicles_red` (item 🔴 Anki utk kendaraan), & `answer_positions` (posisi
-  kunci tersebar 1–4). Pakai ini sebagai kerangka; kamu tinggal menyusun kalimat soal.
-  Tetap baca **anchor** lesson in-scope untuk contoh pola. (Manual di bawah = fallback.)
+  🔴/🟡), `vehicles_red` (item 🔴 Anki utk kendaraan), `answer_positions` (posisi
+  kunci tersebar 1–4), & `avoid_vehicles` (verb/kosakata yang BARU dipakai 2 sesi
+  quiz terakhir — **rotasi permukaan anti-monoton**). Pakai ini sebagai kerangka; kamu
+  tinggal menyusun kalimat soal. Tetap baca **anchor** lesson in-scope untuk contoh pola.
+  (Manual di bawah = fallback.)
 - Tentukan cakupan: pakai argumen bila ada; kalau `/quiz` polos, hitung lewat
   "Menentukan cakupan default" di atas (hemat — jangan baca semua lesson).
 - Muat materi sesuai kontrak **"Hemat token (WAJIB)"** di atas: baca **anchor**
@@ -161,6 +163,15 @@ yang tersedia.
   `anki-weak-items.md` **bila** item itu cocok dengan pola & cakupan. Bias lunak, jangan
   paksakan bila tak nyambung (lihat prinsip 2c). Contoh: butuh verb untuk たform →
   pilih `だします`🔴 daripada verb acak yang sudah dikuasai.
+- **Rotasi permukaan (anti-monoton):** `plan` mengembalikan `avoid_vehicles` = verb/
+  kosakata yang BARU dipakai 2 sesi quiz terakhir. **Yang dirotasi cuma "baju" soal
+  (kendaraan), BUKAN pola** — pola lemah dari `weights` tetap wajib diulang (itu inti
+  spaced repetition). Saat mengisi soal, **hindari** kendaraan di `avoid_vehicles`
+  bila ada alternatif yang sama-sama cocok — supaya kalimat/kosakata terasa segar.
+  **Prioritas bila bentrok:** kecocokan pola > bias item 🔴 Anki > rotasi
+  `avoid_vehicles`. Jadi kalau satu-satunya item 🔴 yang cocok kebetulan ada di
+  `avoid_vehicles`, **tetap pakai** (rotasi mengalah); rotasi hanya memilih di antara
+  kandidat yang setara. Jangan ganti kalimat sampai janggal demi menghindari satu kata.
 
 ### 3. Buat soal (gaya JLPT N5) — **[MODEL — termasuk GERBANG validasi kunci tunggal]**
 Lihat **Template tipe soal** di bawah. Untuk tiap soal siapkan (internal):
@@ -258,8 +269,14 @@ sendiri** (rawan salah & boros token).
  "history_note":"<catatan kualitatif 1 baris utk history>",
  "weak_narrative":"<prosa lengkap section Weak areas: numbered 🔴/🟡 + Sinyal + Rekomendasi>",
  "questions":[{"qno":1,"key":"に","submitted":"に","subtype":null,
+   "vehicles":["<verb/kosakata pengisi soal>"],
    "tags":{"pola":["<tag>"],"partikel":["<p>"],"lesson":["Lesson N"]}}]}
 ```
+- **`vehicles` (WAJIB diisi bila soal punya kendaraan verb/kosakata)** = daftar
+  verb/kosakata inti yang jadi "baju" soal (mis. `["だします","のみます"]`). Engine
+  menyimpannya di `attempts.jsonl` supaya sesi berikut bisa **merotasi permukaan**
+  (`plan` → `avoid_vehicles`). Boleh dikosongkan (`[]`) untuk soal murni partikel/pola
+  tanpa kendaraan khas. **Tanpa field ini rotasi anti-monoton mati** — jadi biasakan isi.
 - **Menilai = engine.** Tiap soal bawa **`key`** (label opsi benar, persis string panel) +
   **`submitted`** (label yang user klik); engine menghitung benar/salah (`submitted==key`).
   **Jangan** tulis `correct` sendiri (engine yang menurunkan skor & akan `WARN` bila beda).

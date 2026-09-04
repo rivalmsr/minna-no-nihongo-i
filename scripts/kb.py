@@ -620,6 +620,24 @@ def recent_items_by_subtype(attempts: list, kind: str = "jlpt",
     return out
 
 
+def recent_vehicles(attempts: list, kind: str = "quiz",
+                    lookback: int = 2) -> list[str]:
+    """Kendaraan (verb/kosakata pengisi soal) yang BARU dipakai pada `lookback` sesi
+    `kind` TERBARU — supaya sesi berikutnya bisa MENGHINDARI-nya (rotasi permukaan
+    anti-monoton). BEDA dari rotasi /jlpt: yang dirotasi cuma *baju soal* (kendaraan),
+    BUKAN pola — pola lemah tetap diulang (spaced repetition). Sumber = field opsional
+    `vehicles` (list) per question di `attempts.jsonl`. Return list (terbaru dulu,
+    dedup); kosong bila belum ada sesi ber-`vehicles`."""
+    sessions = [s for s in attempts if s.get("kind") == kind]
+    out: list[str] = []
+    for sess in reversed(sessions[-lookback:]):  # terbaru dulu; jaga urutan stabil
+        for q in sess.get("questions", []):
+            for v in q.get("vehicles") or []:
+                if v and v not in out:
+                    out.append(v)
+    return out
+
+
 def maintenance_lessons(agg: dict, attempts: list, limit: int = 3) -> list[str]:
     """B2: saat tak ada weak-area, sapa bab paling RAWAN LUNTUR — urut dari yang
     paling lama tak diuji (spaced review), tie-break akurasi terendah. Deterministik."""
@@ -753,6 +771,12 @@ def cmd_plan(args) -> int:
     if scope.get("maintenance"):
         out["maintenance"] = True
         out["review_reason"] = scope["review_reason"]
+    if args.kind == "quiz":
+        # Kendaraan (verb/kosakata) yang BARU dipakai 2 sesi terakhir → skill condongkan
+        # ke item LAIN (rotasi permukaan anti-monoton). Cuma baju soal yang berputar;
+        # pola lemah dari `weights` tetap diulang. Bias LUNAK: tunduk di bawah kecocokan
+        # pola & boleh dilanggar bila item lemah/pool memaksa.
+        out["avoid_vehicles"] = recent_vehicles(attempts, "quiz")
     if args.kind == "jlpt":
         # Tema teks mock TERAKHIR → skill pilih tema BEDA (rotasi dokkai/joho/bunshou).
         out["avoid_themes"] = recent_themes(attempts, "jlpt")
