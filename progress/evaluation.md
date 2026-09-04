@@ -12,7 +12,7 @@ Diperbarui otomatis oleh skill `/quiz` setiap selesai sesi. Melacak akurasi
 **Ambang status:** akurasi <60% 🔴 LEMAH · 60–79% 🟡 · ≥80% 🟢
 (butuh minimal **3 attempt** sebelum status dihitung; di bawah itu = ⚪ belum cukup data)
 
-_Terakhir diperbarui: 2026-09-03 · total sesi: 27_
+_Terakhir diperbarui: 2026-09-04 · total sesi: 28_
 
 ---
 
@@ -45,11 +45,11 @@ _Terakhir diperbarui: 2026-09-03 · total sesi: 27_
 | L12-より | 1 | 1 | 100% | ⚪ |
 | L12-のほうが | 1 | 1 | 100% | ⚪ |
 | L12-lampau-positif | 1 | 1 | 100% | ⚪ |
-| L13-に-tujuan | 9 | 10 | 90% | 🟢 |
-| L13-を-meninggalkan | 6 | 6 | 100% | 🟢 |
-| L13-で-vs-を | 4 | 6 | 67% | 🟡 |
-| L13-ています-keadaan | 2 | 5 | 40% | 🔴 |
-| L14-te-konjugasi | 28 | 30 | 93% | 🟢 |
+| L13-に-tujuan | 10 | 11 | 91% | 🟢 |
+| L13-を-meninggalkan | 7 | 7 | 100% | 🟢 |
+| L13-で-vs-を | 5 | 7 | 71% | 🟡 |
+| L13-ています-keadaan | 5 | 8 | 63% | 🟡 |
+| L14-te-konjugasi | 29 | 31 | 94% | 🟢 |
 | L14-てください | 5 | 6 | 83% | 🟢 |
 | L14-ています-progresif | 4 | 5 | 80% | 🟢 |
 | L14-ましょうか | 1 | 1 | 100% | ⚪ |
@@ -91,14 +91,18 @@ _Terakhir diperbarui: 2026-09-03 · total sesi: 27_
 | L3-どこの-asal | 1 | 1 | 100% | ⚪ |
 | L3-ここ-tempat | 1 | 1 | 100% | ⚪ |
 | L11-が-vs-を | 1 | 1 | 100% | ⚪ |
+| L20-普通形-動詞 | 2 | 2 | 100% | ⚪ |
+| L20-普通形-い形 | 1 | 1 | 100% | ⚪ |
+| L20-普通形-な形-名詞 | 1 | 1 | 100% | ⚪ |
+| L20-普通体-会話 | 1 | 1 | 100% | ⚪ |
 
 ## Per partikel
 | Partikel | Benar | Total | Akurasi | Status |
 |----------|-------|-------|---------|--------|
 | から | 3 | 3 | 100% | 🟢 |
-| に | 50 | 58 | 86% | 🟢 |
-| で | 16 | 19 | 84% | 🟢 |
-| を | 22 | 23 | 96% | 🟢 |
+| に | 52 | 60 | 87% | 🟢 |
+| で | 17 | 20 | 85% | 🟢 |
+| を | 25 | 26 | 96% | 🟢 |
 | の | 3 | 3 | 100% | 🟢 |
 | が | 11 | 11 | 100% | 🟢 |
 | へ | 4 | 4 | 100% | 🟢 |
@@ -116,8 +120,8 @@ _Terakhir diperbarui: 2026-09-03 · total sesi: 27_
 | Lesson 10 | 30 | 34 | 88% | 🟢 |
 | Lesson 11 | 7 | 7 | 100% | 🟢 |
 | Lesson 12 | 3 | 3 | 100% | 🟢 |
-| Lesson 13 | 22 | 28 | 79% | 🟡 |
-| Lesson 14 | 25 | 27 | 93% | 🟢 |
+| Lesson 13 | 28 | 34 | 82% | 🟢 |
+| Lesson 14 | 26 | 28 | 93% | 🟢 |
 | Lesson 15 | 16 | 19 | 84% | 🟢 |
 | Lesson 16 | 22 | 26 | 85% | 🟢 |
 | Lesson 17 | 15 | 16 | 94% | 🟢 |
@@ -125,8 +129,9 @@ _Terakhir diperbarui: 2026-09-03 · total sesi: 27_
 | Lesson 19 | 62 | 69 | 90% | 🟢 |
 | Lesson 2 | 4 | 4 | 100% | 🟢 |
 | Lesson 3 | 4 | 4 | 100% | 🟢 |
+| Lesson 20 | 5 | 5 | 100% | 🟢 |
 
 ---
 
 ## Weak areas (prioritas soal berikutnya)
-Kelemahan masih terkonsentrasi di **Lesson 13** — bab ini turun 🟢→🟡 (**22/28, 79%**) karena dua konsepnya belum stabil. 1) 🔴 **L13-ています-keadaan** naik tipis ke **2/5 (40%)** tapi tetap merah — soal 「あたらしい 車を（　）」 dijawab `もちます` padahal kepemilikan/keadaan yang berlangsung = **もって います** (もちます = akan memegang/mengambil, bukan status memiliki). 2) 🟡 **L13-で-vs-を** **4/6 (67%)** — **miss soal 3 = ketelitian, BUKAN pola.** User menyatakan sudah tahu jawabannya **で** (公園でさんぽします), hanya kurang teliti saat memilih `を`. Angka tetap jujur (attempt ❌), tapi **jangan** dijadikan target drill / bias soal berikutnya — pemahaman で↔を sudah matang (bukti: soal 4 & 12 を-meninggalkan benar, を-meninggalkan 6/6 100%). **Sinyal:** kelemahan nyata satu-satunya = ています keadaan (ています vs bentuk ます biasa); L19 semua 🟢 (た-konj 96%, たことがあります 94%, なります 86%, たり 94%). **Rekomendasi:** sesi berikut fokus 2–3 soal ています keadaan (もって/けっこんして/しって/すんで vs bentuk ます). で↔を cukup dipantau ringan, tak perlu diperbanyak.
+Tak ada lagi area 🔴 — dua sisa 🟡, keduanya membaik. 1) 🟡 **L13-ています-keadaan** naik **5/8 (63%)** dari 40% 🔴 setelah 3/3 benar sesi ini (知って います, もって います, 住んで います) — user makin bisa membedakan keadaan berlanjut (もって/しって/すんで います) dari bentuk ます biasa. Belum stabil, terus pantau tapi bukan lagi lampu merah. 2) 🟡 **L13-で-vs-を** **5/7 (71%)** — angka ini naik karena Q3 (公園…さんぽします) di-**override benar**: soalnya rancu, を dan で dua-duanya gramatikal (を = area yang dilewati saat さんぽ, persis pola L13-を-meninggalkan; で = lokasi aktivitas). Jadi ini **bukan** sinyal kelemahan で↔を — pemahaman user malah tepat. **Sinyal:** L20 普通形 debut mulus (5/5, 動詞→辞書形/た, い-adj buang です, な-adj/名詞→だ, kasual うん/ううん) → dasar futsuukei solid. **Rekomendasi:** sesi depan cukup 1–2 soal ています-keadaan untuk mengunci ≥80%; jangan buat soal で-vs-を dengan さんぽします lagi (rancu) — pakai konteks yang mengunci satu jawaban (mis. 出ます/おります untuk を; 食べます/はたらきます untuk で). Perbanyak L20 普通形 dalam pola bab 1–19 (〜ている, 〜たことがある) untuk uji penerapan, bukan sekadar konversi.

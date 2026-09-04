@@ -124,13 +124,22 @@ yang tersedia.
 
 ## Langkah eksekusi
 
-### 1. Muat state
+> **Pemilik tiap langkah (WAJIB — cegah take-over engine↔model).** Tag `[…]` di judul tiap
+> langkah menyatakan **siapa yang bertanggung jawab**. Prinsip: **engine** = semua yang
+> numerik/deterministik (seleksi cakupan, posisi kunci, grading `submitted==key`, skor,
+> status, ranking, render tabel); **model** = semua yang bahasa/penilaian mutu (kalimat soal,
+> gloss, **validasi kunci tunggal**, pembahasan, narasi). Larangan dua arah & kanal
+> `override`+`note` sbg satu-satunya jalur model→grading → lihat **"Aturan anti-take-over"**
+> di `docs/engine-bookkeeping-plan.md`. **Engine menilai mekanis & buta soal rancu** — yang
+> menjamin tepat satu jawaban = **model di langkah 3**, bukan engine.
+
+### 1. Muat state — **[MODEL baca state · ENGINE `plan` opsional]**
 - Baca `progress/evaluation.md` (weak areas & akurasi terkini).
 - Baca `reference/quiz-taxonomy.md` (daftar tag valid).
 - Baca **anchor 🔴** `progress/anki-weak-items.md` (item Anki paling sering lupa) —
   dipakai untuk membias pemilihan kendaraan verb/kosakata di langkah 3.
 
-### 2. Tentukan cakupan & campuran soal
+### 2. Tentukan cakupan & campuran soal — **[ENGINE: cakupan/bobot/posisi kunci · MODEL: konsumsi]**
 - **Pintasan engine (disarankan):** jalankan `python3 scripts/kb.py plan --mode
   <adaptif|review|lesson-N>` → JSON berisi `lessons` (cakupan), `weights` (bobot tag
   🔴/🟡), `vehicles_red` (item 🔴 Anki utk kendaraan), & `answer_positions` (posisi
@@ -153,12 +162,21 @@ yang tersedia.
   paksakan bila tak nyambung (lihat prinsip 2c). Contoh: butuh verb untuk たform →
   pilih `だします`🔴 daripada verb acak yang sudah dikuasai.
 
-### 3. Buat soal (gaya JLPT N5)
+### 3. Buat soal (gaya JLPT N5) — **[MODEL — termasuk GERBANG validasi kunci tunggal]**
 Lihat **Template tipe soal** di bawah. Untuk tiap soal siapkan (internal):
 jawaban benar, penjelasan singkat, dan **tag** `{lesson, pola, partikel}`.
 Susun soal bervariasi; jangan mengulang kalimat yang sama.
 
-### 4. Sajikan & kumpulkan jawaban — MODE UJIAN (default)
+- **GERBANG "tepat satu kunci" (WAJIB, sebelum soal tampil).** Ini **tanggung jawab model**,
+  bukan engine — engine menilai mekanis (`submitted==key`) & **buta** apakah distraktor
+  ternyata juga benar. Untuk tiap soal, **pasang tiap opsi ke kalimat** & pastikan **hanya
+  satu** menghasilkan kalimat sah dalam konteks; kalau ≥2 sah → soal **rancu**, **ganti
+  konteks/distraktor** (jangan mengandalkan `override` saat grading — itu patch pasca-fakta,
+  bukan pengganti validasi). Lihat contoh cacat di **"Catatan gaya"** (自↔他動詞 tense, memberi↔
+  menerima に, dan **で↔を dengan さんぽします** — 公園を/公園で dua-duanya sah). Item 🔴 Anki boleh
+  jadi kunci, tapi konteks tetap harus mengunci satu jawaban.
+
+### 4. Sajikan & kumpulkan jawaban — MODE UJIAN (default) — **[MODEL tampilan · harness panel]**
 User menjawab **semua soal dulu**, koreksi & analisis baru muncul **di akhir**.
 - **Semua soal dibuat pilihan ganda** (2–4 opsi) supaya bisa diklik.
 - Tampilan tiap soal: tulis di chat pakai format di **"Format tampilan (kanji besar)"**
@@ -209,13 +227,15 @@ User menjawab **semua soal dulu**, koreksi & analisis baru muncul **di akhir**.
 - (Alternatif: kalau user minta feedback langsung per soal, sajikan satu-satu dan
   koreksi tiap kali dijawab.)
 
-### 5. Nilai & tandai (di akhir, setelah semua terjawab)
+### 5. Nilai & tandai (di akhir, setelah semua terjawab) — **[ENGINE menilai · MODEL suplai key+submitted]**
 Nilai **semua soal sekaligus** sebagai "lembar hasil": untuk tiap soal tampilkan
 nomor, ✅/❌, jawaban benar, dan **penjelasan singkat** (Bahasa Indonesia, kaitkan
 ke pola/lesson). Catat **tag** `{lesson, pola, partikel}` + benar/salah tiap soal
-untuk langkah 6.
+untuk langkah 6. **Benar/salah = keluaran engine** (`submitted==key` di langkah 6),
+**bukan** vonis tanganmu; model hanya menyuplai `key`+`submitted` (dan `override`+`note`
+bila soal terbukti rancu — patch pasca-fakta, lihat langkah 3 & anti-take-over).
 
-### 6. Perbarui data — via engine `kb.py record` (JANGAN hitung manual)
+### 6. Perbarui data — via engine `kb.py record` (JANGAN hitung manual) — **[ENGINE angka/status/ranking · MODEL prosa]**
 **Pembukuan kini dikerjakan engine deterministik `scripts/kb.py`, bukan hitung tangan.**
 Setelah menilai semua soal, tulis satu `session.json` lalu jalankan:
 `python3 scripts/kb.py record <path/session.json>`. Engine otomatis: append
@@ -255,7 +275,7 @@ sendiri** (rawan salah & boros token).
   Weak areas = 🔴 lalu 🟡 dari akurasi terendah (maks ~5); history = 1 baris terbaru di atas.
 - **Jangan** edit angka tabel `evaluation.md`/`history.md` dengan tangan (tertimpa engine).
 
-### 7. Tampilkan hasil — RINGKAS (hemat token)
+### 7. Tampilkan hasil — RINGKAS (hemat token) — **[MODEL tampilan · angka DARI engine]**
 Default tampilan chat **RINGKAS** (hemat token; analisis lengkap pindah ke `/summary`):
 - **Skor**: benar/total (persen), satu baris.
 - **Tabel HANYA soal yang SALAH** — kolom `# · pola · jawabanmu · kunci`. Jangan tampilkan

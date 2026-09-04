@@ -21,6 +21,32 @@ atau update skor), tambahkan satu blok di paling atas daftar di bawah, format:
 
 ---
 
+### 2026-09-04 — Soal `L13-で-vs-を` rancu: `公園でさんぽします` punya dua jawaban sah (で & を)
+- **Problem:** `/quiz` 2026-09-04 soal 3 = 「毎朝（まいあさ）公園（こうえん）（　）さんぽします」 dengan
+  kunci dipatok tunggal `で`. Tapi `を` juga menghasilkan kalimat gramatikal — `公園をさんぽします`
+  (を = area yang dilewati/dijelajahi saat berjalan) adalah pola yang **taxonomy KB ini sendiri**
+  ajarkan (`L13-を-meninggalkん`: `[tempat]を + さんぽします/おります/でます`). Jadi soal melanggar
+  aturan gaya "distraktor wajib JELAS SALAH — tepat satu jawaban benar". Engine bekerja benar
+  (match `submitted="を"` ≠ `key="で"` → salah); randomisasi posisi hanya mengacak letak, **tidak
+  memvalidasi ketunggalan kunci** — jadi soal ambigu lolos ke user. Akibat: user (yang paham) ditandai
+  salah tak adil, `L13-で-vs-を` sempat turun ke 🔴.
+- **Fix:** (1) Soal 3 di-`override:"correct"`+`note` di `session.json` → skor jujur 12/12,
+  `L13-で-vs-を` pulih ke 5/7 71% 🟡 (bukan sinyal kelemahan sejati). (2) Aturan konkret dicatat:
+  **JANGAN pakai `さんぽします` (juga verba traversal lain yang menerima を: おります/でます) untuk
+  menguji で↔を** — keduanya rancu. Uji で↔を hanya dengan verba yang mengunci satu partikel:
+  aktivitas biasa di suatu tempat (食（た）べます/はたらきます/べんきょうします → で) vs meninggalkan/
+  melewati tempat (家（いえ）を 出（で）ます → を). Prinsip induk: cek tiap opsi dipasang ke kalimat
+  sebelum soal dipakai; >1 opsi sah = rancu, ganti konteks. (3) **Kontrak tanggung jawab
+  per langkah dipertegas** agar engine↔model tak saling ambil peran: tiap langkah di
+  "Langkah eksekusi" `quiz/SKILL.md` kini bertanda pemilik `[ENGINE/MODEL]`, dan
+  `engine-bookkeeping-plan.md` mendapat blok **"Aturan anti-take-over"** — inti: engine
+  menilai MEKANIS & buta soal rancu; **validasi kunci-tunggal = 100% model di langkah 3**
+  (randomisasi posisi ≠ validasi); `override`+`note` = satu-satunya kanal model→grading
+  (patch pasca-fakta, wajib entri log bila polanya bisa berulang).
+- **File:** `docs/perbaikan-kb.md`, `docs/engine-bookkeeping-plan.md`,
+  `.claude/skills/quiz/SKILL.md`, `progress/attempts.jsonl` + `progress/evaluation.md`
+  (override tercatat via `kb.py record`)
+
 ### 2026-09-03 — `DK-narabekae` bocor: potongan dienumerasi di kurung `question` dalam urutan tersusun
 - **Problem:** mock 2026-09-03 soal 10 (susun kalimat), panel `question` menutup dengan kurung
   `（いえへ・かえる・まえに・スーパーで）` — persis urutan jawaban yang benar (rangka

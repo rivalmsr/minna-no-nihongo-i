@@ -25,6 +25,30 @@ model. Engine hanya angka, ranking, seleksi, render, penyimpanan.
 | Baris tabel history | — |
 | Seleksi cakupan + bobot + bias item 🔴 | — |
 | Sebar posisi kunci (1/2/3/4) | — |
+| **Grading mekanis** (`submitted==key`) | **Validasi "tepat SATU kunci"** sebelum soal tampil |
+| Menerapkan `override`+`note` (bila disuplai) | **Menerbitkan** `override`+`note` (hanya soal rancu) |
+
+### Aturan anti-take-over (WAJIB — mencegah saling ambil peran)
+Batas di atas **dua arah**; pelanggaran salah satunya = bug proses, bukan sekadar gaya.
+
+- **Engine menilai MEKANIS & BUTA kualitas soal.** `kb.py` hanya membandingkan
+  `submitted==key`; ia **tidak bisa dan tidak boleh** menebak apakah soal rancu / punya
+  >1 jawaban sah. Grading "salah" dari engine untuk soal cacat = **engine benar**; cacatnya
+  di hulu (penyusunan), bukan di grading.
+- **Validasi ketunggalan kunci = 100% MODEL, di langkah 3 (sebelum soal tampil).** Randomisasi
+  posisi kunci (engine, `answer_positions`) **hanya mengacak letak** — ia **bukan** validasi
+  bahwa kunci tunggal. Tak ada tahap engine yang menangkap soal ambigu; itu tanggung jawab
+  penyusun soal. Cek tiap opsi dipasang ke kalimat; >1 opsi sah → **ganti soal**, jangan
+  andalkan override.
+- **Model DILARANG:** menghitung/menulis angka tabel, menulis `correct` boolean sendiri,
+  atau mengedit `evaluation.md`/`jlpt-evaluation.md`/`history.md` dengan tangan (tertimpa
+  render & memutus reprodusibilitas).
+- **Engine DILARANG:** mengarang kalimat, gloss opsi, pembahasan, atau narasi Sinyal/Rekomendasi.
+- **Satu-satunya kanal model → grading = `override`+`note` di `session.json`.** Ini **patch
+  pasca-fakta untuk soal rancu yang LOLOS dari validasi langkah 3**, bukan rutinitas. Tiap
+  override **wajib** disertai: (a) `note` alasan, dan (b) bila polanya bisa berulang, entri
+  `docs/perbaikan-kb.md` (Problem→Fix→Tanggal) supaya soal sejenis tak dibuat lagi. Override
+  yang sering = sinyal validasi langkah 3 lemah, bukan solusi.
 
 ## 2. Keputusan terkunci
 - Sumber: **JSONL append-only** `progress/attempts.jsonl` + `progress/baseline.json` (commit).
