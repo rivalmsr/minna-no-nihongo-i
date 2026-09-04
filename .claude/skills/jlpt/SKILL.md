@@ -52,9 +52,11 @@ Tag subtipe ada di `reference/quiz-taxonomy.md` (section "Tag subtipe JLPT").
    > 🔴 cuma ~10 item (生・先・年・千・時・北・友・会・南・東) → kalau tiap mock dipaksa ambil dari
    > situ, soal jadi monoton (先生／友達／時間 berulang). **Aturan:** (a) **rotasi ke seluruh kanji
    > N5** di `n5-vocabulary.md` sbg sumber utama; kanji 🔴 disentuh **sesekali** (≈1 dari 2 soal
-   > tiap subtipe, tak wajib tiap mock), **bukan** default. (b) **Hindari `avoid_items`** dari
-   > `kb.py plan` (= kanji/kata MG-yomi/hyouki yang dipakai **2 mock terakhir**) — pilih item
-   > BEDA. Lihat "ROTASI kanji baca/tulis" di bawah.
+   > tiap subtipe, tak wajib tiap mock), **bukan** default. (b) **Hindari `avoid_items["MG-yomi"]`
+   > / `["MG-hyouki"]`** dari `kb.py plan` (= kanji/kata baca-tulis yang dipakai **2 mock
+   > terakhir**) — pilih item BEDA. Lihat "ROTASI kanji baca/tulis" di bawah. Rotasi serupa
+   > berlaku untuk `MG-bunmyaku`/`MG-ruigi` & `DK-bunpou`/`DK-narabekae` (lihat blok rotasi
+   > masing-masing).
 5. **Tulisan:** hiragana + kanji umum N5. **Setiap kanji diberi bacaan hiragana** dalam
    kurung, mis. `学校（がっこう）` — **KECUALI** kata kanji yang justru sedang diuji
    bacaannya di soal `MG-yomi` (di situ furigana-nya jadi jawaban, jangan dibocorkan;
@@ -119,8 +121,11 @@ Bila belum ada data (tracker kosong) → sebar merata ke semua subtipe.
 - **Pintasan engine (disarankan):** `python3 scripts/kb.py plan --kind jlpt --mode
   <mock|moji|bunpou|review>` → JSON `weights` (subtipe lemah), `vehicles_red` (kanji/
   kosakata 🔴 Anki), `answer_positions` (posisi kunci tersebar), `avoid_themes` (tema teks
-  mock terakhir → pilih beda) & `avoid_items` (kanji MG-yomi/hyouki 2 mock terakhir → pilih
-  beda). Pakai sbg kerangka.
+  mock terakhir → pilih beda) & `avoid_items` (**dict per-subtipe** item 2 mock terakhir →
+  pilih beda per subtipe). `avoid_items` kini mencakup enam subtipe non-teks:
+  `MG-yomi`/`MG-hyouki` (kanji/bacaan), `MG-bunmyaku`/`MG-ruigi` (kosakata/sinonim),
+  `DK-bunpou`/`DK-narabekae` (pola id). Baca `avoid_items["<subtipe>"]` saat menyusun tiap
+  subtipe → pilih item BEDA. Pakai sbg kerangka.
 - Cakupan tata bahasa = lesson yang tersedia (`lessons/`). Untuk bacaan/grammar, pakai
   pola in-scope; boleh utamakan **bab terbaru + pola lemah** dari `evaluation.md`.
 - Muat materi sesuai **"Hemat token"**: anchor lesson + `Grep` kosakata/sinonim/verb
@@ -194,8 +199,11 @@ pakai angka itu → jalankan lagi tanpa `--dry-run`.
   engine hitung benar/salah. Soal rancu → `"override":"correct"/"incorrect"` + `"note"`.
   (Boolean `correct` lama masih diterima.)
 - **Tiap question WAJIB punya `subtype`** (`MG-*`/`DK-*` dari `reference/quiz-taxonomy.md`).
-  Soal `DK-bunpou`/`DK-narabekae` boleh menambah `tags` pola/partikel (opsional, hanya
-  informatif — engine tetap **tak** menulisnya ke `evaluation.md`).
+  Soal `DK-bunpou`/`DK-narabekae` **dianjurkan** menambah `tags` = **list pola/partikel id**
+  (mis. `["L18-辞書形+まえに"]`). `tags` kini **dipakai rotasi anti-monoton** (jadi identitas
+  item di `avoid_items["DK-bunpou"]`/`["DK-narabekae"]` mock berikutnya) — **bukan lagi sekadar
+  informatif**; bila kosong engine fallback ke `key`. Tetap **tak** ditulis ke `evaluation.md`
+  (rotasi ≠ skor). `MG-bunmyaku`/`MG-ruigi` tak perlu field baru: identitas rotasi = `key`.
 - `cakupan` **diawali `JLPT`** (agar baris history beda dari `/quiz`). `history_note` &
   `weak_narrative` = prosa yang KAMU tulis; engine mencetak ranking weak deterministik
   sebagai bahannya.
@@ -407,14 +415,33 @@ Q: どようびは なんじから ですか。  1. 9じ  2. 10じ  3. 16じ  4.
 > - **Sumber utama = seluruh kanji N5** di `n5-vocabulary.md` (kolom Kana⇄Kanji). Rotasi
 >   lebar: tiap mock ganti kanji yang diuji. Kanji 🔴 (`anki-weak-items.md`) disentuh
 >   **sesekali** (≈1 dari 2 soal per subtipe, TAK wajib tiap mock) — bias, bukan default.
-> - **Hindari `avoid_items`** dari `kb.py plan --kind jlpt` = daftar `key` MG-yomi/hyouki yang
->   dipakai **2 mock terakhir** (mis. `["せんせい","先生","時間","学校"]`). Pilih kanji/kata
->   **BEDA** dari daftar itu. Kosong `[]` → bebas, tapi tetap variasikan.
+> - **Hindari `avoid_items["MG-yomi"]` / `["MG-hyouki"]`** dari `kb.py plan --kind jlpt` =
+>   daftar `key` baca-tulis yang dipakai **2 mock terakhir** (mis. `["せんせい","先生","時間",
+>   "学校"]`). Pilih kanji/kata **BEDA** dari daftar itu. Kosong `[]` → bebas, tapi tetap variasikan.
 > - **Tak perlu field baru saat `record`.** Beda dari tema: identitas item **sudah** tersimpan
 >   di `key` tiap question → engine menurunkan `avoid_items` otomatis. Cukup pastikan `key`
 >   MG-yomi/hyouki = kata yang benar-benar diuji (bacaan → kana; penulisan → kanji).
 > - Ganti juga **kategori** kanji antar-mock (angka/waktu · arah/tempat · orang/keluarga ·
 >   kata kerja · alam/hari) biar tak selalu ruang semantik yang sama.
+
+> 🍱 **ROTASI kosakata `MG-bunmyaku` / `MG-ruigi` (jangan monoton).** Sama semangatnya dgn
+> rotasi kanji, tapi identitas item = **`key`** (jawaban benar). **Hindari
+> `avoid_items["MG-bunmyaku"]` / `["MG-ruigi"]`** dari `plan` (= kosakata/sinonim yang
+> dipakai 2 mock terakhir, mis. `MG-bunmyaku:["りょこう","けして"]`, `MG-ruigi:["かんたんです",
+> "父と母"]`) — pilih kata/pasangan **BEDA**. Tetap tunduk aturan tiap subtipe: `MG-bunmyaku`
+> **wajib cue** yang mengunci satu jawaban (jangan korbankan cue demi rotasi); `MG-ruigi`
+> ambil dari `n5-synonyms.md`. **Bias LUNAK:** kalau item lemah 🔴 Anki yang cocok kebetulan
+> ada di `avoid_items`, boleh diulang **jarang** bila memang perlu — tapi default = variasi.
+> **Tak perlu field baru saat `record`** (identitas = `key`).
+
+> 🧱 **ROTASI pola `DK-bunpou` / `DK-narabekae` (jangan ngulang pola sama).** Identitas item =
+> **pola id di `tags`** (fallback `key`). **Hindari `avoid_items["DK-bunpou"]` /
+> `["DK-narabekae"]`** dari `plan` (= pola id yang dipakai 2 mock terakhir, mis.
+> `["L18-辞書形+まえに","L20-おしえます-に"]`) → uji **pola BEDA** mock ini. **Bias LUNAK & tunduk
+> weak-area:** kalau `evaluation.md` menandai pola itu masih 🔴/🟡 dan memang perlu uji-ulang,
+> **weak-area menang** (boleh diulang) — rotasi hanya melawan pengulangan pola yang sudah mantap.
+> **WAJIB isi `tags`** (list pola/partikel id) saat `record` biar rotasi punya identitas stabil;
+> tanpa `tags` engine terpaksa pakai `key` (mis. partikel `に`) yang identitasnya lemah.
 
 ## Hint fading (scaffolding) — porsi `description` mengikuti penguasaan
 

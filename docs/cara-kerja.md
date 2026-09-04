@@ -218,6 +218,10 @@ Satu baris ditambahkan ke `history.md` (entri terbaru di atas).
 - **Rotasi tema teks (`/jlpt`):** cerita `DK-dokkai`/`joho`/`bunshou` tak boleh monoton —
   `plan --kind jlpt` memberi `avoid_themes` (tema mock terakhir dari `attempts.jsonl`),
   skill memilih tema beda & menyimpan `themes` sesi ini (B4).
+- **Rotasi item non-teks (`/jlpt`):** `plan --kind jlpt` juga memberi `avoid_items` (dict
+  per-subtipe item 2 mock terakhir dari `attempts.jsonl`) untuk enam subtipe non-teks —
+  `MG-yomi`/`MG-hyouki` & `MG-bunmyaku`/`MG-ruigi` (identitas `key`), `DK-bunpou`/`DK-narabekae`
+  (identitas pola id di `tags`). Skill pilih item BEDA per subtipe (bias LUNAK; weak-area menang).
 
 ### 4. Aturan penyajian (menjaga recall tetap jujur)
 - **Mode ujian:** jawab **semua** soal dulu, koreksi & analisis muncul **di akhir**.

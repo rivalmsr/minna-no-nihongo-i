@@ -233,6 +233,46 @@ def test_recent_themes():
     assert kb.recent_themes([]) == {}
 
 
+def test_recent_items_by_subtype():
+    attempts = [
+        # mock lama (di luar window lookback=2) → tak boleh muncul
+        {"kind": "jlpt", "date": "2026-08-20", "questions": [
+            {"key": "会社", "subtype": "MG-yomi"},
+            {"key": "とおい", "subtype": "MG-bunmyaku"},
+        ]},
+        {"kind": "quiz", "date": "2026-08-25", "questions": [  # non-jlpt → dilewati
+            {"correct": True, "tags": {"pola": ["X"]}},
+        ]},
+        {"kind": "jlpt", "date": "2026-08-31", "questions": [
+            {"key": "東京", "subtype": "MG-yomi"},
+            {"key": "りょこう", "subtype": "MG-bunmyaku"},
+            {"key": "かんたんです", "subtype": "MG-ruigi"},
+            {"key": "に", "subtype": "DK-bunpou", "tags": ["L20-おしえます-に"]},
+            {"key": "ことが", "subtype": "DK-narabekae"},  # tanpa tags → fallback key
+            {"key": "9:15", "subtype": "DK-joho"},          # berteks → diabaikan
+        ]},
+        {"kind": "jlpt", "date": "2026-09-04", "questions": [
+            {"key": "水", "subtype": "MG-hyouki"},
+            {"key": "けして", "subtype": "MG-bunmyaku"},
+            {"key": "まえに", "subtype": "DK-narabekae", "tags": ["L18-辞書形+まえに"]},
+        ]},
+    ]
+    by = kb.recent_items_by_subtype(attempts, "jlpt")  # lookback=2 → dua mock terbaru
+    # key-based: kosakata/sinonim/baca-tulis; window 2 mock → 会社/とおい (mock 08-20) hilang
+    assert by["MG-yomi"] == ["東京"]
+    assert by["MG-hyouki"] == ["水"]
+    assert by["MG-bunmyaku"] == ["けして", "りょこう"]   # terbaru dulu (09-04 → 08-31)
+    assert by["MG-ruigi"] == ["かんたんです"]
+    # tags-based: pakai tags bila ada, fallback ke key bila tidak
+    assert by["DK-bunpou"] == ["L20-おしえます-に"]
+    assert by["DK-narabekae"] == ["L18-辞書形+まえに", "ことが"]  # tags (09-04) lalu fallback key (08-31)
+    # subtipe berteks tak ikut rotasi item (punya avoid_themes) → tak ada kuncinya
+    assert "DK-joho" not in by
+    # input kosong → semua subtipe rotasi ada dgn list kosong
+    empty = kb.recent_items_by_subtype([], "jlpt")
+    assert empty == {st: [] for st in kb._ROTATION_SOURCE}
+
+
 def test_session_deltas():
     baseline = {"quiz": {"pola": {"X": {"benar": 5, "total": 7}}}, "jlpt": {}}
     session = {"kind": "quiz", "questions": [

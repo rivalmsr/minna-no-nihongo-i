@@ -15,28 +15,28 @@ memeringkat **weak types** untuk memandu `/jlpt review`.
 **Ambang status:** akurasi <60% 🔴 LEMAH · 60–79% 🟡 · ≥80% 🟢
 (butuh minimal **3 attempt** sebelum status dihitung; di bawah itu = ⚪ belum cukup data)
 
-_Terakhir diperbarui: 2026-09-03 · total sesi: 14_
+_Terakhir diperbarui: 2026-09-04 · total sesi: 15_
 
 ---
 
 ## Sesi 1 — 文字・語彙 (Moji-Goi)
 | Subtipe | Tag | Benar | Total | Akurasi | Status |
 |---------|-----|-------|-------|---------|--------|
-| Baca kanji (cara baca) | `MG-yomi` | 27 | 28 | 96% | 🟢 |
-| Tulis kanji (penulisan) | `MG-hyouki` | 27 | 28 | 96% | 🟢 |
-| Kosakata dalam konteks | `MG-bunmyaku` | 25 | 28 | 89% | 🟢 |
-| Sinonim / 言い換え類義 | `MG-ruigi` | 28 | 28 | 100% | 🟢 |
+| Baca kanji (cara baca) | `MG-yomi` | 29 | 30 | 97% | 🟢 |
+| Tulis kanji (penulisan) | `MG-hyouki` | 28 | 30 | 93% | 🟢 |
+| Kosakata dalam konteks | `MG-bunmyaku` | 27 | 30 | 90% | 🟢 |
+| Sinonim / 言い換え類義 | `MG-ruigi` | 30 | 30 | 100% | 🟢 |
 
 ## Sesi 2 — 文法・読解 (Bunpou-Dokkai)
 | Subtipe | Tag | Benar | Total | Akurasi | Status |
 |---------|-----|-------|-------|---------|--------|
-| Tata bahasa (grammar) | `DK-bunpou` | 28 | 32 | 88% | 🟢 |
-| Susun kalimat (★) | `DK-narabekae` | 13 | 15 | 87% | 🟢 |
-| Tata bahasa dalam teks (cloze) | `DK-bunshou` | 7 | 8 | 88% | 🟢 |
-| Bacaan pendek | `DK-dokkai` | 27 | 28 | 96% | 🟢 |
-| Bacaan informasi (info-search) | `DK-joho` | 25 | 28 | 89% | 🟢 |
+| Tata bahasa (grammar) | `DK-bunpou` | 29 | 33 | 88% | 🟢 |
+| Susun kalimat (★) | `DK-narabekae` | 14 | 16 | 88% | 🟢 |
+| Tata bahasa dalam teks (cloze) | `DK-bunshou` | 9 | 10 | 90% | 🟢 |
+| Bacaan pendek | `DK-dokkai` | 29 | 30 | 97% | 🟢 |
+| Bacaan informasi (info-search) | `DK-joho` | 27 | 30 | 90% | 🟢 |
 
 ---
 
 ## Weak types (prioritas soal `/jlpt review`)
-🎉 **Tidak ada 🔴 maupun 🟡** — semua subtipe JLPT tetap 🟢. Mock 2026-09-03 skor **15/16 (94%)**, Sesi 1 sempurna **8/8**. Satu miss di **`DK-joho` 25/28 (89%)** — soal diskon ランチ (カレー ８００円 − １００円 = ７００円) dijawab ９００円, arah hitung terbalik (menambah, bukan mengurangi diskon); bukan salah baca info, murni operasi hitung. Subtipe lain stabil: `MG-ruigi` 100% (28/28), `MG-yomi`/`MG-hyouki`/`DK-dokkai` 96%, `MG-bunmyaku` 89% (つけて & りょこう benar dgn cue), `DK-bunpou` 88%, `DK-bunshou` naik **83%→88% (7/8)** (だから sebab-akibat & くれました arah pemberian dua-duanya benar), `DK-narabekae` 87%. ⚠️ **`DK-narabekae` soal 10 = SINYAL TAK VALID (bocoran tutor):** panel menampilkan potongan dalam urutan jawaban yang sudah tersusun (いえへ・かえる・まえに・スーパーで) → "benar"-nya bukan bukti pemahaman. **Jangan** dikredit sebagai penguasaan; **uji ulang bersih** (potongan diacak) di mock berikutnya sebelum menilai narabekae. **Sinyal:** tak ada kelemahan pola/subtipe tersisa; miss `DK-joho` = ketelitian hitung, bukan pemahaman baca. **Rekomendasi:** lanjut mock berkala (lawan decay); di `DK-joho` sisipkan sesekali soal berhitung (diskon/kembalian/total) agar operasi tambah↔kurang makin refleks. Rotasi tema jaga hindari masak/menu-restoran/buku-harian di mock berikut.
+🎉 Tidak ada 🔴 maupun 🟡 — SEMBILAN subtipe JLPT tetap 🟢. Mock 2026-09-04 skor 15/16 (94%), Sesi 2 sempurna 8/8. Satu-satunya miss di MG-hyouki 28/30 (turun tipis 96%→93%): 「みず」ditulis 氷 (こおり/es) padahal 水 (air) — keliru bentuk mirip beda satu coretan, bukan salah konsep. Subtipe lain naik/stabil: MG-ruigi 100% (30/30), MG-yomi & DK-dokkai 97%, MG-bunmyaku & DK-joho & DK-bunshou 90%, DK-bunpou 88%, DK-narabekae naik 87%→88%. ✅ DK-narabekae kali ini diuji BERSIH (potongan diacak にほんへ/くる/まえに/にほんごを, tanpa bocoran urutan/posisi) → まえに benar = sinyal VALID, memperbaiki keraguan mock 2026-09-03. Sinyal: tak ada kelemahan pola/subtipe tersisa; miss 水↔氷 = ketelitian bentuk kanji mirip, bukan pemahaman. Rekomendasi: lanjut mock berkala lawan decay; sesekali sisipkan pasangan kanji mirip (水/氷/永, 木/本/未) di MG-hyouki agar pembedaan coretan makin refleks. Rotasi tema jaga hindari sekolah-rutinitas/jadwal-bus/surat-jalan-jalan di mock berikut.

@@ -21,6 +21,27 @@ atau update skor), tambahkan satu blok di paling atas daftar di bawah, format:
 
 ---
 
+### 2026-09-04 — Rotasi anti-monoton diperluas ke `MG-bunmyaku`/`MG-ruigi`/`DK-bunpou`/`DK-narabekae`
+- **Problem:** `/jlpt` cuma punya proteksi pengulangan untuk subtipe berteks (`avoid_themes`)
+  dan baca/tulis kanji (`avoid_items` versi lama = list datar `key` MG-yomi/hyouki). **Empat
+  subtipe non-teks lain — `MG-bunmyaku`, `MG-ruigi`, `DK-bunpou`, `DK-narabekae` — tak punya
+  sinyal anti-monoton sama sekali**, jadi kosakata/sinonim/pola grammar/pola susun-kalimat bisa
+  berulang antar-mock tanpa peringatan ke skill.
+- **Fix:** (1) Engine `scripts/kb.py`: fungsi `recent_kanji_items` diganti/diperumum jadi
+  **`recent_items_by_subtype(attempts, kind, lookback=2)`** → `{subtype:[items]}` untuk enam
+  subtipe rotasi. Identitas item: `MG-yomi`/`MG-hyouki`/`MG-bunmyaku`/`MG-ruigi` = `key`;
+  `DK-bunpou`/`DK-narabekae` = pola id di `tags` (fallback `key`). Menangani `tags` dua skema
+  (list jlpt & dict lama quiz-style {pola,partikel,lesson} → flatten pola+partikel, skip lesson).
+  (2) `cmd_plan --kind jlpt`: `avoid_items` kini **dict per-subtipe** (bukan list datar) — dipilih
+  bentuk ini karena seragam dgn `avoid_themes` & tak ada kode yang mengonsumsi output `plan`.
+  (3) `session.json` skema: `tags` untuk `DK-bunpou`/`DK-narabekae` **dinaikkan dari "informatif"
+  → dipakai rotasi** (dianjurkan selalu diisi; tetap TAK ditulis ke `evaluation.md`).
+  (4) Rotasi = **bias LUNAK** di semua subtipe: weak-area (`evaluation.md`) & item 🔴 Anki tetap
+  boleh menang. (5) Tes `test_recent_items_by_subtype` ditambah (menutup gap: `avoid_items` lama
+  tak pernah ada tesnya) — 21/21 hijau.
+- **File:** `scripts/kb.py`, `scripts/test_kb.py`, `.claude/skills/jlpt/SKILL.md`,
+  `docs/engine-bookkeeping-plan.md`, `docs/cara-kerja.md`, `docs/perbaikan-kb.md`.
+
 ### 2026-09-04 — Soal `L13-で-vs-を` rancu: `公園でさんぽします` punya dua jawaban sah (で & を)
 - **Problem:** `/quiz` 2026-09-04 soal 3 = 「毎朝（まいあさ）公園（こうえん）（　）さんぽします」 dengan
   kunci dipatok tunggal `で`. Tapi `を` juga menghasilkan kalimat gramatikal — `公園をさんぽします`

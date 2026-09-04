@@ -578,20 +578,46 @@ def recent_themes(attempts: list, kind: str = "jlpt") -> dict:
     return {}
 
 
-def recent_kanji_items(attempts: list, kind: str = "jlpt", lookback: int = 2) -> list[str]:
-    """Kanji/kata yang BARU diuji di subtipe baca-tulis kanji (`MG-yomi`/`MG-hyouki`)
-    pada `lookback` sesi `kind` TERBARU — supaya mock berikutnya MENGHINDARI item itu
-    (rotasi anti-monoton, mirror `recent_themes`). Sumber = `key` tiap question di
-    `attempts.jsonl`. Kosong bila belum ada sesi berisi subtipe tsb."""
+# Subtipe JLPT ber-rotasi item anti-monoton + sumber identitas item di question:
+#   "key"  → kata/bacaan/sinonim yang diuji (langsung dari `key`).
+#   "tags" → pola id (list `tags`); fallback ke `key` bila `tags` kosong.
+# Subtipe berteks (DK-bunshou/dokkai/joho) TIDAK di sini — punya `avoid_themes` sendiri.
+_ROTATION_SOURCE = {
+    "MG-yomi": "key", "MG-hyouki": "key",
+    "MG-bunmyaku": "key", "MG-ruigi": "key",
+    "DK-bunpou": "tags", "DK-narabekae": "tags",
+}
+
+
+def recent_items_by_subtype(attempts: list, kind: str = "jlpt",
+                            lookback: int = 2) -> dict[str, list[str]]:
+    """Item yang BARU diuji PER subtipe rotasi pada `lookback` sesi `kind` TERBARU —
+    supaya mock berikutnya MENGHINDARI item itu (rotasi anti-monoton; mirror
+    `recent_themes`, tapi per subtipe). Identitas per subtipe lihat `_ROTATION_SOURCE`:
+    baca/tulis kanji + kosakata/sinonim = `key`; grammar/susun-kalimat = pola id di
+    `tags` (fallback `key`). Return `{subtype: [items]}` (terbaru dulu, dedup). Sumber =
+    `attempts.jsonl`. Subtipe tanpa data → list kosong (kunci tetap ada)."""
     sessions = [s for s in attempts if s.get("kind") == kind]
-    seen: list[str] = []
+    out: dict[str, list[str]] = {st: [] for st in _ROTATION_SOURCE}
     for sess in reversed(sessions[-lookback:]):  # terbaru dulu; jaga urutan stabil
         for q in sess.get("questions", []):
-            if q.get("subtype") in ("MG-yomi", "MG-hyouki"):
-                key = q.get("key")
-                if key and key not in seen:
-                    seen.append(key)
-    return seen
+            src = _ROTATION_SOURCE.get(q.get("subtype"))
+            if not src:
+                continue
+            if src == "tags":
+                tg = q.get("tags")
+                if isinstance(tg, dict):  # skema lama quiz-style {pola,partikel,lesson}
+                    vals = [t for dim in ("pola", "partikel") for t in tg.get(dim, [])]
+                else:  # skema jlpt = list pola id
+                    vals = list(tg or [])
+                if not vals and q.get("key"):  # fallback: tak ada tags → identitas key
+                    vals = [q["key"]]
+            else:
+                vals = [q["key"]] if q.get("key") else []
+            for v in vals:
+                if v and v not in out[q["subtype"]]:
+                    out[q["subtype"]].append(v)
+    return out
 
 
 def maintenance_lessons(agg: dict, attempts: list, limit: int = 3) -> list[str]:
@@ -730,9 +756,10 @@ def cmd_plan(args) -> int:
     if args.kind == "jlpt":
         # Tema teks mock TERAKHIR → skill pilih tema BEDA (rotasi dokkai/joho/bunshou).
         out["avoid_themes"] = recent_themes(attempts, "jlpt")
-        # Kanji baca/tulis yang BARU diuji (2 mock terakhir) → skill pilih kanji BEDA
-        # (rotasi anti-monoton MG-yomi/MG-hyouki; lawan pengulangan 先生/友達/時間).
-        out["avoid_items"] = recent_kanji_items(attempts, "jlpt")
+        # Item yang BARU diuji (2 mock terakhir) PER subtipe → skill pilih item BEDA
+        # (rotasi anti-monoton). Dict {subtype:[items]}: MG-yomi/MG-hyouki=kanji/bacaan,
+        # MG-bunmyaku/MG-ruigi=kosakata/sinonim, DK-bunpou/DK-narabekae=pola id.
+        out["avoid_items"] = recent_items_by_subtype(attempts, "jlpt")
     print(json.dumps(out, ensure_ascii=False, indent=1))
     return 0
 

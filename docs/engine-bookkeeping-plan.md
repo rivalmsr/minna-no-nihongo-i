@@ -97,6 +97,11 @@ Field kondisional:
   (lihat B3). Mode adaptif tanpa weak-area → `"maintenance":true` + `"review_reason"` (B2).
 - `--kind jlpt` menambah **`"avoid_themes"`** = tema teks (`{dokkai,joho,bunshou}`) mock JLPT
   terakhir, dari `recent_themes(attempts)`; skill memilih tema BEDA (rotasi anti-monoton, B4).
+- `--kind jlpt` juga menambah **`"avoid_items"`** = **dict per-subtipe** item 2 mock terakhir,
+  dari `recent_items_by_subtype(attempts)`; skill pilih item BEDA per subtipe. Enam subtipe
+  non-teks: `MG-yomi`/`MG-hyouki` & `MG-bunmyaku`/`MG-ruigi` (identitas = `key`),
+  `DK-bunpou`/`DK-narabekae` (identitas = pola id di `tags`, fallback `key`). Bias LUNAK: weak
+  pola (`evaluation.md`) & item 🔴 Anki tetap boleh menang. (Subtipe berteks pakai `avoid_themes`.)
 
 ## 4. Modul & signature (`scripts/kb.py`)
 
@@ -113,6 +118,9 @@ def taxonomy_lessons() -> set[str]                            # bab bertag di qu
 def quizzable_lessons() -> list[str]                          # all_lessons ∩ taxonomy (B3)
 def maintenance_lessons(agg, attempts, limit=3) -> list[str]  # bab paling lama tak diuji (B2)
 def recent_themes(attempts, kind="jlpt") -> dict              # tema mock terakhir (B4)
+def recent_items_by_subtype(attempts, kind="jlpt", lookback=2) -> dict[str,list[str]]
+                                                              # item 2 mock terakhir per subtipe
+                                                              # non-teks → avoid_items (rotasi)
 def compute_scope(agg, mode, n=12, attempts=None) -> dict     # lessons + weights (+maintenance)
 def spread_positions(n:int, k:int=4, seed:int|None=None) -> list[int]
 def render_evaluation(agg:dict, narrative:str, meta:dict) -> str
@@ -129,7 +137,7 @@ CLI (argparse):
 - `kb.py plan --kind {quiz,jlpt} --mode {adaptif,review,lesson-N,moji,bunpou,mock}`
   → cetak session-plan JSON. Baca `progress/anki-weak-items.md` (`vehicles_red`),
   `reference/quiz-taxonomy.md` (batasi `lessons` ke bab quizzable, B3), dan untuk `--kind
-  jlpt` sertakan `avoid_themes` dari `attempts.jsonl` (B4).
+  jlpt` sertakan `avoid_themes` + `avoid_items` (dict per-subtipe) dari `attempts.jsonl` (B4).
 - `kb.py summary --kind {quiz,jlpt}` → breakdown lengkap JSON (per dim + `weak` + `sesi`
   + `last_session`) untuk skill `/summary`; deterministik, read-only.
 
