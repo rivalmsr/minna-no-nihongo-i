@@ -7,6 +7,7 @@ Log ringkas tiap sesi `/quiz` (entri terbaru di atas). Ditambah otomatis oleh sk
 
 | Tanggal | Cakupan | Jml soal | Skor | Catatan |
 |---------|---------|----------|------|---------|
+| 2026-09-05 | L13 (ています-keadaan, で-vs-を) + L20 普通形 + verb recall (けします🔴, つくります🔴) | 12 | 12/12 (100%) | Sempurna 12/12. Dua area 🟡 L13 (ています-keadaan, で-vs-を) kena semua; 普通形 L20 & te-form 音便 mulus. |
 | 2026-09-04 | JLPT mock penuh (Sesi 1 文字語彙 8 + Sesi 2 文法読解 8) | 16 | 15/16 (94%) | [tema: dokkai=sekolah-rutinitas, joho=jadwal-bus, bunshou=surat-jalan-jalan-gunung] Mock penuh 16 soal, skor 15/16. Sesi 1 7/8 (miss MG-hyouki 水↔氷), Sesi 2 sempurna 8/8. Narabekae diuji BERSIH (potongan diacak, tanpa bocoran posisi) → benar valid. |
 | 2026-09-04 | Lesson 13 (fokus ています-keadaan) + Lesson 20 (普通形, bab terbaru) | 12 | 12/12 (100%) | 12/12 (100%). Q3 で-vs-を semula ditandai salah tapi RANCU → override benar (公園をさんぽします juga sah, taxonomy pasangkan さんぽします+を). L20 普通形 debut 5/5 semua benar (動詞/い形/な形-名詞/会話). ています-keadaan 3/3 → pulih 🔴→🟡. |
 | 2026-09-03 | JLPT mock penuh (Sesi 1 MG ×8 + Sesi 2 DK ×8; tema: masak/menu-restoran/buku-harian; kanji 南・毎朝・会社・休み) | 16 | 15/16 (94%) | Mock penuh 16 soal, 15/16. Sesi 1 8/8 sempurna; Sesi 2 7/8 — satu miss di DK-joho (hitung diskon ランチ: 800-100=700, dijawab 900 = malah ditambah). Tema dirotasi (masak/menu/diary), kanji baru (南・毎朝・会社・休み), sentuh 🔴 つけます/りょこう/かえします. [tema: dokkai=hobi-masak, joho=menu-restoran, bunshou=buku-harian-akhir-pekan] |
