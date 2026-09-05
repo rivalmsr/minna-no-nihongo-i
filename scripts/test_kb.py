@@ -300,6 +300,36 @@ def test_recent_vehicles():
     assert kb.recent_vehicles([], "quiz") == []
 
 
+def test_anchor_red_items():
+    import os
+    import tempfile
+    orig = kb.PROGRESS
+    with tempfile.TemporaryDirectory() as d:
+        kb.PROGRESS = d
+        with open(os.path.join(d, "anki-weak-items.md"), "w", encoding="utf-8") as f:
+            f.write(
+                "> Ringkasan cepat (anchor):\n"
+                ">\n"
+                "> **Verb/kosakata (Minna):** だします I 🩸, けします I 🩸, となり 🩸\n"
+                ">\n"
+                "> **Kanji N5:** 生（せい） 🩸, 先（せん） 🩸, 友（とも） 🩸\n"
+            )
+        try:
+            # emoji & penanda grup I/II/III dibuang; urutan dipertahankan
+            assert kb.vehicles_red() == ["だします", "けします", "となり"]
+            # kanji: baris terpisah, format 漢字（よみ） utuh
+            assert kb.vehicles_red_kanji() == ["生（せい）", "先（せん）", "友（とも）"]
+            assert kb._anchor_red_items("Tak Ada") == []   # label tak ketemu → []
+        finally:
+            kb.PROGRESS = orig
+    # file tak ada → [] (tak error)
+    kb.PROGRESS = os.path.join(orig, "___tak_ada___")
+    try:
+        assert kb.vehicles_red_kanji() == [] and kb.vehicles_red() == []
+    finally:
+        kb.PROGRESS = orig
+
+
 def test_session_deltas():
     baseline = {"quiz": {"pola": {"X": {"benar": 5, "total": 7}}}, "jlpt": {}}
     session = {"kind": "quiz", "questions": [

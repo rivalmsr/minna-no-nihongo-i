@@ -21,6 +21,29 @@ atau update skor), tambahkan satu blok di paling atas daftar di bawah, format:
 
 ---
 
+### 2026-09-05 — Kanji 🔴 Anki disalurkan ke `/jlpt` via engine (`vehicles_red_kanji`)
+- **Problem:** `anki-weak-items.md` punya DUA baris item 🔴 di anchor — **"Verb/kosakata
+  (Minna)"** & **"Kanji N5"** — tapi fungsi engine `vehicles_red()` **cuma mem-parse baris
+  verb/kosakata**. Baris "Kanji N5" (生・先・年・時・… 🔴) **tak pernah masuk output `kb.py plan
+  --kind jlpt`**, jadi bias kanji lemah untuk subtipe `MG-yomi`/`MG-hyouki` bergantung penuh
+  pada model membaca file manual — tak konsisten dgn filosofi "pembukuan = engine". (Rotasi
+  `avoid_items["MG-yomi"]` = kanji yang DIHINDARI sudah engine-driven; sisi sebaliknya — kanji
+  🔴 yang DIUTAMAKAN — belum.) Dokumentasi skill bahkan salah label: `vehicles_red` disebut
+  "kanji/kosakata 🔴" padahal isinya verb/kosakata saja.
+- **Fix:** (1) Engine `scripts/kb.py`: `vehicles_red()` di-refactor ke helper
+  `_anchor_red_items(label)` (parse satu baris anchor 🔴 generik); fungsi baru
+  **`vehicles_red_kanji()`** = baris "Kanji N5" (format item `生（せい）` utuh, emoji dibuang).
+  (2) `cmd_plan --kind jlpt` mengeluarkan field baru **`vehicles_red_kanji`**. **Sengaja
+  dipisah** dari `vehicles_red` (bukan digabung) karena aturan biasnya beda: verb/kosakata =
+  normal; kanji = **bias LONGGAR + wajib rotasi** (pool cuma ~10 item, kalau dipaksa tiap mock
+  jadi monoton 先生/友達/時間 — lihat entri 2026-09-02). (3) Skill `/jlpt`: label `vehicles_red`
+  dibetulkan (verb/kosakata), `vehicles_red_kanji` didokumentasikan sbg sumber kanji 🔴 (ganti
+  baca-file-manual) di step 1/2 & blok "ROTASI kanji baca/tulis". (4) Tes baru
+  `test_anchor_red_items` (menutup gap: `vehicles_red` sebelumnya tak ada tesnya) — kedua baris
+  + label tak-ketemu + file tak-ada.
+- **File:** `scripts/kb.py`, `scripts/test_kb.py`, `.claude/skills/jlpt/SKILL.md`,
+  `docs/engine-bookkeeping-plan.md`, `docs/cara-kerja.md`, `docs/perbaikan-kb.md`.
+
 ### 2026-09-04 — `/quiz` dapat rotasi permukaan anti-monoton (`avoid_vehicles`)
 - **Problem:** `/jlpt` sudah punya rotasi anti-monoton (`avoid_themes` + `avoid_items` per
   subtipe), tapi **`/quiz` belum punya sama sekali**. Satu-satunya pencegah pengulangan =

@@ -101,6 +101,10 @@ Field kondisional:
   question di `attempts.jsonl`). Skill condongkan ke kendaraan LAIN — **rotasi PERMUKAAN
   anti-monoton, BUKAN pola** (pola lemah `weights` tetap diulang). Prioritas bila bentrok:
   kecocokan pola > item 🔴 Anki > `avoid_vehicles` (rotasi mengalah).
+- `--kind jlpt` menambah **`"vehicles_red_kanji"`** = kanji 🔴 Anki (baris "Kanji N5" anchor,
+  mis. `["生（せい）","先（せん）"]`), dari `vehicles_red_kanji()`; bias LONGGAR utk `MG-yomi`/
+  `MG-hyouki`. **Dipisah** dari `vehicles_red` (verb/kosakata) karena aturannya beda: kanji =
+  sesekali + wajib rotasi (`avoid_items`), verb/kosakata = normal.
 - `--kind jlpt` menambah **`"avoid_themes"`** = tema teks (`{dokkai,joho,bunshou}`) mock JLPT
   terakhir, dari `recent_themes(attempts)`; skill memilih tema BEDA (rotasi anti-monoton, B4).
 - `--kind jlpt` juga menambah **`"avoid_items"`** = **dict per-subtipe** item 2 mock terakhir,
@@ -130,6 +134,9 @@ def recent_items_by_subtype(attempts, kind="jlpt", lookback=2) -> dict[str,list[
 def recent_vehicles(attempts, kind="quiz", lookback=2) -> list[str]
                                                               # kendaraan verb/kosakata 2 sesi
                                                               # quiz terakhir → avoid_vehicles
+def _anchor_red_items(label:str) -> list[str]                 # parse 1 baris anchor 🔴 weak-items
+def vehicles_red() -> list[str]                              # verb/kosakata 🔴 Anki (baris Minna)
+def vehicles_red_kanji() -> list[str]                        # kanji 🔴 Anki (baris Kanji N5)
 def compute_scope(agg, mode, n=12, attempts=None) -> dict     # lessons + weights (+maintenance)
 def spread_positions(n:int, k:int=4, seed:int|None=None) -> list[int]
 def render_evaluation(agg:dict, narrative:str, meta:dict) -> str

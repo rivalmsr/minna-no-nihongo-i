@@ -119,10 +119,14 @@ Bila belum ada data (tracker kosong) → sebar merata ke semua subtipe.
 
 ### 2. Tentukan cakupan & campuran soal
 - **Pintasan engine (disarankan):** `python3 scripts/kb.py plan --kind jlpt --mode
-  <mock|moji|bunpou|review>` → JSON `weights` (subtipe lemah), `vehicles_red` (kanji/
-  kosakata 🔴 Anki), `answer_positions` (posisi kunci tersebar), `avoid_themes` (tema teks
-  mock terakhir → pilih beda) & `avoid_items` (**dict per-subtipe** item 2 mock terakhir →
-  pilih beda per subtipe). `avoid_items` kini mencakup enam subtipe non-teks:
+  <mock|moji|bunpou|review>` → JSON `weights` (subtipe lemah), `vehicles_red`
+  (**verb/kosakata 🔴 Anki**, untuk `MG-bunmyaku`/`DK-bunpou`), `vehicles_red_kanji`
+  (**kanji 🔴 Anki** dari baris "Kanji N5" anchor, untuk `MG-yomi`/`MG-hyouki` — bias
+  **LONGGAR** + wajib rotasi, lihat "ROTASI kanji baca/tulis"), `answer_positions` (posisi
+  kunci tersebar), `avoid_themes` (tema teks mock terakhir → pilih beda) & `avoid_items`
+  (**dict per-subtipe** item 2 mock terakhir → pilih beda per subtipe). Catatan: `vehicles_red`
+  & `vehicles_red_kanji` **dipisah** karena aturan biasnya beda (verb/kosakata = normal;
+  kanji = sesekali + rotasi). `avoid_items` kini mencakup enam subtipe non-teks:
   `MG-yomi`/`MG-hyouki` (kanji/bacaan), `MG-bunmyaku`/`MG-ruigi` (kosakata/sinonim),
   `DK-bunpou`/`DK-narabekae` (pola id). Baca `avoid_items["<subtipe>"]` saat menyusun tiap
   subtipe → pilih item BEDA. Pakai sbg kerangka.
@@ -413,8 +417,12 @@ Q: どようびは なんじから ですか。  1. 9じ  2. 10じ  3. 16じ  4.
 > berulang (kesadaran 2026-09-02): tiap mock nyomot 先生／友達／時間 karena bias 🔴 dipaksa ke
 > pool kanji 🔴 yang cuma ~10 item. **Aturan:**
 > - **Sumber utama = seluruh kanji N5** di `n5-vocabulary.md` (kolom Kana⇄Kanji). Rotasi
->   lebar: tiap mock ganti kanji yang diuji. Kanji 🔴 (`anki-weak-items.md`) disentuh
->   **sesekali** (≈1 dari 2 soal per subtipe, TAK wajib tiap mock) — bias, bukan default.
+>   lebar: tiap mock ganti kanji yang diuji. Kanji 🔴 disentuh **sesekali** (≈1 dari 2 soal
+>   per subtipe, TAK wajib tiap mock) — bias, bukan default.
+> - **Sumber kanji 🔴 = `vehicles_red_kanji` dari `kb.py plan --kind jlpt`** (baris "Kanji
+>   N5" anchor, mis. `["生（せい）","先（せん）",…]`). Engine sudah menyalurkannya — **tak
+>   perlu baca `anki-weak-items.md` manual** untuk kanji. (Beda dari `vehicles_red` yang
+>   verb/kosakata; sengaja dipisah karena kanji = sesekali+rotasi, bukan default.)
 > - **Hindari `avoid_items["MG-yomi"]` / `["MG-hyouki"]`** dari `kb.py plan --kind jlpt` =
 >   daftar `key` baca-tulis yang dipakai **2 mock terakhir** (mis. `["せんせい","先生","時間",
 >   "学校"]`). Pilih kanji/kata **BEDA** dari daftar itu. Kosong `[]` → bebas, tapi tetap variasikan.

@@ -227,6 +227,11 @@ Satu baris ditambahkan ke `history.md` (entri terbaru di atas).
   per-subtipe item 2 mock terakhir dari `attempts.jsonl`) untuk enam subtipe non-teks —
   `MG-yomi`/`MG-hyouki` & `MG-bunmyaku`/`MG-ruigi` (identitas `key`), `DK-bunpou`/`DK-narabekae`
   (identitas pola id di `tags`). Skill pilih item BEDA per subtipe (bias LUNAK; weak-area menang).
+- **Kanji lemah Anki (`/jlpt`):** `plan --kind jlpt` memberi `vehicles_red_kanji` (kanji 🔴
+  dari baris "Kanji N5" anchor `anki-weak-items.md`) untuk membias `MG-yomi`/`MG-hyouki` —
+  **dipisah** dari `vehicles_red` (verb/kosakata) karena aturannya beda: kanji disentuh
+  **sesekali + wajib rotasi** (pool ~10 item), verb/kosakata = normal. Engine menyalurkannya,
+  jadi skill tak perlu baca file kanji manual.
 
 ### 4. Aturan penyajian (menjaga recall tetap jujur)
 - **Mode ujian:** jawab **semua** soal dulu, koreksi & analisis muncul **di akhir**.

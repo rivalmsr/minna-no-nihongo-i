@@ -701,13 +701,15 @@ def compute_scope(agg: dict, mode: str, n: int = 12, attempts: list | None = Non
     return out
 
 
-def vehicles_red() -> list[str]:
-    """Item 🔴 (verb/kosakata Minna) dari anchor anki-weak-items.md sbg bias kendaraan."""
+def _anchor_red_items(label: str) -> list[str]:
+    """Parse satu baris anchor 🔴 `anki-weak-items.md` (mis. 'Verb/kosakata (Minna)'
+    atau 'Kanji N5') → list item bersih (emoji 🔴🟡⚪🩸 & penanda grup I/II/III dibuang).
+    Baris kosong / file tak ada → []."""
     path = os.path.join(PROGRESS, "anki-weak-items.md")
     if not os.path.exists(path):
         return []
     with open(path, encoding="utf-8") as f:
-        m = re.search(r"Verb/kosakata \(Minna\):\*\*(.+)", f.read())
+        m = re.search(rf"{re.escape(label)}:\*\*(.+)", f.read())
     if not m:
         return []
     out = []
@@ -716,7 +718,20 @@ def vehicles_red() -> list[str]:
         tok = re.sub(r"\s+(I{1,3})\b", "", tok).strip()
         if tok:
             out.append(tok)
-    return out[:12]
+    return out
+
+
+def vehicles_red() -> list[str]:
+    """Item 🔴 (verb/kosakata Minna) dari anchor anki-weak-items.md sbg bias kendaraan."""
+    return _anchor_red_items("Verb/kosakata (Minna)")[:12]
+
+
+def vehicles_red_kanji() -> list[str]:
+    """Kanji 🔴 (baris 'Kanji N5') dari anchor anki-weak-items.md → bias untuk subtipe
+    kanji `/jlpt` (`MG-yomi`/`MG-hyouki`). DIPISAH dari `vehicles_red` karena aturan
+    biasnya BEDA: kanji lemah disentuh **sesekali + wajib rotasi** (pool ~10 item, kalau
+    dipaksa tiap mock jadi monoton 先生/友達/時間), bukan default. Format item: `生（せい）`."""
+    return _anchor_red_items("Kanji N5")[:12]
 
 
 def build_summary(baseline: dict, attempts: list, kind: str) -> dict:
@@ -778,6 +793,9 @@ def cmd_plan(args) -> int:
         # pola & boleh dilanggar bila item lemah/pool memaksa.
         out["avoid_vehicles"] = recent_vehicles(attempts, "quiz")
     if args.kind == "jlpt":
+        # Kanji 🔴 Anki (baris 'Kanji N5' anchor) → bias LONGGAR utk MG-yomi/MG-hyouki.
+        # Dipisah dari vehicles_red (verb/kosakata) krn aturannya beda (sesekali+rotasi).
+        out["vehicles_red_kanji"] = vehicles_red_kanji()
         # Tema teks mock TERAKHIR → skill pilih tema BEDA (rotasi dokkai/joho/bunshou).
         out["avoid_themes"] = recent_themes(attempts, "jlpt")
         # Item yang BARU diuji (2 mock terakhir) PER subtipe → skill pilih item BEDA
