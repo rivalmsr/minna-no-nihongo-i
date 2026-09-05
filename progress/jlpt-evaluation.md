@@ -15,28 +15,28 @@ memeringkat **weak types** untuk memandu `/jlpt review`.
 **Ambang status:** akurasi <60% 🔴 LEMAH · 60–79% 🟡 · ≥80% 🟢
 (butuh minimal **3 attempt** sebelum status dihitung; di bawah itu = ⚪ belum cukup data)
 
-_Terakhir diperbarui: 2026-09-04 · total sesi: 15_
+_Terakhir diperbarui: 2026-09-05 · total sesi: 16_
 
 ---
 
 ## Sesi 1 — 文字・語彙 (Moji-Goi)
 | Subtipe | Tag | Benar | Total | Akurasi | Status |
 |---------|-----|-------|-------|---------|--------|
-| Baca kanji (cara baca) | `MG-yomi` | 29 | 30 | 97% | 🟢 |
-| Tulis kanji (penulisan) | `MG-hyouki` | 28 | 30 | 93% | 🟢 |
-| Kosakata dalam konteks | `MG-bunmyaku` | 27 | 30 | 90% | 🟢 |
-| Sinonim / 言い換え類義 | `MG-ruigi` | 30 | 30 | 100% | 🟢 |
+| Baca kanji (cara baca) | `MG-yomi` | 31 | 32 | 97% | 🟢 |
+| Tulis kanji (penulisan) | `MG-hyouki` | 30 | 32 | 94% | 🟢 |
+| Kosakata dalam konteks | `MG-bunmyaku` | 28 | 32 | 88% | 🟢 |
+| Sinonim / 言い換え類義 | `MG-ruigi` | 32 | 32 | 100% | 🟢 |
 
 ## Sesi 2 — 文法・読解 (Bunpou-Dokkai)
 | Subtipe | Tag | Benar | Total | Akurasi | Status |
 |---------|-----|-------|-------|---------|--------|
-| Tata bahasa (grammar) | `DK-bunpou` | 29 | 33 | 88% | 🟢 |
-| Susun kalimat (★) | `DK-narabekae` | 14 | 16 | 88% | 🟢 |
-| Tata bahasa dalam teks (cloze) | `DK-bunshou` | 9 | 10 | 90% | 🟢 |
-| Bacaan pendek | `DK-dokkai` | 29 | 30 | 97% | 🟢 |
-| Bacaan informasi (info-search) | `DK-joho` | 27 | 30 | 90% | 🟢 |
+| Tata bahasa (grammar) | `DK-bunpou` | 30 | 34 | 88% | 🟢 |
+| Susun kalimat (★) | `DK-narabekae` | 15 | 17 | 88% | 🟢 |
+| Tata bahasa dalam teks (cloze) | `DK-bunshou` | 11 | 12 | 92% | 🟢 |
+| Bacaan pendek | `DK-dokkai` | 31 | 32 | 97% | 🟢 |
+| Bacaan informasi (info-search) | `DK-joho` | 29 | 32 | 91% | 🟢 |
 
 ---
 
 ## Weak types (prioritas soal `/jlpt review`)
-🎉 Tidak ada 🔴 maupun 🟡 — SEMBILAN subtipe JLPT tetap 🟢. Mock 2026-09-04 skor 15/16 (94%), Sesi 2 sempurna 8/8. Satu-satunya miss di MG-hyouki 28/30 (turun tipis 96%→93%): 「みず」ditulis 氷 (こおり/es) padahal 水 (air) — keliru bentuk mirip beda satu coretan, bukan salah konsep. Subtipe lain naik/stabil: MG-ruigi 100% (30/30), MG-yomi & DK-dokkai 97%, MG-bunmyaku & DK-joho & DK-bunshou 90%, DK-bunpou 88%, DK-narabekae naik 87%→88%. ✅ DK-narabekae kali ini diuji BERSIH (potongan diacak にほんへ/くる/まえに/にほんごを, tanpa bocoran urutan/posisi) → まえに benar = sinyal VALID, memperbaiki keraguan mock 2026-09-03. Sinyal: tak ada kelemahan pola/subtipe tersisa; miss 水↔氷 = ketelitian bentuk kanji mirip, bukan pemahaman. Rekomendasi: lanjut mock berkala lawan decay; sesekali sisipkan pasangan kanji mirip (水/氷/永, 木/本/未) di MG-hyouki agar pembedaan coretan makin refleks. Rotasi tema jaga hindari sekolah-rutinitas/jadwal-bus/surat-jalan-jalan di mock berikut.
+🎉 Tidak ada 🔴 maupun 🟡 — SEMBILAN subtipe JLPT tetap 🟢. Mock 2026-09-05 skor 15/16 (94%), Sesi 2 sempurna 8/8 (DK-bunpou 88%, DK-narabekae 88%, DK-bunshou 92%, DK-dokkai 97%, DK-joho 91% — semua stabil/naik). Satu-satunya miss di MG-bunmyaku (turun tipis 90%→88%, tetap 🟢): 「みちを（　）ください」 dijawab かって (beli) padahal おしえて (menunjukkan/mengajari jalan) — bukan salah pola, tapi kurang menangkap cue 「わからない道を…ください」 yang menuntut おしえる, sementara かう tak logis untuk 'jalan'. Subtipe lain: MG-ruigi 100%, MG-yomi & DK-dokkai 97%, MG-hyouki 94%, DK-joho 91%. Sinyal: tak ada kelemahan pola/subtipe tersisa; miss = kecerobohan makna kolokasi (おしえる vs かう), bukan tata bahasa. Rekomendasi: lanjut mock berkala lawan decay; sesekali sisipkan soal MG-bunmyaku kolokasi verba+objek (道を おしえる, 写真を とる, 電気を つける) agar pasangan kata makin refleks. Rotasi tema jaga hindari keluarga-masak/menu-kafe/buku-harian-belanja di mock berikut.
