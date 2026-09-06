@@ -7,6 +7,7 @@ Log ringkas tiap sesi `/quiz` (entri terbaru di atas). Ditambah otomatis oleh sk
 
 | Tanggal | Cakupan | Jml soal | Skor | Catatan |
 |---------|---------|----------|------|---------|
+| 2026-09-06 | L13 (ています-keadaan · を/に · 語彙) + L20 普通形 + recall verb (L14/L19) | 12 | 10/12 (83%) | L13-ています-keadaan resmi 🟢 (12/15 80%); tracker bersih tanpa 🟡/🔴. Miss: 出しに (pilih て-form) & 普通体 ならない (pilih 丁寧 なりません). |
 | 2026-09-05 | JLPT mock penuh (Sesi 1 文字語彙 8 + Sesi 2 文法読解 8) | 16 | 15/16 (94%) | Mock penuh 15/16 (94%). Sesi 1 7/8, Sesi 2 sempurna 8/8. Satu miss di MG-bunmyaku soal 6 (道を おしえて→pilih かって). [tema: dokkai=keluarga-masak, joho=menu-kafe, bunshou=buku-harian-belanja] |
 | 2026-09-05 | L13 (ています-keadaan, で-vs-を) + L20 普通形 + verb recall (けします🔴, つくります🔴) | 12 | 12/12 (100%) | Sempurna 12/12. Dua area 🟡 L13 (ています-keadaan, で-vs-を) kena semua; 普通形 L20 & te-form 音便 mulus. |
 | 2026-09-04 | JLPT mock penuh (Sesi 1 文字語彙 8 + Sesi 2 文法読解 8) | 16 | 15/16 (94%) | [tema: dokkai=sekolah-rutinitas, joho=jadwal-bus, bunshou=surat-jalan-jalan-gunung] Mock penuh 16 soal, skor 15/16. Sesi 1 7/8 (miss MG-hyouki 水↔氷), Sesi 2 sempurna 8/8. Narabekae diuji BERSIH (potongan diacak, tanpa bocoran posisi) → benar valid. |
