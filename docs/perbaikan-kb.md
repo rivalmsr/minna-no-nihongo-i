@@ -21,6 +21,20 @@ atau update skor), tambahkan satu blok di paling atas daftar di bawah, format:
 
 ---
 
+### 2026-09-06 — `answer_positions` tak boleh ada ≥3 posisi kunci identik beruntun
+- **Problem:** `spread_positions()` membuat list posisi seimbang lalu **shuffle acak murni**.
+  Sebaran total memang rata (tiap posisi 1–4 dipakai sama banyak), tapi acak murni **bisa
+  memunculkan run 3+ posisi identik beruntun**. Terwujud di mock JLPT 2026-09-06: soal
+  6–7–8 kuncinya sama-sama di **posisi 3** (tiga beruntun) — klaster yang bisa ditebak
+  penebak pola, melawan tujuan "acak posisi biar user tak menebak dari letak".
+- **Fix:** tambah helper `_max_run()` + batasan di `spread_positions()`: **retry reshuffle**
+  (≤200×) sampai `_max_run < 3`, dengan **fallback greedy-repair** (tukar elemen di run
+  hingga run pecah) supaya deterministik & selalu berhasil. **Pasangan 2 beruntun tetap
+  diizinkan** (wajar, bukan tell). Diverifikasi: 15.000 kombinasi (n=5..20 × 3000 seed) →
+  **0 run≥3**, sebaran tetap seimbang (selisih count max−min ≤1). Berlaku otomatis untuk
+  `/quiz` & `/jlpt` (keduanya lewat `kb.py plan → answer_positions`).
+- **File:** `scripts/kb.py` (`_max_run`, `spread_positions`).
+
 ### 2026-09-05 — Kanji 🔴 Anki disalurkan ke `/jlpt` via engine (`vehicles_red_kanji`)
 - **Problem:** `anki-weak-items.md` punya DUA baris item 🔴 di anchor — **"Verb/kosakata
   (Minna)"** & **"Kanji N5"** — tapi fungsi engine `vehicles_red()` **cuma mem-parse baris

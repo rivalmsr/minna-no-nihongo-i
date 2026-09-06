@@ -142,10 +142,42 @@ def rank_weak(agg: dict, limit: int = 5) -> list[dict]:
 
 
 # ── Randomisasi posisi jawaban ────────────────────────────────────────────────
+def _max_run(seq: list[int]) -> int:
+    """Panjang deret nilai identik terpanjang yang beruntun."""
+    m = cur = 1 if seq else 0
+    for i in range(1, len(seq)):
+        cur = cur + 1 if seq[i] == seq[i - 1] else 1
+        m = max(m, cur)
+    return m
+
+
 def spread_positions(n: int, k: int = 4, seed: int | None = None) -> list[int]:
-    """n posisi kunci (1..k) tersebar merata lalu diacak — hindari selalu #1."""
+    """n posisi kunci (1..k) tersebar merata lalu diacak — hindari selalu #1
+    DAN hindari ≥3 posisi identik beruntun (klaster yang gampang ditebak;
+    pasangan 2 beruntun tetap boleh, itu wajar)."""
     base = [(i % k) + 1 for i in range(n)]
-    random.Random(seed).shuffle(base)
+    rng = random.Random(seed)
+    if n < 3 or k < 2:
+        rng.shuffle(base)
+        return base
+    # Susunan seimbang tanpa run≥3 selalu ada utk k≥2 & n wajar → coba reshuffle,
+    # fallback greedy-repair (tukar elemen run) kalau retry belum dapat.
+    for _ in range(200):
+        rng.shuffle(base)
+        if _max_run(base) < 3:
+            return base
+    for _ in range(1000):
+        idx = next((i for i in range(2, len(base))
+                    if base[i] == base[i - 1] == base[i - 2]), None)
+        if idx is None:
+            return base
+        for j in [x for x in range(len(base)) if base[x] != base[idx]]:
+            base[idx], base[j] = base[j], base[idx]
+            if _max_run(base) < 3:
+                return base
+            base[idx], base[j] = base[j], base[idx]
+        j = next(x for x in range(len(base)) if base[x] != base[idx])
+        base[idx], base[j] = base[j], base[idx]  # perturb, coba lagi
     return base
 
 
