@@ -16,9 +16,9 @@ Tingkat: **🔴** = `leech` atau `lapses ≥ 8` · **🟡** = `lapses 5–7` · 
 >
 > **Verb/kosakata (Minna):** だします I 🩸, もらいます I 🩸, りょこう 🩸, おいくつ 🩸, きんがく 🩸, けします I 🩸, つけます II 🩸, となり 🩸, じむしょ 🩸, なくします I 🩸, おしえます II 🩸, おつり 🩸, おります II 🩸, かえします I 🩸, けんがくします III 🩸, げんきん 🩸, てちょう 🩸, でかけます II 🩸, いつか 🩸, きゅうこう 🩸, きります I 🩸, じこくひょう 🩸, だいたい 🩸, ついたち 🩸, つくります I 🩸, とります I 🩸, ひこうき 🩸, ふうとう 🩸
 >
-> **Kanji N5:** 生（せい） 🩸, 先（せん） 🩸, 年（ねん） 🩸, 時（じ） 🩸, 千（せん） 🩸, 友（とも） 🩸, 北（きた） 🩸, 会（あう） 🩸, 南（みなみ） 🩸, 東（ひがし） 🩸
+> **Kanji N5:** 生（せい） 🩸, 先（せん） 🩸, 時（じ） 🩸, 年（ねん） 🩸, 千（せん） 🩸, 友（とも） 🩸, 北（きた） 🩸, 会（あう） 🩸, 南（みなみ） 🩸, 東（ひがし） 🩸, 言（いう） 🩸
 
-Total ditandai — Minna: 🔴28 · 🟡57 · ⚪100  |  Kanji N5: 🔴10 · 🟡22 · ⚪27
+Total ditandai — Minna: 🔴28 · 🟡57 · ⚪102  |  Kanji N5: 🔴11 · 🟡22 · ⚪27
 
 ## Kosakata / Verb lemah — Minna no Nihongo I
 
@@ -116,36 +116,37 @@ Total ditandai — Minna: 🔴28 · 🟡57 · ⚪100  |  Kanji N5: 🔴10 · �
 |---|:---:|--------|------|:------:|
 | 🔴 🩸 | 生 | せい | hidup | 17 |
 | 🔴 🩸 | 先 | せん | dahulu, depan | 14 |
+| 🔴 🩸 | 時 | じ | jam | 13 |
 | 🔴 🩸 | 年 | ねん | tahun | 12 |
-| 🔴 🩸 | 時 | じ | jam | 12 |
 | 🔴 🩸 | 千 | せん | seribu | 11 |
 | 🔴 🩸 | 友 | とも | teman | 10 |
 | 🔴 🩸 | 北 | きた | utara | 9 |
 | 🔴 🩸 | 会 | あう | bertemu | 8 |
 | 🔴 🩸 | 南 | みなみ | selatan | 8 |
 | 🔴 🩸 | 東 | ひがし | timur | 8 |
+| 🔴 🩸 | 言 | いう | berkata | 8 |
 | 🟡 | 万 | まん | sepuluh ribu | 7 |
+| 🟡 | 午 | ご | siang | 7 |
 | 🟡 | 小 | ちいさい | kecil | 7 |
 | 🟡 | 牛 | うし | sapi | 7 |
 | 🟡 | 聞 | きく | mendengar | 7 |
-| 🟡 | 言 | いう | berkata | 7 |
 | 🟡 | 道 | みち | jalan | 7 |
 | 🟡 | 五 | ご | lima | 6 |
 | 🟡 | 円 | えん | yen | 6 |
-| 🟡 | 午 | ご | siang | 6 |
 | 🟡 | 安 | やすい | murah | 6 |
 | 🟡 | 少 | すくない | sedikit | 6 |
+| 🟡 | 書 | かく | menulis | 6 |
 | 🟡 | 来 | くる | datang | 6 |
 | 🟡 | 白 | しろ | putih | 6 |
 | 🟡 | 立 | たつ | berdiri | 6 |
 | 🟡 | 西 | にし | barat | 6 |
 | 🟡 | 話 | はなす | berbicara | 6 |
 | 🟡 | 語 | ご | bahasa | 6 |
+| 🟡 | 名 | なまえ | nama | 5 |
 | 🟡 | 左 | ひだり | kiri | 5 |
 | 🟡 | 後 | うしろ | belakang | 5 |
-| 🟡 | 書 | かく | menulis | 5 |
 | 🟡 | 毎 | まい | setiap | 5 |
 | 🟡 | 気 | き | energi, suasana | 5 |
 
 ---
-_Auto-generated 2026-09-05 oleh `scripts/sync-anki-weak-items.sh` dari `collection.anki2`._
+_Auto-generated 2026-09-06 oleh `scripts/sync-anki-weak-items.sh` dari `collection.anki2`._
