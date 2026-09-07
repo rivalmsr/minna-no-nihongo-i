@@ -15,28 +15,28 @@ memeringkat **weak types** untuk memandu `/jlpt review`.
 **Ambang status:** akurasi <60% 🔴 LEMAH · 60–79% 🟡 · ≥80% 🟢
 (butuh minimal **3 attempt** sebelum status dihitung; di bawah itu = ⚪ belum cukup data)
 
-_Terakhir diperbarui: 2026-09-07 · total sesi: 18_
+_Terakhir diperbarui: 2026-09-07 · total sesi: 19_
 
 ---
 
 ## Sesi 1 — 文字・語彙 (Moji-Goi)
 | Subtipe | Tag | Benar | Total | Akurasi | Status |
 |---------|-----|-------|-------|---------|--------|
-| Baca kanji (cara baca) | `MG-yomi` | 35 | 36 | 97% | 🟢 |
-| Tulis kanji (penulisan) | `MG-hyouki` | 33 | 36 | 92% | 🟢 |
-| Kosakata dalam konteks | `MG-bunmyaku` | 32 | 36 | 89% | 🟢 |
-| Sinonim / 言い換え類義 | `MG-ruigi` | 35 | 36 | 97% | 🟢 |
+| Baca kanji (cara baca) | `MG-yomi` | 37 | 38 | 97% | 🟢 |
+| Tulis kanji (penulisan) | `MG-hyouki` | 35 | 38 | 92% | 🟢 |
+| Kosakata dalam konteks | `MG-bunmyaku` | 34 | 38 | 89% | 🟢 |
+| Sinonim / 言い換え類義 | `MG-ruigi` | 37 | 38 | 97% | 🟢 |
 
 ## Sesi 2 — 文法・読解 (Bunpou-Dokkai)
 | Subtipe | Tag | Benar | Total | Akurasi | Status |
 |---------|-----|-------|-------|---------|--------|
-| Tata bahasa (grammar) | `DK-bunpou` | 31 | 36 | 86% | 🟢 |
-| Susun kalimat (★) | `DK-narabekae` | 17 | 19 | 89% | 🟢 |
-| Tata bahasa dalam teks (cloze) | `DK-bunshou` | 15 | 16 | 94% | 🟢 |
-| Bacaan pendek | `DK-dokkai` | 35 | 36 | 97% | 🟢 |
-| Bacaan informasi (info-search) | `DK-joho` | 33 | 36 | 92% | 🟢 |
+| Tata bahasa (grammar) | `DK-bunpou` | 32 | 37 | 86% | 🟢 |
+| Susun kalimat (★) | `DK-narabekae` | 18 | 20 | 90% | 🟢 |
+| Tata bahasa dalam teks (cloze) | `DK-bunshou` | 17 | 18 | 94% | 🟢 |
+| Bacaan pendek | `DK-dokkai` | 37 | 38 | 97% | 🟢 |
+| Bacaan informasi (info-search) | `DK-joho` | 35 | 38 | 92% | 🟢 |
 
 ---
 
 ## Weak types (prioritas soal `/jlpt review`)
-**Tak ada 🔴/🟡 — sembilan subtipe tetap 🟢.** Mock 2026-09-07 skor **15/16 (94%)**: Sesi 1 **7/8**, Sesi 2 **8/8** (sempurna). Miss tunggal: **MG-hyouki** 94%→**92%** (tetap 🟢) — 「やすみ」ditulis **体み** padahal 休み; user tertukar bentuk mirip 休（yasumu, radikal 亻+木）vs 体（karada）. Kesalahan diskriminasi radikal bentuk-mirip, bukan kelemahan subtipe. **Sinyal positif kuat:** seluruh Sesi 2 8/8 — DK-bunpou (L16-に-naik のります), DK-narabekae (L18-ことができます susun benar), DK-bunshou 2/2 (それから penghubung + あげました arah pemberian aku→妹), DK-dokkai 2/2 & DK-joho 2/2 (info-search harga & jam) → wacana, grammar-in-teks, dan pencarian info kokoh. MG-yomi/ruigi 97%, MG-bunmyaku naik ke 89% (けして・なくして benar). **Rekomendasi:** lanjut mock berkala lawan decay; sesekali sisipkan MG-hyouki pasangan radikal bentuk-mirip (休↔体, 大↔太↔犬↔天, 木↔本) agar diskriminasi bentuk makin refleks. Rotasi tema mock berikut: hindari keluarga-akhirpekan / menu-restoran / buku-harian-belanja.
+**Tak ada 🔴/🟡 — sembilan subtipe tetap 🟢.** Mock 2026-09-07 skor **16/16 (100%)** — Sesi 1 **8/8** & Sesi 2 **8/8**, sempurna tanpa satu slip pun. Sesi 1: 読み方 (来年→らいねん, 毎朝→まいあさ) & 表記 (本, 東) benar termasuk diskriminasi radikal bentuk-mirip (本 vs 木/休/体; 東 vs 車/束/重) — perbaikan pasca miss 休↔体 mock lalu terlihat. 文脈規定 naik solid (りょこう terkunci cue ほっかいどうへ; おしえます dengan subjek 先生→学生). 類義 (つまらない⇄おもしろくない; 両親⇄父と母) mulus. Sesi 2 kokoh menyeluruh: DK-bunpou (かえさ+なければ, ない-stem 返します benar), DK-narabekae (くにへ かえる まえに おみやげを — 辞書形+まえに tersusun tepat), DK-bunshou 2/2 (でも kontras 'susah TAPI indah' + くれて arah pemberian teman→aku dari alur cerita), DK-dokkai 2/2 & DK-joho 2/2 (info transport & jam pertama/hari libur). **Angka bergerak:** MG-yomi 97%, MG-hyouki 92%, MG-bunmyaku 89%, MG-ruigi 97%, DK-bunpou 86%, DK-narabekae naik 89%→90%, DK-bunshou 94%, DK-dokkai 97%, DK-joho 92% — semua 🟢. **Rekomendasi:** lanjut mock berkala lawan decay (skor plafon → sesekali naikkan kesulitan: kanji 🔴 langka 千/北/南, pola grammar campur 2 lesson dalam satu narabekae). Rotasi tema mock berikut: hindari sekolah-rutinitas / jadwal-bus / surat-jalanjalan; MG-hyouki teruskan pasangan bentuk-mirip (大↔太↔犬↔天, 目↔見).
