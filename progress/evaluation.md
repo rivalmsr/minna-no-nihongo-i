@@ -12,7 +12,7 @@ Diperbarui otomatis oleh skill `/quiz` setiap selesai sesi. Melacak akurasi
 **Ambang status:** akurasi <60% 🔴 LEMAH · 60–79% 🟡 · ≥80% 🟢
 (butuh minimal **3 attempt** sebelum status dihitung; di bawah itu = ⚪ belum cukup data)
 
-_Terakhir diperbarui: 2026-09-06 · total sesi: 30_
+_Terakhir diperbarui: 2026-09-07 · total sesi: 31_
 
 ---
 
@@ -27,14 +27,14 @@ _Terakhir diperbarui: 2026-09-06 · total sesi: 30_
 | L7-で-alat | 2 | 2 | 100% | ⚪ |
 | L7-で-bahasa | 2 | 2 | 100% | ⚪ |
 | L7-もう | 2 | 2 | 100% | ⚪ |
-| L8-adj-negatif | 1 | 1 | 100% | ⚪ |
-| L8-adj-benda | 1 | 1 | 100% | ⚪ |
-| L8-どう-どんな | 1 | 1 | 100% | ⚪ |
-| L9-から-sebab | 2 | 2 | 100% | ⚪ |
-| L9-が-suka | 1 | 1 | 100% | ⚪ |
-| L9-が-paham | 1 | 1 | 100% | ⚪ |
+| L8-adj-negatif | 2 | 2 | 100% | ⚪ |
+| L8-adj-benda | 2 | 2 | 100% | ⚪ |
+| L8-どう-どんな | 3 | 3 | 100% | 🟢 |
+| L9-から-sebab | 3 | 3 | 100% | 🟢 |
+| L9-が-suka | 2 | 2 | 100% | ⚪ |
+| L9-が-paham | 2 | 2 | 100% | ⚪ |
 | L9-が-pandai | 1 | 1 | 100% | ⚪ |
-| L9-punya | 1 | 1 | 100% | ⚪ |
+| L9-punya | 2 | 2 | 100% | ⚪ |
 | L10-あります | 6 | 6 | 100% | 🟢 |
 | L10-います | 3 | 3 | 100% | 🟢 |
 | L10-に-keberadaan | 13 | 16 | 81% | 🟢 |
@@ -42,9 +42,9 @@ _Terakhir diperbarui: 2026-09-06 · total sesi: 30_
 | L11-まい | 2 | 2 | 100% | ⚪ |
 | L11-かい-frekuensi | 2 | 2 | 100% | ⚪ |
 | L11-かかります | 2 | 2 | 100% | ⚪ |
-| L12-より | 1 | 1 | 100% | ⚪ |
-| L12-のほうが | 1 | 1 | 100% | ⚪ |
-| L12-lampau-positif | 1 | 1 | 100% | ⚪ |
+| L12-より | 2 | 2 | 100% | ⚪ |
+| L12-のほうが | 2 | 2 | 100% | ⚪ |
+| L12-lampau-positif | 2 | 2 | 100% | ⚪ |
 | L13-に-tujuan | 10 | 12 | 83% | 🟢 |
 | L13-を-meninggalkan | 8 | 8 | 100% | 🟢 |
 | L13-で-vs-を | 8 | 10 | 80% | 🟢 |
@@ -95,18 +95,20 @@ _Terakhir diperbarui: 2026-09-06 · total sesi: 30_
 | L20-普通形-い形 | 3 | 3 | 100% | 🟢 |
 | L20-普通形-な形-名詞 | 3 | 3 | 100% | 🟢 |
 | L20-普通体-会話 | 1 | 1 | 100% | ⚪ |
+| L12-lampau-negatif | 1 | 1 | 100% | ⚪ |
 
 ## Per partikel
 | Partikel | Benar | Total | Akurasi | Status |
 |----------|-------|-------|---------|--------|
-| から | 3 | 3 | 100% | 🟢 |
+| から | 4 | 4 | 100% | 🟢 |
 | に | 53 | 62 | 85% | 🟢 |
 | で | 19 | 22 | 86% | 🟢 |
 | を | 27 | 28 | 96% | 🟢 |
 | の | 3 | 3 | 100% | 🟢 |
-| が | 11 | 11 | 100% | 🟢 |
+| が | 14 | 14 | 100% | 🟢 |
 | へ | 4 | 4 | 100% | 🟢 |
 | と | 1 | 1 | 100% | ⚪ |
+| より | 1 | 1 | 100% | ⚪ |
 
 ## Per lesson
 | Lesson | Benar | Total | Akurasi | Status |
@@ -115,11 +117,11 @@ _Terakhir diperbarui: 2026-09-06 · total sesi: 30_
 | Lesson 5 | 5 | 5 | 100% | 🟢 |
 | Lesson 6 | 5 | 5 | 100% | 🟢 |
 | Lesson 7 | 18 | 20 | 90% | 🟢 |
-| Lesson 8 | 4 | 4 | 100% | 🟢 |
-| Lesson 9 | 6 | 6 | 100% | 🟢 |
+| Lesson 8 | 8 | 8 | 100% | 🟢 |
+| Lesson 9 | 10 | 10 | 100% | 🟢 |
 | Lesson 10 | 30 | 34 | 88% | 🟢 |
 | Lesson 11 | 7 | 7 | 100% | 🟢 |
-| Lesson 12 | 3 | 3 | 100% | 🟢 |
+| Lesson 12 | 7 | 7 | 100% | 🟢 |
 | Lesson 13 | 40 | 47 | 85% | 🟢 |
 | Lesson 14 | 29 | 31 | 94% | 🟢 |
 | Lesson 15 | 16 | 19 | 84% | 🟢 |
@@ -134,4 +136,4 @@ _Terakhir diperbarui: 2026-09-06 · total sesi: 30_
 ---
 
 ## Weak areas (prioritas soal berikutnya)
-**Tracker bersih — tak ada lagi area 🔴/🟡.** Target sesi ini tercapai: 1) **L13-ています-keadaan** naik **12/15 (80%) 🟢** dari 75% 🟡 setelah 3/3 benar (勤めています keadaan kerja, 眼鏡をかけています, 知っています dgn konteks しりません mengunci) — user konsisten memilih ています untuk keadaan berlanjut. Resmi lulus dari daftar weak. **Sinyal (2 miss, bukan pola lemah baru):** (a) **L13-に-tujuan** 10/12 (83% 🟢) — pada 手紙を（　）に行きます user pilih 出して (て-form) alih-alih ます-stem 出しに; ingat rumus [ます-stem]+に行きます, bukan bentuk て. (b) **L20 普通体** — pada 返さなければ（　） user pilih 丁寧 なりません, seharusnya 普通形 ならない (kalimat 普通体 tak boleh dicampur ます/です). Keduanya slip konversi bentuk, akurasi pola tetap 🟢. **Rekomendasi:** sesi depan = **mode maintenance (spaced review)** karena tak ada weak — sapa bab paling lama tak diuji + terapkan 普通形 di dalam pola bab 1–19 (〜ている・〜たことがある・〜なければならない dalam ragam 普通体), sekaligus tegaskan beda [ます-stem]+に行きます vs bentuk て.
+**Tracker tetap bersih — tak ada area 🔴/🟡.** Sesi maintenance (spaced review) atas 3 bab paling lama tak diuji berhasil sempurna: **12/12 (100%)**. Yang naik ke 🟢 dari ⚪ (cukup 3 attempt): **L8-どう-どんな 3/3 (100%) 🟢** (どう langsung + です vs どんな + benda dikuasai) dan **L9-から-sebab 3/3 (100%) 🟢** (penanda alasan sentence-final). Bab-bab menyegel 🟢: Lesson 12 7/7, Lesson 8 8/8, Lesson 9 10/10 — semua 100%. Tak ada slip. **Rekomendasi:** lanjut mode maintenance sesi depan — engine akan menyodorkan bab berikutnya yang paling lama tak disentuh (kandidat: L11 satuan/frekuensi, L6, L5) untuk melawan decay 🟢; sisipkan lagi 普通体 L20 di dalam pola bab awal untuk variasi produksi bentuk.

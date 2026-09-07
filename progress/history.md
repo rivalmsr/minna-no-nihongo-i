@@ -7,6 +7,7 @@ Log ringkas tiap sesi `/quiz` (entri terbaru di atas). Ditambah otomatis oleh sk
 
 | Tanggal | Cakupan | Jml soal | Skor | Catatan |
 |---------|---------|----------|------|---------|
+| 2026-09-07 | Maintenance (spaced review): L8 · L9 · L12 | 12 | 12/12 (100%) | Maintenance spaced-review (L8·L9·L12, bab paling lama tak diuji) — 12/12 100% bersih. Lampau L12 (かった/では ありませんでした dgn cue ぜんぜん), perbandingan より・のほうが, kata sifat L8 (くない dgn cue あまり, な+benda しずかな, どう vs どんな), partikel が L9 & から-sebab, あります vs わかります — semua tepat. |
 | 2026-09-06 | JLPT mock penuh (S1 文字語彙 8 + S2 文法読解 8) | 16 | 14/16 (88%) | Mock 14/16 (88%); S1 7/8, S2 7/8. 9 subtipe tetap 🟢. Miss: MG-ruigi 遠くない→広い (harusnya 近い) & DK-bunpou てもいいですか→とらないで (harusnya とって). [tema: hobi-musik/jadwal-kelas/surat-teman] |
 | 2026-09-06 | L13 (ています-keadaan · を/に · 語彙) + L20 普通形 + recall verb (L14/L19) | 12 | 10/12 (83%) | L13-ています-keadaan resmi 🟢 (12/15 80%); tracker bersih tanpa 🟡/🔴. Miss: 出しに (pilih て-form) & 普通体 ならない (pilih 丁寧 なりません). |
 | 2026-09-05 | JLPT mock penuh (Sesi 1 文字語彙 8 + Sesi 2 文法読解 8) | 16 | 15/16 (94%) | Mock penuh 15/16 (94%). Sesi 1 7/8, Sesi 2 sempurna 8/8. Satu miss di MG-bunmyaku soal 6 (道を おしえて→pilih かって). [tema: dokkai=keluarga-masak, joho=menu-kafe, bunshou=buku-harian-belanja] |
