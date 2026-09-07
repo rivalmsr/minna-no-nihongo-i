@@ -11,7 +11,7 @@ mengkonjugasikannya — konsep **active recall**. `/quiz` memakai file ini sebag
 kolam verb utama untuk soal konjugasi & pemakaian.
 
 > Ringkasan cepat (anchor — baca ini saja saat quiz):
-> - **105 verb**, dikelompokkan **grup I (55) / II (32) / III (18)** (penentu bentuk て・ない・辞書・た).
+> - **114 verb**, dikelompokkan **grup I (62) / II (34) / III (18)** (penentu bentuk て・ない・辞書・た).
 > - **Grup II** paling mudah: buang ます → tempel langsung (`たべます→たべて／たべない／たべる／たべた`).
 > - **Grup III** cuma 2 pola: `〜します` & `〜きます` (irregular, hafal).
 > - **Grup I** butuh **音便** (lihat tabel 音便 di bawah) untuk bentuk て／た.
@@ -42,7 +42,7 @@ Grup II: buang ます, tempel て／ない／る／た langsung. Grup III: `し�
 
 ---
 
-## GRUP I (55) — perlu 音便 untuk て／た
+## GRUP I (62) — perlu 音便 untuk て／た
 | ます形 | Arti | Bab |
 |--------|------|-----|
 | あります | ada (benda mati) | L10 |
@@ -100,8 +100,15 @@ Grup II: buang ます, tempel て／ない／る／た langsung. Grup III: `し�
 | うごきます | pindah, bergerak | L21 |
 | かぶります | memakai (penutup kepala seperti topi) | L22 |
 | はきます | memakai (bagian bawah badan seperti sepatu, celana) | L22 |
+| ききます | bertanya | L23 |
+| まわします | memutar | L23 |
+| ひきます | tarik | L23 |
+| さわります | menyentuh | L23 |
+| あるきます | berjalan kaki | L23 |
+| わたります | menyebrang | L23 |
+| まがります | belok | L23 |
 
-## GRUP II (32) — buang ます, tempel langsung
+## GRUP II (34) — buang ます, tempel langsung
 | ます形 | Arti | Bab |
 |--------|------|-----|
 | います | ada (benda hidup) | L10 |
@@ -136,6 +143,8 @@ Grup II: buang ます, tempel て／ない／る／た langsung. Grup III: `し�
 | つけます | memakai (aksesoris seperti anting, cincin) | L22 |
 | きます | memakai (baju bagian atas) | L22 |
 | うまれます | lahir | L22 |
+| かえます | mengubah | L23 |
+| でます | keluar | L23 |
 
 ## GRUP III (18) — します／きます (irregular)
 | ます形 | Arti | Bab |
@@ -161,5 +170,5 @@ Grup II: buang ます, tempel て／ない／る／た langsung. Grup III: `し�
 
 ---
 
-_Auto-generated 2026-09-06 oleh `scripts/sync-anki-verbs.sh` dari
-`learn-anki/minna-no-nihongo-1/mnn-*.txt`. Total 105 verb._
+_Auto-generated 2026-09-07 oleh `scripts/sync-anki-verbs.sh` dari
+`learn-anki/minna-no-nihongo-1/mnn-*.txt`. Total 114 verb._
