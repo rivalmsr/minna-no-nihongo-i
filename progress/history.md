@@ -7,6 +7,7 @@ Log ringkas tiap sesi `/quiz` (entri terbaru di atas). Ditambah otomatis oleh sk
 
 | Tanggal | Cakupan | Jml soal | Skor | Catatan |
 |---------|---------|----------|------|---------|
+| 2026-09-08 | maintenance spaced review L7·L4·L5 (+penguat L15·L16) | 12 | 11/12 (92%) | maintenance spaced review L7·L4·L5 (+penguat L15 larangan·L16 gabung sifat) · 11/12 92% · miss S3 L7-で-bahasa 日本語で書く→kepilih に (媒体/cara pakai で, bukan に) · penguat L15 ては✓ & L16 きれいで✓ dua-duanya benar |
 | 2026-09-07 | JLPT mock penuh (Sesi1 文字語彙 8 + Sesi2 文法読解 8) · tema sekolah-rutinitas/jadwal-bus/surat-jalanjalan | 16 | 16/16 (100%) | mock penuh 16/16 100% · Sesi1 8/8 · Sesi2 8/8 · tema sekolah-rutinitas/jadwal-bus/surat-jalanjalan(gunung) · sempurna, tak ada slip |
 | 2026-09-07 | maintenance (spaced review) L15·L16·L18 | 12 | 10/12 (83%) | maintenance spaced review L15·L16·L18 · 10/12 83% · miss L15-てはいけません (けし+ても→harusnya ては) & L16-gabung-sifat (きれいくて→harusnya な-adj きれいで) |
 | 2026-09-07 | JLPT mock penuh (Sesi 1 文字語彙 8 + Sesi 2 文法読解 8) | 16 | 15/16 (94%) | Mock penuh 15/16 (94%) — Sesi1 7/8, Sesi2 8/8 (sempurna). Miss tunggal MG-hyouki: やすみ→体み (harusnya 休み), tertukar radikal 亻(にんべん) vs 木. Rotasi tema: keluarga-akhirpekan / menu-restoran / buku-harian-belanja. [tema: dokkai=keluarga-akhirpekan · joho=menu-restoran · bunshou=buku-harian-belanja] |

@@ -12,21 +12,21 @@ Diperbarui otomatis oleh skill `/quiz` setiap selesai sesi. Melacak akurasi
 **Ambang status:** akurasi <60% 🔴 LEMAH · 60–79% 🟡 · ≥80% 🟢
 (butuh minimal **3 attempt** sebelum status dihitung; di bawah itu = ⚪ belum cukup data)
 
-_Terakhir diperbarui: 2026-09-07 · total sesi: 32_
+_Terakhir diperbarui: 2026-09-08 · total sesi: 33_
 
 ---
 
 ## Per pola kalimat
 | Tag | Benar | Total | Akurasi | Status |
 |-----|-------|-------|---------|--------|
-| L4-jam | 6 | 7 | 86% | 🟢 |
-| L5-で-transport | 2 | 2 | 100% | ⚪ |
+| L4-jam | 7 | 8 | 88% | 🟢 |
+| L5-で-transport | 3 | 3 | 100% | 🟢 |
 | L6-を-objek | 2 | 2 | 100% | ⚪ |
-| L7-に-memberi | 5 | 6 | 83% | 🟢 |
-| L7-に-menerima | 7 | 8 | 88% | 🟢 |
+| L7-に-memberi | 6 | 7 | 86% | 🟢 |
+| L7-に-menerima | 8 | 9 | 89% | 🟢 |
 | L7-で-alat | 2 | 2 | 100% | ⚪ |
-| L7-で-bahasa | 2 | 2 | 100% | ⚪ |
-| L7-もう | 2 | 2 | 100% | ⚪ |
+| L7-で-bahasa | 2 | 3 | 67% | 🟡 |
+| L7-もう | 3 | 3 | 100% | 🟢 |
 | L8-adj-negatif | 2 | 2 | 100% | ⚪ |
 | L8-adj-benda | 2 | 2 | 100% | ⚪ |
 | L8-どう-どんな | 3 | 3 | 100% | 🟢 |
@@ -54,7 +54,7 @@ _Terakhir diperbarui: 2026-09-07 · total sesi: 32_
 | L14-ています-progresif | 5 | 6 | 83% | 🟢 |
 | L14-ましょうか | 1 | 1 | 100% | ⚪ |
 | L15-てもいいです | 2 | 2 | 100% | ⚪ |
-| L15-てはいけません | 1 | 2 | 50% | ⚪ |
+| L15-てはいけません | 2 | 3 | 67% | 🟡 |
 | L15-ています-keadaan | 7 | 8 | 88% | 🟢 |
 | L15-に-vs-で-statis | 9 | 11 | 82% | 🟢 |
 | L16-てから | 9 | 10 | 90% | 🟢 |
@@ -73,15 +73,15 @@ _Terakhir diperbarui: 2026-09-07 · total sesi: 32_
 | L19-なります | 24 | 28 | 86% | 🟢 |
 | L19-たり | 15 | 16 | 94% | 🟢 |
 | L19-に-vs-を-のぼる | 6 | 6 | 100% | 🟢 |
-| L5-と-dengan | 1 | 1 | 100% | ⚪ |
+| L5-と-dengan | 2 | 2 | 100% | ⚪ |
 | L5-どこも | 1 | 1 | 100% | ⚪ |
 | L6-で-tempat | 1 | 1 | 100% | ⚪ |
 | L6-ませんか | 1 | 1 | 100% | ⚪ |
 | L6-に-bertemu | 1 | 1 | 100% | ⚪ |
-| L4-から-まで | 1 | 1 | 100% | ⚪ |
+| L4-から-まで | 2 | 2 | 100% | ⚪ |
 | L4-kata-kerja | 1 | 1 | 100% | ⚪ |
-| L4-に-waktu | 1 | 1 | 100% | ⚪ |
-| L5-へ-tujuan | 1 | 1 | 100% | ⚪ |
+| L4-に-waktu | 2 | 2 | 100% | ⚪ |
+| L5-へ-tujuan | 2 | 2 | 100% | ⚪ |
 | L2-の-jenis | 1 | 1 | 100% | ⚪ |
 | L2-この-benda | 1 | 1 | 100% | ⚪ |
 | L2-なん | 1 | 1 | 100% | ⚪ |
@@ -96,28 +96,29 @@ _Terakhir diperbarui: 2026-09-07 · total sesi: 32_
 | L20-普通形-な形-名詞 | 3 | 3 | 100% | 🟢 |
 | L20-普通体-会話 | 1 | 1 | 100% | ⚪ |
 | L12-lampau-negatif | 1 | 1 | 100% | ⚪ |
-| L16-gabung-sifat | 0 | 1 | 0% | ⚪ |
+| L16-gabung-sifat | 1 | 2 | 50% | ⚪ |
 
 ## Per partikel
 | Partikel | Benar | Total | Akurasi | Status |
 |----------|-------|-------|---------|--------|
 | から | 5 | 5 | 100% | 🟢 |
-| に | 55 | 64 | 86% | 🟢 |
-| で | 19 | 22 | 86% | 🟢 |
+| に | 58 | 67 | 87% | 🟢 |
+| で | 20 | 24 | 83% | 🟢 |
 | を | 28 | 29 | 97% | 🟢 |
 | の | 3 | 3 | 100% | 🟢 |
 | が | 15 | 15 | 100% | 🟢 |
-| へ | 4 | 4 | 100% | 🟢 |
-| と | 1 | 1 | 100% | ⚪ |
+| へ | 5 | 5 | 100% | 🟢 |
+| と | 2 | 2 | 100% | ⚪ |
 | より | 1 | 1 | 100% | ⚪ |
+| まで | 1 | 1 | 100% | ⚪ |
 
 ## Per lesson
 | Lesson | Benar | Total | Akurasi | Status |
 |--------|-------|-------|---------|--------|
-| Lesson 4 | 9 | 10 | 90% | 🟢 |
-| Lesson 5 | 5 | 5 | 100% | 🟢 |
+| Lesson 4 | 12 | 13 | 92% | 🟢 |
+| Lesson 5 | 8 | 8 | 100% | 🟢 |
 | Lesson 6 | 5 | 5 | 100% | 🟢 |
-| Lesson 7 | 18 | 20 | 90% | 🟢 |
+| Lesson 7 | 21 | 24 | 88% | 🟢 |
 | Lesson 8 | 8 | 8 | 100% | 🟢 |
 | Lesson 9 | 10 | 10 | 100% | 🟢 |
 | Lesson 10 | 30 | 34 | 88% | 🟢 |
@@ -125,8 +126,8 @@ _Terakhir diperbarui: 2026-09-07 · total sesi: 32_
 | Lesson 12 | 7 | 7 | 100% | 🟢 |
 | Lesson 13 | 40 | 47 | 85% | 🟢 |
 | Lesson 14 | 29 | 31 | 94% | 🟢 |
-| Lesson 15 | 19 | 23 | 83% | 🟢 |
-| Lesson 16 | 25 | 30 | 83% | 🟢 |
+| Lesson 15 | 20 | 24 | 83% | 🟢 |
+| Lesson 16 | 26 | 31 | 84% | 🟢 |
 | Lesson 17 | 15 | 16 | 94% | 🟢 |
 | Lesson 18 | 22 | 24 | 92% | 🟢 |
 | Lesson 19 | 63 | 70 | 90% | 🟢 |
@@ -137,4 +138,4 @@ _Terakhir diperbarui: 2026-09-07 · total sesi: 32_
 ---
 
 ## Weak areas (prioritas soal berikutnya)
-**Tracker tetap bersih — tak ada area 🔴/🟡.** Sesi maintenance atas 3 bab paling lama tak diuji (L15·L16·L18) skor 10/12 (83%). Dua slip masih ⚪ (belum cukup 3 attempt, jadi belum jadi kelemahan resmi), tapi dua-duanya konfusi bentuk penyambung yang khas — worth diamati: (1) **L15-てはいけません 1/2 50% ⚪** — pada 「でんきを けし（　）いけません」 kepilih **ても** (izin) padahal larangan pakai **ては** (〜てはいけません = 'tidak boleh'); ても+いいです vs ては+いけません gampang tertukar karena dua-duanya turunan て-form. (2) **L16-gabung-sifat 0/1 0% ⚪** — 「この みせは（　）、しずかです」 kepilih **きれいくて** padahal きれい itu **な-adj** → gabung pakai **で** (きれいで), bukan **くて** (くて hanya untuk い-adj). Sisanya solid: 辞書形 (もらう/だす), 他動詞/自動詞 (じゅぎょうが→はじまります), を-おります, てから, すんでいます, ことができます, まえに, に-statis semua benar. **Rekomendasi:** sesi depan lanjut maintenance ke bab berikutnya yang paling lama tak disentuh; selipkan 1 soal 〜てはいけません vs 〜てもいいです (kontras izin↔larangan) dan 1 soal gabung sifat な-adj で vs い-adj くて untuk memantapkan dua slip ini sebelum sempat jadi 🔴.
+Dua 🟡 baru muncul (dua-duanya baru menyentuh ambang 3 attempt, bukan anjlok). 1) **L7-で-bahasa 2/3 67% 🟡** — pada 「この 手紙（てがみ）を 日本語（にほんご）（　）書（か）きました」 kepilih **に** padahal media/sarana ('menulis DALAM bahasa Jepang') pakai **で**; に di sini terbaca sbagai titik/sasaran, salah fungsi. Sinyal: kontras で-media vs に-sasaran perlu ditegaskan (で = alat/media/cara, termasuk 'dalam bahasa X'; ボールペンで・日本語で). 2) **L15-てはいけません 2/3 67% 🟡** — sesi ini justru **benar** (電気を消しては✓, tak lagi tertukar ke ても); statusnya naik ke 🟡 semata karena baru cukup 3 attempt, tren membaik. Sisanya solid: 他 partikel L7 (に-memberi/menerima), L4 (jam くじ・から〜まで・に-waktu), L5 penuh (へ・で-transport・と-dengan) semua 🟢/benar; penguat L16 gabung-sifat きれいで juga benar (な-adj で, bukan くて). **Rekomendasi:** sesi depan lanjut maintenance ke bab berikut yang lama tak disentuh; selipkan 1 soal kontras で-media↔に (mis. はし/日本語/ボールペン + で) untuk mengunci L7-で-bahasa, dan 1 soal 〜てはいけません lagi untuk mengonfirmasi ては sudah mantap (menuju 🟢).
