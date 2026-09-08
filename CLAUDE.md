@@ -1,155 +1,92 @@
 # CLAUDE.md — Konteks Project
 
-> Hub konteks yang **selalu ter-load** tiap sesi. Ringkas & menyeluruh; detail
-> panjang ada di docs yang ditunjuk. Beberapa hal di sini pernah hilang konteks —
-> jadi sengaja dipusatkan di file ini.
+> Hub konteks yang **selalu ter-load**. Sengaja ringkas: **aturan lintas-sesi** ada di
+> sini; **detail operasional** di skill (`.claude/skills/*`); **desain sistem** di `docs/*`
+> (mulai `docs/cara-kerja.md`); **indeks file lengkap** di `README.md`.
 
-## Ide project
+## Project
 
-Knowledge base pribadi untuk belajar bahasa Jepang dari buku **Minna no Nihongo I
-(みんなの日本語 I)**, target **JLPT N5**. Penjelasan ditulis **Bahasa Indonesia**,
-contoh kalimat **Bahasa Jepang**. Dibaca/dirapikan di **Obsidian** (vault `.obsidian/`).
+KB pribadi belajar bahasa Jepang dari **Minna no Nihongo I (みんなの日本語 I)**, target
+**JLPT N5**. Penjelasan **Bahasa Indonesia**, contoh kalimat **Bahasa Jepang**; dibaca/
+dirapikan di **Obsidian**. Dua fungsi: (1) **catatan materi** per 課 di `lessons/*.md` +
+referensi `reference/*`; (2) **latihan adaptif** `/quiz` (harian) & `/jlpt` (mock ujian) —
+active recall + evaluasi titik lemah dari materi yang sudah dicatat.
 
-Dua fungsi utama:
-1. **Catatan materi yang sudah dipelajari** — per pelajaran (課) di `lessons/*.md`,
-   ditambah referensi terkumpul di `reference/*`.
-2. **Latihan adaptif `/quiz`** — active recall + evaluasi titik lemah dari materi
-   yang sudah dicatat.
+## Sumber kebenaran (source of truth)
 
-## Struktur (indeks lengkap → `README.md`)
+| Untuk | File |
+|---|---|
+| Tata bahasa | `lessons/lesson-0X.md` — **jangan uji pola di luar ini** |
+| Kosakata N5 | `reference/n5-vocabulary.md` · sinonim `reference/n5-synonyms.md` |
+| Kata kerja | `reference/anki-verbs.md` — AUTO-GENERATED (jangan edit tangan) |
+| Item lemah Anki | `progress/anki-weak-items.md` — AUTO-GENERATED (lapses+leech) |
+| Skor & status | `progress/attempts.jsonl` (+ `baseline.json`) → engine `scripts/kb.py` |
+| Tag pola/partikel/subtipe | `reference/quiz-taxonomy.md` |
+| Tracker (view) | `evaluation.md` (/quiz) · `jlpt-evaluation.md` (/jlpt) · `history.md` — semua AUTO-GENERATED |
 
-```
-lessons/lesson-02.md … lesson-19.md   catatan per pelajaran (source of truth tata bahasa)
-reference/
-  quiz-taxonomy.md    tag pola & partikel untuk /quiz (indeks)
-  n5-vocabulary.md    pool kosakata JLPT N5 (sumber kosakata /quiz)
-  anki-verbs.md       pool kata kerja — AUTO-GENERATED dari deck Anki (jangan edit tangan)
-  particles.md        ringkasan partikel
-  vocabulary.md       kosakata terkumpul per lesson (referensi penulisan; besar — hindari saat quiz)
-progress/
-  attempts.jsonl      SUMBER kebenaran skor (append-only, 1 sesi/baris) — dibaca engine kb.py
-  baseline.json       agregat awal (impor sekali dari tabel .md lama)
-  evaluation.md       tracker kelemahan per pola/partikel/lesson — AUTO-GENERATED oleh kb.py
-  jlpt-evaluation.md  tracker mock /jlpt (per subtipe ujian JLPT) — AUTO-GENERATED oleh kb.py
-  anki-weak-items.md  item lemah dari collection Anki (lapses+leech) — AUTO-GENERATED, sinyal pelengkap evaluation.md
-  history.md          riwayat tiap sesi /quiz & /jlpt — AUTO-GENERATED oleh kb.py
-scripts/kb.py                     engine pembukuan: import/render/record/plan/summary (JSONL → view .md). Detail: docs/engine-bookkeeping-plan.md
-scripts/sync-anki-verbs.sh        regen anki-verbs.md dari learn-anki/*.txt (gitignored)
-scripts/sync-anki-weak-items.sh   regen anki-weak-items.md dari collection.anki2 (Anki desktop)
-.claude/skills/quiz/         skill /quiz (detail operasional lengkap)
-.claude/skills/summary/      skill /summary (rincian lengkap hasil — pelengkap ringkasan ringkas /quiz & /jlpt)
-.claude/skills/sync-anki/    skill /sync-anki (refresh anki-verbs.md & anki-weak-items.md)
-docs/cara-kerja.md           peta flow & logika bisnis KB (diagram)
-docs/perbaikan-kb.md         log perbaikan sistem/aturan (problem→fix→tanggal)
-docs/estimasi-token.md       estimasi biaya token /quiz & /jlpt (±30%)
-docs/engine-bookkeeping-plan.md  desain engine pembukuan deterministik (kb.py)
-```
+## Aturan lintas-sesi (WAJIB — jangan hilang)
 
-> **Pembukuan = engine, bukan manual (PENTING).** Skor/status/ranking/seleksi cakupan
-> `/quiz` & `/jlpt` dikerjakan `scripts/kb.py` (sumber `progress/attempts.jsonl` +
-> `baseline.json`; tracker `.md` = view AUTO-GENERATED). Tiap akhir sesi: tulis
-> `session.json` → `python3 scripts/kb.py record <session.json>` (JANGAN hitung/tulis
-> angka tabel dengan tangan). Seleksi cakupan: `kb.py plan`; breakdown `/summary`:
-> `kb.py summary`. **Grading = engine:** tiap soal bawa `key`+`submitted` (engine banding;
-> soal rancu → `override`+`note`). **Angka narasi:** `kb.py record --dry-run` dulu (cetak
-> delta+weak TANPA menulis), baru tulis prosa. Model pegang isi soal + kunci + prosa
-> (`history_note`/`weak_narrative`). Detail: `docs/engine-bookkeeping-plan.md`.
+1. **Pembukuan = engine, bukan manual.** Skor/status/ranking/seleksi cakupan `/quiz` &
+   `/jlpt` dikerjakan `scripts/kb.py`; tracker `.md` = view AUTO-GENERATED. Tiap akhir
+   sesi: tulis `session.json` → `python3 scripts/kb.py record <session.json>` (JANGAN
+   hitung angka tabel dengan tangan). **Grading = engine:** tiap soal bawa `key`+`submitted`
+   (soal rancu → `override`+`note`). **Angka narasi:** `kb.py record --dry-run` dulu, baru
+   tulis prosa. Seleksi cakupan `kb.py plan`; breakdown `kb.py summary`. Detail:
+   `docs/engine-bookkeeping-plan.md`.
+2. **Log perbaikan.** Tiap kali **aturan/logika/skill diperbaiki** (bukan sekadar tambah
+   materi atau update skor), catat 1 entri **Problem→Fix→Tanggal** di `docs/perbaikan-kb.md`
+   (terbaru di atas) — jejak "kenapa" tiap keputusan desain.
+3. **Jaga keutuhan isi.** Saat mengedit catatan, jangan buang materi; **laporkan tiap
+   perubahan** yang dilakukan.
+4. **Hemat token.** Baca **anchor** lesson (header + Topik + "Ringkasan cepat", ~20 baris),
+   bukan file utuh; detail pola/partikel/kosakata via `Grep` on-demand. Jangan `Read` utuh
+   `vocabulary.md` / `particles.md` / lesson penuh saat latihan.
 
-Daftar pelajaran lengkap (judul + topik + status) ada di tabel `README.md`.
+## /quiz & /jlpt — inti (detail lengkap di skill)
 
-> **Log perbaikan (WAJIB):** setiap kali sebuah **aturan / logika / skill diperbaiki**
-> (bukan sekadar tambah materi atau update skor), catat satu entri di
-> `docs/perbaikan-kb.md` — **Problem → Fix → Tanggal** (entri terbaru di atas). Ini jejak
-> "kenapa" tiap keputusan desain, biar tak berulang.
+`/quiz` = latihan **harian adaptif** grammar; **jangan diubah** untuk kebutuhan JLPT.
+`/jlpt` = **simulasi ujian tertulis N5** (2 sesi: 文字・語彙 + 文法・読解; 聴解/listening di
+luar cakupan). Langkah eksekusi, template soal, parsing argumen **ada di skill — jangan
+ulang di sini:** `.claude/skills/{quiz,jlpt,summary,sync-anki}/SKILL.md`.
 
-## /quiz — tujuan & aturan inti (PENTING)
+Yang tak boleh dilanggar:
+- **Hanya uji materi di KB ini** (lihat tabel source of truth). Bobotkan ke **weak areas**
+  (`evaluation.md`); sisanya konfirmasi materi yang sudah dikuasai.
+- **Verb = kendaraan active recall**, bukan drill konjugasi lepas — paksa produksi bentuk
+  (て/ない/辞書/た) **di dalam pola in-scope yang lemah**.
+- **Bias LUNAK ke item 🔴 Anki** saat memilih kosakata pengisi soal (bukan pengganti pola;
+  fallback ke kosakata lain bila janggal). Refresh: buka **Anki desktop & Sync dulu**
+  (sync iPhone saja tak update file) → `bash scripts/sync-anki-weak-items.sh`. Detail:
+  `docs/anki-integration-plan.md`.
+- **/jlpt tracker terpisah:** boleh **baca** `evaluation.md` (bias ke pola lemah) tapi
+  **hanya tulis** `jlpt-evaluation.md` + baris `JLPT` di `history.md`. **Jangan sentuh**
+  `evaluation.md`.
 
-**Tujuan:** active recall & melatih pemahaman **materi yang SUDAH dipelajari**, sambil
-**mengevaluasi titik lemah** yang masih perlu diasah.
+## Preferensi tampilan (tersimpan — jangan dilupakan; contoh di skill)
 
-- **Hanya uji materi yang ada di KB ini.** Source of truth tata bahasa = `lessons/`.
-  Kosakata = `reference/n5-vocabulary.md`. Kata kerja = `reference/anki-verbs.md`.
-  Jangan pakai pola/materi di luar lesson yang tersedia.
-- **Bobotkan ke weak areas** di `progress/evaluation.md`; sisanya konfirmasi materi
-  yang sudah dikuasai. Perbarui evaluasi + history tiap sesi (hitung eksplisit, jangan
-  mengarang skor).
-- **Bias kendaraan ke item lemah Anki** (`progress/anki-weak-items.md`, AUTO-GENERATED
-  dari collection Anki: `lapses` + `leech`). `evaluation.md` menentukan **pola** yang
-  diuji; saat memilih **verb/kosakata** pengisi soal, condongkan ke item 🔴 di file itu
-  **bila cocok**. Bias **LUNAK** — Anki = pemilih *kosakata*, bukan pengganti *pola*;
-  jangan bikin drill item lepas. **Fallback:** kalau tak ada item 🔴 yang cocok dengan
-  pola/cakupan yang diuji, **pakai kosakata lain** (`n5-vocabulary.md` / `anki-verbs.md`)
-  — jangan paksakan item lemah kalau bikin soal janggal. Tujuan tetap yang utama: `/quiz`
-  = uji pemahaman materi + cari titik lemah; `/jlpt` = simulasi mini-JLPT. Baca **anchor
-  🔴** saja (hemat token). Juga dipakai `/jlpt` (subtipe kanji MG-yomi/hyouki → kanji 🔴).
-  **Refresh data:** user review harian di iPhone → wajib **buka Anki desktop & Sync**
-  dulu (biar collection lokal turun dari AnkiWeb), BARU `bash scripts/sync-anki-weak-items.sh`.
-  Sync iPhone saja tak update file desktop. Detail: `docs/anki-integration-plan.md`.
-- **Kata kerja = KENDARAAN active recall, bukan drill lepas.** Verb dari `anki-verbs.md`
-  dipakai untuk memaksa **produksi bentuk & pemakaian** (て/ない/辞書/た) **DI DALAM pola
-  yang sudah dipelajari & masih lemah**. JANGAN bikin soal konjugasi terisolasi seperti
-  "「およぎます」→ bentuk た?" yang lepas dari materi. Contoh benar:
-  "おきなわへ（いった）ことが あります" — user tetap memproduksi た-form sambil melatih pola
-  たことがあります / partikel に / なります.
-- **Preferensi tampilan & mode** (semua tersimpan, jangan dilupakan):
-  - Mode ujian: **jawab semua soal dulu**, koreksi & analisis muncul **di akhir**.
-  - Default **12 soal** (3 panel AskUserQuestion penuh 4+4+4).
-  - **Acak posisi jawaban benar** — sebar merata (1/2/3/4) lintas soal, JANGAN taruh
-    kunci di nomor 1 terus (berlaku `/quiz` & `/jlpt`).
-  - Soal tampil **besar & tebal** di chat (kalimat Jepang pakai H1 `#`); klik jawaban
-    lewat panel AskUserQuestion.
-  - **Semua kanji wajib berfurigana** — termasuk di tabel hasil, ringkasan, **dan
-    panel AskUserQuestion** (jangan copot furigana untuk meringkas panel; kalau
-    `（　）` dipakai sbg blank, taruh furigana di luar blank: `大学生（だいがくせい）（　）`).
-  - Soal susun kalimat (文法2) pakai format nomor 1–4 + posisi ★ gaya JLPT asli.
-  - **Ringkasan hasil = RINGKAS (hemat token).** Setelah `/quiz` & `/jlpt`, tampilan chat
-    hanya: skor + **tabel soal SALAH saja** + pembahasan ringkas + 1 baris area terlemah.
-    Breakdown penuh (per pola/partikel/lesson, 3 area terlemah, rekomendasi) diminta lewat
-    **`/summary`** (`/summary jlpt` untuk tracker mock). Update tracker tetap jalan penuh —
-    yang diringkas hanya tampilan. Skill: `.claude/skills/summary/SKILL.md`.
-- **Hemat token:** baca **anchor** lesson (header + Topik + "Ringkasan cepat", ~20 baris),
-  bukan file utuh. Detail pola/partikel/kosakata dibaca on-demand via `Grep`. Jangan
-  `Read` utuh `vocabulary.md` / `particles.md` / lesson penuh saat quiz.
+- **Mode ujian:** jawab semua soal dulu, koreksi & analisis **di akhir**. Default **12 soal**
+  (3 panel AskUserQuestion penuh 4+4+4).
+- **Semua kanji berfurigana** — termasuk tabel hasil, ringkasan, **dan panel** (blank
+  `（　）` → taruh furigana di luar blank: `大学生（だいがくせい）（　）`).
+- Kalimat Jepang tampil **besar & tebal** (H1 `#`); jawaban diklik lewat panel AskUserQuestion.
+- **Acak posisi kunci** (sebar merata 1/2/3/4; jangan selalu nomor 1 — berlaku /quiz & /jlpt).
+  Soal susun kalimat (文法2): format nomor 1–4 + posisi **★** gaya JLPT asli.
+- Keterangan opsi panel **simetris** (jangan cuma kunci yang bergloss = tell halus) &
+  **hint fading** bertahap ikut penguasaan (🔴/🟡/⚪ penuh → 🟢 dihilangkan).
+- **Hasil = RINGKAS:** skor + tabel **soal SALAH saja** + pembahasan ringkas + 1 baris area
+  terlemah. Breakdown penuh via **`/summary`** (`/summary jlpt` untuk tracker mock).
 
-Detail lengkap (parsing argumen, cakupan adaptif, template soal, langkah eksekusi) ada
-di `.claude/skills/quiz/SKILL.md`.
+## Konvensi catatan lesson
 
-## /jlpt — variant mock ujian tertulis N5 (skill terpisah)
-
-`/quiz` utama = latihan **harian adaptif** grammar; **jangan diubah** untuk kebutuhan
-JLPT. Untuk simulasi ujian ada skill terpisah **`/jlpt`** (`.claude/skills/jlpt/SKILL.md`):
-
-- **Meniru struktur ujian tertulis N5, 2 sesi:** Sesi 1 **文字・語彙** (baca kanji, tulis
-  kanji, kosakata konteks, sinonim) + Sesi 2 **文法・読解** (grammar, susun kalimat,
-  bacaan pendek, info-search). `聴解` (listening) di luar cakupan (butuh audio).
-- **Reuse penuh** konvensi /quiz (furigana wajib, kanji besar H1, mode ujian, panel
-  AskUserQuestion, hemat token, source of truth lesson). Kosakata/kanji dari
-  `n5-vocabulary.md`; sinonim dari `n5-synonyms.md`.
-- **Tracker terpisah** `progress/jlpt-evaluation.md` (per subtipe JLPT). `/jlpt` **boleh
-  membaca** `evaluation.md` untuk membiaskan soal grammar ke pola lemah, tapi **hanya
-  menulis** `jlpt-evaluation.md` + baris berlabel `JLPT` di `history.md`. **Jangan sentuh**
-  `evaluation.md`. Tag subtipe (`MG-*`, `DK-*`) ada di `reference/quiz-taxonomy.md`.
-- **Hint fading (scaffolding):** hint di `description` opsi panel **dipudarkan bertahap**
-  mengikuti penguasaan — bukan dicabut mendadak (soal jadi beban) atau dibiarkan penuh
-  (skor tak jujur). Materi 🔴/🟡/⚪ → hint penuh; menuju 🟢 → hint netral; mantap 🟢 →
-  hint dihilangkan (opsi polos gaya ujian asli). Putuskan per subtipe/pola dari tracker.
-  Detail di `.claude/skills/jlpt/SKILL.md` ("Hint fading").
-
-## Konvensi menulis catatan lesson
-
-- Struktur tiap `lessons/lesson-0X.md`: judul `# 第X課 — 練習A`, blok **Topik**,
-  blockquote **"Ringkasan cepat"** (menyebut SEMUA pola bab), tabel struktur/konjugasi,
-  lalu tiap pola diberi **Rumus / Contoh / Catatan**. `→` menandai jenis kalimat.
-  Contoh dalam hiragana/katakana; penjelasan Bahasa Indonesia. Konvensi anchor ini
-  yang membuat baca-hemat-token valid — patuhi selalu.
-- Tiap lesson diakhiri **"Catatan koreksi ejaan (dari catatan asli)"** — daftar tiap
-  typo Jepang yang diperbaiki + alasannya.
-- **Jaga keutuhan isi.** Saat mengedit catatan, jangan buang materi; **laporkan tiap
-  perubahan** yang dilakukan.
-- **Saat menambah lesson baru**, update juga: `README.md` (diagram folder + tabel Daftar
+- Struktur `lessons/lesson-0X.md`: judul `# 第X課 …`, blok **Topik**, blockquote
+  **"Ringkasan cepat"** (menyebut SEMUA pola bab), tabel struktur/konjugasi, lalu tiap pola
+  diberi **Rumus / Contoh / Catatan**; `→` menandai jenis kalimat. Contoh hiragana/katakana,
+  penjelasan Bahasa Indonesia. Konvensi anchor ini yang membuat baca-hemat-token valid.
+- Akhiri tiap lesson dengan **"Catatan koreksi ejaan (dari catatan asli)"** (tiap typo
+  Jepang yang diperbaiki + alasannya).
+- **Saat menambah lesson baru, update juga:** `README.md` (diagram folder + tabel Daftar
   Pelajaran), `reference/quiz-taxonomy.md` (tag pola/partikel baru — WAJIB sebelum quiz
   memakainya), `reference/vocabulary.md` (bagian per-lesson), `reference/particles.md`
   (partikel baru).
-- `reference/anki-verbs.md` **auto-generated** — jangan edit tangan. Kalau deck Anki
-  bertambah/berubah, jalankan `bash scripts/sync-anki-verbs.sh` untuk re-sync sebelum
-  menyusun soal verb.
+- `reference/anki-verbs.md` auto-generated — jalankan `bash scripts/sync-anki-verbs.sh`
+  untuk re-sync kalau deck Anki berubah.
