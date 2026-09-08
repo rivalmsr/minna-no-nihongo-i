@@ -21,6 +21,22 @@ atau update skor), tambahkan satu blok di paling atas daftar di bawah, format:
 
 ---
 
+### 2026-09-08 — Furigana bocor di beberapa H1 & panel `/jlpt` (checklist pra-kirim)
+- **Problem:** Aturan **"semua kanji wajib berfurigana"** (kecuali kata yang diuji di
+  `MG-yomi`/`MG-hyouki`) dilanggar berulang di mock 2026-09-08. Kanji di **kalimat H1**
+  (`行きます`, `映画館`, `日`) & **opsi panel AskUserQuestion** (hari `土曜日`/`木曜日`, harga
+  `千五百円`/`八百円`) ditulis **polos tanpa bacaan**, padahal versi chat-nya sudah berfurigana.
+  User melaporkan soal "terasa terlalu banyak kanji" — bukan karena desain, tapi karena
+  bacaan hilang di titik-titik itu → beban baca naik tak perlu.
+- **Fix (aturan/checklist, bukan kode):** sebelum mengirim tiap panel & tiap kalimat H1,
+  **cek eksplisit tiap glyph kanji punya `（…）` bacaan** — TERMASUK: (a) opsi panel yang
+  memuat kanji (hari, angka/harga, tempat), (b) ringkasan teks di dalam `question` panel,
+  (c) kalimat H1 di chat. **Satu-satunya pengecualian:** kata target `MG-yomi` (bacaan =
+  jawaban) & pilihan kanji `MG-hyouki` (penulisan = jawaban). Kanji **angka+単位** (`千五百円`)
+  & **hari** (`木曜日`) BUKAN pengecualian — tetap wajib furigana walau "sering muncul".
+- **File:** `.claude/skills/jlpt/SKILL.md` (penegasan di "Format tampilan" & langkah 4);
+  memori `furigana-everywhere-preference`.
+
 ### 2026-09-06 — `answer_positions` tak boleh ada ≥3 posisi kunci identik beruntun
 - **Problem:** `spread_positions()` membuat list posisi seimbang lalu **shuffle acak murni**.
   Sebaran total memang rata (tiap posisi 1–4 dipakai sama banyak), tapi acak murni **bisa

@@ -253,6 +253,15 @@ Aturan: kalimat Jepang di `#`; nomor + tag di baris **tebal** kecil; opsi daftar
 bernomor; `---` antar soal; **AskUserQuestion** untuk klik jawaban (question boleh
 diringkas). **Furigana di semua kanji** kecuali kata yang diuji bacaannya (`MG-yomi`).
 
+> ⚠️ **CHECKLIST FURIGANA (WAJIB — pra-kirim tiap H1 & tiap panel).** Bocor berulang
+> (2026-09-08): furigana hilang di kalimat H1 (`行きます`, `映画館`, `日`) & **opsi panel**
+> (hari `土曜日`/`木曜日`, harga `千五百円`/`八百円`) walau versi chat sudah berfurigana. Sebelum
+> mengirim, **scan tiap glyph kanji** di: (a) kalimat H1 chat, (b) `question` panel (termasuk
+> ringkasan 【文章】), **(c) SETIAP opsi panel yang memuat kanji** — hari, angka+単位/harga,
+> nama tempat. Semua wajib `（bacaan）`. **Pengecualian TUNGGAL:** kata target `MG-yomi`
+> (bacaan = jawaban) & pilihan `MG-hyouki` (penulisan = jawaban). Kanji hari/angka/harga
+> yang "sering muncul" **BUKAN** pengecualian.
+
 ## Template subtipe (JLPT N5)
 
 Semua jadi pilihan ganda (klik via AskUserQuestion).
