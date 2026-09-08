@@ -774,3 +774,53 @@ Kosakata yang muncul di catatan, dikelompokkan per pelajaran.
 | うん／ううん | ya / tidak (kasual, ganti はい/いいえ) |
 | こっち／そっち／あっち／どっち | bentuk kasual こちら/そちら/あちら/どちら |
 | Peniadaan partikel は/を | dalam ragam 普通体 bila makna 100% jelas |
+
+## 第21課 (Lesson 21) — pendapat, kutipan & konfirmasi
+
+### Kata kerja
+| Jepang | Romaji | Arti | Catatan |
+|--------|--------|------|---------|
+| おもいます (思います) | omoimasu | berpikir / berpendapat | pola 〜と 思います |
+| いいます (言います) | iimasu | berkata / mengucapkan | pola 〜と 言います／言いました |
+| うごきます (動きます) | ugokimasu | bergerak / berpindah | 自動詞 — subjek pakai が |
+| やくに たちます (役に立ちます) | yaku ni tachimasu | berguna | |
+| やめます | yamemasu | berhenti (kerja/kebiasaan) | 会社を やめる |
+
+### Kata benda
+| Jepang | Romaji | Arti |
+|--------|--------|------|
+| じどうしゃ (自動車) | jidōsha | mobil (istilah otomotif/teknis) |
+| こうじょう (工場) | kōjō | pabrik |
+| ぶっか (物価) | bukka | harga barang (tingkat harga umum) |
+| ねだん (値段) | nedan | harga (satu barang spesifik) |
+| ぎゅうにく (牛肉) | gyūniku | daging sapi |
+| おみやげ (お土産) | omiyage | oleh-oleh |
+| しりょう (資料) | shiryō | materi / dokumen |
+| かちょう (課長) | kachō | kepala seksi |
+| ぶちょう (部長) | buchō | kepala departemen |
+| ぼくし (牧師) | bokushi | pastor / pendeta |
+| ゆめ (夢) | yume | mimpi / cita-cita |
+| はなし (話) | hanashi | cerita / perkataan |
+| ソフト | sofuto | perangkat lunak (software) |
+| マンガ (漫画) | manga | komik |
+| ケータイ (携帯) | kētai | ponsel / HP |
+| ゴルフ | gorufu | golf |
+| おてら (お寺) | otera | kuil (Buddha) |
+| コンサート | konsāto | konser |
+
+### Kata sifat
+| Jepang | Romaji | Arti | Jenis |
+|--------|--------|------|-------|
+| ほんとう (本当) | hontō | benar / sungguh | な-adj / 名詞 |
+
+### Ungkapan / pola
+| Jepang | Arti |
+|--------|------|
+| 〜と 思（おも）います | saya pikir / menurut saya (bahwa)… (普通形 + と) |
+| 〜に ついて どう 思いますか | bagaimana pendapatmu tentang〜? |
+| 〜と 言（い）いました／言います | berkata bahwa… (kutipan; 普通形 + と) |
+| 「　」と 言います | kutipan langsung (直接) — persis kata-katanya |
+| 〜でしょう？ | …kan? / …bukan? (minta konfirmasi; 普通形 + でしょう) |
+| おやすみなさい | selamat malam (sebelum tidur) |
+| ごちそうさまでした | terima kasih atas makanannya (setelah makan) |
+| そんなに | (tidak) begitu / sebegitunya |

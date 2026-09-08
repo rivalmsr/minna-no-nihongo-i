@@ -188,6 +188,19 @@ Selain "dan" (Lesson 4), と juga berarti **bersama siapa** aktivitas dilakukan.
 - ともだち**と** いきます。 (Pergi bersama teman.)
 - Pengecualian: ひとり**で** (sendirian) memakai で, bukan と.
 
+## と — penanda kutipan (引用) "…" (bahwa / berkata bahwa)
+
+Di [Lesson 21](../lessons/lesson-21.md), と menandai **isi pikiran atau perkataan** yang
+dikutip, tepat sebelum 思います / 言います. Isi kutipan diubah ke **普通形** dulu.
+
+- あした 雨が ふる**と** 思います。 (Saya pikir **bahwa** besok akan hujan.)
+- 母は りょうりを つくる**と** 言いました。 (Ibu berkata **bahwa** akan memasak.)
+- 「おやすみなさい」**と** 言います。 (Mengucapkan "oyasuminasai" — kutipan langsung 直接
+  pakai 「　」, boleh 丁寧形 apa adanya.)
+
+> Beda dari と "dan/dengan" (Lesson 4): di sini と menempel pada **klausa/kalimat 普通形**,
+> bukan antar kata benda.
+
 ## Peniadaan partikel (省略) — ragam 普通体 / kasual
 
 Di [Lesson 20](../lessons/lesson-20.md), dalam percakapan **kasual (普通体)** sebagian

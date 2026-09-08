@@ -110,6 +110,12 @@ minimal satu **tag pola** + tag **partikel** yang relevan + **lesson** asalnya.
 | `L20-普通形-い形` | 20 | い-adj → 普通形 (buang です; 〜くない／〜かった／〜くなかった) |
 | `L20-普通形-な形-名詞` | 20 | な-adj / kata benda → 普通形 (だ／じゃない／だった／じゃなかった) |
 | `L20-普通体-会話` | 20 | Ragam kasual: うん/ううん, tanya N/な-adj tanpa だ, こっち系, peniadaan partikel は/を |
+| `L21-と思います` | 21 | 普通形 + と思います (pendapat/dugaan); N/な-adj positif non-lampau **pakai だ** |
+| `L21-と言いました` | 21 | 普通形 + と言いました (kutipan 間接); langsung (直接) → 「　」 + と言います |
+| `L21-でしょう` | 21 | 普通形 + でしょう？ (konfirmasi "kan?"); N/な-adj positif non-lampau **tanpa だ**, lampau だった |
+| `L21-でしょう-vs-ね-よ` | 21 | Beda partikel akhir: でしょう？ (konfirmasi) / ね (persetujuan) / よ (info baru) |
+| `L21-言葉-うごきます` | 21 | うごきます 自動詞 → subjek pakai が (でんしゃが うごきます) |
+| `L21-言葉-じどうしゃvsくるま-ぶっかvsねだん` | 21 | じどうしゃ(自動車) vs くるま; ぶっか(物価, umum) vs ねだん(値段, spesifik) |
 
 ## Tag partikel
 
