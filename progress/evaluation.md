@@ -12,7 +12,7 @@ Diperbarui otomatis oleh skill `/quiz` setiap selesai sesi. Melacak akurasi
 **Ambang status:** akurasi <60% 🔴 LEMAH · 60–79% 🟡 · ≥80% 🟢
 (butuh minimal **3 attempt** sebelum status dihitung; di bawah itu = ⚪ belum cukup data)
 
-_Terakhir diperbarui: 2026-09-08 · total sesi: 33_
+_Terakhir diperbarui: 2026-09-09 · total sesi: 34_
 
 ---
 
@@ -22,10 +22,10 @@ _Terakhir diperbarui: 2026-09-08 · total sesi: 33_
 | L4-jam | 7 | 8 | 88% | 🟢 |
 | L5-で-transport | 3 | 3 | 100% | 🟢 |
 | L6-を-objek | 2 | 2 | 100% | ⚪ |
-| L7-に-memberi | 6 | 7 | 86% | 🟢 |
+| L7-に-memberi | 7 | 8 | 88% | 🟢 |
 | L7-に-menerima | 8 | 9 | 89% | 🟢 |
-| L7-で-alat | 2 | 2 | 100% | ⚪ |
-| L7-で-bahasa | 2 | 3 | 67% | 🟡 |
+| L7-で-alat | 3 | 3 | 100% | 🟢 |
+| L7-で-bahasa | 3 | 4 | 75% | 🟡 |
 | L7-もう | 3 | 3 | 100% | 🟢 |
 | L8-adj-negatif | 2 | 2 | 100% | ⚪ |
 | L8-adj-benda | 2 | 2 | 100% | ⚪ |
@@ -49,13 +49,13 @@ _Terakhir diperbarui: 2026-09-08 · total sesi: 33_
 | L13-を-meninggalkan | 8 | 8 | 100% | 🟢 |
 | L13-で-vs-を | 8 | 10 | 80% | 🟢 |
 | L13-ています-keadaan | 12 | 15 | 80% | 🟢 |
-| L14-te-konjugasi | 32 | 34 | 94% | 🟢 |
-| L14-てください | 5 | 6 | 83% | 🟢 |
+| L14-te-konjugasi | 35 | 37 | 95% | 🟢 |
+| L14-てください | 6 | 7 | 86% | 🟢 |
 | L14-ています-progresif | 5 | 6 | 83% | 🟢 |
 | L14-ましょうか | 1 | 1 | 100% | ⚪ |
-| L15-てもいいです | 2 | 2 | 100% | ⚪ |
-| L15-てはいけません | 2 | 3 | 67% | 🟡 |
-| L15-ています-keadaan | 7 | 8 | 88% | 🟢 |
+| L15-てもいいです | 3 | 3 | 100% | 🟢 |
+| L15-てはいけません | 4 | 5 | 80% | 🟢 |
+| L15-ています-keadaan | 8 | 9 | 89% | 🟢 |
 | L15-に-vs-で-statis | 9 | 11 | 82% | 🟢 |
 | L16-てから | 9 | 10 | 90% | 🟢 |
 | L16-て-urutan | 1 | 1 | 100% | ⚪ |
@@ -97,16 +97,20 @@ _Terakhir diperbarui: 2026-09-08 · total sesi: 33_
 | L20-普通体-会話 | 1 | 1 | 100% | ⚪ |
 | L12-lampau-negatif | 1 | 1 | 100% | ⚪ |
 | L16-gabung-sifat | 1 | 2 | 50% | ⚪ |
+| L21-と思います | 1 | 1 | 100% | ⚪ |
+| L21-でしょう | 1 | 1 | 100% | ⚪ |
+| L21-と言いました | 0 | 1 | 0% | ⚪ |
+| L21-言葉-うごきます | 1 | 1 | 100% | ⚪ |
 
 ## Per partikel
 | Partikel | Benar | Total | Akurasi | Status |
 |----------|-------|-------|---------|--------|
 | から | 5 | 5 | 100% | 🟢 |
-| に | 58 | 67 | 87% | 🟢 |
-| で | 20 | 24 | 83% | 🟢 |
+| に | 59 | 68 | 87% | 🟢 |
+| で | 22 | 26 | 85% | 🟢 |
 | を | 28 | 29 | 97% | 🟢 |
 | の | 3 | 3 | 100% | 🟢 |
-| が | 15 | 15 | 100% | 🟢 |
+| が | 16 | 16 | 100% | 🟢 |
 | へ | 5 | 5 | 100% | 🟢 |
 | と | 2 | 2 | 100% | ⚪ |
 | より | 1 | 1 | 100% | ⚪ |
@@ -118,15 +122,15 @@ _Terakhir diperbarui: 2026-09-08 · total sesi: 33_
 | Lesson 4 | 12 | 13 | 92% | 🟢 |
 | Lesson 5 | 8 | 8 | 100% | 🟢 |
 | Lesson 6 | 5 | 5 | 100% | 🟢 |
-| Lesson 7 | 21 | 24 | 88% | 🟢 |
+| Lesson 7 | 24 | 27 | 89% | 🟢 |
 | Lesson 8 | 8 | 8 | 100% | 🟢 |
 | Lesson 9 | 10 | 10 | 100% | 🟢 |
 | Lesson 10 | 30 | 34 | 88% | 🟢 |
 | Lesson 11 | 7 | 7 | 100% | 🟢 |
 | Lesson 12 | 7 | 7 | 100% | 🟢 |
 | Lesson 13 | 40 | 47 | 85% | 🟢 |
-| Lesson 14 | 29 | 31 | 94% | 🟢 |
-| Lesson 15 | 20 | 24 | 83% | 🟢 |
+| Lesson 14 | 30 | 32 | 94% | 🟢 |
+| Lesson 15 | 24 | 28 | 86% | 🟢 |
 | Lesson 16 | 26 | 31 | 84% | 🟢 |
 | Lesson 17 | 15 | 16 | 94% | 🟢 |
 | Lesson 18 | 22 | 24 | 92% | 🟢 |
@@ -134,8 +138,9 @@ _Terakhir diperbarui: 2026-09-08 · total sesi: 33_
 | Lesson 2 | 4 | 4 | 100% | 🟢 |
 | Lesson 3 | 4 | 4 | 100% | 🟢 |
 | Lesson 20 | 11 | 12 | 92% | 🟢 |
+| Lesson 21 | 3 | 4 | 75% | 🟡 |
 
 ---
 
 ## Weak areas (prioritas soal berikutnya)
-Dua 🟡 baru muncul (dua-duanya baru menyentuh ambang 3 attempt, bukan anjlok). 1) **L7-で-bahasa 2/3 67% 🟡** — pada 「この 手紙（てがみ）を 日本語（にほんご）（　）書（か）きました」 kepilih **に** padahal media/sarana ('menulis DALAM bahasa Jepang') pakai **で**; に di sini terbaca sbagai titik/sasaran, salah fungsi. Sinyal: kontras で-media vs に-sasaran perlu ditegaskan (で = alat/media/cara, termasuk 'dalam bahasa X'; ボールペンで・日本語で). 2) **L15-てはいけません 2/3 67% 🟡** — sesi ini justru **benar** (電気を消しては✓, tak lagi tertukar ke ても); statusnya naik ke 🟡 semata karena baru cukup 3 attempt, tren membaik. Sisanya solid: 他 partikel L7 (に-memberi/menerima), L4 (jam くじ・から〜まで・に-waktu), L5 penuh (へ・で-transport・と-dengan) semua 🟢/benar; penguat L16 gabung-sifat きれいで juga benar (な-adj で, bukan くて). **Rekomendasi:** sesi depan lanjut maintenance ke bab berikut yang lama tak disentuh; selipkan 1 soal kontras で-media↔に (mis. はし/日本語/ボールペン + で) untuk mengunci L7-で-bahasa, dan 1 soal 〜てはいけません lagi untuk mengonfirmasi ては sudah mantap (menuju 🟢).
+Sesi bersih (11/12) — satu 🟡 lama justru lulus ke 🟢. 1) **L7-で-bahasa 3/4 75% 🟡** — soal で-media sesi ini BENAR (日本語で書きました✓), status masih 🟡 karena riwayat lama belum terhapus; tren naik (67%→75%). Sinyal: kontras で-media↔に sudah mulai mantap, butuh 1–2 konfirmasi lagi untuk lewat ambang 80%. 2) **Lesson 21 3/4 75% 🟡** — bab baru, satu-satunya miss ada di sini: **L21-と言いました** — pada kutipan langsung 「あした休みます」と（　）dijawab **思いました** (tertukar と思います). Beda intinya: 「　」kutipan ucapan → **言いました** (melaporkan perkataan), sedang と思います = pendapat/dugaan tanpa 「　」. と思います sendiri BENAR (便利だと✓, な-adj pakай だ), でしょう juga BENAR (試験でしょう — N tanpa だ), うごきます-が✓. Yang naik ke 🟢: **L15-てはいけません 80%** (電気を消しては✗→ sesi ini とっては/なくしては semua ✓, tak lagi tertukar ke ても), L7-で-alat & L15-てもいいです. Verb recall solid: しって・けして・なくして (音便 す→して) semua ✓. **Rekomendasi:** sesi depan selipkan 1 soal **kontras と言いました↔と思います** (「」 vs tanpa「」) untuk mengunci L21, plus 1 で-media terakhir agar L7-で-bahasa lewat 80%; sisanya lanjut maintenance ke bab yang lama tak disentuh.

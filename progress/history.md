@@ -7,6 +7,7 @@ Log ringkas tiap sesi `/quiz` (entri terbaru di atas). Ditambah otomatis oleh sk
 
 | Tanggal | Cakupan | Jml soal | Skor | Catatan |
 |---------|---------|----------|------|---------|
+| 2026-09-09 | Lesson 15·7·21 (bias 🟡 で-media & てはいけません + konfirmasi bab 21) | 12 | 11/12 (92%) | 11/12 92% · adaptif L15·7·21 · miss L21-と言いました (「」kutipan langsung dijawab 思いました, tertukar dengan と思います) · penguat で-media✓ てはいけません✓ でしょう(N tanpа だ)✓ · verb recall しって/けして/なくして semua ✓ |
 | 2026-09-08 | JLPT mock penuh (Sesi1 文字語彙 8 · Sesi2 文法読解 8) | 16 | 13/16 (81%) | [tema: dokkai=hobi-suiei · joho=jadwal-bioskop · bunshou=keluarga-masak] |
 | 2026-09-08 | maintenance spaced review L7·L4·L5 (+penguat L15·L16) | 12 | 11/12 (92%) | maintenance spaced review L7·L4·L5 (+penguat L15 larangan·L16 gabung sifat) · 11/12 92% · miss S3 L7-で-bahasa 日本語で書く→kepilih に (媒体/cara pakai で, bukan に) · penguat L15 ては✓ & L16 きれいで✓ dua-duanya benar |
 | 2026-09-07 | JLPT mock penuh (Sesi1 文字語彙 8 + Sesi2 文法読解 8) · tema sekolah-rutinitas/jadwal-bus/surat-jalanjalan | 16 | 16/16 (100%) | mock penuh 16/16 100% · Sesi1 8/8 · Sesi2 8/8 · tema sekolah-rutinitas/jadwal-bus/surat-jalanjalan(gunung) · sempurna, tak ada slip |
