@@ -7,6 +7,7 @@ Log ringkas tiap sesi `/quiz` (entri terbaru di atas). Ditambah otomatis oleh sk
 
 | Tanggal | Cakupan | Jml soal | Skor | Catatan |
 |---------|---------|----------|------|---------|
+| 2026-09-10 | L7 + L21 (weak) + maintenance L13-19 | 12 | 11/12 (92%) | 11/12 92% · dua 🟡 lulus 🟢: L7-で-bahasa 75%→80% (英語で何ですか✓) & Lesson21 75%→86% (と言いました 「」+部長に→言いました✓ mengunci miss lama, と思います だ✓, でしょう tanpa だ✓). Satu miss: L19-なります 寒→に (harusnya く, い-adj). Tak ada 🔴/🟡 tersisa → sesi depan maintenance. |
 | 2026-09-09 | JLPT mock penuh (16 soal · Sesi1 文字語彙 8 + Sesi2 文法読解 8) | 16 | 13/16 (81%) | 13/16 (81%) · Sesi1 8/8 sempurna · Sesi2 5/8 (miss DK-bunpou てから→あとで, DK-bunshou 0/2: penghubung だから→でも & sebab から→まで) · [tema: dokkai=belanja-akhirpekan, joho=menu-restoran, bunshou=surat-teman-ultah] |
 | 2026-09-09 | Lesson 15·7·21 (bias 🟡 で-media & てはいけません + konfirmasi bab 21) | 12 | 11/12 (92%) | 11/12 92% · adaptif L15·7·21 · miss L21-と言いました (「」kutipan langsung dijawab 思いました, tertukar dengan と思います) · penguat で-media✓ てはいけません✓ でしょう(N tanpа だ)✓ · verb recall しって/けして/なくして semua ✓ |
 | 2026-09-08 | JLPT mock penuh (Sesi1 文字語彙 8 · Sesi2 文法読解 8) | 16 | 13/16 (81%) | [tema: dokkai=hobi-suiei · joho=jadwal-bioskop · bunshou=keluarga-masak] |
