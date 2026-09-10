@@ -15,28 +15,28 @@ memeringkat **weak types** untuk memandu `/jlpt review`.
 **Ambang status:** akurasi <60% 🔴 LEMAH · 60–79% 🟡 · ≥80% 🟢
 (butuh minimal **3 attempt** sebelum status dihitung; di bawah itu = ⚪ belum cukup data)
 
-_Terakhir diperbarui: 2026-09-09 · total sesi: 21_
+_Terakhir diperbarui: 2026-09-10 · total sesi: 22_
 
 ---
 
 ## Sesi 1 — 文字・語彙 (Moji-Goi)
 | Subtipe | Tag | Benar | Total | Akurasi | Status |
 |---------|-----|-------|-------|---------|--------|
-| Baca kanji (cara baca) | `MG-yomi` | 41 | 42 | 98% | 🟢 |
-| Tulis kanji (penulisan) | `MG-hyouki` | 39 | 42 | 93% | 🟢 |
-| Kosakata dalam konteks | `MG-bunmyaku` | 36 | 42 | 86% | 🟢 |
-| Sinonim / 言い換え類義 | `MG-ruigi` | 40 | 42 | 95% | 🟢 |
+| Baca kanji (cara baca) | `MG-yomi` | 43 | 44 | 98% | 🟢 |
+| Tulis kanji (penulisan) | `MG-hyouki` | 41 | 44 | 93% | 🟢 |
+| Kosakata dalam konteks | `MG-bunmyaku` | 38 | 44 | 86% | 🟢 |
+| Sinonim / 言い換え類義 | `MG-ruigi` | 42 | 44 | 95% | 🟢 |
 
 ## Sesi 2 — 文法・読解 (Bunpou-Dokkai)
 | Subtipe | Tag | Benar | Total | Akurasi | Status |
 |---------|-----|-------|-------|---------|--------|
-| Tata bahasa (grammar) | `DK-bunpou` | 33 | 39 | 85% | 🟢 |
-| Susun kalimat (★) | `DK-narabekae` | 20 | 22 | 91% | 🟢 |
-| Tata bahasa dalam teks (cloze) | `DK-bunshou` | 19 | 22 | 86% | 🟢 |
-| Bacaan pendek | `DK-dokkai` | 41 | 42 | 98% | 🟢 |
-| Bacaan informasi (info-search) | `DK-joho` | 39 | 42 | 93% | 🟢 |
+| Tata bahasa (grammar) | `DK-bunpou` | 34 | 40 | 85% | 🟢 |
+| Susun kalimat (★) | `DK-narabekae` | 21 | 23 | 91% | 🟢 |
+| Tata bahasa dalam teks (cloze) | `DK-bunshou` | 21 | 24 | 88% | 🟢 |
+| Bacaan pendek | `DK-dokkai` | 43 | 44 | 98% | 🟢 |
+| Bacaan informasi (info-search) | `DK-joho` | 41 | 44 | 93% | 🟢 |
 
 ---
 
 ## Weak types (prioritas soal `/jlpt review`)
-Semua sembilan subtipe tetap 🟢. Mock 2026-09-09 13/16 (81%): Sesi 1 文字・語彙 8/8 SEMPURNA (yomi 時間/電車, hyouki 友達/大きい, bunmyaku つけます/なくします cue-lock jalan, ruigi やすい=値段たかくない & 有名=みんな知っている), semua miss terkonsentrasi di Sesi 2 (5/8). Tiga miss: (1) DK-bunpou てから — 'あさごはんを たべて（）、でかけます' dijawab あとで, padahal あとで butuh 辞書形/た (たべた あとで); rangkaian て+から = 'setelah…baru' → から belum terkunci; (2) DK-bunshou penghubung — 'pesta ulang tahun（）kamu juga datang yuk' dijawab でも (kontras), konteksnya sebab-akibat/ajakan → だから; arah wacana belum dibaca; (3) DK-bunshou sebab — 'ada banyak masakan enak（）menantikan' dijawab まで, cue sebab → から. DK-bunshou anjlok 95%→86% (dua miss cloze sekaligus), DK-bunpou turun 87%→85% jadi subtipe terlemah teratas. Q10 並べ替え di-OVERRIDE benar: たり simetris (ほんを よんだり テレビを みたり juga urutan sah) → ★③ punya dua jawaban valid; soal rancu, bukan kesalahan user. Sisa Sesi 2 kokoh: DK-narabekae 91%, DK-dokkai 2/2 (belanja+resto), DK-joho 2/2 (menu 千円 & diskon lunch 七百円). Angka: MG-yomi 98%, MG-hyouki 93%, MG-bunmyaku 86%, MG-ruigi 95%, DK-bunpou 85%, DK-narabekae 91%, DK-bunshou 86%, DK-dokkai 98%, DK-joho 93% — semua 🟢. Rekomendasi: latih penghubung wacana (だから/でも/それから/から-sebab) di teks cloze + bedakan てから (bentuk て) vs た+あとで. Rotasi tema mock berikut: hindari belanja-akhirpekan / menu-restoran / surat-teman-ultah; jaga cue-lock 文脈規定 tetap tajam.
+**Mock sempurna 16/16 — tak ada subtipe 🔴/🟡, semua tetap 🟢 & naik.** Sorotan: dua subtipe terlemah bulan lalu justru terangkat lewat soal yang dirancang menyasar kelemahannya. (1) **DK-bunshou** (cloze wacana): kedua rumpang benar — （１）だから (sebab-akibat: banyak belajar→capek, bukan でも/それから) & （２）くれて (teman が subjek membeli KE aku → くれる, bukan あげる/もらう). Ini persis dua jenis miss mock 2026-09-09 (でも salah pilih & arah pemberian) — kini terbaca benar. (2) **DK-bunpou** ことができます (辞書形+こと) ✓. (3) **DK-narabekae** 寝るまえに歯を みがきます, ★③=歯 ✓ (辞書形+まえに). Sesi 1 mulus: yomi 午後/新聞 (bacaan panjang/dakuten benar), hyouki 東 (bukan look-alike 束/車/重), bunmyaku cue-lock tajam (寝る前+電気→けします; 沖縄へ→りょこう). ruigi まずい=おいしくない, りょうしん=父と母. **Tak ada kelemahan baru.** Rekomendasi: pertahankan; mock berikut rotasi tema (hindari hobi-olahraga / jam-buka-toko / diary-belajar) & sentuh subtipe yang porsinya tipis di mock ini (bunpou/narabekae cuma 1 soal masing-masing) — atau pakai /jlpt bunpou untuk porsi grammar lebih besar.
