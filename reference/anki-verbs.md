@@ -170,5 +170,5 @@ Grup II: buang ます, tempel て／ない／る／た langsung. Grup III: `し�
 
 ---
 
-_Auto-generated 2026-09-09 oleh `scripts/sync-anki-verbs.sh` dari
+_Auto-generated 2026-09-10 oleh `scripts/sync-anki-verbs.sh` dari
 `learn-anki/minna-no-nihongo-1/mnn-*.txt`. Total 114 verb._
