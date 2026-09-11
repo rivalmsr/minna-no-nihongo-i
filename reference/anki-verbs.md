@@ -11,7 +11,7 @@ mengkonjugasikannya — konsep **active recall**. `/quiz` memakai file ini sebag
 kolam verb utama untuk soal konjugasi & pemakaian.
 
 > Ringkasan cepat (anchor — baca ini saja saat quiz):
-> - **114 verb**, dikelompokkan **grup I (62) / II (34) / III (18)** (penentu bentuk て・ない・辞書・た).
+> - **122 verb**, dikelompokkan **grup I (65) / II (35) / III (22)** (penentu bentuk て・ない・辞書・た).
 > - **Grup II** paling mudah: buang ます → tempel langsung (`たべます→たべて／たべない／たべる／たべた`).
 > - **Grup III** cuma 2 pola: `〜します` & `〜きます` (irregular, hafal).
 > - **Grup I** butuh **音便** (lihat tabel 音便 di bawah) untuk bentuk て／た.
@@ -42,7 +42,7 @@ Grup II: buang ます, tempel て／ない／る／た langsung. Grup III: `し�
 
 ---
 
-## GRUP I (62) — perlu 音便 untuk て／た
+## GRUP I (65) — perlu 音便 untuk て／た
 | ます形 | Arti | Bab |
 |--------|------|-----|
 | あります | ada (benda mati) | L10 |
@@ -107,8 +107,11 @@ Grup II: buang ます, tempel て／ない／る／た langsung. Grup III: `し�
 | あるきます | berjalan kaki | L23 |
 | わたります | menyebrang | L23 |
 | まがります | belok | L23 |
+| なおします | mengoreksi | L24 |
+| つれて いきます | membawa, mengajak pergi | L24 |
+| おくります | mengantar | L24 |
 
-## GRUP II (34) — buang ます, tempel langsung
+## GRUP II (35) — buang ます, tempel langsung
 | ます形 | Arti | Bab |
 |--------|------|-----|
 | います | ada (benda hidup) | L10 |
@@ -145,8 +148,9 @@ Grup II: buang ます, tempel て／ない／る／た langsung. Grup III: `し�
 | うまれます | lahir | L22 |
 | かえます | mengubah | L23 |
 | でます | keluar | L23 |
+| くれます | diberikan | L24 |
 
-## GRUP III (18) — します／きます (irregular)
+## GRUP III (22) — します／きます (irregular)
 | ます形 | Arti | Bab |
 |--------|------|-----|
 | けっこんします | menikah | L13 |
@@ -167,8 +171,12 @@ Grup II: buang ます, tempel て／ない／る／た langsung. Grup III: `し�
 | せんたくします | mencuci pakaian | L19 |
 | りゅうがくします | studi di luar negeri | L21 |
 | します | memakai (ネクタイをします: memakai dasi) | L22 |
+| つれてきます | membawa datang, mengajak datang | L24 |
+| しょうかいします | memperkenalkan | L24 |
+| あんないします | mengantarkan | L24 |
+| せつめいします | menjelaskan, menerangkan | L24 |
 
 ---
 
-_Auto-generated 2026-09-10 oleh `scripts/sync-anki-verbs.sh` dari
-`learn-anki/minna-no-nihongo-1/mnn-*.txt`. Total 114 verb._
+_Auto-generated 2026-09-11 oleh `scripts/sync-anki-verbs.sh` dari
+`learn-anki/minna-no-nihongo-1/mnn-*.txt`. Total 122 verb._
