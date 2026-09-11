@@ -12,7 +12,7 @@ Diperbarui otomatis oleh skill `/quiz` setiap selesai sesi. Melacak akurasi
 **Ambang status:** akurasi <60% 🔴 LEMAH · 60–79% 🟡 · ≥80% 🟢
 (butuh minimal **3 attempt** sebelum status dihitung; di bawah itu = ⚪ belum cukup data)
 
-_Terakhir diperbarui: 2026-09-10 · total sesi: 35_
+_Terakhir diperbarui: 2026-09-11 · total sesi: 36_
 
 ---
 
@@ -21,7 +21,7 @@ _Terakhir diperbarui: 2026-09-10 · total sesi: 35_
 |-----|-------|-------|---------|--------|
 | L4-jam | 7 | 8 | 88% | 🟢 |
 | L5-で-transport | 3 | 3 | 100% | 🟢 |
-| L6-を-objek | 2 | 2 | 100% | ⚪ |
+| L6-を-objek | 3 | 3 | 100% | 🟢 |
 | L7-に-memberi | 7 | 8 | 88% | 🟢 |
 | L7-に-menerima | 9 | 10 | 90% | 🟢 |
 | L7-で-alat | 3 | 3 | 100% | 🟢 |
@@ -35,10 +35,10 @@ _Terakhir diperbarui: 2026-09-10 · total sesi: 35_
 | L9-が-paham | 2 | 2 | 100% | ⚪ |
 | L9-が-pandai | 1 | 1 | 100% | ⚪ |
 | L9-punya | 2 | 2 | 100% | ⚪ |
-| L10-あります | 6 | 6 | 100% | 🟢 |
-| L10-います | 3 | 3 | 100% | 🟢 |
-| L10-に-keberadaan | 13 | 16 | 81% | 🟢 |
-| L10-posisi | 8 | 9 | 89% | 🟢 |
+| L10-あります | 7 | 7 | 100% | 🟢 |
+| L10-います | 4 | 4 | 100% | 🟢 |
+| L10-に-keberadaan | 14 | 17 | 82% | 🟢 |
+| L10-posisi | 9 | 10 | 90% | 🟢 |
 | L11-まい | 2 | 2 | 100% | ⚪ |
 | L11-かい-frekuensi | 2 | 2 | 100% | ⚪ |
 | L11-かかります | 2 | 2 | 100% | ⚪ |
@@ -70,22 +70,22 @@ _Terakhir diperbarui: 2026-09-10 · total sesi: 35_
 | L18-辞書形-konjugasi | 14 | 16 | 88% | 🟢 |
 | L19-たことがあります | 16 | 17 | 94% | 🟢 |
 | L19-た-konjugasi | 23 | 24 | 96% | 🟢 |
-| L19-なります | 24 | 29 | 83% | 🟢 |
+| L19-なります | 25 | 30 | 83% | 🟢 |
 | L19-たり | 16 | 17 | 94% | 🟢 |
 | L19-に-vs-を-のぼる | 6 | 6 | 100% | 🟢 |
 | L5-と-dengan | 2 | 2 | 100% | ⚪ |
 | L5-どこも | 1 | 1 | 100% | ⚪ |
-| L6-で-tempat | 1 | 1 | 100% | ⚪ |
-| L6-ませんか | 1 | 1 | 100% | ⚪ |
-| L6-に-bertemu | 1 | 1 | 100% | ⚪ |
+| L6-で-tempat | 2 | 2 | 100% | ⚪ |
+| L6-ませんか | 2 | 2 | 100% | ⚪ |
+| L6-に-bertemu | 2 | 2 | 100% | ⚪ |
 | L4-から-まで | 2 | 2 | 100% | ⚪ |
 | L4-kata-kerja | 1 | 1 | 100% | ⚪ |
 | L4-に-waktu | 2 | 2 | 100% | ⚪ |
 | L5-へ-tujuan | 2 | 2 | 100% | ⚪ |
 | L2-の-jenis | 1 | 1 | 100% | ⚪ |
-| L2-この-benda | 1 | 1 | 100% | ⚪ |
-| L2-なん | 1 | 1 | 100% | ⚪ |
-| L2-の-milik | 1 | 1 | 100% | ⚪ |
+| L2-この-benda | 2 | 2 | 100% | ⚪ |
+| L2-なん | 2 | 2 | 100% | ⚪ |
+| L2-の-milik | 2 | 2 | 100% | ⚪ |
 | L3-どこ | 1 | 1 | 100% | ⚪ |
 | L3-いくら | 1 | 1 | 100% | ⚪ |
 | L3-どこの-asal | 1 | 1 | 100% | ⚪ |
@@ -106,10 +106,10 @@ _Terakhir diperbarui: 2026-09-10 · total sesi: 35_
 | Partikel | Benar | Total | Akurasi | Status |
 |----------|-------|-------|---------|--------|
 | から | 6 | 6 | 100% | 🟢 |
-| に | 61 | 70 | 87% | 🟢 |
-| で | 23 | 27 | 85% | 🟢 |
-| を | 28 | 29 | 97% | 🟢 |
-| の | 3 | 3 | 100% | 🟢 |
+| に | 63 | 72 | 88% | 🟢 |
+| で | 24 | 28 | 86% | 🟢 |
+| を | 29 | 30 | 97% | 🟢 |
+| の | 4 | 4 | 100% | 🟢 |
 | が | 16 | 16 | 100% | 🟢 |
 | へ | 5 | 5 | 100% | 🟢 |
 | と | 4 | 4 | 100% | 🟢 |
@@ -121,11 +121,11 @@ _Terakhir diperbarui: 2026-09-10 · total sesi: 35_
 |--------|-------|-------|---------|--------|
 | Lesson 4 | 12 | 13 | 92% | 🟢 |
 | Lesson 5 | 8 | 8 | 100% | 🟢 |
-| Lesson 6 | 5 | 5 | 100% | 🟢 |
+| Lesson 6 | 9 | 9 | 100% | 🟢 |
 | Lesson 7 | 26 | 29 | 90% | 🟢 |
 | Lesson 8 | 8 | 8 | 100% | 🟢 |
 | Lesson 9 | 10 | 10 | 100% | 🟢 |
-| Lesson 10 | 30 | 34 | 88% | 🟢 |
+| Lesson 10 | 34 | 38 | 89% | 🟢 |
 | Lesson 11 | 7 | 7 | 100% | 🟢 |
 | Lesson 12 | 7 | 7 | 100% | 🟢 |
 | Lesson 13 | 41 | 48 | 85% | 🟢 |
@@ -134,8 +134,8 @@ _Terakhir diperbarui: 2026-09-10 · total sesi: 35_
 | Lesson 16 | 27 | 32 | 84% | 🟢 |
 | Lesson 17 | 16 | 17 | 94% | 🟢 |
 | Lesson 18 | 23 | 25 | 92% | 🟢 |
-| Lesson 19 | 64 | 72 | 89% | 🟢 |
-| Lesson 2 | 4 | 4 | 100% | 🟢 |
+| Lesson 19 | 65 | 73 | 89% | 🟢 |
+| Lesson 2 | 7 | 7 | 100% | 🟢 |
 | Lesson 3 | 4 | 4 | 100% | 🟢 |
 | Lesson 20 | 11 | 12 | 92% | 🟢 |
 | Lesson 21 | 6 | 7 | 86% | 🟢 |
@@ -143,4 +143,4 @@ _Terakhir diperbarui: 2026-09-10 · total sesi: 35_
 ---
 
 ## Weak areas (prioritas soal berikutnya)
-**Tak ada area 🔴/🟡 tersisa** — kedua 🟡 lama lulus ambang 80% sesi ini. 1) **L7-で-bahasa 4/5 80% 🟢** (dari 75% 🟡): 「さようなら」は英語で何ですか ✓ — kontras で-media↔partikel lain kini mantap, resmi lewat ambang. 2) **Lesson 21 6/7 86% 🟢** (dari 75% 🟡): tiga soal L21 semua benar — **L21-と言いました** 1/2 (miss lama 0/1 kini terangkat): 「あした休みます」と + 部長に (lawan bicara) → 言いました ✓, kunci arah lewat に-pendengar berhasil membedakan dari 思います; **L21-と思います** 有名だと ✓ (な-adj positif pakai だ); **L21-でしょう** 学生でしょう？ ✓ (N tanpa だ). Kontras だ(と思います)↔tanpa-だ(でしょう) sudah terpisah bersih. **Satu-satunya miss: L19-なります 24/29 83% 🟢** (turun tipis dari 86%) — 「寒（さむ）（　）なります」 dijawab **に**, seharusnya **く**: 寒い = い-adj → 寒くなります; に hanya untuk な-adj/名詞 (元気になります/病気になります). Bukan titik lemah baru (sampel 29, masih 🟢) tapi tandai: jangan campur aturan く (い-adj) vs に (な-adj/N). **Rekomendasi:** sesi depan = **maintenance** (tak ada weak) — sapa bab yang paling lama tak diuji + selipkan 1 soal い-adj→く なります untuk konfirmasi slip L19 bukan pola.
+**Tak ada area 🔴/🟡** — sesi maintenance 12/12 (100%). Spaced review bab paling lama tak diuji lulus mulus: **Lesson 6 9/9 100% 🟢** (を-objek 3/3 · で-tempat 2/2 · に-bertemu 2/2 · ませんか 2/2 — のみましょう ✓ ajakan-balasan pakai ましょう, bukan ませんか ulang); **Lesson 10 34/38 89% 🟢** (います↔あります benda-hidup vs mati 4/4 & 7/7 ✓ · に-keberadaan 14/17 82% ✓ に bukan で utk eksistensi · posisi となり 9/10 90% ✓); **Lesson 2 7/7 100% 🟢** (の-milik ✓ · この+benda ✓ bukan これ mandiri · なん ✓ dijawab dari konteks jawaban 時計). **Slip L19 sesi lalu KELAR:** soal konfirmasi 「寒（さむ）くなりました」 dijawab **く** ✓ — い-adj→く sudah terpisah dari に (な-adj/名詞); L19-なります stabil 25/30 83% 🟢. **Rekomendasi:** lanjut maintenance — sapa bab lama berikut (kandidat: L3, L11, L12 yang tipis ⚪/lama) untuk lawan decay; tak ada kelemahan pola yang perlu drill.

@@ -7,6 +7,7 @@ Log ringkas tiap sesi `/quiz` (entri terbaru di atas). Ditambah otomatis oleh sk
 
 | Tanggal | Cakupan | Jml soal | Skor | Catatan |
 |---------|---------|----------|------|---------|
+| 2026-09-11 | L6·10·2 maintenance + 1 konfirmasi L19 | 12 | 12/12 (100%) | maintenance 12/12 100% SEMPURNA · spaced review bab lama L6·10·2 semua 🟢 · slip L19 kelar: 寒くなります ✓ (い-adj→く) |
 | 2026-09-10 | JLPT mock penuh 16 soal (Sesi1 文字語彙 8 + Sesi2 文法読解 8) · maintenance semua 🟢 | 16 | 16/16 (100%) | 16/16 100% SEMPURNA · Sesi1 8/8 (yomi 午後/新聞, hyouki 休み/東, bunmyaku けします/りょこう cue-lock jalan, ruigi まずい=おいしくない & りょうしん=父と母) · Sesi2 8/8 (bunpou ことができます, narabekae 寝るまえに歯を, bunshou だから+くれて — dua weak connector kena, dokkai hobi-olahraga 2/2, joho jam-buka-toko 2/2) [tema: dokkai=hobi-olahraga · joho=jam-buka-toko · bunshou=diary-belajar] |
 | 2026-09-10 | L7 + L21 (weak) + maintenance L13-19 | 12 | 11/12 (92%) | 11/12 92% · dua 🟡 lulus 🟢: L7-で-bahasa 75%→80% (英語で何ですか✓) & Lesson21 75%→86% (と言いました 「」+部長に→言いました✓ mengunci miss lama, と思います だ✓, でしょう tanpa だ✓). Satu miss: L19-なります 寒→に (harusnya く, い-adj). Tak ada 🔴/🟡 tersisa → sesi depan maintenance. |
 | 2026-09-09 | JLPT mock penuh (16 soal · Sesi1 文字語彙 8 + Sesi2 文法読解 8) | 16 | 13/16 (81%) | 13/16 (81%) · Sesi1 8/8 sempurna · Sesi2 5/8 (miss DK-bunpou てから→あとで, DK-bunshou 0/2: penghubung だから→でも & sebab から→まで) · [tema: dokkai=belanja-akhirpekan, joho=menu-restoran, bunshou=surat-teman-ultah] |
